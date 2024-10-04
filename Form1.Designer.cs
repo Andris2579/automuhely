@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.RepairBtn = new System.Windows.Forms.Button();
-            this.PartsBtn = new System.Windows.Forms.Button();
-            this.CustBtn = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.MainTxtBox = new System.Windows.Forms.TextBox();
             this.SearchPanel = new System.Windows.Forms.Panel();
             this.SearchTxtBox = new System.Windows.Forms.TextBox();
+            this.RepairBtn = new AutoMuhely.CustomButton();
+            this.PartsBtn = new AutoMuhely.CustomButton();
+            this.CustBtn = new AutoMuhely.CustomButton();
             this.MenuPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SearchPanel.SuspendLayout();
@@ -43,48 +43,20 @@
             // 
             // MenuPanel
             // 
+            this.MenuPanel.BackColor = System.Drawing.Color.Gray;
             this.MenuPanel.Controls.Add(this.RepairBtn);
             this.MenuPanel.Controls.Add(this.PartsBtn);
             this.MenuPanel.Controls.Add(this.CustBtn);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(173, 561);
             this.MenuPanel.TabIndex = 1;
             // 
-            // RepairBtn
-            // 
-            this.RepairBtn.Location = new System.Drawing.Point(12, 344);
-            this.RepairBtn.Name = "RepairBtn";
-            this.RepairBtn.Size = new System.Drawing.Size(146, 50);
-            this.RepairBtn.TabIndex = 2;
-            this.RepairBtn.Text = "Szerelések";
-            this.RepairBtn.UseVisualStyleBackColor = true;
-            this.RepairBtn.Click += new System.EventHandler(this.RepairBtn_Click);
-            // 
-            // PartsBtn
-            // 
-            this.PartsBtn.Location = new System.Drawing.Point(12, 245);
-            this.PartsBtn.Name = "PartsBtn";
-            this.PartsBtn.Size = new System.Drawing.Size(146, 50);
-            this.PartsBtn.TabIndex = 1;
-            this.PartsBtn.Text = "Alkatrészek";
-            this.PartsBtn.UseVisualStyleBackColor = true;
-            this.PartsBtn.Click += new System.EventHandler(this.PartsBtn_Click);
-            // 
-            // CustBtn
-            // 
-            this.CustBtn.Location = new System.Drawing.Point(12, 147);
-            this.CustBtn.Name = "CustBtn";
-            this.CustBtn.Size = new System.Drawing.Size(146, 50);
-            this.CustBtn.TabIndex = 0;
-            this.CustBtn.Text = "Ügyfelek";
-            this.CustBtn.UseVisualStyleBackColor = true;
-            this.CustBtn.Click += new System.EventHandler(this.CustBtn_Click);
-            // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(69)))), ((int)(((byte)(79)))));
             this.MainPanel.Controls.Add(this.MainTxtBox);
             this.MainPanel.Controls.Add(this.SearchPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -99,6 +71,7 @@
             this.MainTxtBox.Location = new System.Drawing.Point(132, 147);
             this.MainTxtBox.Multiline = true;
             this.MainTxtBox.Name = "MainTxtBox";
+            this.MainTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.MainTxtBox.Size = new System.Drawing.Size(512, 367);
             this.MainTxtBox.TabIndex = 1;
             // 
@@ -118,6 +91,48 @@
             this.SearchTxtBox.Name = "SearchTxtBox";
             this.SearchTxtBox.Size = new System.Drawing.Size(738, 35);
             this.SearchTxtBox.TabIndex = 0;
+            // 
+            // RepairBtn
+            // 
+            this.RepairBtn.BackColor = System.Drawing.Color.GhostWhite;
+            this.RepairBtn.BorderRadius = 20;
+            this.RepairBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RepairBtn.ForeColor = System.Drawing.Color.Black;
+            this.RepairBtn.Location = new System.Drawing.Point(12, 300);
+            this.RepairBtn.Name = "RepairBtn";
+            this.RepairBtn.Size = new System.Drawing.Size(146, 58);
+            this.RepairBtn.TabIndex = 2;
+            this.RepairBtn.Text = "Szerelések";
+            this.RepairBtn.UseVisualStyleBackColor = false;
+            this.RepairBtn.Click += new System.EventHandler(this.RepairBtn_Click);
+            // 
+            // PartsBtn
+            // 
+            this.PartsBtn.BackColor = System.Drawing.Color.GhostWhite;
+            this.PartsBtn.BorderRadius = 20;
+            this.PartsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PartsBtn.ForeColor = System.Drawing.Color.Black;
+            this.PartsBtn.Location = new System.Drawing.Point(12, 210);
+            this.PartsBtn.Name = "PartsBtn";
+            this.PartsBtn.Size = new System.Drawing.Size(146, 58);
+            this.PartsBtn.TabIndex = 1;
+            this.PartsBtn.Text = "Alkatrészek";
+            this.PartsBtn.UseVisualStyleBackColor = false;
+            this.PartsBtn.Click += new System.EventHandler(this.PartsBtn_Click);
+            // 
+            // CustBtn
+            // 
+            this.CustBtn.BackColor = System.Drawing.Color.GhostWhite;
+            this.CustBtn.BorderRadius = 20;
+            this.CustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CustBtn.ForeColor = System.Drawing.Color.Black;
+            this.CustBtn.Location = new System.Drawing.Point(12, 120);
+            this.CustBtn.Name = "CustBtn";
+            this.CustBtn.Size = new System.Drawing.Size(146, 58);
+            this.CustBtn.TabIndex = 0;
+            this.CustBtn.Text = "Ügyfelek";
+            this.CustBtn.UseVisualStyleBackColor = false;
+            this.CustBtn.Click += new System.EventHandler(this.CustBtn_Click);
             // 
             // Main_Form
             // 
@@ -147,11 +162,11 @@
         #endregion
 
         private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.Button CustBtn;
+        private CustomButton CustBtn;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Panel SearchPanel;
-        private System.Windows.Forms.Button RepairBtn;
-        private System.Windows.Forms.Button PartsBtn;
+        private CustomButton RepairBtn;
+        private CustomButton PartsBtn;
         private System.Windows.Forms.TextBox MainTxtBox;
         private System.Windows.Forms.TextBox SearchTxtBox;
     }
