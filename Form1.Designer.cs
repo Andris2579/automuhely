@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.MainTxtBox = new System.Windows.Forms.TextBox();
             this.SearchPanel = new System.Windows.Forms.Panel();
-            this.SearchTxtBox = new System.Windows.Forms.TextBox();
+            this.MainTxtBox = new AutoMuhely.CustomTextBox();
+            this.SearchTxtBox = new AutoMuhely.CustomTextBox();
             this.RepairBtn = new AutoMuhely.CustomButton();
             this.PartsBtn = new AutoMuhely.CustomButton();
             this.CustBtn = new AutoMuhely.CustomButton();
@@ -65,16 +66,6 @@
             this.MainPanel.Size = new System.Drawing.Size(761, 561);
             this.MainPanel.TabIndex = 2;
             // 
-            // MainTxtBox
-            // 
-            this.MainTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.MainTxtBox.Location = new System.Drawing.Point(132, 147);
-            this.MainTxtBox.Multiline = true;
-            this.MainTxtBox.Name = "MainTxtBox";
-            this.MainTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.MainTxtBox.Size = new System.Drawing.Size(512, 367);
-            this.MainTxtBox.TabIndex = 1;
-            // 
             // SearchPanel
             // 
             this.SearchPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -85,10 +76,32 @@
             this.SearchPanel.Size = new System.Drawing.Size(761, 100);
             this.SearchPanel.TabIndex = 0;
             // 
+            // MainTxtBox
+            // 
+            this.MainTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MainTxtBox.BackColor = System.Drawing.Color.White;
+            this.MainTxtBox.BorderColor = System.Drawing.Color.Black;
+            this.MainTxtBox.BorderRadius = 15;
+            this.MainTxtBox.BorderSize = 2;
+            this.MainTxtBox.Location = new System.Drawing.Point(132, 147);
+            this.MainTxtBox.Multiline = true;
+            this.MainTxtBox.Name = "MainTxtBox";
+            this.MainTxtBox.Padding = new System.Windows.Forms.Padding(7, 7, 7, 10);
+            this.MainTxtBox.PasswordChar = '\0';
+            this.MainTxtBox.Size = new System.Drawing.Size(512, 367);
+            this.MainTxtBox.TabIndex = 1;
+            // 
             // SearchTxtBox
             // 
+            this.SearchTxtBox.BackColor = System.Drawing.Color.White;
+            this.SearchTxtBox.BorderColor = System.Drawing.Color.Black;
+            this.SearchTxtBox.BorderRadius = 15;
+            this.SearchTxtBox.BorderSize = 2;
             this.SearchTxtBox.Location = new System.Drawing.Point(11, 31);
+            this.SearchTxtBox.Multiline = false;
             this.SearchTxtBox.Name = "SearchTxtBox";
+            this.SearchTxtBox.Padding = new System.Windows.Forms.Padding(7);
+            this.SearchTxtBox.PasswordChar = '\0';
             this.SearchTxtBox.Size = new System.Drawing.Size(738, 35);
             this.SearchTxtBox.TabIndex = 0;
             // 
@@ -143,6 +156,7 @@
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.MenuPanel);
             this.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "Main_Form";
@@ -152,9 +166,7 @@
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
-            this.MainPanel.PerformLayout();
             this.SearchPanel.ResumeLayout(false);
-            this.SearchPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -167,8 +179,8 @@
         private System.Windows.Forms.Panel SearchPanel;
         private CustomButton RepairBtn;
         private CustomButton PartsBtn;
-        private System.Windows.Forms.TextBox MainTxtBox;
-        private System.Windows.Forms.TextBox SearchTxtBox;
+        private CustomTextBox MainTxtBox;
+        private CustomTextBox SearchTxtBox;
     }
 }
 
