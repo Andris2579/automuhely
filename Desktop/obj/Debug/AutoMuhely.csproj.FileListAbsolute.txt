@@ -1,0 +1,11 @@
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.exe.config
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.pdb
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.GenerateResource.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.pdb
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
