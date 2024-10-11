@@ -101,18 +101,59 @@ namespace AutoMuhely
             }
         }
 
-        string insertQuery = "INSERT INTO table_name (column1, column2) VALUES (@value1, @value2);";
-        public void Insert(string insertQuery)
+        public void Insert(string insertQuery, Dictionary<string, object> parameters)
         {
             using (var connection = new MySqlConnection(connectionCommand))
             {
                 connection.Open();
                 using (var command = new MySqlCommand(insertQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@value1", "Első érték");
-                    command.Parameters.AddWithValue("@value2", "Második érték");
+                    // Adding parameters dynamically
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.AddWithValue(param.Key, param.Value);
+                    }
 
                     int rowsAffected = command.ExecuteNonQuery(); // Affected rows
+                    Console.WriteLine($"{rowsAffected} row(s) inserted."); // Optional: display affected rows
+                }
+            }
+        }
+
+        public void Update(string updateQuery, Dictionary<string, object> parameters)
+        {
+            using (var connection = new MySqlConnection(connectionCommand))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(updateQuery, connection))
+                {
+                    // Paraméterek dinamikus hozzáadása
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.AddWithValue(param.Key, param.Value);
+                    }
+
+                    int rowsAffected = command.ExecuteNonQuery(); // Érintett sorok
+                    Console.WriteLine($"{rowsAffected} sor frissítve."); // Opció: érintett sorok kiírása
+                }
+            }
+        }
+
+        public void Delete(string deleteQuery, Dictionary<string, object> parameters)
+        {
+            using (var connection = new MySqlConnection(connectionCommand))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(deleteQuery, connection))
+                {
+                    // Paraméterek dinamikus hozzáadása
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.AddWithValue(param.Key, param.Value);
+                    }
+
+                    int rowsAffected = command.ExecuteNonQuery(); // Érintett sorok
+                    Console.WriteLine($"{rowsAffected} sor törölve."); // Opció: érintett sorok kiírása
                 }
             }
         }
