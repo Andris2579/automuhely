@@ -20,66 +20,36 @@ namespace AutoMuhely
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.btnLogin = new AutoMuhely.CustomButton();
-            this.btnCancel = new AutoMuhely.CustomButton();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.Line1 = new System.Windows.Forms.Panel();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.Line2 = new System.Windows.Forms.Panel();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.PicUser = new System.Windows.Forms.PictureBox();
             this.PicLock = new System.Windows.Forms.PictureBox();
+            this.PicUser = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.PicUser)).BeginInit();
+            this.btnLogin = new AutoMuhely.CustomButton();
+            this.btnCancel = new AutoMuhely.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.PicLock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLogin.BorderRadius = 30;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(100, 297);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(170, 49);
-            this.btnLogin.TabIndex = 3;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancel.BorderRadius = 23;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(125, 360);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 40);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
             this.LoginLabel.BackColor = System.Drawing.Color.Transparent;
-            this.LoginLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.LoginLabel.Location = new System.Drawing.Point(102, 108);
+            this.LoginLabel.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LoginLabel.Location = new System.Drawing.Point(46, 108);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(166, 54);
+            this.LoginLabel.Size = new System.Drawing.Size(278, 44);
             this.LoginLabel.TabIndex = 4;
-            this.LoginLabel.Text = "LOG IN";
+            this.LoginLabel.Text = "BEJELENTKEZÉS";
             // 
             // Line1
             // 
-            this.Line1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Line1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.Line1.Location = new System.Drawing.Point(28, 223);
             this.Line1.Name = "Line1";
             this.Line1.Size = new System.Drawing.Size(300, 2);
@@ -87,17 +57,19 @@ namespace AutoMuhely
             // 
             // txtUsername
             // 
+            this.txtUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.txtUsername.Location = new System.Drawing.Point(66, 192);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(262, 25);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Text = "admin";
             // 
             // Line2
             // 
-            this.Line2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Line2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.Line2.Location = new System.Drawing.Point(28, 276);
             this.Line2.Name = "Line2";
             this.Line2.Size = new System.Drawing.Size(300, 2);
@@ -105,29 +77,20 @@ namespace AutoMuhely
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F);
-            this.txtPassword.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.txtPassword.Location = new System.Drawing.Point(66, 245);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(262, 25);
             this.txtPassword.TabIndex = 2;
-            // 
-            // PicUser
-            // 
-            this.PicUser.Image = ((System.Drawing.Image)(resources.GetObject("PicUser.Image")));
-            this.PicUser.Location = new System.Drawing.Point(28, 187);
-            this.PicUser.Name = "PicUser";
-            this.PicUser.Size = new System.Drawing.Size(32, 30);
-            this.PicUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicUser.TabIndex = 8;
-            this.PicUser.TabStop = false;
+            this.txtPassword.Text = "password";
             // 
             // PicLock
             // 
-            this.PicLock.Image = ((System.Drawing.Image)(resources.GetObject("PicLock.Image")));
+            this.PicLock.Image = global::AutoMuhely.Properties.Resources.lock_icon;
             this.PicLock.Location = new System.Drawing.Point(28, 240);
             this.PicLock.Name = "PicLock";
             this.PicLock.Size = new System.Drawing.Size(32, 30);
@@ -135,10 +98,20 @@ namespace AutoMuhely
             this.PicLock.TabIndex = 9;
             this.PicLock.TabStop = false;
             // 
+            // PicUser
+            // 
+            this.PicUser.Image = global::AutoMuhely.Properties.Resources.user_icon;
+            this.PicUser.Location = new System.Drawing.Point(28, 187);
+            this.PicUser.Name = "PicUser";
+            this.PicUser.Size = new System.Drawing.Size(32, 30);
+            this.PicUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicUser.TabIndex = 8;
+            this.PicUser.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.logoX;
             this.pictureBox1.Location = new System.Drawing.Point(125, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 120);
@@ -146,10 +119,40 @@ namespace AutoMuhely
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnLogin.BorderRadius = 23;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(80, 297);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(210, 49);
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Text = "Tovább";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnCancel.BorderRadius = 23;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(115, 360);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(140, 40);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Mégse";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(354, 461);
             this.Controls.Add(this.PicLock);
             this.Controls.Add(this.PicUser);
@@ -165,14 +168,13 @@ namespace AutoMuhely
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 500);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(370, 500);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.PicUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -30,122 +30,142 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.SearchPanel = new System.Windows.Forms.Panel();
-            this.MainTxtBox = new AutoMuhely.CustomTextBox();
-            this.SearchTxtBox = new AutoMuhely.CustomTextBox();
-            this.RepairBtn = new AutoMuhely.CustomButton();
-            this.PartsBtn = new AutoMuhely.CustomButton();
-            this.CustBtn = new AutoMuhely.CustomButton();
+            this.hoverPanel1 = new AutoMuhely.HoverPanel();
+            this.hoverPanel2 = new AutoMuhely.HoverPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.hoverPanel3 = new AutoMuhely.HoverPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MenuPanel.SuspendLayout();
-            this.MainPanel.SuspendLayout();
-            this.SearchPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.hoverPanel1.SuspendLayout();
+            this.hoverPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.hoverPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
-            this.MenuPanel.BackColor = System.Drawing.Color.Gray;
-            this.MenuPanel.Controls.Add(this.RepairBtn);
-            this.MenuPanel.Controls.Add(this.PartsBtn);
-            this.MenuPanel.Controls.Add(this.CustBtn);
+            this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuPanel.Controls.Add(this.hoverPanel3);
+            this.MenuPanel.Controls.Add(this.hoverPanel2);
+            this.MenuPanel.Controls.Add(this.hoverPanel1);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(173, 561);
-            this.MenuPanel.TabIndex = 1;
+            this.MenuPanel.Size = new System.Drawing.Size(269, 561);
+            this.MenuPanel.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 32);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ügyfelek";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
+            this.pictureBox1.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(69)))), ((int)(((byte)(79)))));
-            this.MainPanel.Controls.Add(this.MainTxtBox);
-            this.MainPanel.Controls.Add(this.SearchPanel);
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(173, 0);
+            this.MainPanel.Location = new System.Drawing.Point(269, 0);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(761, 561);
-            this.MainPanel.TabIndex = 2;
+            this.MainPanel.Size = new System.Drawing.Size(665, 561);
+            this.MainPanel.TabIndex = 0;
             // 
-            // SearchPanel
+            // hoverPanel1
             // 
-            this.SearchPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.SearchPanel.Controls.Add(this.SearchTxtBox);
-            this.SearchPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SearchPanel.Location = new System.Drawing.Point(0, 0);
-            this.SearchPanel.Name = "SearchPanel";
-            this.SearchPanel.Size = new System.Drawing.Size(761, 100);
-            this.SearchPanel.TabIndex = 0;
+            this.hoverPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel1.Controls.Add(this.label1);
+            this.hoverPanel1.Controls.Add(this.pictureBox1);
+            this.hoverPanel1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel1.Location = new System.Drawing.Point(0, 100);
+            this.hoverPanel1.Name = "hoverPanel1";
+            this.hoverPanel1.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel1.Size = new System.Drawing.Size(269, 57);
+            this.hoverPanel1.TabIndex = 6;
             // 
-            // MainTxtBox
+            // hoverPanel2
             // 
-            this.MainTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.MainTxtBox.BackColor = System.Drawing.Color.White;
-            this.MainTxtBox.BorderColor = System.Drawing.Color.Black;
-            this.MainTxtBox.BorderRadius = 15;
-            this.MainTxtBox.BorderSize = 2;
-            this.MainTxtBox.Location = new System.Drawing.Point(132, 147);
-            this.MainTxtBox.Multiline = true;
-            this.MainTxtBox.Name = "MainTxtBox";
-            this.MainTxtBox.Padding = new System.Windows.Forms.Padding(7, 7, 7, 10);
-            this.MainTxtBox.PasswordChar = '\0';
-            this.MainTxtBox.Size = new System.Drawing.Size(512, 367);
-            this.MainTxtBox.TabIndex = 1;
+            this.hoverPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel2.Controls.Add(this.label2);
+            this.hoverPanel2.Controls.Add(this.pictureBox2);
+            this.hoverPanel2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel2.Location = new System.Drawing.Point(0, 157);
+            this.hoverPanel2.Name = "hoverPanel2";
+            this.hoverPanel2.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel2.Size = new System.Drawing.Size(269, 57);
+            this.hoverPanel2.TabIndex = 7;
             // 
-            // SearchTxtBox
+            // label2
             // 
-            this.SearchTxtBox.BackColor = System.Drawing.Color.White;
-            this.SearchTxtBox.BorderColor = System.Drawing.Color.Black;
-            this.SearchTxtBox.BorderRadius = 15;
-            this.SearchTxtBox.BorderSize = 2;
-            this.SearchTxtBox.Location = new System.Drawing.Point(11, 31);
-            this.SearchTxtBox.Multiline = false;
-            this.SearchTxtBox.Name = "SearchTxtBox";
-            this.SearchTxtBox.Padding = new System.Windows.Forms.Padding(7);
-            this.SearchTxtBox.PasswordChar = '\0';
-            this.SearchTxtBox.Size = new System.Drawing.Size(738, 35);
-            this.SearchTxtBox.TabIndex = 0;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label2.Location = new System.Drawing.Point(12, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 32);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Alkatrészek";
             // 
-            // RepairBtn
+            // pictureBox2
             // 
-            this.RepairBtn.BackColor = System.Drawing.Color.GhostWhite;
-            this.RepairBtn.BorderRadius = 20;
-            this.RepairBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RepairBtn.ForeColor = System.Drawing.Color.Black;
-            this.RepairBtn.Location = new System.Drawing.Point(12, 300);
-            this.RepairBtn.Name = "RepairBtn";
-            this.RepairBtn.Size = new System.Drawing.Size(146, 58);
-            this.RepairBtn.TabIndex = 2;
-            this.RepairBtn.Text = "Szerelések";
-            this.RepairBtn.UseVisualStyleBackColor = false;
-            this.RepairBtn.Click += new System.EventHandler(this.RepairBtn_Click);
+            this.pictureBox2.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(80, 52);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
-            // PartsBtn
+            // hoverPanel3
             // 
-            this.PartsBtn.BackColor = System.Drawing.Color.GhostWhite;
-            this.PartsBtn.BorderRadius = 20;
-            this.PartsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PartsBtn.ForeColor = System.Drawing.Color.Black;
-            this.PartsBtn.Location = new System.Drawing.Point(12, 210);
-            this.PartsBtn.Name = "PartsBtn";
-            this.PartsBtn.Size = new System.Drawing.Size(146, 58);
-            this.PartsBtn.TabIndex = 1;
-            this.PartsBtn.Text = "Alkatrészek";
-            this.PartsBtn.UseVisualStyleBackColor = false;
-            this.PartsBtn.Click += new System.EventHandler(this.PartsBtn_Click);
+            this.hoverPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel3.Controls.Add(this.label3);
+            this.hoverPanel3.Controls.Add(this.pictureBox3);
+            this.hoverPanel3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel3.Location = new System.Drawing.Point(0, 501);
+            this.hoverPanel3.Name = "hoverPanel3";
+            this.hoverPanel3.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel3.Size = new System.Drawing.Size(269, 57);
+            this.hoverPanel3.TabIndex = 8;
             // 
-            // CustBtn
+            // label3
             // 
-            this.CustBtn.BackColor = System.Drawing.Color.GhostWhite;
-            this.CustBtn.BorderRadius = 20;
-            this.CustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CustBtn.ForeColor = System.Drawing.Color.Black;
-            this.CustBtn.Location = new System.Drawing.Point(12, 120);
-            this.CustBtn.Name = "CustBtn";
-            this.CustBtn.Size = new System.Drawing.Size(146, 58);
-            this.CustBtn.TabIndex = 0;
-            this.CustBtn.Text = "Ügyfelek";
-            this.CustBtn.UseVisualStyleBackColor = false;
-            this.CustBtn.Click += new System.EventHandler(this.CustBtn_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label3.Location = new System.Drawing.Point(12, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 32);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Beállítások";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(80, 52);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
             // 
             // Main_Form
             // 
@@ -165,8 +185,15 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
-            this.MainPanel.ResumeLayout(false);
-            this.SearchPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.hoverPanel1.ResumeLayout(false);
+            this.hoverPanel1.PerformLayout();
+            this.hoverPanel2.ResumeLayout(false);
+            this.hoverPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.hoverPanel3.ResumeLayout(false);
+            this.hoverPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,13 +201,16 @@
         #endregion
 
         private System.Windows.Forms.Panel MenuPanel;
-        private CustomButton CustBtn;
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.Panel SearchPanel;
-        private CustomButton RepairBtn;
-        private CustomButton PartsBtn;
-        private CustomTextBox MainTxtBox;
-        private CustomTextBox SearchTxtBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private HoverPanel hoverPanel1;
+        private HoverPanel hoverPanel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private HoverPanel hoverPanel3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

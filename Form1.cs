@@ -20,6 +20,8 @@ namespace AutoMuhely
         private Rectangle searchPanelOriginalRectangle;
         private Rectangle mainTxtBoxOriginalRectangle;
         private Rectangle searchTxtBoxOriginalRectangle;
+        private Rectangle searchPanelLineOriginalRectangle;
+        private Rectangle searchIconOriginalRectangle;
 
         private Size originalFormSize;
         public Main_Form()
@@ -30,14 +32,6 @@ namespace AutoMuhely
         private void Main_Form_Load(object sender, EventArgs e)
         {
             originalFormSize = this.Size;
-            custBtnOriginalRectangle = new Rectangle(CustBtn.Location.X, CustBtn.Location.Y, CustBtn.Width, CustBtn.Height);
-            partsBtnOriginalRectangle = new Rectangle(PartsBtn.Location.X, PartsBtn.Location.Y, PartsBtn.Width, PartsBtn.Height);
-            repairBtnOriginalRectangle = new Rectangle(RepairBtn.Location.X, RepairBtn.Location.Y, RepairBtn.Width, RepairBtn.Height);
-            menuPanelOriginalRectangle = new Rectangle(MenuPanel.Location.X, MenuPanel.Location.Y, MenuPanel.Width, MenuPanel.Height);
-            mainPanelOriginalRectangle= new Rectangle(MainPanel.Location.X, MainPanel.Location.Y, MainPanel.Width, MainPanel.Height);
-            searchPanelOriginalRectangle= new Rectangle(SearchPanel.Location.X, SearchPanel.Location.Y, SearchPanel.Width, SearchPanel.Height);
-            mainTxtBoxOriginalRectangle = new Rectangle(MainTxtBox.Location.X, MainTxtBox.Location.Y, MainTxtBox.Width, MainTxtBox.Height);
-            searchTxtBoxOriginalRectangle = new Rectangle(SearchTxtBox.Location.X, SearchTxtBox.Location.Y, SearchTxtBox.Width, SearchTxtBox.Height);
         }
         private void ResizeControl(Rectangle r, Control c)
         {
@@ -55,29 +49,6 @@ namespace AutoMuhely
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
-            ResizeControl(custBtnOriginalRectangle, CustBtn);
-            ResizeControl(partsBtnOriginalRectangle, PartsBtn);
-            ResizeControl(repairBtnOriginalRectangle, RepairBtn);
-            ResizeControl(menuPanelOriginalRectangle, MenuPanel);
-            ResizeControl(mainPanelOriginalRectangle, MainPanel);
-            ResizeControl(searchPanelOriginalRectangle, SearchPanel);
-            ResizeControl(mainTxtBoxOriginalRectangle, MainTxtBox);
-            ResizeControl(searchTxtBoxOriginalRectangle, SearchTxtBox);
-        }
-
-        private void CustBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PartsBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RepairBtn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

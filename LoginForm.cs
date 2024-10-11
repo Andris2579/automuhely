@@ -26,14 +26,13 @@ namespace AutoMuhely
             // Simple username and password validation
             if (username == "admin" && password == "password") // Customize as needed
             {
-                // Close the login form and return DialogResult.OK for a successful login
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
                 // Show an error message
-                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnLogin_Click(object sender, EventArgs e)
