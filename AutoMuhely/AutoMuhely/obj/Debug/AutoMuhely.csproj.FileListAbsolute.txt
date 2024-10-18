@@ -1,0 +1,25 @@
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.exe.config
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\AutoMuhely\bin\Debug\AutoMuhely.pdb
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.GenerateResource.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.pdb
+D:\Ákos Fenyvesi 13p\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.exe
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.pdb
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe.config
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.pdb
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.dll
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.xml
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.GenerateResource.cache
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.Up2Date
