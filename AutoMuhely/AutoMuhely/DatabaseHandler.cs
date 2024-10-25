@@ -61,7 +61,7 @@ namespace AutoMuhely
             }
         }
 
-        public void Select(string selectQuery)
+        public (List<List<object>>, List<string>) Select(string selectQuery)
         {
             try
             {
@@ -74,39 +74,39 @@ namespace AutoMuhely
                         using (var reader = command.ExecuteReader())
                         {
                             // Lista a sorok tárolására
-                            var rows = new List<Dictionary<string, object>>();
+                            var rows = new List<List<object>>();
+
+                            var columnNames = new List<string>();
+
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                columnNames.Add(reader.GetName(i));
+                            }
 
                             while (reader.Read())
                             {
                                 // Szótár, ami az aktuális sort tárolja
-                                var row = new Dictionary<string, object>();
+                                var row = new List<object>();
 
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     // Minden oszlop nevét és értékét hozzáadjuk a szótárhoz
-                                    row[reader.GetName(i)] = reader.GetValue(i);
+                                    row.Add(reader.GetValue(i));
                                 }
 
                                 // Sor hozzáadása a listához
                                 rows.Add(row);
                             }
 
-                            // Adatok kiírása a konzolra
-                            /*foreach (var r in rows)
-                            {
-                                foreach (var kvp in r)
-                                {
-                                    Console.Write($"{kvp.Key}: {kvp.Value}\t");
-                                }
-                                Console.WriteLine();
-                            }*/
+                            return (rows, columnNames);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Hiba történt: {ex.Message}");
+                MessageBox.Show($"Hiba történt: {ex.Message}");
+                return (null, null);
             }
         }
 

@@ -22,6 +22,8 @@ namespace AutoMuhely
 
         private static HoverPanel selectedPanel = null; // Static reference to track the selected panel
 
+        public event EventHandler PanelClicked;
+
         // Constructor
         public HoverPanel()
         {
@@ -139,6 +141,8 @@ namespace AutoMuhely
             isSelected = true;
             this.BackColor = hoverColor;
             Invalidate();  // Trigger repaint to show the blue line
+
+            PanelClicked?.Invoke(this, EventArgs.Empty);
         }
 
         // Override OnPaint to draw the blue line on the left side when hovered or selected
