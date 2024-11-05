@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -73,8 +73,7 @@
               "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\alkatr\u00E9szInputs.cs [Design]",
               "RelativeToolTip": "AutoMuhely\\alkatr\u00E9szInputs.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T19:49:35.566Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-26T19:49:35.566Z"
             },
             {
               "$type": "Document",
@@ -86,8 +85,7 @@
               "RelativeToolTip": "AutoMuhely\\HoverPanel.cs",
               "ViewState": "AQIAAHYAAAAAAAAAAADwv30AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T08:54:30.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-25T08:54:30.814Z"
             },
             {
               "$type": "Document",
@@ -99,8 +97,7 @@
               "RelativeToolTip": "AutoMuhely\\Form1.Designer.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAA1wBYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T08:51:36.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-25T08:51:36.66Z"
             },
             {
               "$type": "Document",
@@ -112,8 +109,7 @@
               "RelativeToolTip": "AutoMuhely\\Form1.cs",
               "ViewState": "AQIAADMAAAAAAAAAAAAIwFIAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T10:30:13.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T10:30:13.372Z"
             },
             {
               "$type": "Document",
@@ -159,8 +155,7 @@
               "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs [Design]",
               "RelativeToolTip": "AutoMuhely\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T10:19:10.332Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-11T10:19:10.332Z"
             },
             {
               "$type": "Document",
@@ -172,8 +167,7 @@
               "RelativeToolTip": "AutoMuhely\\alkatr\u00E9szInputs.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAAwEoAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T19:49:40.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-26T19:49:40.076Z"
             }
           ]
         }
