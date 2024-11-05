@@ -65,7 +65,7 @@ namespace AutoMuhely.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap car_parts {
             get {
-                object obj = ResourceManager.GetObject("car-parts", resourceCulture);
+                object obj = ResourceManager.GetObject("car_parts", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
