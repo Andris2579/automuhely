@@ -55,6 +55,12 @@
     <Compile Include="alkatrészInputs.Designer.cs">
       <DependentUpon>alkatrészInputs.cs</DependentUpon>
     </Compile>
+    <Compile Include="alkatrészTörlés.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alkatrészTörlés.Designer.cs">
+      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="alkatrészInputs.resx">
       <DependentUpon>alkatrészInputs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alkatrészTörlés.resx">
+      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

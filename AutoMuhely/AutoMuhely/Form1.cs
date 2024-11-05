@@ -32,6 +32,8 @@ namespace AutoMuhely
 
             hoverPanel1.PanelClicked += HoverPanel1_ÜgyfelekClicked;
             hoverPanel2.PanelClicked += HoverPanel2_AlkatrészekClicked;
+            hoverPanel4.PanelClicked += HoverPanel4_SzerelésekClicked;
+            hoverPanel5.PanelClicked += HoverPanel5_JárművekClicked;
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
@@ -58,14 +60,66 @@ namespace AutoMuhely
 
         static DataGridView table_DGV = new DataGridView();
 
+        private string aktívMenü;
+
         private void HoverPanel1_ÜgyfelekClicked(object sender, EventArgs e)
         {
+            aktívMenü = "ügyfelek";
             ugyfelek_Generate();
         }
 
         private void HoverPanel2_AlkatrészekClicked(object sender, EventArgs e)
         {
+            aktívMenü = "alkatrészek";
             alkatreszek_Generate();
+        }
+
+        private void HoverPanel4_SzerelésekClicked(object sender, EventArgs e)
+        {
+            szerelések_Generate();
+        }
+
+        private void HoverPanel5_JárművekClicked(object sender, EventArgs e)
+        {
+            aktívMenü = "járművek";
+            járművek_Generate();
+        }
+
+        private void szerelések_Generate()
+        {
+            //3 gomb: szerelési útmutatók, hibakódok, munkafolyamat sablonok
+            throw new NotImplementedException();
+        }
+
+        private void járművek_Generate()
+        {
+            panelTable.Controls.Clear();
+            table_DGV.Columns.Clear();
+            table_DGV.Rows.Clear();
+
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM jarmuvek");
+            table_DGV.Location = new Point(30, 5);
+            int table_DGV_Width = panelTable.Width - 60;
+            int table_DGV_Height = panelTable.Height - 30;
+            table_DGV.Size = new Size(table_DGV_Width, table_DGV_Height);
+            table_DGV.ColumnHeadersHeight = 40;
+            table_DGV.ForeColor = Color.Black;
+            table_DGV.RowHeadersVisible = false;
+            table_DGV.Font = new Font("Arial Rounded MT", 10);
+            panelTable.Controls.Add(table_DGV);
+            if (eredmeny != null && oszlopNevek != null)
+            {
+                foreach (var oszlopNev in oszlopNevek)
+                {
+                    table_DGV.Columns.Add(oszlopNev, oszlopNev);
+                    table_DGV.Columns[oszlopNev].Width = Convert.ToInt32((table_DGV.Width / oszlopNevek.Count) + 0.5);
+                }
+
+                foreach (var sor in eredmeny)
+                {
+                    table_DGV.Rows.Add(sor.ToArray());
+                }
+            }
         }
 
         private void ugyfelek_Generate()
@@ -73,6 +127,7 @@ namespace AutoMuhely
             panelTable.Controls.Clear();
             table_DGV.Columns.Clear();
             table_DGV.Rows.Clear();
+
             var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM ugyfelek");
             table_DGV.Location = new Point(30, 5);
             int table_DGV_Width = panelTable.Width - 60;
@@ -105,6 +160,7 @@ namespace AutoMuhely
             panelTable.Controls.Clear();
             table_DGV.Columns.Clear();
             table_DGV.Rows.Clear();
+
             var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM alkatreszek");
             table_DGV.Location = new Point(30, 5);
             int table_DGV_Width = panelTable.Width - 60;
@@ -146,14 +202,6 @@ namespace AutoMuhely
             újAlkatrész.Font = new Font("Arial Rounded MT", 12);
             újAlkatrész.Click += újAlkatrész_Click;
             alkatrészekMenü.Controls.Add(újAlkatrész);
-
-            Button törlésAlkatrész = new Button();
-            törlésAlkatrész.Text = "Alkatrész törlés";
-            törlésAlkatrész.Size = gombMéret ;
-            törlésAlkatrész.Location = new Point(újAlkatrész.Location.X + újAlkatrész.Width + Convert.ToInt32(gombMéret.Width / 3), újAlkatrész.Location.Y);
-            törlésAlkatrész.BackColor = Color.White;
-            újAlkatrész.Font = new Font("Arial Rounded MT", 12);
-            alkatrészekMenü.Controls.Add(törlésAlkatrész);
         }
 
         private void újAlkatrész_Click(object sender, EventArgs e)
@@ -168,21 +216,32 @@ namespace AutoMuhely
             alkatreszek_Generate();
         }
 
+        private Dictionary<string, string> searchQueries = new Dictionary<string, string>
+        {
+            { "ügyfelek", "SELECT * FROM ugyfelek WHERE nev LIKE '%{0}%' OR elerhetoseg LIKE '%{0}%' OR cim LIKE '%{0}%'" },
+            { "alkatrészek", "SELECT * FROM alkatreszek WHERE nev LIKE '%{0}%' OR leiras LIKE '%{0}%' OR keszlet_mennyiseg LIKE '%{0}%' OR utanrendelesi_szint LIKE '%{0}%'" },
+            //{ "szerelesek", "SELECT * FROM szerelesek WHERE nev LIKE '%{0}%'" }
+            { "járművek", "SELECT jarmuvek.jarmu_id, jarmuvek.rendszam, jarmuvek.tipus_id, jarmuvek.kod_id, jarmuvek.sablon_id, jarmuvek.gyartas_eve, jarmuvek.motor_adatok, jarmuvek.alvaz_adatok, jarmuvek.elozo_javitasok, tipus.tipus, hibakodok.kod, munkafolyamat_sablonok.nev FROM jarmuvek AS j INNER JOIN tipus AS t ON j.tipus_id = t.tipus_id INNER JOIN hibakodok AS k ON j.kod_id = k.kod_id INNER JOIN munkafolyamat_sablonok AS s ON j.sablon_id = s.sablon_id;" }
+        };
+
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
             string keresettKifejezes = searchBar.Text.Trim();
 
-            string query = $"SELECT * FROM ugyfelek WHERE nev LIKE '%{keresettKifejezes}%'";
-
-            var (eredmeny, oszlopNevek) = databaseHandler.Select(query);
-
-            table_DGV.Rows.Clear();
-
-            if (eredmeny != null && oszlopNevek != null)
+            if (searchQueries.ContainsKey(aktívMenü))
             {
-                foreach (var sor in eredmeny)
+                string query = string.Format(searchQueries[aktívMenü], keresettKifejezes);
+
+                var (eredmeny, oszlopNevek) = databaseHandler.Select(query);
+
+                table_DGV.Rows.Clear();
+
+                if (eredmeny != null && oszlopNevek != null)
                 {
-                    table_DGV.Rows.Add(sor.ToArray());
+                    foreach (var sor in eredmeny)
+                    {
+                        table_DGV.Rows.Add(sor.ToArray());
+                    }
                 }
             }
         }

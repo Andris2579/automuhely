@@ -24,3 +24,4 @@ C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.Ge
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.Up2Date
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészInputs.resources
+C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészTörlés.resources
