@@ -18,6 +18,11 @@ namespace AutoMuhely
         static string connectionCommand = "server=localhost;database=automuhely;user=root;password=''";
         static string sqlPath = "automuhely.sql";
 
+        public string ConnectionCommand
+        {
+            get { return connectionCommand; }
+        }
+
         public void DatabaseConnect()
         {
             try
@@ -107,25 +112,6 @@ namespace AutoMuhely
             {
                 MessageBox.Show($"Hiba történt: {ex.Message}");
                 return (null, null);
-            }
-        }
-
-        public void Insert(string insertQuery, Dictionary<string, object> parameters)
-        {
-            using (var connection = new MySqlConnection(connectionCommand))
-            {
-                connection.Open();
-                using (var command = new MySqlCommand(insertQuery, connection))
-                {
-                    // Adding parameters dynamically
-                    foreach (var param in parameters)
-                    {
-                        command.Parameters.AddWithValue(param.Key, param.Value);
-                    }
-
-                    int rowsAffected = command.ExecuteNonQuery(); // Affected rows
-                    Console.WriteLine($"{rowsAffected} row(s) inserted."); // Optional: display affected rows
-                }
             }
         }
 

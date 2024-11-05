@@ -193,7 +193,7 @@
             // 
             this.searchBar.Location = new System.Drawing.Point(30, 30);
             this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(594, 42);
+            this.searchBar.Size = new System.Drawing.Size(600, 42);
             this.searchBar.TabIndex = 0;
             this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
             // 
