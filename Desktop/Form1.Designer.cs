@@ -30,6 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
+=======
+            this.hoverPanel4 = new AutoMuhely.HoverPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.hoverPanel3 = new AutoMuhely.HoverPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.hoverPanel2 = new AutoMuhely.HoverPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.hoverPanel1 = new AutoMuhely.HoverPanel();
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
@@ -41,8 +54,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MenuPanel.SuspendLayout();
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.hoverPanel1.SuspendLayout();
+=======
+            this.hoverPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.hoverPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             this.hoverPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.hoverPanel3.SuspendLayout();
@@ -52,6 +72,7 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuPanel.Controls.Add(this.hoverPanel4);
             this.MenuPanel.Controls.Add(this.hoverPanel3);
             this.MenuPanel.Controls.Add(this.hoverPanel2);
             this.MenuPanel.Controls.Add(this.hoverPanel1);
@@ -61,7 +82,44 @@
             this.MenuPanel.Size = new System.Drawing.Size(269, 561);
             this.MenuPanel.TabIndex = 0;
             // 
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             // label1
+=======
+            // hoverPanel4
+            // 
+            this.hoverPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel4.Controls.Add(this.label4);
+            this.hoverPanel4.Controls.Add(this.pictureBox4);
+            this.hoverPanel4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel4.Location = new System.Drawing.Point(0, 214);
+            this.hoverPanel4.Name = "hoverPanel4";
+            this.hoverPanel4.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel4.Size = new System.Drawing.Size(269, 57);
+            this.hoverPanel4.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label4.Location = new System.Drawing.Point(12, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(159, 32);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Szerelések";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::AutoMuhely.Properties.Resources.repair;
+            this.pictureBox4.Location = new System.Drawing.Point(186, -8);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(71, 71);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
+            // hoverPanel3
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,6 +132,7 @@
             // 
             // pictureBox1
             // 
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
             this.pictureBox1.Location = new System.Drawing.Point(183, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -81,9 +140,20 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+=======
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label3.Location = new System.Drawing.Point(12, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 32);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Beállítások";
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             // 
             // MainPanel
             // 
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(269, 0);
@@ -102,6 +172,15 @@
             this.hoverPanel1.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.hoverPanel1.Size = new System.Drawing.Size(269, 57);
             this.hoverPanel1.TabIndex = 6;
+=======
+            this.pictureBox3.Image = global::AutoMuhely.Properties.Resources.settings;
+            this.pictureBox3.Location = new System.Drawing.Point(196, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(52, 52);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             // 
             // hoverPanel2
             // 
@@ -128,9 +207,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox2.Image = global::AutoMuhely.Properties.Resources.car_parts;
+            this.pictureBox2.Location = new System.Drawing.Point(196, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(80, 52);
+            this.pictureBox2.Size = new System.Drawing.Size(52, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -149,6 +229,7 @@
             // 
             // label3
             // 
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
@@ -157,15 +238,70 @@
             this.label3.Size = new System.Drawing.Size(158, 32);
             this.label3.TabIndex = 2;
             this.label3.Text = "Beállítások";
+=======
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 32);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ügyfelek";
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             // 
             // pictureBox3
             // 
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             this.pictureBox3.Location = new System.Drawing.Point(183, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(80, 52);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
+=======
+            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
+            this.pictureBox1.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 52);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.MainPanel.Controls.Add(this.panelTable);
+            this.MainPanel.Controls.Add(this.panelSearchBar);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(269, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(665, 561);
+            this.MainPanel.TabIndex = 0;
+            // 
+            // panelTable
+            // 
+            this.panelTable.Location = new System.Drawing.Point(0, 100);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(660, 460);
+            this.panelTable.TabIndex = 1;
+            // 
+            // panelSearchBar
+            // 
+            this.panelSearchBar.Controls.Add(this.searchBar);
+            this.panelSearchBar.Location = new System.Drawing.Point(0, 0);
+            this.panelSearchBar.Name = "panelSearchBar";
+            this.panelSearchBar.Size = new System.Drawing.Size(665, 100);
+            this.panelSearchBar.TabIndex = 0;
+            // 
+            // searchBar
+            // 
+            this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBar.Location = new System.Drawing.Point(17, 30);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(636, 35);
+            this.searchBar.TabIndex = 0;
+            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             // 
             // Main_Form
             // 
@@ -185,9 +321,18 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.hoverPanel1.ResumeLayout(false);
             this.hoverPanel1.PerformLayout();
+=======
+            this.hoverPanel4.ResumeLayout(false);
+            this.hoverPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.hoverPanel3.ResumeLayout(false);
+            this.hoverPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
             this.hoverPanel2.ResumeLayout(false);
             this.hoverPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -211,6 +356,15 @@
         private HoverPanel hoverPanel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
+<<<<<<< Updated upstream:Desktop/Form1.Designer.cs
+=======
+        private System.Windows.Forms.Panel panelSearchBar;
+        private System.Windows.Forms.Panel panelTable;
+        private System.Windows.Forms.TextBox searchBar;
+        private HoverPanel hoverPanel4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+>>>>>>> Stashed changes:AutoMuhely/AutoMuhely/Form1.Designer.cs
     }
 }
 
