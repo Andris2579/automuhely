@@ -118,5 +118,14 @@
   <ItemGroup>
     <None Include="imgs\user_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\car-parts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\repair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
