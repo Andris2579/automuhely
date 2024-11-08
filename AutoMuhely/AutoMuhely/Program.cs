@@ -17,18 +17,23 @@ namespace AutoMuhely
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Create an instance of the login form
             LoginForm loginForm = new LoginForm();
 
             // Show the login form
-            if (loginForm.ShowDialog() == DialogResult.OK) // If login is successful
+            if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                // Open the main form after successful login
-                Application.Run(new Main_Form()); // Your main form
+                // Create an instance of Main_Form with the username and role
+                Main_Form mainForm = new Main_Form
+                {
+                    Username = loginForm.Username,
+                    Role = loginForm.Role
+                };
+
+                // Run the main form
+                Application.Run(mainForm);
             }
             else
             {
-                // Exit if the login is canceled or failed
                 Application.Exit();
             }
         }

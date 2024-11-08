@@ -17,7 +17,8 @@ namespace AutoMuhely
 
         static string connectionCommand = "server=localhost;database=automuhely;user=root;password=''";
         static string sqlPath = "automuhely.sql";
-
+        public string UserName {  get; set; }
+        public string Role { get; set; }
         public string ConnectionCommand
         {
             get { return connectionCommand; }
@@ -102,8 +103,8 @@ namespace AutoMuhely
                                 // Sor hozzáadása a listához
                                 rows.Add(row);
                             }
-
-                            return (rows, columnNames);
+                                return (rows, columnNames);
+                            
                         }
                     }
                 }

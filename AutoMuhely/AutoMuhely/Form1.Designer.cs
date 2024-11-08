@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.MainPanel = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
+            this.panelSearchBar = new System.Windows.Forms.Panel();
+            this.searchBar = new System.Windows.Forms.TextBox();
+            this.userTextBox = new System.Windows.Forms.TextBox();
             this.hoverPanel4 = new AutoMuhely.HoverPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -42,11 +47,9 @@
             this.hoverPanel1 = new AutoMuhely.HoverPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.panelTable = new System.Windows.Forms.Panel();
-            this.panelSearchBar = new System.Windows.Forms.Panel();
-            this.searchBar = new System.Windows.Forms.TextBox();
             this.MenuPanel.SuspendLayout();
+            this.MainPanel.SuspendLayout();
+            this.panelSearchBar.SuspendLayout();
             this.hoverPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.hoverPanel3.SuspendLayout();
@@ -55,13 +58,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.hoverPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.MainPanel.SuspendLayout();
-            this.panelSearchBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuPanel.Controls.Add(this.userTextBox);
             this.MenuPanel.Controls.Add(this.hoverPanel4);
             this.MenuPanel.Controls.Add(this.hoverPanel3);
             this.MenuPanel.Controls.Add(this.hoverPanel2);
@@ -71,6 +73,50 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(269, 561);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.MainPanel.Controls.Add(this.panelTable);
+            this.MainPanel.Controls.Add(this.panelSearchBar);
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(269, 0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(665, 561);
+            this.MainPanel.TabIndex = 0;
+            // 
+            // panelTable
+            // 
+            this.panelTable.Location = new System.Drawing.Point(0, 100);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(660, 460);
+            this.panelTable.TabIndex = 1;
+            // 
+            // panelSearchBar
+            // 
+            this.panelSearchBar.Controls.Add(this.searchBar);
+            this.panelSearchBar.Location = new System.Drawing.Point(0, 0);
+            this.panelSearchBar.Name = "panelSearchBar";
+            this.panelSearchBar.Size = new System.Drawing.Size(665, 100);
+            this.panelSearchBar.TabIndex = 0;
+            // 
+            // searchBar
+            // 
+            this.searchBar.Location = new System.Drawing.Point(30, 30);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(594, 49);
+            this.searchBar.TabIndex = 0;
+            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
+            // 
+            // userTextBox
+            // 
+            this.userTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.userTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.userTextBox.Location = new System.Drawing.Point(12, 12);
+            this.userTextBox.Multiline = true;
+            this.userTextBox.Name = "userTextBox";
+            this.userTextBox.Size = new System.Drawing.Size(239, 67);
+            this.userTextBox.TabIndex = 1;
             // 
             // hoverPanel4
             // 
@@ -91,7 +137,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label4.Location = new System.Drawing.Point(12, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 39);
+            this.label4.Size = new System.Drawing.Size(239, 48);
             this.label4.TabIndex = 2;
             this.label4.Text = "Szerelések";
             // 
@@ -125,7 +171,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label3.Location = new System.Drawing.Point(12, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(198, 39);
+            this.label3.Size = new System.Drawing.Size(240, 48);
             this.label3.TabIndex = 2;
             this.label3.Text = "Beállítások";
             // 
@@ -158,7 +204,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label2.Location = new System.Drawing.Point(12, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 39);
+            this.label2.Size = new System.Drawing.Size(256, 48);
             this.label2.TabIndex = 2;
             this.label2.Text = "Alkatrészek";
             // 
@@ -191,7 +237,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 39);
+            this.label1.Size = new System.Drawing.Size(196, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ügyfelek";
             // 
@@ -205,43 +251,9 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // MainPanel
-            // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.MainPanel.Controls.Add(this.panelTable);
-            this.MainPanel.Controls.Add(this.panelSearchBar);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(269, 0);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(665, 561);
-            this.MainPanel.TabIndex = 0;
-            // 
-            // panelTable
-            // 
-            this.panelTable.Location = new System.Drawing.Point(0, 100);
-            this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(660, 460);
-            this.panelTable.TabIndex = 1;
-            // 
-            // panelSearchBar
-            // 
-            this.panelSearchBar.Controls.Add(this.searchBar);
-            this.panelSearchBar.Location = new System.Drawing.Point(0, 0);
-            this.panelSearchBar.Name = "panelSearchBar";
-            this.panelSearchBar.Size = new System.Drawing.Size(665, 100);
-            this.panelSearchBar.TabIndex = 0;
-            // 
-            // searchBar
-            // 
-            this.searchBar.Location = new System.Drawing.Point(30, 30);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(594, 42);
-            this.searchBar.TabIndex = 0;
-            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
-            // 
             // Main_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(934, 561);
@@ -257,6 +269,10 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
+            this.MenuPanel.PerformLayout();
+            this.MainPanel.ResumeLayout(false);
+            this.panelSearchBar.ResumeLayout(false);
+            this.panelSearchBar.PerformLayout();
             this.hoverPanel4.ResumeLayout(false);
             this.hoverPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -269,9 +285,6 @@
             this.hoverPanel1.ResumeLayout(false);
             this.hoverPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.MainPanel.ResumeLayout(false);
-            this.panelSearchBar.ResumeLayout(false);
-            this.panelSearchBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,6 +308,7 @@
         private HoverPanel hoverPanel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.TextBox userTextBox;
     }
 }
 

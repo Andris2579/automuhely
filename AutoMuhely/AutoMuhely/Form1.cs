@@ -22,7 +22,8 @@ namespace AutoMuhely
         private Rectangle searchTxtBoxOriginalRectangle;
         private Rectangle searchPanelLineOriginalRectangle;
         private Rectangle searchIconOriginalRectangle;
-
+        public string Username { get; set; }
+        public string Role { get; set; }
         static DatabaseHandler databaseHandler = new DatabaseHandler();
 
         private Size originalFormSize;
@@ -32,11 +33,13 @@ namespace AutoMuhely
 
             hoverPanel1.PanelClicked += HoverPanel1_ÜgyfelekClicked;
             hoverPanel2.PanelClicked += HoverPanel2_AlkatrészekClicked;
+            
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
             originalFormSize = this.Size;
+            userTextBox.Text = Username + "\r\n" + Role;
         }
         private void ResizeControl(Rectangle r, Control c)
         {
