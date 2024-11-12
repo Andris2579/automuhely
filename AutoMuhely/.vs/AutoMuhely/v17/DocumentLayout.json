@@ -7,11 +7,23 @@
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\hoverpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\hoverpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\automuhely\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\m\u00F3dos\u00EDthibak\u00F3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\m\u00F3dos\u00EDthibak\u00F3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\m\u00F3dos\u00EDthibak\u00F3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\m\u00F3dos\u00EDthibak\u00F3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\minden\\iskola\\automuhely\\automuhely\\automuhely\\alkatr\u00E9szinputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\alkatr\u00E9szinputs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,19 +34,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HoverPanel.cs",
-              "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\HoverPanel.cs",
-              "RelativeDocumentMoniker": "AutoMuhely\\HoverPanel.cs",
-              "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\HoverPanel.cs",
-              "RelativeToolTip": "AutoMuhely\\HoverPanel.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "alkatr\u00E9szInputs.cs",
+              "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\alkatr\u00E9szInputs.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\alkatr\u00E9szInputs.cs",
+              "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\alkatr\u00E9szInputs.cs",
+              "RelativeToolTip": "AutoMuhely\\alkatr\u00E9szInputs.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAewF0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T12:55:37.761Z",
+              "WhenOpened": "2024-11-12T13:12:29.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "RelativeToolTip": "AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAYwCEAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T13:11:51.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "m\u00F3dos\u00EDtHibak\u00F3d.cs [Design]",
+              "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs",
+              "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs [Design]",
+              "RelativeToolTip": "AutoMuhely\\m\u00F3dos\u00EDtHibak\u00F3d.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T13:10:35.31Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\DatabaseHandler.cs",
+              "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
+              "RelativeToolTip": "AutoMuhely\\DatabaseHandler.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAYwHYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T12:12:01.959Z",
               "EditorCaption": ""
             },
             {
@@ -45,22 +95,21 @@
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",
               "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeToolTip": "AutoMuhely\\Form1.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAnwFkAAAA/AAAA",
+              "ViewState": "AQIAAB0BAAAAAAAAAADwvzQBAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-05T12:54:47.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",
               "ToolTip": "C:\\Minden\\Iskola\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs [Design]",
               "RelativeToolTip": "AutoMuhely\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T12:54:03.399Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-05T12:54:03.399Z"
             }
           ]
         }

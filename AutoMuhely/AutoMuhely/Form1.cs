@@ -85,10 +85,297 @@ namespace AutoMuhely
             járművek_Generate();
         }
 
+        Button szerelésiÚtmutatók_Btn;
+        Button hibakódok_Btn;
+        Button munkafolyamatSablonok_Btn;
+
         private void szerelések_Generate()
         {
-            //3 gomb: szerelési útmutatók, hibakódok, munkafolyamat sablonok
-            throw new NotImplementedException();
+            panelTable.Controls.Clear();
+
+            szerelésiÚtmutatók_Btn_Generate();
+            hibakódok_Btn_Generate();
+            munkafolyamatSablonok_Btn_Generate();
+        }
+
+        private void szerelésiÚtmutatók_Btn_Generate()
+        {
+            szerelésiÚtmutatók_Btn = new Button();
+            szerelésiÚtmutatók_Btn.Location = new Point(20, 405);
+            szerelésiÚtmutatók_Btn.Size = new Size(200, 50);
+            szerelésiÚtmutatók_Btn.Text = "Szerelési Útmutatók";
+            szerelésiÚtmutatók_Btn.Font = new Font("Arial Rounded MT", 10);
+            szerelésiÚtmutatók_Btn.BackColor = Color.White;
+            szerelésiÚtmutatók_Btn.Click += SzerelésiÚtmutatók_Btn_Click;
+            panelTable.Controls.Add(szerelésiÚtmutatók_Btn);
+        }
+
+        private void SzerelésiÚtmutatók_Btn_Click(object sender, EventArgs e)
+        {
+            panelTable.Controls.Clear();
+            table_DGV.Columns.Clear();
+            table_DGV.Rows.Clear();
+
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM szerelesi_utmutatok");
+            table_DGV.Location = new Point(30, 5);
+            int table_DGV_Width = panelTable.Width - 60;
+            int table_DGV_Height = panelTable.Height - 70;
+            table_DGV.Size = new Size(table_DGV_Width, table_DGV_Height);
+            table_DGV.ColumnHeadersHeight = 40;
+            table_DGV.ForeColor = Color.Black;
+            table_DGV.RowHeadersVisible = false;
+            table_DGV.Font = new Font("Arial Rounded MT", 10);
+            panelTable.Controls.Add(table_DGV);
+            if (eredmeny != null && oszlopNevek != null)
+            {
+                foreach (var oszlopNev in oszlopNevek)
+                {
+                    table_DGV.Columns.Add(oszlopNev, oszlopNev);
+                    table_DGV.Columns[oszlopNev].Width = Convert.ToInt32((table_DGV.Width / oszlopNevek.Count));
+                }
+
+                foreach (var sor in eredmeny)
+                {
+                    table_DGV.Rows.Add(sor.ToArray());
+                }
+            }
+            table_DGV.ScrollBars = ScrollBars.None;
+
+            szerelésekVissza_Btn_Generate();
+
+            Button újÚtmutató_Btn = new Button();
+            újÚtmutató_Btn.Location = new Point(230, 405);
+            újÚtmutató_Btn.Size = new Size(200, 50);
+            újÚtmutató_Btn.Text = "Új Útmutató";
+            újÚtmutató_Btn.Font = new Font("Arial Rounded MT", 10);
+            újÚtmutató_Btn.BackColor = Color.White;
+            újÚtmutató_Btn.Click += ÚjÚtmutató_Btn_Click;
+            panelTable.Controls.Add(újÚtmutató_Btn);
+
+            Button módosításÚtmutató_Btn = new Button();
+            módosításÚtmutató_Btn.Location = new Point(440, 405);
+            módosításÚtmutató_Btn.Size = new Size(200, 50);
+            módosításÚtmutató_Btn.Text = "Útmutató Módosítása";
+            módosításÚtmutató_Btn.Font = new Font("Arial Rounded MT", 10);
+            módosításÚtmutató_Btn.BackColor = Color.White;
+            módosításÚtmutató_Btn.Click += MódosításÚtmutató_Btn_Click;
+            panelTable.Controls.Add(módosításÚtmutató_Btn);
+        }
+
+        private void SzerelésiÚtmutatók_Generate()
+        {
+            table_DGV.Columns.Clear();
+            table_DGV.Rows.Clear();
+
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM szerelesi_utmutatok");
+            table_DGV.Location = new Point(30, 5);
+            int table_DGV_Width = panelTable.Width - 60;
+            int table_DGV_Height = panelTable.Height - 70;
+            table_DGV.Size = new Size(table_DGV_Width, table_DGV_Height);
+            table_DGV.ColumnHeadersHeight = 40;
+            table_DGV.ForeColor = Color.Black;
+            table_DGV.RowHeadersVisible = false;
+            table_DGV.Font = new Font("Arial Rounded MT", 10);
+            panelTable.Controls.Add(table_DGV);
+            if (eredmeny != null && oszlopNevek != null)
+            {
+                foreach (var oszlopNev in oszlopNevek)
+                {
+                    table_DGV.Columns.Add(oszlopNev, oszlopNev);
+                    table_DGV.Columns[oszlopNev].Width = Convert.ToInt32((table_DGV.Width / oszlopNevek.Count));
+                }
+
+                foreach (var sor in eredmeny)
+                {
+                    table_DGV.Rows.Add(sor.ToArray());
+                }
+            }
+            table_DGV.ScrollBars = ScrollBars.None;
+        }
+
+        private void ÚjÚtmutató_Btn_Click(object sender, EventArgs e)
+        {
+            újÚtmutató újÚtmutató = new újÚtmutató();
+            újÚtmutató.ÚtmutatóHozzáadva += újÚtmutató_ÚtmutatóHozzáadva;
+            újÚtmutató.Show();
+        }
+
+        private void újÚtmutató_ÚtmutatóHozzáadva(object sender, EventArgs e)
+        {
+            SzerelésiÚtmutatók_Generate();
+        }
+
+        private void MódosításÚtmutató_Btn_Click(object sender, EventArgs e)
+        {
+            módosítÚtmutató módosítÚtmutató = new módosítÚtmutató();
+            módosítÚtmutató.ÚtmutatóMódosítva += módosítÚtmutató_ÚtmutatóMódosítva;
+            módosítÚtmutató.Show();
+        }
+
+        private void módosítÚtmutató_ÚtmutatóMódosítva(object sender, EventArgs e)
+        {
+            SzerelésiÚtmutatók_Generate();
+        }
+
+        private void Hibakódok_Generate()
+        {
+            table_DGV.Columns.Clear();
+            table_DGV.Rows.Clear();
+
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM hibakodok");
+            table_DGV.Location = new Point(30, 5);
+            int table_DGV_Width = panelTable.Width - 60;
+            int table_DGV_Height = panelTable.Height - 70;
+            table_DGV.Size = new Size(table_DGV_Width, table_DGV_Height);
+            table_DGV.ColumnHeadersHeight = 40;
+            table_DGV.ForeColor = Color.Black;
+            table_DGV.RowHeadersVisible = false;
+            table_DGV.Font = new Font("Arial Rounded MT", 10);
+            panelTable.Controls.Add(table_DGV);
+            if (eredmeny != null && oszlopNevek != null)
+            {
+                foreach (var oszlopNev in oszlopNevek)
+                {
+                    table_DGV.Columns.Add(oszlopNev, oszlopNev);
+                    table_DGV.Columns[oszlopNev].Width = Convert.ToInt32((table_DGV.Width / oszlopNevek.Count));
+                }
+
+                foreach (var sor in eredmeny)
+                {
+                    table_DGV.Rows.Add(sor.ToArray());
+                }
+            }
+            table_DGV.ScrollBars = ScrollBars.None;
+        }
+
+        private void hibakódok_Btn_Generate()
+        {
+            hibakódok_Btn = new Button();
+            hibakódok_Btn.Location = new Point(230, 405);
+            hibakódok_Btn.Size = new Size(200, 50);
+            hibakódok_Btn.Text = "Hibakódok";
+            hibakódok_Btn.Font = new Font("Arial Rounded MT", 10);
+            hibakódok_Btn.BackColor = Color.White;
+            hibakódok_Btn.Click += Hibakódok_Btn_Click;
+            panelTable.Controls.Add(hibakódok_Btn);
+        }
+
+        private void Hibakódok_Btn_Click(object sender, EventArgs e)
+        {
+            panelTable.Controls.Clear();
+
+            Hibakódok_Generate();
+
+            szerelésekVissza_Btn_Generate();
+
+            Button újHibakód_Btn = new Button();
+            újHibakód_Btn.Location = new Point(230, 405);
+            újHibakód_Btn.Size = new Size(200, 50);
+            újHibakód_Btn.Text = "Új Hibakód";
+            újHibakód_Btn.Font = new Font("Arial Rounded MT", 10);
+            újHibakód_Btn.BackColor = Color.White;
+            újHibakód_Btn.Click += ÚjHibakód_Btn_Click;
+            panelTable.Controls.Add(újHibakód_Btn);
+
+            Button módosításHibakód_Btn = new Button();
+            módosításHibakód_Btn.Location = new Point(440, 405);
+            módosításHibakód_Btn.Size = new Size(200, 50);
+            módosításHibakód_Btn.Text = "Hibakód Módosítása";
+            módosításHibakód_Btn.Font = new Font("Arial Rounded MT", 10);
+            módosításHibakód_Btn.BackColor = Color.White;
+            módosításHibakód_Btn.Click += MódosítHibakód_Btn_Click;
+            panelTable.Controls.Add(módosításHibakód_Btn);
+        }
+
+        private void ÚjHibakód_Btn_Click(object sender, EventArgs e)
+        {
+            újHibakód újHibakód = new újHibakód();
+            újHibakód.ÚjHibakód_HibakódHozzáadva += újHibakód_HibakódHozzáad;
+            újHibakód.Show();
+        }
+
+        private void újHibakód_HibakódHozzáad(object sender, EventArgs e)
+        {
+            Hibakódok_Generate();
+        }
+
+        private void MódosítHibakód_Btn_Click(object sender, EventArgs e)
+        {
+            módosítHibakód módosítHibakód = new módosítHibakód();
+            módosítHibakód.MódosítHibakód += MódosítHibakód;
+            módosítHibakód.Show();
+        }
+
+        private void MódosítHibakód(object sender, EventArgs e)
+        {
+            Hibakódok_Generate();
+        }
+
+        private void munkafolyamatSablonok_Btn_Generate()
+        {
+            munkafolyamatSablonok_Btn = new Button();
+            munkafolyamatSablonok_Btn.Location = new Point(440, 405);
+            munkafolyamatSablonok_Btn.Size = new Size(200, 50);
+            munkafolyamatSablonok_Btn.Text = "Munkafolyamat Sablonok";
+            munkafolyamatSablonok_Btn.Font = new Font("Arial Rounded MT", 10);
+            munkafolyamatSablonok_Btn.BackColor = Color.White;
+            munkafolyamatSablonok_Btn.Click += MunkafolyamatSablonok_Btn_Click;
+            panelTable.Controls.Add(munkafolyamatSablonok_Btn);
+        }
+
+        private void MunkafolyamatSablonok_Btn_Click(object sender, EventArgs e)
+        {
+
+            table_DGV.Columns.Clear();
+            table_DGV.Rows.Clear();
+
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM munkafolyamat_sablonok");
+            table_DGV.Location = new Point(30, 5);
+            int table_DGV_Width = panelTable.Width - 60;
+            int table_DGV_Height = panelTable.Height - 70;
+            table_DGV.Size = new Size(table_DGV_Width, table_DGV_Height);
+            table_DGV.ColumnHeadersHeight = 40;
+            table_DGV.ForeColor = Color.Black;
+            table_DGV.RowHeadersVisible = false;
+            table_DGV.Font = new Font("Arial Rounded MT", 10);
+            panelTable.Controls.Add(table_DGV);
+            if (eredmeny != null && oszlopNevek != null)
+            {
+                foreach (var oszlopNev in oszlopNevek)
+                {
+                    table_DGV.Columns.Add(oszlopNev, oszlopNev);
+                    table_DGV.Columns[oszlopNev].Width = Convert.ToInt32((table_DGV.Width / oszlopNevek.Count));
+                }
+
+                foreach (var sor in eredmeny)
+                {
+                    table_DGV.Rows.Add(sor.ToArray());
+                }
+            }
+            table_DGV.ScrollBars = ScrollBars.None;
+
+            Button szerelésekVissza = new Button();
+
+        }
+
+        Button szerelésekVissza_Btn;
+
+        private void szerelésekVissza_Btn_Generate()
+        {
+            szerelésekVissza_Btn = new Button();
+            szerelésekVissza_Btn.Location = new Point(20, 405);
+            szerelésekVissza_Btn.Size = new Size(200, 50);
+            szerelésekVissza_Btn.Text = "Vissza";
+            szerelésekVissza_Btn.Font = new Font("Arial Rounded MT", 10);
+            szerelésekVissza_Btn.BackColor = Color.White;
+            szerelésekVissza_Btn.Click += szerelésekVissza_Btn_Click;
+            panelTable.Controls.Add(szerelésekVissza_Btn);
+        }
+
+        private void szerelésekVissza_Btn_Click(object sender, EventArgs e)
+        {
+            panelTable.Controls.Clear();
+            szerelések_Generate();
         }
 
         private void járművek_Generate()

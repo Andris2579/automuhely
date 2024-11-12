@@ -74,7 +74,6 @@ namespace AutoMuhely
 
         private void AlkatrészHozzáadás_Btn_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
             try
             {
                 using (var connection = new MySqlConnection(databaseHandler.ConnectionCommand))
