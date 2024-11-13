@@ -325,7 +325,7 @@ namespace AutoMuhely
 
         private void MunkafolyamatSablonok_Btn_Click(object sender, EventArgs e)
         {
-
+            panelTable.Controls.Clear();
             table_DGV.Columns.Clear();
             table_DGV.Rows.Clear();
 
@@ -354,8 +354,39 @@ namespace AutoMuhely
             }
             table_DGV.ScrollBars = ScrollBars.None;
 
-            Button szerelésekVissza = new Button();
+            szerelésekVissza_Btn_Generate();
 
+            Button újMunkafolyamat_Btn = new Button();
+            újMunkafolyamat_Btn.Location = new Point(230, 405);
+            újMunkafolyamat_Btn.Size = new Size(200, 50);
+            újMunkafolyamat_Btn.Text = "Új Munkafolyamat";
+            újMunkafolyamat_Btn.Font = new Font("Arial Rounded MT", 10);
+            újMunkafolyamat_Btn.BackColor = Color.White;
+            újMunkafolyamat_Btn.Click += újMunkafolyamat_Btn_Click;
+            panelTable.Controls.Add(újMunkafolyamat_Btn);
+
+            Button módosításMunkafolyamat_Btn = new Button();
+            módosításMunkafolyamat_Btn.Location = new Point(440, 405);
+            módosításMunkafolyamat_Btn.Size = new Size(200, 50);
+            módosításMunkafolyamat_Btn.Text = "Munkafolyamat Módosítása";
+            módosításMunkafolyamat_Btn.Font = new Font("Arial Rounded MT", 10);
+            módosításMunkafolyamat_Btn.BackColor = Color.White;
+            módosításMunkafolyamat_Btn.Click += módosításMunkafolyamat_Btn_Click;
+            panelTable.Controls.Add(módosításMunkafolyamat_Btn);
+        }
+
+        private void újMunkafolyamat_Btn_Click(object sender, EventArgs e)
+        {
+            újMunkafolyamat újMunkafolyamat= new újMunkafolyamat();
+            újMunkafolyamat.újMunkafolyamatHozzáadva += újMunkafolyamatHozzáadva;
+            újMunkafolyamat.Show();
+        }
+
+        private void módosításMunkafolyamat_Btn_Click(object sender, EventArgs e)
+        {
+            módosítMunkafolyamat módosítMunkafolyamat = new módosítMunkafolyamat();
+            módosítMunkafolyamat.módosítMunkafolyamatMódosítva += módosítMunkafolyamatMódosítva;
+            módosítMunkafolyamat.Show();
         }
 
         Button szerelésekVissza_Btn;

@@ -84,6 +84,12 @@
     <Compile Include="módosítHibakód.Designer.cs">
       <DependentUpon>módosítHibakód.cs</DependentUpon>
     </Compile>
+    <Compile Include="módosítMunkafolyamat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="módosítMunkafolyamat.Designer.cs">
+      <DependentUpon>módosítMunkafolyamat.cs</DependentUpon>
+    </Compile>
     <Compile Include="módosítÚtmutató.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,12 @@
     </Compile>
     <Compile Include="újHibakód.Designer.cs">
       <DependentUpon>újHibakód.cs</DependentUpon>
+    </Compile>
+    <Compile Include="újMunkafolyamat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="újMunkafolyamat.Designer.cs">
+      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
     </Compile>
     <Compile Include="újÚtmutató.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,9 @@
     <EmbeddedResource Include="módosítHibakód.resx">
       <DependentUpon>módosítHibakód.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="módosítMunkafolyamat.resx">
+      <DependentUpon>módosítMunkafolyamat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="módosítÚtmutató.resx">
       <DependentUpon>módosítÚtmutató.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +149,9 @@
     </Compile>
     <EmbeddedResource Include="újHibakód.resx">
       <DependentUpon>újHibakód.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="újMunkafolyamat.resx">
+      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="újÚtmutató.resx">
       <DependentUpon>újÚtmutató.cs</DependentUpon>
