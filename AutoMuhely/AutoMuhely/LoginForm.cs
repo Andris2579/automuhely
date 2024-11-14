@@ -34,7 +34,11 @@ namespace AutoMuhely
                     var (result2, columns2) = databaseHandler.Select($"SELECT szerep from felhasznalok WHERE felhasznalonev='{username}';");
                     Username = username;
                     Role = Convert.ToString(result2[0][0]);
-                    this.Close();
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                this.Close();
+                    
+                
                 }
                 else {
                     MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,6 +70,8 @@ namespace AutoMuhely
         private void LoginForm_Load(object sender, EventArgs e)
         {
             databaseHandler.DatabaseConnect();
+            txtUsername.Text = "admin";
+            txtPassword.Text = "password";
         }
     }
 }

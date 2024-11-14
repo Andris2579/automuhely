@@ -12,16 +12,18 @@ namespace AutoMuhely
 {
     public partial class Main_Form : Form
     {
+        private Rectangle menuPanelOriginalRectangle, mainPanelOriginalRectangle;
+        private Rectangle hoverPanel1OriginalRectangle, hoverPanel2OriginalRectangle, hoverPanel3OriginalRectangle, hoverPanel4OriginalRectangle;
+        private Rectangle panelTableOriginalRectangle, searchPanelOriginalRectangle;
+        private Font label1OriginalFont, label2OriginalFont, label3OriginalFont, label4OriginalFont, LabelUserOriginalFont, searchBarOriginalFont;
         private Rectangle custBtnOriginalRectangle;
         private Rectangle partsBtnOriginalRectangle;
         private Rectangle repairBtnOriginalRectangle;
-        private Rectangle menuPanelOriginalRectangle;
-        private Rectangle mainPanelOriginalRectangle;
-        private Rectangle searchPanelOriginalRectangle;
         private Rectangle mainTxtBoxOriginalRectangle;
         private Rectangle searchTxtBoxOriginalRectangle;
         private Rectangle searchPanelLineOriginalRectangle;
         private Rectangle searchIconOriginalRectangle;
+        private Rectangle searchBarOriginalRectangle;
         public string Username { get; set; }
         public string Role { get; set; }
         static DatabaseHandler databaseHandler = new DatabaseHandler();
@@ -33,32 +35,84 @@ namespace AutoMuhely
 
             hoverPanel1.PanelClicked += HoverPanel1_ÜgyfelekClicked;
             hoverPanel2.PanelClicked += HoverPanel2_AlkatrészekClicked;
+            LogOutPan.PanelClicked += LogOutPan_Clicked;
             
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
             originalFormSize = this.Size;
-            userTextBox.Text = Username + "\r\n" + Role;
+            LabelUser.Text = Username;
+            if (Role=="Adminisztrátor")
+            {
+                PicBoxRole.Image = AutoMuhely.Properties.Resources.admin;
+                PicBoxRole.Location = new Point(18, 21);
+            }
+            else if (Role=="Szerelő")
+            {
+                PicBoxRole.Image = AutoMuhely.Properties.Resources.user;
+                PicBoxRole.Location = new Point(18, 16);
+            }
+            else
+            {
+                //MessageBox.Show("Ehhez a szinthez nincs hozzáférése.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            originalFormSize = this.Size;
+
+    // Capture original positions and sizes of panels
+        menuPanelOriginalRectangle = new Rectangle(MenuPanel.Location.X, MenuPanel.Location.Y, MenuPanel.Width, MenuPanel.Height);
+        mainPanelOriginalRectangle = new Rectangle(MainPanel.Location.X, MainPanel.Location.Y, MainPanel.Width, MainPanel.Height);
+            searchBarOriginalRectangle = new Rectangle(searchBar.Location.X, searchBar.Location.Y, searchBar.Width, searchBar.Height);
+            hoverPanel1OriginalRectangle = new Rectangle(hoverPanel1.Location.X, hoverPanel1.Location.Y, hoverPanel1.Width, hoverPanel1.Height);
+        hoverPanel2OriginalRectangle = new Rectangle(hoverPanel2.Location.X, hoverPanel2.Location.Y, hoverPanel2.Width, hoverPanel2.Height);
+        hoverPanel3OriginalRectangle = new Rectangle(LogOutPan.Location.X, LogOutPan.Location.Y, LogOutPan.Width, LogOutPan.Height);
+        hoverPanel4OriginalRectangle = new Rectangle(hoverPanel4.Location.X, hoverPanel4.Location.Y, hoverPanel4.Width, hoverPanel4.Height);
+    
+        panelTableOriginalRectangle = new Rectangle(panelTable.Location.X, panelTable.Location.Y, panelTable.Width, panelTable.Height);
+        searchPanelOriginalRectangle = new Rectangle(panelSearchBar.Location.X, panelSearchBar.Location.Y, panelSearchBar.Width, panelSearchBar.Height);
+            label1OriginalFont = label1.Font;
+            label2OriginalFont = label2.Font;
+            label3OriginalFont = label3.Font;
+            label4OriginalFont = label4.Font;
+            LabelUserOriginalFont = LabelUser.Font;
+            searchBarOriginalFont = searchBar.Font;
         }
-        private void ResizeControl(Rectangle r, Control c)
+        private void ResizeControl(Rectangle originalRect, Control control, Font originalFont)
         {
             float xRatio = (float)this.Width / originalFormSize.Width;
             float yRatio = (float)this.Height / originalFormSize.Height;
 
-            int newX = (int)(r.X * xRatio);
-            int newY = (int)(r.Y * yRatio);
-            int newWidth = (int)(r.Width * xRatio);
-            int newHeight = (int)(r.Height * yRatio);
+            int newX = (int)(originalRect.X * xRatio);
+            int newY = (int)(originalRect.Y * yRatio);
+            int newWidth = (int)(originalRect.Width * xRatio);
+            int newHeight = (int)(originalRect.Height * yRatio);
 
-            c.Location = new Point(newX, newY);
-            c.Size = new Size(newWidth, newHeight);
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
+
+            // Adjust font size
+            float newFontSize = originalFont.Size * Math.Min(xRatio, yRatio);
+            control.Font = new Font(originalFont.FontFamily, newFontSize, originalFont.Style);
         }
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
-        }
+            // Resize panels and fonts
+            ResizeControl(mainPanelOriginalRectangle, MainPanel, LabelUserOriginalFont);
+            
+            ResizeControl(panelTableOriginalRectangle, panelTable, label1OriginalFont);
 
+
+            ResizeControl(searchPanelOriginalRectangle, panelSearchBar, label1OriginalFont);
+            ResizeControl(searchBarOriginalRectangle, searchBar, searchBarOriginalFont);
+            /*
+            ResizeControl(menuPanelOriginalRectangle, MenuPanel, LabelUserOriginalFont);
+            ResizeControl(hoverPanel1OriginalRectangle, hoverPanel1, label1OriginalFont);
+            ResizeControl(hoverPanel2OriginalRectangle, hoverPanel2, label2OriginalFont);
+            ResizeControl(hoverPanel3OriginalRectangle, hoverPanel3, label3OriginalFont);
+            ResizeControl(hoverPanel4OriginalRectangle, hoverPanel4, label4OriginalFont);
+            */
+        }
         static DataGridView table_DGV = new DataGridView();
 
         private void HoverPanel1_ÜgyfelekClicked(object sender, EventArgs e)
@@ -70,13 +124,36 @@ namespace AutoMuhely
         {
             alkatreszek_Generate();
         }
+        private void LogOutPan_Clicked(object sender, EventArgs e)
+        {
+            // Close the current form
+            this.Hide();
+
+            // Open the login form again
+            using (LoginForm loginForm = new LoginForm())
+            {
+                // Show login form as a dialog and check the result
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    // If login is successful, update the Username and Role and re-show the main form
+                    this.Username = loginForm.Username;
+                    this.Role = loginForm.Role;
+                    this.Show();
+                }
+                else
+                {
+                    // If login is canceled, close the application
+                    Application.Exit();
+                }
+            }
+        }
 
         private void ugyfelek_Generate()
         {
             panelTable.Controls.Clear();
             table_DGV.Columns.Clear();
             table_DGV.Rows.Clear();
-            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM ugyfelek");
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT nev AS Név, elerhetoseg AS Elérhetőség, cim AS Cím FROM ugyfelek");
             table_DGV.Location = new Point(30, 5);
             int table_DGV_Width = panelTable.Width - 60;
             int table_DGV_Height = panelTable.Height - 30;
@@ -108,7 +185,7 @@ namespace AutoMuhely
             panelTable.Controls.Clear();
             table_DGV.Columns.Clear();
             table_DGV.Rows.Clear();
-            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT * FROM alkatreszek");
+            var (eredmeny, oszlopNevek) = databaseHandler.Select("SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek");
             table_DGV.Location = new Point(30, 5);
             int table_DGV_Width = panelTable.Width - 60;
             int table_DGV_Height = Convert.ToInt32(panelTable.Height / 1.5);
