@@ -37,8 +37,6 @@ namespace AutoMuhely
                 txtUsername.Text = "";
                 txtPassword.Text = "";
                 this.Close();
-                    
-                
                 }
                 else {
                     MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);

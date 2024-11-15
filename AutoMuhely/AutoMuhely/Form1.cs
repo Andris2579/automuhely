@@ -33,10 +33,10 @@ namespace AutoMuhely
         {
             InitializeComponent();
 
-            hoverPanel1.PanelClicked += HoverPanel1_ÜgyfelekClicked;
-            hoverPanel2.PanelClicked += HoverPanel2_AlkatrészekClicked;
-            hoverPanel4.PanelClicked += HoverPanel4_SzerelésekClicked;
-            hoverPanel5.PanelClicked += HoverPanel5_JárművekClicked;
+            customersPanel.PanelClicked += HoverPanel1_ÜgyfelekClicked;
+            partsPanel.PanelClicked += HoverPanel2_AlkatrészekClicked;
+            repairsPanel.PanelClicked += HoverPanel4_SzerelésekClicked;
+            carsPanel.PanelClicked += HoverPanel5_JárművekClicked;
             LogOutPan.PanelClicked += LogOutPan_Clicked;
             
         }
@@ -65,10 +65,10 @@ namespace AutoMuhely
         menuPanelOriginalRectangle = new Rectangle(MenuPanel.Location.X, MenuPanel.Location.Y, MenuPanel.Width, MenuPanel.Height);
         mainPanelOriginalRectangle = new Rectangle(MainPanel.Location.X, MainPanel.Location.Y, MainPanel.Width, MainPanel.Height);
             searchBarOriginalRectangle = new Rectangle(searchBar.Location.X, searchBar.Location.Y, searchBar.Width, searchBar.Height);
-            hoverPanel1OriginalRectangle = new Rectangle(hoverPanel1.Location.X, hoverPanel1.Location.Y, hoverPanel1.Width, hoverPanel1.Height);
-        hoverPanel2OriginalRectangle = new Rectangle(hoverPanel2.Location.X, hoverPanel2.Location.Y, hoverPanel2.Width, hoverPanel2.Height);
+            hoverPanel1OriginalRectangle = new Rectangle(customersPanel.Location.X, customersPanel.Location.Y, customersPanel.Width, customersPanel.Height);
+        hoverPanel2OriginalRectangle = new Rectangle(partsPanel.Location.X, partsPanel.Location.Y, partsPanel.Width, partsPanel.Height);
         hoverPanel3OriginalRectangle = new Rectangle(LogOutPan.Location.X, LogOutPan.Location.Y, LogOutPan.Width, LogOutPan.Height);
-        hoverPanel4OriginalRectangle = new Rectangle(hoverPanel4.Location.X, hoverPanel4.Location.Y, hoverPanel4.Width, hoverPanel4.Height);
+        hoverPanel4OriginalRectangle = new Rectangle(repairsPanel.Location.X, repairsPanel.Location.Y, repairsPanel.Width, repairsPanel.Height);
     
         panelTableOriginalRectangle = new Rectangle(panelTable.Location.X, panelTable.Location.Y, panelTable.Width, panelTable.Height);
         searchPanelOriginalRectangle = new Rectangle(panelSearchBar.Location.X, panelSearchBar.Location.Y, panelSearchBar.Width, panelSearchBar.Height);
@@ -457,16 +457,16 @@ namespace AutoMuhely
 
         private void újMunkafolyamat_Btn_Click(object sender, EventArgs e)
         {
-            újMunkafolyamat újMunkafolyamat= new újMunkafolyamat();
+            /*újMunkafolyamat újMunkafolyamat= new újMunkafolyamat();
             újMunkafolyamat.újMunkafolyamatHozzáadva += újMunkafolyamatHozzáadva;
-            újMunkafolyamat.Show();
+            újMunkafolyamat.Show();*/
         }
 
         private void módosításMunkafolyamat_Btn_Click(object sender, EventArgs e)
         {
-            módosítMunkafolyamat módosítMunkafolyamat = new módosítMunkafolyamat();
+            /*módosítMunkafolyamat módosítMunkafolyamat = new módosítMunkafolyamat();
             módosítMunkafolyamat.módosítMunkafolyamatMódosítva += módosítMunkafolyamatMódosítva;
-            módosítMunkafolyamat.Show();
+            módosítMunkafolyamat.Show();*/
         }
 
         Button szerelésekVissza_Btn;
