@@ -32,10 +32,13 @@
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.hoverPanel5 = new AutoMuhely.HoverPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.PicBoxRole = new System.Windows.Forms.PictureBox();
+            this.LabelUser = new System.Windows.Forms.Label();
             this.hoverPanel4 = new AutoMuhely.HoverPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.hoverPanel3 = new AutoMuhely.HoverPanel();
+            this.LogOutPan = new AutoMuhely.HoverPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.hoverPanel2 = new AutoMuhely.HoverPanel();
@@ -50,9 +53,11 @@
             this.searchBar = new System.Windows.Forms.TextBox();
             this.MenuPanel.SuspendLayout();
             this.hoverPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.hoverPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.hoverPanel3.SuspendLayout();
+            this.LogOutPan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.hoverPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -66,8 +71,10 @@
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.MenuPanel.Controls.Add(this.hoverPanel5);
+            this.MenuPanel.Controls.Add(this.PicBoxRole);
+            this.MenuPanel.Controls.Add(this.LabelUser);
             this.MenuPanel.Controls.Add(this.hoverPanel4);
-            this.MenuPanel.Controls.Add(this.hoverPanel3);
+            this.MenuPanel.Controls.Add(this.LogOutPan);
             this.MenuPanel.Controls.Add(this.hoverPanel2);
             this.MenuPanel.Controls.Add(this.hoverPanel1);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -85,6 +92,16 @@
             this.hoverPanel5.Name = "hoverPanel5";
             this.hoverPanel5.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.hoverPanel5.Size = new System.Drawing.Size(269, 57);
+            //
+            // hoverPanel6
+            //
+            this.hoverPanel6.Controls.Add(this.pictureBox5);
+            this.hoverPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.hoverPanel6.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel6.Location = new System.Drawing.Point(0, 448);
+            this.hoverPanel6.Name = "hoverPanel6";
+            this.hoverPanel6.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel6.Size = new System.Drawing.Size(269, 56);
             this.hoverPanel5.TabIndex = 9;
             // 
             // label5
@@ -97,6 +114,42 @@
             this.label5.Size = new System.Drawing.Size(177, 39);
             this.label5.TabIndex = 2;
             this.label5.Text = "Járművek";
+            //
+            // label6
+            //
+            this.label6.Size = new System.Drawing.Size(158, 32);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Beállítások";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AutoMuhely.Properties.Resources.settings;
+            this.pictureBox5.Location = new System.Drawing.Point(208, 5);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 1;
+            this.pictureBox5.TabStop = false;
+            // 
+            // PicBoxRole
+            // 
+            this.PicBoxRole.Location = new System.Drawing.Point(18, 21);
+            this.PicBoxRole.Name = "PicBoxRole";
+            this.PicBoxRole.Size = new System.Drawing.Size(51, 53);
+            this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicBoxRole.TabIndex = 9;
+            this.PicBoxRole.TabStop = false;
+            // 
+            // LabelUser
+            // 
+            this.LabelUser.AutoSize = true;
+            this.LabelUser.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LabelUser.Location = new System.Drawing.Point(81, 31);
+            this.LabelUser.Name = "LabelUser";
+            this.LabelUser.Size = new System.Drawing.Size(71, 34);
+            this.LabelUser.TabIndex = 3;
+            this.LabelUser.Text = "test";
             // 
             // hoverPanel4
             // 
@@ -117,32 +170,32 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label4.Location = new System.Drawing.Point(12, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 39);
+            this.label4.Size = new System.Drawing.Size(159, 32);
             this.label4.TabIndex = 2;
             this.label4.Text = "Szerelések";
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::AutoMuhely.Properties.Resources.repair;
-            this.pictureBox4.Location = new System.Drawing.Point(183, -8);
+            this.pictureBox4.Location = new System.Drawing.Point(193, -8);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(73, 71);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
-            // hoverPanel3
+            // LogOutPan
             // 
-            this.hoverPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.hoverPanel3.Controls.Add(this.label3);
-            this.hoverPanel3.Controls.Add(this.pictureBox3);
-            this.hoverPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hoverPanel3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.hoverPanel3.Location = new System.Drawing.Point(0, 504);
-            this.hoverPanel3.Name = "hoverPanel3";
-            this.hoverPanel3.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.hoverPanel3.Size = new System.Drawing.Size(269, 57);
-            this.hoverPanel3.TabIndex = 8;
+            this.LogOutPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.LogOutPan.Controls.Add(this.label3);
+            this.LogOutPan.Controls.Add(this.pictureBox3);
+            this.LogOutPan.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LogOutPan.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.LogOutPan.Location = new System.Drawing.Point(0, 504);
+            this.LogOutPan.Name = "LogOutPan";
+            this.LogOutPan.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.LogOutPan.Size = new System.Drawing.Size(269, 57);
+            this.LogOutPan.TabIndex = 8;
             // 
             // label3
             // 
@@ -151,14 +204,14 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label3.Location = new System.Drawing.Point(12, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(198, 39);
+            this.label3.Size = new System.Drawing.Size(189, 32);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Beállítások";
+            this.label3.Text = "Kijelentkezés";
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::AutoMuhely.Properties.Resources.settings;
-            this.pictureBox3.Location = new System.Drawing.Point(196, 3);
+            this.pictureBox3.Image = global::AutoMuhely.Properties.Resources.logout;
+            this.pictureBox3.Location = new System.Drawing.Point(208, 6);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(48, 48);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -184,14 +237,14 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label2.Location = new System.Drawing.Point(12, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 39);
+            this.label2.Size = new System.Drawing.Size(169, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "Alkatrészek";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::AutoMuhely.Properties.Resources.car_parts;
-            this.pictureBox2.Location = new System.Drawing.Point(196, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(204, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(52, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -217,14 +270,14 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 39);
+            this.label1.Size = new System.Drawing.Size(130, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ügyfelek";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
-            this.pictureBox1.Location = new System.Drawing.Point(183, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(189, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,15 +312,16 @@
             // 
             // searchBar
             // 
-            this.searchBar.Location = new System.Drawing.Point(30, 30);
+            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.searchBar.Location = new System.Drawing.Point(32, 30);
             this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(594, 42);
+            this.searchBar.Size = new System.Drawing.Size(601, 35);
             this.searchBar.TabIndex = 0;
             this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
             // 
             // Main_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 35F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(934, 561);
@@ -285,11 +339,16 @@
             this.MenuPanel.ResumeLayout(false);
             this.hoverPanel5.ResumeLayout(false);
             this.hoverPanel5.PerformLayout();
+            this.MenuPanel.PerformLayout();
+            this.hoverPanel6.ResumeLayout(false);
+            this.hoverPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
             this.hoverPanel4.ResumeLayout(false);
             this.hoverPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.hoverPanel3.ResumeLayout(false);
-            this.hoverPanel3.PerformLayout();
+            this.LogOutPan.ResumeLayout(false);
+            this.LogOutPan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.hoverPanel2.ResumeLayout(false);
             this.hoverPanel2.PerformLayout();
@@ -314,7 +373,7 @@
         private HoverPanel hoverPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private HoverPanel hoverPanel3;
+        private HoverPanel LogOutPan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panelSearchBar;
@@ -325,6 +384,11 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private HoverPanel hoverPanel5;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox PicBoxRole;
+        private System.Windows.Forms.Label LabelUser;
+        private HoverPanel hoverPanel6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
 

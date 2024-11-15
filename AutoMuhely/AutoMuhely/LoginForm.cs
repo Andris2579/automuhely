@@ -10,9 +10,12 @@ using System.Windows.Forms;
 
 namespace AutoMuhely
 {
+
     public partial class LoginForm : Form
     {
-        DatabaseHandler DatabaseHandler = new DatabaseHandler();
+        public string Username { get; private set; }
+        public string Role { get; private set; }
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         // Constructor
         public LoginForm()
         {
@@ -23,18 +26,26 @@ namespace AutoMuhely
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-
-            // Simple username and password validation
-            if (username == "admin" && password == "password") // Customize as needed
-            {
-                this.DialogResult = DialogResult.OK;
+                var (result, columns) = databaseHandler.Select($"SELECT jelszo_hash from felhasznalok WHERE felhasznalonev='{username}';");
+                // Simple username and password validation
+                if (password == Convert.ToString(result[0][0])) // Customize as needed
+                {
+                    this.DialogResult = DialogResult.OK;
+                    var (result2, columns2) = databaseHandler.Select($"SELECT szerep from felhasznalok WHERE felhasznalonev='{username}';");
+                    Username = username;
+                    Role = Convert.ToString(result2[0][0]);
+                txtUsername.Text = "";
+                txtPassword.Text = "";
                 this.Close();
-            }
-            else
-            {
-                // Show an error message
-                MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    
+                
+                }
+                else {
+                    MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            
+            
+            
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -58,7 +69,9 @@ namespace AutoMuhely
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            DatabaseHandler.DatabaseConnect();
+            databaseHandler.DatabaseConnect();
+            txtUsername.Text = "admin";
+            txtPassword.Text = "password";
         }
     }
 }

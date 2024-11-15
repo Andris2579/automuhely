@@ -43,7 +43,7 @@ namespace AutoMuhely
             this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.LoginLabel.Location = new System.Drawing.Point(46, 108);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(347, 55);
+            this.LoginLabel.Size = new System.Drawing.Size(278, 44);
             this.LoginLabel.TabIndex = 4;
             this.LoginLabel.Text = "BEJELENTKEZÉS";
             // 
@@ -63,9 +63,8 @@ namespace AutoMuhely
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.txtUsername.Location = new System.Drawing.Point(66, 192);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(262, 31);
+            this.txtUsername.Size = new System.Drawing.Size(262, 25);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = "admin";
             // 
             // Line2
             // 
@@ -84,9 +83,8 @@ namespace AutoMuhely
             this.txtPassword.Location = new System.Drawing.Point(66, 245);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(262, 31);
+            this.txtPassword.Size = new System.Drawing.Size(262, 25);
             this.txtPassword.TabIndex = 2;
-            this.txtPassword.Text = "password";
             // 
             // PicLock
             // 
@@ -153,7 +151,7 @@ namespace AutoMuhely
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(352, 453);
+            this.ClientSize = new System.Drawing.Size(354, 461);
             this.Controls.Add(this.PicLock);
             this.Controls.Add(this.PicUser);
             this.Controls.Add(this.txtPassword);
