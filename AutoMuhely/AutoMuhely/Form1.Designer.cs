@@ -41,7 +41,7 @@
             this.repairsPanel = new AutoMuhely.HoverPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.LogOutPan = new AutoMuhely.HoverPanel();
+            this.logOutPan = new AutoMuhely.HoverPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.partsPanel = new AutoMuhely.HoverPanel();
@@ -65,7 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.repairsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.LogOutPan.SuspendLayout();
+            this.logOutPan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.partsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -85,7 +85,7 @@
             this.MenuPanel.Controls.Add(this.PicBoxRole);
             this.MenuPanel.Controls.Add(this.LabelUser);
             this.MenuPanel.Controls.Add(this.repairsPanel);
-            this.MenuPanel.Controls.Add(this.LogOutPan);
+            this.MenuPanel.Controls.Add(this.logOutPan);
             this.MenuPanel.Controls.Add(this.partsPanel);
             this.MenuPanel.Controls.Add(this.customersPanel);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -163,9 +163,9 @@
             // 
             // PicBoxRole
             // 
-            this.PicBoxRole.Location = new System.Drawing.Point(17, 23);
+            this.PicBoxRole.Location = new System.Drawing.Point(22, 34);
             this.PicBoxRole.Name = "PicBoxRole";
-            this.PicBoxRole.Size = new System.Drawing.Size(47, 59);
+            this.PicBoxRole.Size = new System.Drawing.Size(47, 48);
             this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicBoxRole.TabIndex = 9;
             this.PicBoxRole.TabStop = false;
@@ -214,18 +214,18 @@
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
-            // LogOutPan
+            // logOutPan
             // 
-            this.LogOutPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.LogOutPan.Controls.Add(this.label3);
-            this.LogOutPan.Controls.Add(this.pictureBox3);
-            this.LogOutPan.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LogOutPan.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.LogOutPan.Location = new System.Drawing.Point(0, 558);
-            this.LogOutPan.Name = "LogOutPan";
-            this.LogOutPan.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.LogOutPan.Size = new System.Drawing.Size(248, 63);
-            this.LogOutPan.TabIndex = 8;
+            this.logOutPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.logOutPan.Controls.Add(this.label3);
+            this.logOutPan.Controls.Add(this.pictureBox3);
+            this.logOutPan.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logOutPan.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.logOutPan.Location = new System.Drawing.Point(0, 558);
+            this.logOutPan.Name = "logOutPan";
+            this.logOutPan.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.logOutPan.Size = new System.Drawing.Size(248, 63);
+            this.logOutPan.TabIndex = 8;
             // 
             // label3
             // 
@@ -307,9 +307,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
-            this.pictureBox1.Location = new System.Drawing.Point(174, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(174, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(74, 58);
+            this.pictureBox1.Size = new System.Drawing.Size(74, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -408,8 +408,8 @@
             this.repairsPanel.ResumeLayout(false);
             this.repairsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.LogOutPan.ResumeLayout(false);
-            this.LogOutPan.PerformLayout();
+            this.logOutPan.ResumeLayout(false);
+            this.logOutPan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.partsPanel.ResumeLayout(false);
             this.partsPanel.PerformLayout();
@@ -436,7 +436,7 @@
         private HoverPanel partsPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private HoverPanel LogOutPan;
+        private HoverPanel logOutPan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panelSearchBar;

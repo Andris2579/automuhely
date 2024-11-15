@@ -37,7 +37,7 @@ namespace AutoMuhely
             partsPanel.PanelClicked += HoverPanel2_AlkatrészekClicked;
             repairsPanel.PanelClicked += HoverPanel4_SzerelésekClicked;
             carsPanel.PanelClicked += HoverPanel5_JárművekClicked;
-            LogOutPan.PanelClicked += LogOutPan_Clicked;
+            logOutPan.PanelClicked += LogOutPan_Clicked;
             
         }
 
@@ -48,12 +48,14 @@ namespace AutoMuhely
             if (Role=="Adminisztrátor")
             {
                 PicBoxRole.Image = AutoMuhely.Properties.Resources.admin;
-                PicBoxRole.Location = new Point(18, 21);
+                PicBoxRole.Location = new Point(22, 34);
+                settingsPanel.Visible = true;
             }
             else if (Role=="Szerelő")
             {
                 PicBoxRole.Image = AutoMuhely.Properties.Resources.user;
-                PicBoxRole.Location = new Point(18, 16);
+                PicBoxRole.Location = new Point(22, 27);
+                settingsPanel.Visible=false;
             }
             else
             {
@@ -67,7 +69,7 @@ namespace AutoMuhely
             searchBarOriginalRectangle = new Rectangle(searchBar.Location.X, searchBar.Location.Y, searchBar.Width, searchBar.Height);
             hoverPanel1OriginalRectangle = new Rectangle(customersPanel.Location.X, customersPanel.Location.Y, customersPanel.Width, customersPanel.Height);
         hoverPanel2OriginalRectangle = new Rectangle(partsPanel.Location.X, partsPanel.Location.Y, partsPanel.Width, partsPanel.Height);
-        hoverPanel3OriginalRectangle = new Rectangle(LogOutPan.Location.X, LogOutPan.Location.Y, LogOutPan.Width, LogOutPan.Height);
+        hoverPanel3OriginalRectangle = new Rectangle(logOutPan.Location.X, logOutPan.Location.Y, logOutPan.Width, logOutPan.Height);
         hoverPanel4OriginalRectangle = new Rectangle(repairsPanel.Location.X, repairsPanel.Location.Y, repairsPanel.Width, repairsPanel.Height);
     
         panelTableOriginalRectangle = new Rectangle(panelTable.Location.X, panelTable.Location.Y, panelTable.Width, panelTable.Height);
@@ -152,6 +154,7 @@ namespace AutoMuhely
                     Application.Exit();
                 }
             }
+            Main_Form_Load(sender, e);
         }
 
         private void HoverPanel4_SzerelésekClicked(object sender, EventArgs e)
