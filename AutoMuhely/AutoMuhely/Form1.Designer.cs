@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.hoverPanel5 = new AutoMuhely.HoverPanel();
+            this.label5 = new System.Windows.Forms.Label();
             this.hoverPanel4 = new AutoMuhely.HoverPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -47,6 +49,7 @@
             this.panelSearchBar = new System.Windows.Forms.Panel();
             this.searchBar = new System.Windows.Forms.TextBox();
             this.MenuPanel.SuspendLayout();
+            this.hoverPanel5.SuspendLayout();
             this.hoverPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.hoverPanel3.SuspendLayout();
@@ -62,6 +65,7 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuPanel.Controls.Add(this.hoverPanel5);
             this.MenuPanel.Controls.Add(this.hoverPanel4);
             this.MenuPanel.Controls.Add(this.hoverPanel3);
             this.MenuPanel.Controls.Add(this.hoverPanel2);
@@ -71,6 +75,28 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(269, 561);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // hoverPanel5
+            // 
+            this.hoverPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel5.Controls.Add(this.label5);
+            this.hoverPanel5.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.hoverPanel5.Location = new System.Drawing.Point(0, 270);
+            this.hoverPanel5.Name = "hoverPanel5";
+            this.hoverPanel5.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.hoverPanel5.Size = new System.Drawing.Size(269, 57);
+            this.hoverPanel5.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label5.Location = new System.Drawing.Point(12, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(177, 39);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Járművek";
             // 
             // hoverPanel4
             // 
@@ -257,6 +283,8 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
+            this.hoverPanel5.ResumeLayout(false);
+            this.hoverPanel5.PerformLayout();
             this.hoverPanel4.ResumeLayout(false);
             this.hoverPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -295,6 +323,8 @@
         private HoverPanel hoverPanel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private HoverPanel hoverPanel5;
+        private System.Windows.Forms.Label label5;
     }
 }
 
