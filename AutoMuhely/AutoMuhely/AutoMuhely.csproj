@@ -55,6 +55,12 @@
     <Compile Include="alkatrészInputs.Designer.cs">
       <DependentUpon>alkatrészInputs.cs</DependentUpon>
     </Compile>
+    <Compile Include="alkatrészTörlés.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alkatrészTörlés.Designer.cs">
+      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -72,16 +78,64 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="módosítHibakód.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="módosítHibakód.Designer.cs">
+      <DependentUpon>módosítHibakód.cs</DependentUpon>
+    </Compile>
+    <Compile Include="módosítMunkafolyamat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="módosítMunkafolyamat.Designer.cs">
+      <DependentUpon>módosítMunkafolyamat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="módosítÚtmutató.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="módosítÚtmutató.Designer.cs">
+      <DependentUpon>módosítÚtmutató.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="újHibakód.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="újHibakód.Designer.cs">
+      <DependentUpon>újHibakód.cs</DependentUpon>
+    </Compile>
+    <Compile Include="újMunkafolyamat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="újMunkafolyamat.Designer.cs">
+      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="újÚtmutató.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="újÚtmutató.Designer.cs">
+      <DependentUpon>újÚtmutató.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="alkatrészInputs.resx">
       <DependentUpon>alkatrészInputs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alkatrészTörlés.resx">
+      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="módosítHibakód.resx">
+      <DependentUpon>módosítHibakód.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="módosítMunkafolyamat.resx">
+      <DependentUpon>módosítMunkafolyamat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="módosítÚtmutató.resx">
+      <DependentUpon>módosítÚtmutató.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -93,6 +147,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="újHibakód.resx">
+      <DependentUpon>újHibakód.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="újMunkafolyamat.resx">
+      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="újÚtmutató.resx">
+      <DependentUpon>újÚtmutató.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgs\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\car.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
