@@ -9,7 +9,7 @@ namespace AutoMuhely
     public partial class Main_Form : Form
     {
 
-        private string aktívMenü;
+        private string aktivMenu;
         static DataGridView table_DGV = new DataGridView();
 
         public string Username { get; set; }
@@ -48,10 +48,57 @@ namespace AutoMuhely
 
         private void LoadData(string menu, string query)
         {
-            aktívMenü = menu;
+            aktivMenu = menu;
             panelTable.Controls.Clear();
             InitializeTable(query);
-            panelButtons.Controls.Clear();           
+            panelButtons.Controls.Clear();
+            if (aktivMenu== "ügyfelek")
+            {
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
+            }
+            else if(aktivMenu == "alkatrészek")
+            {
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
+            }
+            else if(aktivMenu == "járművek")
+            {
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
+            }
+            
+
+        }
+        private void UjHozzaadasa_Click(object sender, EventArgs e)
+        {
+            if (aktivMenu == "ügyfelek")
+            {
+            }
+            else if (aktivMenu == "alkatrészek")
+            {
+                alkatrészInputs aInput = new alkatrészInputs();
+                aInput.ShowDialog();
+                LoadData("alkatrészek", "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek");
+            }
+            else if (aktivMenu == "járművek")
+            {
+            }
+        }
+
+        // Placeholder for the "Módosítás" button click
+        private void Modositas_Click(object sender, EventArgs e)
+        {
+            if (aktivMenu == "ügyfelek")
+            {
+            }
+            else if (aktivMenu == "alkatrészek")
+            {
+            }
+            else if (aktivMenu == "járművek")
+            {
+            }
+            MessageBox.Show("Módosítás clicked!");
         }
 
         private void InitializeTable(string query)
@@ -116,7 +163,7 @@ namespace AutoMuhely
 
         private void LoadSzerelesek()
         {
-            aktívMenü = "szerelések";
+            aktivMenu = "szerelések";
             
             panelButtons.Controls.Clear();
             panelTable.Controls.Clear();
@@ -251,9 +298,9 @@ namespace AutoMuhely
         private void SearchBar_TextChanged(object sender, EventArgs e)
         {
             string keresettKifejezes = searchBar.Text.Trim();
-            if (searchQueries.ContainsKey(aktívMenü))
+            if (searchQueries.ContainsKey(aktivMenu))
             {
-                string query = string.Format(searchQueries[aktívMenü], keresettKifejezes);
+                string query = string.Format(searchQueries[aktivMenu], keresettKifejezes);
                 InitializeTable(query);
             }
         }
