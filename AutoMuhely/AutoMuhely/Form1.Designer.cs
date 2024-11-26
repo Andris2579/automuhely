@@ -30,14 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.searchBar = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LabelUser = new System.Windows.Forms.Label();
+            this.PicBoxRole = new System.Windows.Forms.PictureBox();
+            this.panelButtons = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
             this.settingsPanel = new AutoMuhely.HoverPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.carsPanel = new AutoMuhely.HoverPanel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.PicBoxRole = new System.Windows.Forms.PictureBox();
-            this.LabelUser = new System.Windows.Forms.Label();
             this.repairsPanel = new AutoMuhely.HoverPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -52,17 +61,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.hoverPanel6 = new AutoMuhely.HoverPanel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.MainPanel = new System.Windows.Forms.Panel();
-            this.panelTable = new System.Windows.Forms.Panel();
-            this.panelSearchBar = new System.Windows.Forms.Panel();
-            this.searchBar = new System.Windows.Forms.TextBox();
             this.MenuPanel.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.carsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.repairsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.logOutPan.SuspendLayout();
@@ -73,26 +81,142 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.hoverPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.MainPanel.SuspendLayout();
-            this.panelSearchBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
+            this.MenuPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.MenuPanel.Controls.Add(this.settingsPanel);
             this.MenuPanel.Controls.Add(this.carsPanel);
-            this.MenuPanel.Controls.Add(this.PicBoxRole);
-            this.MenuPanel.Controls.Add(this.LabelUser);
             this.MenuPanel.Controls.Add(this.repairsPanel);
             this.MenuPanel.Controls.Add(this.logOutPan);
             this.MenuPanel.Controls.Add(this.partsPanel);
             this.MenuPanel.Controls.Add(this.customersPanel);
-            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MenuPanel.Location = new System.Drawing.Point(3, 121);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(248, 621);
+            this.MenuPanel.Size = new System.Drawing.Size(246, 512);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(158, 32);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Beállítások";
+            // 
+            // panelMain
+            // 
+            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panelMain.Controls.Add(this.panelTable);
+            this.panelMain.Controls.Add(this.panelButtons);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(255, 121);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(726, 512);
+            this.panelMain.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.MenuPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panelMain, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 636);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.searchBar);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(255, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(726, 112);
+            this.panel2.TabIndex = 2;
+            // 
+            // searchBar
+            // 
+            this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.searchBar.Location = new System.Drawing.Point(20, 41);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(697, 36);
+            this.searchBar.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.Location = new System.Drawing.Point(61, -99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(598, 36);
+            this.textBox1.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.LabelUser);
+            this.panel1.Controls.Add(this.PicBoxRole);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(246, 112);
+            this.panel1.TabIndex = 11;
+            // 
+            // LabelUser
+            // 
+            this.LabelUser.AutoSize = true;
+            this.LabelUser.Font = new System.Drawing.Font("Open Sans SemiBold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LabelUser.Location = new System.Drawing.Point(81, 35);
+            this.LabelUser.Name = "LabelUser";
+            this.LabelUser.Size = new System.Drawing.Size(71, 42);
+            this.LabelUser.TabIndex = 3;
+            this.LabelUser.Text = "test";
+            // 
+            // PicBoxRole
+            // 
+            this.PicBoxRole.Location = new System.Drawing.Point(18, 35);
+            this.PicBoxRole.Name = "PicBoxRole";
+            this.PicBoxRole.Size = new System.Drawing.Size(47, 48);
+            this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicBoxRole.TabIndex = 9;
+            this.PicBoxRole.TabStop = false;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.BackColor = System.Drawing.Color.Transparent;
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButtons.Location = new System.Drawing.Point(0, 449);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(726, 63);
+            this.panelButtons.TabIndex = 2;
+            // 
+            // panelTable
+            // 
+            this.panelTable.BackColor = System.Drawing.Color.Transparent;
+            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTable.Location = new System.Drawing.Point(0, 0);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(726, 449);
+            this.panelTable.TabIndex = 3;
             // 
             // settingsPanel
             // 
@@ -101,10 +225,10 @@
             this.settingsPanel.Controls.Add(this.pictureBox6);
             this.settingsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.settingsPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.settingsPanel.Location = new System.Drawing.Point(0, 495);
+            this.settingsPanel.Location = new System.Drawing.Point(0, 386);
             this.settingsPanel.Name = "settingsPanel";
             this.settingsPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.settingsPanel.Size = new System.Drawing.Size(248, 63);
+            this.settingsPanel.Size = new System.Drawing.Size(246, 63);
             this.settingsPanel.TabIndex = 9;
             // 
             // label7
@@ -114,13 +238,13 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label7.Location = new System.Drawing.Point(11, 15);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 39);
+            this.label7.Size = new System.Drawing.Size(175, 39);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Beállítások";
+            this.label7.Text = "Regisztráció";
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::AutoMuhely.Properties.Resources.settings;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(192, 10);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(44, 44);
@@ -133,16 +257,17 @@
             this.carsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.carsPanel.Controls.Add(this.pictureBox7);
             this.carsPanel.Controls.Add(this.label5);
+            this.carsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.carsPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.carsPanel.Location = new System.Drawing.Point(0, 299);
+            this.carsPanel.Location = new System.Drawing.Point(0, 189);
             this.carsPanel.Name = "carsPanel";
             this.carsPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.carsPanel.Size = new System.Drawing.Size(248, 63);
+            this.carsPanel.Size = new System.Drawing.Size(246, 63);
             this.carsPanel.TabIndex = 0;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::AutoMuhely.Properties.Resources.car;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.Location = new System.Drawing.Point(178, 0);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(65, 65);
@@ -161,36 +286,17 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Járművek";
             // 
-            // PicBoxRole
-            // 
-            this.PicBoxRole.Location = new System.Drawing.Point(22, 34);
-            this.PicBoxRole.Name = "PicBoxRole";
-            this.PicBoxRole.Size = new System.Drawing.Size(47, 48);
-            this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicBoxRole.TabIndex = 9;
-            this.PicBoxRole.TabStop = false;
-            // 
-            // LabelUser
-            // 
-            this.LabelUser.AutoSize = true;
-            this.LabelUser.Font = new System.Drawing.Font("Open Sans SemiBold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LabelUser.Location = new System.Drawing.Point(75, 34);
-            this.LabelUser.Name = "LabelUser";
-            this.LabelUser.Size = new System.Drawing.Size(71, 42);
-            this.LabelUser.TabIndex = 3;
-            this.LabelUser.Text = "test";
-            // 
             // repairsPanel
             // 
             this.repairsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.repairsPanel.Controls.Add(this.label4);
             this.repairsPanel.Controls.Add(this.pictureBox4);
+            this.repairsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.repairsPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.repairsPanel.Location = new System.Drawing.Point(0, 237);
+            this.repairsPanel.Location = new System.Drawing.Point(0, 126);
             this.repairsPanel.Name = "repairsPanel";
             this.repairsPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.repairsPanel.Size = new System.Drawing.Size(248, 63);
+            this.repairsPanel.Size = new System.Drawing.Size(246, 63);
             this.repairsPanel.TabIndex = 8;
             // 
             // label4
@@ -206,7 +312,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::AutoMuhely.Properties.Resources.repair;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(178, -9);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(67, 79);
@@ -221,10 +327,10 @@
             this.logOutPan.Controls.Add(this.pictureBox3);
             this.logOutPan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.logOutPan.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.logOutPan.Location = new System.Drawing.Point(0, 558);
+            this.logOutPan.Location = new System.Drawing.Point(0, 449);
             this.logOutPan.Name = "logOutPan";
             this.logOutPan.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.logOutPan.Size = new System.Drawing.Size(248, 63);
+            this.logOutPan.Size = new System.Drawing.Size(246, 63);
             this.logOutPan.TabIndex = 8;
             // 
             // label3
@@ -240,7 +346,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::AutoMuhely.Properties.Resources.logout;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(192, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
@@ -253,11 +359,12 @@
             this.partsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.partsPanel.Controls.Add(this.label2);
             this.partsPanel.Controls.Add(this.pictureBox2);
+            this.partsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.partsPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.partsPanel.Location = new System.Drawing.Point(0, 174);
+            this.partsPanel.Location = new System.Drawing.Point(0, 63);
             this.partsPanel.Name = "partsPanel";
             this.partsPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.partsPanel.Size = new System.Drawing.Size(248, 63);
+            this.partsPanel.Size = new System.Drawing.Size(246, 63);
             this.partsPanel.TabIndex = 7;
             // 
             // label2
@@ -273,7 +380,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::AutoMuhely.Properties.Resources.car_parts;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(186, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
@@ -286,11 +393,12 @@
             this.customersPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.customersPanel.Controls.Add(this.label1);
             this.customersPanel.Controls.Add(this.pictureBox1);
+            this.customersPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.customersPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.customersPanel.Location = new System.Drawing.Point(0, 111);
+            this.customersPanel.Location = new System.Drawing.Point(0, 0);
             this.customersPanel.Name = "customersPanel";
             this.customersPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.customersPanel.Size = new System.Drawing.Size(248, 63);
+            this.customersPanel.Size = new System.Drawing.Size(246, 63);
             this.customersPanel.TabIndex = 6;
             // 
             // label1
@@ -306,7 +414,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.customers;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(174, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(74, 48);
@@ -328,7 +436,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::AutoMuhely.Properties.Resources.settings;
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(208, 5);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(48, 48);
@@ -336,75 +444,36 @@
             this.pictureBox5.TabIndex = 1;
             this.pictureBox5.TabStop = false;
             // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(158, 32);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Beállítások";
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.MainPanel.Controls.Add(this.panelTable);
-            this.MainPanel.Controls.Add(this.panelSearchBar);
-            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(248, 0);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(614, 621);
-            this.MainPanel.TabIndex = 0;
-            // 
-            // panelTable
-            // 
-            this.panelTable.Location = new System.Drawing.Point(0, 111);
-            this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(614, 509);
-            this.panelTable.TabIndex = 1;
-            // 
-            // panelSearchBar
-            // 
-            this.panelSearchBar.Controls.Add(this.searchBar);
-            this.panelSearchBar.Location = new System.Drawing.Point(0, 0);
-            this.panelSearchBar.Name = "panelSearchBar";
-            this.panelSearchBar.Size = new System.Drawing.Size(614, 111);
-            this.panelSearchBar.TabIndex = 0;
-            // 
-            // searchBar
-            // 
-            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.searchBar.Location = new System.Drawing.Point(35, 46);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(555, 36);
-            this.searchBar.TabIndex = 0;
-            this.searchBar.TextChanged += new System.EventHandler(this.searchBar_TextChanged);
-            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(862, 621);
-            this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.MenuPanel);
+            this.ClientSize = new System.Drawing.Size(984, 636);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Open Sans SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.MinimumSize = new System.Drawing.Size(878, 660);
+            this.MinimumSize = new System.Drawing.Size(1000, 675);
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autóműhley Karbantartás";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
-            this.MenuPanel.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.carsPanel.ResumeLayout(false);
             this.carsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
             this.repairsPanel.ResumeLayout(false);
             this.repairsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -419,9 +488,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.hoverPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.MainPanel.ResumeLayout(false);
-            this.panelSearchBar.ResumeLayout(false);
-            this.panelSearchBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -429,7 +495,6 @@
         #endregion
 
         private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private HoverPanel customersPanel;
@@ -439,16 +504,12 @@
         private HoverPanel logOutPan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panelSearchBar;
-        private System.Windows.Forms.Panel panelTable;
-        private System.Windows.Forms.TextBox searchBar;
+        private System.Windows.Forms.Panel panelMain;
         private HoverPanel repairsPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox4;
         private HoverPanel carsPanel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox PicBoxRole;
-        private System.Windows.Forms.Label LabelUser;
         private HoverPanel hoverPanel6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -456,6 +517,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox searchBar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label LabelUser;
+        private System.Windows.Forms.PictureBox PicBoxRole;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panelButtons;
+        private System.Windows.Forms.Panel panelTable;
     }
 }
 

@@ -82,7 +82,7 @@ namespace AutoMuhely
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.txtPassword.Location = new System.Drawing.Point(66, 245);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(262, 25);
             this.txtPassword.TabIndex = 2;
             // 

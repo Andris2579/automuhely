@@ -53,3 +53,4 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítÚtmutat�
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.RegistrationForm.resources

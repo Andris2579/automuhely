@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AutoMuhely
 {
@@ -25,7 +26,7 @@ namespace AutoMuhely
         private void LogIn()
         {
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string password = databaseHandler.HashPassword(txtPassword.Text);
                 var (result, columns) = databaseHandler.Select($"SELECT jelszo_hash from felhasznalok WHERE felhasznalonev='{username}';");
                 // Simple username and password validation
                 if (password == Convert.ToString(result[0][0])) // Customize as needed
@@ -41,9 +42,6 @@ namespace AutoMuhely
                 else {
                     MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentzkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            
-            
-            
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {

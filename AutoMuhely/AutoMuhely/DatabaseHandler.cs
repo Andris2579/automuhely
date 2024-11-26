@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Security.Cryptography;
 
 namespace AutoMuhely
 {
@@ -151,6 +152,43 @@ namespace AutoMuhely
                     int rowsAffected = command.ExecuteNonQuery(); // Érintett sorok
                     Console.WriteLine($"{rowsAffected} sor törölve."); // Opció: érintett sorok kiírása
                 }
+            }
+        }
+        public void Insert(string insertQuery, Dictionary<string, object> parameters)
+        {
+                using (var connection = new MySqlConnection(connectionCommand))
+                {
+                    connection.Open();
+                    using (var command = new MySqlCommand(insertQuery, connection))
+                    {
+                        // Dynamically add parameters to the query
+                        foreach (var param in parameters)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+
+                        int rowsAffected = command.ExecuteNonQuery(); // Execute the insert statement
+                    }
+                }
+        }
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Convert the password string into a byte array
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+                // Compute the hash
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                // Convert the hash byte array back into a string
+                StringBuilder hashBuilder = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    hashBuilder.Append(b.ToString("x2")); // Convert each byte to a hexadecimal string
+                }
+
+                return hashBuilder.ToString();
             }
         }
     }
