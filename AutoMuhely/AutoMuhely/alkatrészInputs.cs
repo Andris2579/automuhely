@@ -13,13 +13,11 @@ namespace AutoMuhely
 {
     public partial class alkatrészInputs : Form
     {
-        public event EventHandler AlkatrészHozzáadva;
 
         public alkatrészInputs()
         {
             InitializeComponent();
-            this.Size = new Size(225, 280);
-            this.Font = new Font("Arial Round MT", 12);
+
         }
 
         private void alkatrészInputs_Load(object sender, EventArgs e)
@@ -28,7 +26,7 @@ namespace AutoMuhely
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
 
-        private void AlkatrészHozzáadás_Btn_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
@@ -45,19 +43,23 @@ namespace AutoMuhely
                         command.Parameters.AddWithValue("@utanrendelesi_szint", 0);  // vagy lehetne dinamikus is, ha szükséges
 
                         var result = command.ExecuteNonQuery();
-                        if(result > 0)
+                        if (result > 0)
                         {
-                            AlkatrészHozzáadva?.Invoke(this, EventArgs.Empty);
                             MessageBox.Show("Sikeres alkatrész hozzáadás!", "Siker!", MessageBoxButtons.OK);
                             this.Close();
                         }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButtons.OK);
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

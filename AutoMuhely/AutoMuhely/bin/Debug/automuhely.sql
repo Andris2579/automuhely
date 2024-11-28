@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `munkafolyamat_sablonok` (
   `sablon_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `lepesek` text DEFAULT NULL,
-  `becsult_ido` time DEFAULT NULL
+  `becsult_ido` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------

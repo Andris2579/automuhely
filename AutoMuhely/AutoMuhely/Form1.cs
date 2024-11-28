@@ -195,7 +195,9 @@ namespace AutoMuhely
         }
         private void HibakodokUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Új hozzáadása clicked!");
+            újHibakód ujHibaKod = new újHibakód();
+            ujHibaKod.ShowDialog();
+            InitializeTable("SELECT * FROM hibakodok");
         }
 
         // Placeholder for the "Módosítás" button click
@@ -213,7 +215,9 @@ namespace AutoMuhely
         }
         private void MunkafolyamatSablonokUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Új hozzáadása clicked!");
+            újMunkafolyamat ujMunkaF = new újMunkafolyamat();
+            ujMunkaF.ShowDialog();
+            InitializeTable("SELECT * FROM munkafolyamat_sablonok");
         }
 
         // Placeholder for the "Módosítás" button click
