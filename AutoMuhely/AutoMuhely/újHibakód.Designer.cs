@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.LoginLabel = new System.Windows.Forms.Label();
+            this.editLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnAdd = new AutoMuhely.CustomButton();
-            this.btnCancel = new AutoMuhely.CustomButton();
             this.alkatrészNév_Lb = new System.Windows.Forms.Label();
             this.txtHibakod = new System.Windows.Forms.TextBox();
             this.alkatrészLeírás_Lb = new System.Windows.Forms.Label();
             this.txtHibakodLeiras = new System.Windows.Forms.TextBox();
+            this.btnAdd = new AutoMuhely.CustomButton();
+            this.btnCancel = new AutoMuhely.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,17 +52,17 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "HIBAKÓD";
             // 
-            // LoginLabel
+            // editLabel
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.BackColor = System.Drawing.Color.Transparent;
-            this.LoginLabel.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LoginLabel.Location = new System.Drawing.Point(47, 171);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(259, 44);
-            this.LoginLabel.TabIndex = 23;
-            this.LoginLabel.Text = "HOZZÁADÁSA";
+            this.editLabel.AutoSize = true;
+            this.editLabel.BackColor = System.Drawing.Color.Transparent;
+            this.editLabel.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.editLabel.Location = new System.Drawing.Point(47, 171);
+            this.editLabel.Name = "editLabel";
+            this.editLabel.Size = new System.Drawing.Size(259, 44);
+            this.editLabel.TabIndex = 23;
+            this.editLabel.Text = "MÓDOSÍTÁSA";
             // 
             // pictureBox1
             // 
@@ -74,36 +74,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.btnAdd.BorderRadius = 23;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(71, 444);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(210, 49);
-            this.btnAdd.TabIndex = 20;
-            this.btnAdd.Text = "Tovább";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.btnCancel.BorderRadius = 23;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(105, 499);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(140, 40);
-            this.btnCancel.TabIndex = 21;
-            this.btnCancel.Text = "Mégse";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // alkatrészNév_Lb
             // 
@@ -142,6 +112,36 @@
             this.txtHibakodLeiras.Size = new System.Drawing.Size(250, 100);
             this.txtHibakodLeiras.TabIndex = 17;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnAdd.BorderRadius = 23;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(71, 444);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(210, 49);
+            this.btnAdd.TabIndex = 20;
+            this.btnAdd.Text = "Tovább";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnCancel.BorderRadius = 23;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(105, 499);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(140, 40);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "Mégse";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // újHibakód
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -149,7 +149,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(354, 577);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.LoginLabel);
+            this.Controls.Add(this.editLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
@@ -165,6 +165,7 @@
             this.Name = "újHibakód";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hibakód";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.újHibakód_FormClosed);
             this.Load += new System.EventHandler(this.újHibakód_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -175,7 +176,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label LoginLabel;
+        private System.Windows.Forms.Label editLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomButton btnAdd;
         private CustomButton btnCancel;

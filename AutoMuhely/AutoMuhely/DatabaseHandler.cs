@@ -68,7 +68,7 @@ namespace AutoMuhely
             }
         }
 
-        public (List<List<object>>, List<string>) Select(string selectQuery)
+        public (List<List<object>>, List<string>) Select(string selectQuery, Dictionary<string, object> parameters = null)
         {
             try
             {
@@ -78,11 +78,18 @@ namespace AutoMuhely
 
                     using (var command = new MySqlCommand(selectQuery, connection))
                     {
+                        // Add parameters if provided
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                command.Parameters.AddWithValue(param.Key, param.Value);
+                            }
+                        }
+
                         using (var reader = command.ExecuteReader())
                         {
-                            // Lista a sorok tárolására
                             var rows = new List<List<object>>();
-
                             var columnNames = new List<string>();
 
                             for (int i = 0; i < reader.FieldCount; i++)
@@ -92,20 +99,15 @@ namespace AutoMuhely
 
                             while (reader.Read())
                             {
-                                // Szótár, ami az aktuális sort tárolja
                                 var row = new List<object>();
-
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    // Minden oszlop nevét és értékét hozzáadjuk a szótárhoz
                                     row.Add(reader.GetValue(i));
                                 }
-
-                                // Sor hozzáadása a listához
                                 rows.Add(row);
                             }
-                                return (rows, columnNames);
-                            
+
+                            return (rows, columnNames);
                         }
                     }
                 }
@@ -191,5 +193,6 @@ namespace AutoMuhely
                 return hashBuilder.ToString();
             }
         }
+        
     }
 }

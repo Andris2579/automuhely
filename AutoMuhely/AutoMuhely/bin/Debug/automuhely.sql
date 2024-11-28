@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Sze 17. 10:55
+-- Létrehozás ideje: 2024. Nov 28. 10:29
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `alkatreszek`
 --
 
-CREATE TABLE IF NOT EXISTS `alkatreszek` (
+CREATE TABLE `alkatreszek` (
   `alkatresz_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `leiras` text DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `alkatreszek` (
 -- Tábla szerkezet ehhez a táblához `alkatresz_rendelesek`
 --
 
-CREATE TABLE IF NOT EXISTS `alkatresz_rendelesek` (
+CREATE TABLE `alkatresz_rendelesek` (
   `rendelés_id` int(11) NOT NULL,
   `alkatresz_id` int(11) DEFAULT NULL,
   `beszallito_id` int(11) DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `alkatresz_rendelesek` (
 -- Tábla szerkezet ehhez a táblához `beszallitok`
 --
 
-CREATE TABLE IF NOT EXISTS `beszallitok` (
+CREATE TABLE `beszallitok` (
   `beszallito_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `elerhetoseg` varchar(150) DEFAULT NULL,
@@ -69,12 +69,19 @@ CREATE TABLE IF NOT EXISTS `beszallitok` (
 -- Tábla szerkezet ehhez a táblához `felhasznalok`
 --
 
-CREATE TABLE IF NOT EXISTS `felhasznalok` (
+CREATE TABLE `felhasznalok` (
   `felhasznalo_id` int(11) NOT NULL,
   `felhasznalonev` varchar(50) DEFAULT NULL,
   `jelszo_hash` varchar(255) DEFAULT NULL,
   `szerep` enum('Adminisztrátor','Szerelő','Ügyfél') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
+(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor');
 
 -- --------------------------------------------------------
 
@@ -82,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `felhasznalok` (
 -- Tábla szerkezet ehhez a táblához `felhasznalok_ugyfelek`
 --
 
-CREATE TABLE IF NOT EXISTS `felhasznalok_ugyfelek` (
+CREATE TABLE `felhasznalok_ugyfelek` (
   `felhasznalo_id` int(11) NOT NULL,
   `ugyfel_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -93,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `felhasznalok_ugyfelek` (
 -- Tábla szerkezet ehhez a táblához `hibakodok`
 --
 
-CREATE TABLE IF NOT EXISTS `hibakodok` (
+CREATE TABLE `hibakodok` (
   `kod_id` int(11) NOT NULL,
   `kod` varchar(10) DEFAULT NULL,
   `leiras` text DEFAULT NULL
@@ -105,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `hibakodok` (
 -- Tábla szerkezet ehhez a táblához `idopontfoglalasok`
 --
 
-CREATE TABLE IF NOT EXISTS `idopontfoglalasok` (
+CREATE TABLE `idopontfoglalasok` (
   `idopont_id` int(11) NOT NULL,
   `jarmu_id` int(11) DEFAULT NULL,
   `csomag_id` int(11) DEFAULT NULL,
@@ -119,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `idopontfoglalasok` (
 -- Tábla szerkezet ehhez a táblához `jarmuvek`
 --
 
-CREATE TABLE IF NOT EXISTS `jarmuvek` (
+CREATE TABLE `jarmuvek` (
   `jarmu_id` int(11) NOT NULL,
   `rendszam` varchar(10) DEFAULT NULL,
   `tipus_id` int(11) DEFAULT NULL,
@@ -137,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `jarmuvek` (
 -- Tábla szerkezet ehhez a táblához `munkafolyamat_sablonok`
 --
 
-CREATE TABLE IF NOT EXISTS `munkafolyamat_sablonok` (
+CREATE TABLE `munkafolyamat_sablonok` (
   `sablon_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `lepesek` text DEFAULT NULL,
@@ -150,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `munkafolyamat_sablonok` (
 -- Tábla szerkezet ehhez a táblához `szerelesi_utmutatok`
 --
 
-CREATE TABLE IF NOT EXISTS `szerelesi_utmutatok` (
+CREATE TABLE `szerelesi_utmutatok` (
   `utmutato_id` int(11) NOT NULL,
   `cim` varchar(100) DEFAULT NULL,
   `tartalom` text DEFAULT NULL,
@@ -163,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `szerelesi_utmutatok` (
 -- Tábla szerkezet ehhez a táblához `szervizcsomagok`
 --
 
-CREATE TABLE IF NOT EXISTS `szervizcsomagok` (
+CREATE TABLE `szervizcsomagok` (
   `csomag_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `leiras` text DEFAULT NULL,
@@ -176,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `szervizcsomagok` (
 -- Tábla szerkezet ehhez a táblához `tipus`
 --
 
-CREATE TABLE IF NOT EXISTS `tipus` (
+CREATE TABLE `tipus` (
   `tipus_id` int(11) NOT NULL,
   `tipus` varchar(50) DEFAULT NULL,
   `utmutato_id` int(11) DEFAULT NULL
@@ -188,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `tipus` (
 -- Tábla szerkezet ehhez a táblához `ugyfelek`
 --
 
-CREATE TABLE IF NOT EXISTS `ugyfelek` (
+CREATE TABLE `ugyfelek` (
   `ugyfel_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `elerhetoseg` varchar(150) DEFAULT NULL,
@@ -201,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `ugyfelek` (
 -- Tábla szerkezet ehhez a táblához `ugyfel_jarmuvek`
 --
 
-CREATE TABLE IF NOT EXISTS `ugyfel_jarmuvek` (
+CREATE TABLE `ugyfel_jarmuvek` (
   `ugyfel_id` int(11) NOT NULL,
   `jarmu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -332,7 +339,7 @@ ALTER TABLE `beszallitok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `hibakodok`
@@ -422,3 +429,7 @@ ALTER TABLE `ugyfel_jarmuvek`
   ADD CONSTRAINT `ugyfel_jarmuvek_ibfk_1` FOREIGN KEY (`ugyfel_id`) REFERENCES `ugyfelek` (`ugyfel_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `ugyfel_jarmuvek_ibfk_2` FOREIGN KEY (`jarmu_id`) REFERENCES `jarmuvek` (`jarmu_id`) ON DELETE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

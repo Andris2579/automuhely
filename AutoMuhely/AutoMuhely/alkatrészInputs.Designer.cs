@@ -48,11 +48,14 @@ namespace AutoMuhely
             this.alkatrészKezdetiKészletMennyiség_NUD = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnLogin = new AutoMuhely.CustomButton();
+            this.lblIsEdit = new System.Windows.Forms.Label();
+            this.btnAdd = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numAlkatreszUtanrendelesMenny = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.alkatrészKezdetiKészletMennyiség_NUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlkatreszUtanrendelesMenny)).BeginInit();
             this.SuspendLayout();
             // 
             // alkatrészNév_Lb
@@ -100,7 +103,7 @@ namespace AutoMuhely
             this.alkatrészKezdetiKészlet_Lb.Name = "alkatrészKezdetiKészlet_Lb";
             this.alkatrészKezdetiKészlet_Lb.Size = new System.Drawing.Size(250, 25);
             this.alkatrészKezdetiKészlet_Lb.TabIndex = 4;
-            this.alkatrészKezdetiKészlet_Lb.Text = "Kezdeti készlet mennyiség";
+            this.alkatrészKezdetiKészlet_Lb.Text = "Készlet";
             // 
             // alkatrészKezdetiKészletMennyiség_NUD
             // 
@@ -132,32 +135,32 @@ namespace AutoMuhely
             this.LoginLabel.TabIndex = 12;
             this.LoginLabel.Text = "ALKATRÉSZ";
             // 
-            // label1
+            // lblIsEdit
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.label1.Location = new System.Drawing.Point(55, 177);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 44);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "HOZZÁADÁSA";
+            this.lblIsEdit.AutoSize = true;
+            this.lblIsEdit.BackColor = System.Drawing.Color.Transparent;
+            this.lblIsEdit.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIsEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.lblIsEdit.Location = new System.Drawing.Point(55, 177);
+            this.lblIsEdit.Name = "lblIsEdit";
+            this.lblIsEdit.Size = new System.Drawing.Size(259, 44);
+            this.lblIsEdit.TabIndex = 13;
+            this.lblIsEdit.Text = "HOZZÁADÁSA";
             // 
-            // btnLogin
+            // btnAdd
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.btnLogin.BorderRadius = 23;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(75, 505);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(210, 49);
-            this.btnLogin.TabIndex = 7;
-            this.btnLogin.Text = "Tovább";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnAdd.BorderRadius = 23;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(75, 572);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(210, 49);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Tovább";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
@@ -166,7 +169,7 @@ namespace AutoMuhely
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(109, 560);
+            this.btnCancel.Location = new System.Drawing.Point(109, 627);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 40);
             this.btnCancel.TabIndex = 8;
@@ -174,14 +177,33 @@ namespace AutoMuhely
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label2.Location = new System.Drawing.Point(53, 501);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(267, 25);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Utánrendelt mennyiség";
+            // 
+            // numAlkatreszUtanrendelesMenny
+            // 
+            this.numAlkatreszUtanrendelesMenny.Location = new System.Drawing.Point(53, 529);
+            this.numAlkatreszUtanrendelesMenny.Name = "numAlkatreszUtanrendelesMenny";
+            this.numAlkatreszUtanrendelesMenny.Size = new System.Drawing.Size(250, 26);
+            this.numAlkatreszUtanrendelesMenny.TabIndex = 15;
+            // 
             // alkatrészInputs
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(354, 641);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(354, 681);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numAlkatreszUtanrendelesMenny);
+            this.Controls.Add(this.lblIsEdit);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.alkatrészNév_Lb);
             this.Controls.Add(this.alkatrészNév_Tb);
@@ -192,13 +214,15 @@ namespace AutoMuhely
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(370, 680);
+            this.MaximumSize = new System.Drawing.Size(370, 720);
             this.MinimumSize = new System.Drawing.Size(370, 680);
             this.Name = "alkatrészInputs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alkatrész Hozzáadás";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.alkatrészInputs_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.alkatrészKezdetiKészletMennyiség_NUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAlkatreszUtanrendelesMenny)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,10 +230,12 @@ namespace AutoMuhely
 
         #endregion
 
-        private CustomButton btnLogin;
+        private CustomButton btnAdd;
         private CustomButton btnCancel;
         private PictureBox pictureBox1;
         private Label LoginLabel;
-        private Label label1;
+        private Label lblIsEdit;
+        private Label label2;
+        private NumericUpDown numAlkatreszUtanrendelesMenny;
     }
 }

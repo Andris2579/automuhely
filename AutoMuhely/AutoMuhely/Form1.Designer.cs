@@ -32,6 +32,8 @@
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
+            this.panelButtons = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.searchBar = new System.Windows.Forms.TextBox();
@@ -39,8 +41,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.LabelUser = new System.Windows.Forms.Label();
             this.PicBoxRole = new System.Windows.Forms.PictureBox();
-            this.panelButtons = new System.Windows.Forms.Panel();
-            this.panelTable = new System.Windows.Forms.Panel();
+            this.LabelTable = new System.Windows.Forms.Label();
             this.settingsPanel = new AutoMuhely.HoverPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -63,6 +64,7 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.MenuPanel.SuspendLayout();
             this.panelMain.SuspendLayout();
+            this.panelTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,6 +119,25 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(726, 512);
             this.panelMain.TabIndex = 1;
+            // 
+            // panelTable
+            // 
+            this.panelTable.BackColor = System.Drawing.Color.Transparent;
+            this.panelTable.Controls.Add(this.LabelTable);
+            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTable.Location = new System.Drawing.Point(0, 0);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(726, 449);
+            this.panelTable.TabIndex = 3;
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.BackColor = System.Drawing.Color.Transparent;
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButtons.Location = new System.Drawing.Point(0, 449);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(726, 63);
+            this.panelButtons.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -183,11 +204,11 @@
             // LabelUser
             // 
             this.LabelUser.AutoSize = true;
-            this.LabelUser.Font = new System.Drawing.Font("Open Sans SemiBold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelUser.Font = new System.Drawing.Font("Open Sans Extrabold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.LabelUser.Location = new System.Drawing.Point(81, 35);
             this.LabelUser.Name = "LabelUser";
-            this.LabelUser.Size = new System.Drawing.Size(71, 42);
+            this.LabelUser.Size = new System.Drawing.Size(99, 51);
             this.LabelUser.TabIndex = 3;
             this.LabelUser.Text = "test";
             // 
@@ -200,23 +221,17 @@
             this.PicBoxRole.TabIndex = 9;
             this.PicBoxRole.TabStop = false;
             // 
-            // panelButtons
+            // LabelTable
             // 
-            this.panelButtons.BackColor = System.Drawing.Color.Transparent;
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 449);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(726, 63);
-            this.panelButtons.TabIndex = 2;
-            // 
-            // panelTable
-            // 
-            this.panelTable.BackColor = System.Drawing.Color.Transparent;
-            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTable.Location = new System.Drawing.Point(0, 0);
-            this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(726, 449);
-            this.panelTable.TabIndex = 3;
+            this.LabelTable.AutoSize = true;
+            this.LabelTable.Font = new System.Drawing.Font("Open Sans", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LabelTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LabelTable.Location = new System.Drawing.Point(20, 5);
+            this.LabelTable.Name = "LabelTable";
+            this.LabelTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LabelTable.Size = new System.Drawing.Size(88, 47);
+            this.LabelTable.TabIndex = 10;
+            this.LabelTable.Text = "test";
             // 
             // settingsPanel
             // 
@@ -234,11 +249,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label7.Location = new System.Drawing.Point(11, 15);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(175, 39);
+            this.label7.Size = new System.Drawing.Size(175, 37);
             this.label7.TabIndex = 2;
             this.label7.Text = "Regisztráció";
             // 
@@ -278,11 +293,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label5.Location = new System.Drawing.Point(11, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 39);
+            this.label5.Size = new System.Drawing.Size(141, 37);
             this.label5.TabIndex = 2;
             this.label5.Text = "Járművek";
             // 
@@ -302,11 +317,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label4.Location = new System.Drawing.Point(11, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 39);
+            this.label4.Size = new System.Drawing.Size(156, 37);
             this.label4.TabIndex = 2;
             this.label4.Text = "Szerelések";
             // 
@@ -336,11 +351,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label3.Location = new System.Drawing.Point(11, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 39);
+            this.label3.Size = new System.Drawing.Size(190, 37);
             this.label3.TabIndex = 2;
             this.label3.Text = "Kijelentkezés";
             // 
@@ -370,11 +385,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label2.Location = new System.Drawing.Point(11, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 39);
+            this.label2.Size = new System.Drawing.Size(169, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Alkatrészek";
             // 
@@ -404,11 +419,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 39);
+            this.label1.Size = new System.Drawing.Size(131, 37);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ügyfelek";
             // 
@@ -446,12 +461,12 @@
             // 
             // Main_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(984, 636);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Open Sans SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Open Sans Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MinimumSize = new System.Drawing.Size(1000, 675);
@@ -462,6 +477,8 @@
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
+            this.panelTable.ResumeLayout(false);
+            this.panelTable.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -526,6 +543,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Panel panelTable;
+        private System.Windows.Forms.Label LabelTable;
     }
 }
 

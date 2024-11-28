@@ -66,7 +66,7 @@ namespace AutoMuhely
             "Adminisztrátor"});
             this.cmbRole.Location = new System.Drawing.Point(65, 344);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(262, 39);
+            this.cmbRole.Size = new System.Drawing.Size(262, 36);
             this.cmbRole.TabIndex = 2;
             // 
             // RegisterLabel

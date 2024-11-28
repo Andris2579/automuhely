@@ -29,7 +29,7 @@ namespace AutoMuhely
             string password1 = txtPassword1.Text;
             string password2 = txtPassword2.Text;
             string role = cmbRole.SelectedItem?.ToString();
-
+            
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password1) || string.IsNullOrEmpty(password2) || string.IsNullOrEmpty(role))
             {
                 MessageBox.Show("Kérem töltse ki a mezőket.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
