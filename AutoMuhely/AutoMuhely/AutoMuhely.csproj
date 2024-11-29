@@ -208,5 +208,8 @@
   <ItemGroup>
     <None Include="imgs\logout.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\car.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

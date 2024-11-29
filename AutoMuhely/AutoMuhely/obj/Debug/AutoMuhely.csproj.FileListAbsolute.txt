@@ -46,3 +46,10 @@ C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosít
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészTörlés.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítHibakód.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítMunkafolyamat.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítÚtmutató.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources

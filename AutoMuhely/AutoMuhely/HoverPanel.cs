@@ -128,20 +128,23 @@ namespace AutoMuhely
         // Method to handle mouse click (select the panel and update its state)
         private void HoverPanel_MouseClick(object sender, MouseEventArgs e)
         {
+            // Check if there was a previously selected panel and it is different from the current one
             if (selectedPanel != null && selectedPanel != this)
             {
-                // Deselect the previously selected panel
+                // Deselect the previously selected panel and reset its hover and selection states
                 selectedPanel.isSelected = false;
-                selectedPanel.BackColor = selectedPanel.originalColor;
-                selectedPanel.Invalidate();
+                selectedPanel.isHovered = false;  // Clear the hover state
+                selectedPanel.BackColor = selectedPanel.originalColor;  // Revert to original color
+                selectedPanel.Invalidate();  // Trigger repaint to hide the blue line
             }
 
             // Set the clicked panel as the new selected panel
             selectedPanel = this;
-            isSelected = true;
-            this.BackColor = hoverColor;
+            isSelected = true;  // Mark the current panel as selected
+            this.BackColor = hoverColor;  // Set the hover color as background
             Invalidate();  // Trigger repaint to show the blue line
 
+            // Raise the PanelClicked event for any subscribed event handlers
             PanelClicked?.Invoke(this, EventArgs.Empty);
         }
 
