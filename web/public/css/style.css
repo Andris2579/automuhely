@@ -1,0 +1,31 @@
+.hidden {
+    display: none;
+}
+
+#extraButtons {
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#extraButtons button {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#extraButtons button:hover {
+    background-color: #0056b3;
+}
+
+div{
+    display: inline-block;
+}
