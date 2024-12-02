@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 02. 12:01
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Létrehozás ideje: 2024. Nov 28. 10:29
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,22 +34,6 @@ CREATE TABLE `alkatreszek` (
   `keszlet_mennyiseg` int(11) DEFAULT NULL,
   `utanrendelesi_szint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `alkatreszek`
---
-
-INSERT INTO `alkatreszek` (`alkatresz_id`, `nev`, `leiras`, `keszlet_mennyiseg`, `utanrendelesi_szint`) VALUES
-(1, 'Rozsdás rossz', 'nagyon jó állapotú', 2, 0),
-(2, 'jó2', 'rossz', 1, 0),
-(3, 'nagyon jó alkatrész', 'jó cucc', 0, 0),
-(4, 'teszt', 'jó', 0, 0),
-(5, 'jó', 'hello', 100, 0),
-(6, 'ok', 'jó', 0, 0),
-(7, 'ok', 'jó500', 100, 0),
-(8, 'jó', 'nagyon jó', 100, 0),
-(9, 'kütyü', 'jó', 0, 0),
-(10, 'Benyó', 'nagyon szép', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -97,24 +81,7 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
-(1, 'admin', 'password', 'Adminisztrátor'),
-(2, 'a', '*402E56D5B90DD46C15EA62501168B7824A2291CF', 'Ügyfél'),
-(3, 'b', '*F33AE6DD04EF4C7C1D3105568E7FB7C1EE16C937', 'Ügyfél'),
-(4, 'c', '*FDD369C6B7C3C64C7C07EDE4DC5C01BF8970B24D', 'Ügyfél'),
-(5, 'd', '*84869AED8A7235127BFD0AD4A55E335B29ADE3AD', 'Ügyfél'),
-(6, 'e', '*33E0B212CC71ADACB7017A3790B8D662986E504B', 'Ügyfél'),
-(7, 'f', '*241E241B694B4F0B740CF5B9775AFD9A511E1CEC', 'Ügyfél'),
-(8, 'g', '*12C072F2D0BB789BB7CC7C91448B2681EF81ACA1', 'Ügyfél'),
-(9, 'h', '*B999D775072B36F2F201043EC292C7E15686BD88', 'Ügyfél'),
-(10, 'i', '*9D4BDCC32E15DD063C932E171D59EC64BD823AF5', 'Ügyfél'),
-(11, 'j', '*9A04E9549880BB91C935B6A3E90DA60E3E5C783F', 'Ügyfél'),
-(12, 'k', '*69A7BAE3D37A83849ECEF8F3FF9260B35E01555D', 'Ügyfél'),
-(13, 'l', '*894549142A2819BC7952B608F00C489C989212E8', 'Ügyfél'),
-(14, 'ly', '*8AD22BFAA00B3797E47622A589E55A56E8B03639', 'Ügyfél'),
-(15, 'm', '*E8BEE713F0CBBB9F9B09623007E2826138710274', 'Ügyfél'),
-(17, 'n', '*6F69A23EFA1D6F97489C271EC01C94A9DA8885EB', 'Ügyfél'),
-(19, 'Andris2579', '*7B646EF4EB1259EE90DDCDF5C33A4A5F7C928919', 'Ügyfél'),
-(20, 'Benyo123', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Ügyfél');
+(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor');
 
 -- --------------------------------------------------------
 
@@ -127,28 +94,6 @@ CREATE TABLE `felhasznalok_ugyfelek` (
   `ugyfel_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `felhasznalok_ugyfelek`
---
-
-INSERT INTO `felhasznalok_ugyfelek` (`felhasznalo_id`, `ugyfel_id`) VALUES
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(17, 17),
-(19, 18),
-(20, 19);
-
 -- --------------------------------------------------------
 
 --
@@ -160,25 +105,6 @@ CREATE TABLE `hibakodok` (
   `kod` varchar(10) DEFAULT NULL,
   `leiras` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `hibakodok`
---
-
-INSERT INTO `hibakodok` (`kod_id`, `kod`, `leiras`) VALUES
-(1, 'benyó', 'ja'),
-(2, 'benyó', 'ja'),
-(3, 'benyó', 'ja'),
-(4, 'benyó', 'ja'),
-(5, 'benyó', 'ja'),
-(6, 'benyó', 'ja'),
-(7, 'benyó', 'ja'),
-(8, 'benyó', 'ja'),
-(9, 'benyó', 'ja'),
-(10, 'benyó', 'ja'),
-(11, 'benyó', 'ja'),
-(12, 'ja', 'nem'),
-(13, 'talán', 'igen');
 
 -- --------------------------------------------------------
 
@@ -193,22 +119,6 @@ CREATE TABLE `idopontfoglalasok` (
   `idopont` datetime DEFAULT NULL,
   `allapot` enum('Foglalt','Folyamatban','Befejezett','Lemondva') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `idopontfoglalasok`
---
-
-INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
-(9, 10, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(10, 41, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(11, 38, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(12, 37, 3, '0000-00-00 00:00:00', 'Foglalt'),
-(13, 34, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(14, 39, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(15, 40, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(17, 43, 1, '0000-00-00 00:00:00', 'Foglalt'),
-(18, 42, 1, '0000-00-00 00:00:00', 'Foglalt'),
-(19, 47, 5, '0000-00-00 00:00:00', 'Foglalt');
 
 -- --------------------------------------------------------
 
@@ -228,51 +138,6 @@ CREATE TABLE `jarmuvek` (
   `elozo_javitasok` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `jarmuvek`
---
-
-INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
-(10, 'abc-123', 2, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(34, 'abc-124', 23, NULL, NULL, NULL, NULL, NULL, 'sokat'),
-(35, 'abc-125', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(37, 'abc-126', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(38, 'abc-127', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(39, '128', 21, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(40, '129', 21, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(41, '130', 21, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(42, 'inl-066', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt'),
-(43, 'INL-067', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt'),
-(44, 'sadsad', 6, NULL, NULL, NULL, NULL, NULL, 'asdasfasf'),
-(45, 'afjsafjasf', 21, NULL, NULL, NULL, NULL, NULL, 'afdjfsdkfh'),
-(46, 'nfdsnfsd', 6, NULL, NULL, NULL, NULL, NULL, 'fkdslnflksd'),
-(47, 'abc-1250', 8, NULL, NULL, NULL, NULL, NULL, 'adasdasd'),
-(48, 'abd-1250', 11, NULL, NULL, NULL, NULL, NULL, 'adasdasd s'),
-(49, 'ajsfsjfsak', 8, NULL, NULL, NULL, NULL, NULL, 'asjkdsj jasdasjkd.'),
-(50, 'éaádésdásd', 9, NULL, NULL, NULL, NULL, NULL, 'asdlsékd ésdskaldas. lsadkasdkaséd.');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `marka`
---
-
-CREATE TABLE `marka` (
-  `marka_id` int(11) NOT NULL,
-  `marka_neve` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `marka`
---
-
-INSERT INTO `marka` (`marka_id`, `marka_neve`) VALUES
-(1, 'Nissan'),
-(2, 'Toyota'),
-(3, 'BMW'),
-(4, 'Audi'),
-(5, 'Tesla');
-
 -- --------------------------------------------------------
 
 --
@@ -283,7 +148,7 @@ CREATE TABLE `munkafolyamat_sablonok` (
   `sablon_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `lepesek` text DEFAULT NULL,
-  `becsult_ido` time DEFAULT NULL
+  `becsult_ido` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -296,7 +161,7 @@ CREATE TABLE `szerelesi_utmutatok` (
   `utmutato_id` int(11) NOT NULL,
   `cim` varchar(100) DEFAULT NULL,
   `tartalom` text DEFAULT NULL,
-  `jarmu_tipus` int(11) DEFAULT NULL
+  `jarmu_tipus` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
@@ -312,17 +177,6 @@ CREATE TABLE `szervizcsomagok` (
   `ar` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- A tábla adatainak kiíratása `szervizcsomagok`
---
-
-INSERT INTO `szervizcsomagok` (`csomag_id`, `nev`, `leiras`, `ar`) VALUES
-(1, 'Olajcsere', 'Motorolaj cseréje szűrővel, ingyenes ellenőrzéssel.', 15000.00),
-(2, 'Fékellenőrzés', 'Teljes fékrendszer ellenőrzése, fékbetétek és tárcsák felmérése.', 8000.00),
-(3, 'Klíma tisztítás', 'Autó klímarendszerének tisztítása és fertőtlenítése.', 12000.00),
-(4, 'Teljes szerviz', 'Átfogó szerviz, beleértve az olajcserét, fékellenőrzést és diagnosztikát.', 50000.00),
-(5, 'Kerékcsere', 'Nyári vagy téli gumiabroncsok cseréje, centrírozással.', 10000.00);
-
 -- --------------------------------------------------------
 
 --
@@ -332,39 +186,8 @@ INSERT INTO `szervizcsomagok` (`csomag_id`, `nev`, `leiras`, `ar`) VALUES
 CREATE TABLE `tipus` (
   `tipus_id` int(11) NOT NULL,
   `tipus` varchar(50) DEFAULT NULL,
-  `marka_id` int(11) DEFAULT NULL
+  `utmutato_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `tipus`
---
-
-INSERT INTO `tipus` (`tipus_id`, `tipus`, `marka_id`) VALUES
-(1, 'Corolla', 2),
-(2, 'Camry', 2),
-(3, 'RAV4', 2),
-(4, 'Prius', 2),
-(5, 'Yaris', 2),
-(6, '3 Series', 3),
-(7, '5 Series', 3),
-(8, 'X5', 3),
-(9, 'i3', 3),
-(10, 'M4', 3),
-(11, 'A3', 4),
-(12, 'A4', 4),
-(13, 'Q5', 4),
-(14, 'e-tron', 4),
-(15, 'TT', 4),
-(16, 'Model S', 5),
-(17, 'Model 3', 5),
-(18, 'Model X', 5),
-(19, 'Model Y', 5),
-(20, 'Roadster', 5),
-(21, 'Leaf', 1),
-(22, 'Qashqai', 1),
-(23, 'e-NV200', 1),
-(24, 'IMx', 1),
-(25, 'Ariya', 1);
 
 -- --------------------------------------------------------
 
@@ -375,34 +198,9 @@ INSERT INTO `tipus` (`tipus_id`, `tipus`, `marka_id`) VALUES
 CREATE TABLE `ugyfelek` (
   `ugyfel_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
-  `telefonszam` varchar(150) DEFAULT NULL,
-  `cim` varchar(200) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL
+  `elerhetoseg` varchar(150) DEFAULT NULL,
+  `cim` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `ugyfelek`
---
-
-INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
-(1, 'Chrén', '+36', 'Szokolya', ''),
-(3, 'b b', 'b', NULL, 'b@b.com'),
-(4, 'c c', 'c', NULL, 'c@c.com'),
-(5, 'd d', 'd', NULL, 'd@d.com'),
-(6, 'e e', 'e', NULL, 'e@e.com'),
-(7, 'f f', 'f', NULL, 'f@f.com'),
-(8, 'g g', 'g', NULL, 'g@g.com'),
-(9, 'h h', 'h', NULL, 'h@h.com'),
-(10, 'i i', 'i', NULL, 'i@i.com'),
-(11, 'j j', 'j', NULL, 'j@j.com'),
-(12, 'k k', 'k', NULL, 'k@k.com'),
-(13, 'l l', 'l', NULL, 'l@l.com'),
-(14, 'ly ly', 'ly', NULL, 'ly@ly.com'),
-(15, 'm m', 'm', NULL, 'm'),
-(16, '', '', NULL, ''),
-(17, 'n n', 'n', NULL, 'n@n.com'),
-(18, 'Chrén András Ferenc', '+36204772772', '2624,Szokolya,Hunyadi utca,19', 'andrewchre1@gmail.com'),
-(19, 'Albert Benyó Mária', '123456789', NULL, 'albertbenyo@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -414,28 +212,6 @@ CREATE TABLE `ugyfel_jarmuvek` (
   `ugyfel_id` int(11) NOT NULL,
   `jarmu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `ugyfel_jarmuvek`
---
-
-INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
-(18, 10),
-(18, 34),
-(18, 37),
-(18, 38),
-(18, 39),
-(18, 40),
-(18, 41),
-(18, 42),
-(18, 43),
-(18, 44),
-(18, 45),
-(18, 46),
-(18, 47),
-(18, 48),
-(18, 49),
-(18, 50);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -500,12 +276,6 @@ ALTER TABLE `jarmuvek`
   ADD KEY `sablon_id` (`sablon_id`);
 
 --
--- A tábla indexei `marka`
---
-ALTER TABLE `marka`
-  ADD PRIMARY KEY (`marka_id`);
-
---
 -- A tábla indexei `munkafolyamat_sablonok`
 --
 ALTER TABLE `munkafolyamat_sablonok`
@@ -515,8 +285,7 @@ ALTER TABLE `munkafolyamat_sablonok`
 -- A tábla indexei `szerelesi_utmutatok`
 --
 ALTER TABLE `szerelesi_utmutatok`
-  ADD PRIMARY KEY (`utmutato_id`),
-  ADD KEY `fk_jarmu_tipus` (`jarmu_tipus`);
+  ADD PRIMARY KEY (`utmutato_id`);
 
 --
 -- A tábla indexei `szervizcsomagok`
@@ -529,7 +298,7 @@ ALTER TABLE `szervizcsomagok`
 --
 ALTER TABLE `tipus`
   ADD PRIMARY KEY (`tipus_id`),
-  ADD KEY `fk_marka_id` (`marka_id`);
+  ADD KEY `utmutato_id` (`utmutato_id`);
 
 --
 -- A tábla indexei `ugyfelek`
@@ -552,7 +321,7 @@ ALTER TABLE `ugyfel_jarmuvek`
 -- AUTO_INCREMENT a táblához `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
-  MODIFY `alkatresz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `alkatresz_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `alkatresz_rendelesek`
@@ -570,31 +339,25 @@ ALTER TABLE `beszallitok`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `hibakodok`
 --
 ALTER TABLE `hibakodok`
-  MODIFY `kod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kod_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
-  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
---
--- AUTO_INCREMENT a táblához `marka`
---
-ALTER TABLE `marka`
-  MODIFY `marka_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `munkafolyamat_sablonok`
@@ -606,25 +369,19 @@ ALTER TABLE `munkafolyamat_sablonok`
 -- AUTO_INCREMENT a táblához `szerelesi_utmutatok`
 --
 ALTER TABLE `szerelesi_utmutatok`
-  MODIFY `utmutato_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `utmutato_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `szervizcsomagok`
 --
 ALTER TABLE `szervizcsomagok`
-  MODIFY `csomag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT a táblához `tipus`
---
-ALTER TABLE `tipus`
-  MODIFY `tipus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `csomag_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
-  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -660,16 +417,10 @@ ALTER TABLE `jarmuvek`
   ADD CONSTRAINT `jarmuvek_ibfk_3` FOREIGN KEY (`sablon_id`) REFERENCES `munkafolyamat_sablonok` (`sablon_id`);
 
 --
--- Megkötések a táblához `szerelesi_utmutatok`
---
-ALTER TABLE `szerelesi_utmutatok`
-  ADD CONSTRAINT `fk_jarmu_tipus` FOREIGN KEY (`jarmu_tipus`) REFERENCES `tipus` (`tipus_id`);
-
---
 -- Megkötések a táblához `tipus`
 --
 ALTER TABLE `tipus`
-  ADD CONSTRAINT `fk_marka_id` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`marka_id`);
+  ADD CONSTRAINT `tipus_ibfk_1` FOREIGN KEY (`utmutato_id`) REFERENCES `szerelesi_utmutatok` (`utmutato_id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `ugyfel_jarmuvek`

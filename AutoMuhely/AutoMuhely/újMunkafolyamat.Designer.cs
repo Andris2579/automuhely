@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(újMunkafolyamat));
             this.label1 = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -156,7 +157,7 @@
             this.alkatrészKezdetiKészlet_Lb.Name = "alkatrészKezdetiKészlet_Lb";
             this.alkatrészKezdetiKészlet_Lb.Size = new System.Drawing.Size(250, 25);
             this.alkatrészKezdetiKészlet_Lb.TabIndex = 18;
-            this.alkatrészKezdetiKészlet_Lb.Text = "Becsült idő (hét)";
+            this.alkatrészKezdetiKészlet_Lb.Text = "Becsült idő (nap)";
             // 
             // numSablonIdo
             // 
@@ -183,7 +184,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(354, 822);
+            this.ClientSize = new System.Drawing.Size(354, 686);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginLabel);
@@ -196,9 +197,11 @@
             this.Controls.Add(this.txtSablonleiras);
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
             this.Controls.Add(this.numSablonIdo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "újMunkafolyamat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "újMunkafolyamat";
-            this.Load += new System.EventHandler(this.újMunkafolyamat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSablonIdo)).EndInit();
             this.ResumeLayout(false);

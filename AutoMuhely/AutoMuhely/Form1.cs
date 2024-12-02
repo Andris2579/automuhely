@@ -17,11 +17,12 @@ namespace AutoMuhely
         public string Role { get; set; }
         static DatabaseHandler databaseHandler = new DatabaseHandler();
         //Sql lekérdezések
-        static string ugyfelekSql= "SELECT nev AS Név, elerhetoseg AS Elérhetőség, cim AS Cím FROM ugyfelek";
+        static string ugyfelekSql= "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail' ,cim AS Cím FROM ugyfelek; ";
         static string alkatreszekSql= "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek";
         static string jarmuvekSql= "SELECT rendszam AS Rendszám, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek;";
         static string hibakodSql = "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok";
         static string munkafolySql = "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok";
+        static string utmutatoSql = "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus=t.tipus_id JOIN marka m ON m.marka_id= t.marka_id";
 
         public Main_Form()
         {
@@ -192,18 +193,16 @@ namespace AutoMuhely
 
                 // Extract all columns to uniquely identify the customer
                 string name = selectedRow.Cells["Név"]?.Value?.ToString();
-                string contact = selectedRow.Cells["Elérhetőség"]?.Value?.ToString();
                 string address = selectedRow.Cells["Cím"]?.Value?.ToString();
 
-                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(contact) && !string.IsNullOrEmpty(address))
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address))
                 {
-                    // SQL query to fetch cars for the selected customer using joins
-                    string query = @"SELECT j.rendszam AS Rendszám, j.gyartas_eve AS 'Gyártás éve', j.motor_adatok AS 'Motor Adatok', j.alvaz_adatok AS 'Alváz Adatok', j.elozo_javitasok AS 'Előző Javítások' FROM ugyfelek u INNER JOIN ugyfel_jarmuvek uj ON u.ugyfel_id = uj.ugyfel_id INNER JOIN jarmuvek j ON uj.jarmu_id = j.jarmu_id WHERE u.nev = @name AND u.elerhetoseg = @contact AND u.cim = @address;";
+                    // Eredeti sql lekérdezésből alakítjuk az újat
+                    string query = jarmuvekSql.Substring(0, jarmuvekSql.Length - 1)+ @" j JOIN ugyfel_jarmuvek uj ON j.jarmu_id = uj.jarmu_id JOIN ugyfelek u ON uj.ugyfel_id = uj.ugyfel_id WHERE u.nev = @name AND u.cim = @address;";
                     // Load the car data into the table
                     var parameters = new Dictionary<string, object>
                     {
                         { "@name", name },
-                        { "@contact", contact },
                         { "@address", address }
                     };
                     InitializeTable(query, parameters);
@@ -294,7 +293,7 @@ namespace AutoMuhely
         private void SzerelesiUtmutatok_Click(object sender, EventArgs e)
         {
             LabelTable.Text ="Szerelési Útmutatók";
-            InitializeTable("SELECT * FROM szerelesi_utmutatok");
+            InitializeTable(utmutatoSql);
             panelButtons.Controls.Clear();
             GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzerelesekUjHozzaadasa_Click);
             GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), SzerelesekModositas_Click);
@@ -351,8 +350,28 @@ namespace AutoMuhely
         // Placeholder for the "Módosítás" button click
         private void MunkafolyamatSablonokModositas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Módosítás clicked!");
+            if (table_DGV.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Kérlek válassz egy sablont a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                // Get the data from the selected row
+                string nev = selectedRow.Cells["Sablon neve"].Value?.ToString();
+                string lepesek = selectedRow.Cells["Lépések"].Value?.ToString();
+                string becsultIdo = selectedRow.Cells["Becsült Idő"].Value?.ToString();
+
+                // Pass data to újMunkafolyamat for editing
+                újMunkafolyamat sablonForm = new újMunkafolyamat(nev, lepesek, becsultIdo);
+                sablonForm.ShowDialog();
+
+                // Refresh the table after editing
+                InitializeTable(munkafolySql);
+            }
         }
+    
         private void MunkafolyamatSablonok_Click(object sender, EventArgs e) 
         {
             InitializeTable(munkafolySql);

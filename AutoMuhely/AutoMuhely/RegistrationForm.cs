@@ -29,7 +29,8 @@ namespace AutoMuhely
             string password1 = txtPassword1.Text;
             string password2 = txtPassword2.Text;
             string role = cmbRole.SelectedItem?.ToString();
-            
+
+            // Validate input fields
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password1) || string.IsNullOrEmpty(password2) || string.IsNullOrEmpty(role))
             {
                 MessageBox.Show("Kérem töltse ki a mezőket.", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -46,22 +47,21 @@ namespace AutoMuhely
             try
             {
                 DatabaseHandler dbHandler = new DatabaseHandler();
-                // Hash the password using SHA256
-                string passwordHash = dbHandler.HashPassword(password1);
 
-                // Prepare the SQL query
-                string insertQuery = "INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) VALUES (@Username, @PasswordHash, @Role);";
+                // Use MySQL to hash the password during insertion
+                string insertQuery = @"
+            INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) 
+            VALUES (@Username, SHA2(@Password, 256), @Role);";
 
                 // Prepare the parameters
                 var parameters = new Dictionary<string, object>
         {
             { "@Username", username },
-            { "@PasswordHash", passwordHash },
+            { "@Password", password1 }, // Raw password is passed; MySQL will hash it
             { "@Role", role }
         };
 
                 // Insert into the database
-                
                 dbHandler.Insert(insertQuery, parameters);
 
                 success = true; // Mark success if no exception occurs
@@ -75,7 +75,7 @@ namespace AutoMuhely
                 MessageBox.Show($"Hiba történt a regisztráció során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Execute success logic only if success is true
+            // Execute success logic only if registration was successful
             if (success)
             {
                 MessageBox.Show($"'{username}' regisztrálva '{role}'-ként!", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -88,6 +88,6 @@ namespace AutoMuhely
                 this.Close();
             }
         }
-        
+
     }
 }

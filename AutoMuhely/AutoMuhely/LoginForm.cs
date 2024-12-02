@@ -28,53 +28,41 @@ namespace AutoMuhely
         private void LogIn()
         {
             string username = txtUsername.Text;
-            string password = databaseHandler.HashPassword(txtPassword.Text);
-            var parameter1 = new Dictionary<string, object>
+            string password = txtPassword.Text;
+
+            // Prepare parameters for the query
+            var parameters = new Dictionary<string, object>
     {
-        { "@name", username },  // For the username lookup
+        { "@name", username },
+        { "@password", password }
     };
 
-            var parameter2 = new Dictionary<string, object>
-    {
-        { "@jelszo_hash", password },  // For the password comparison
-    };
+            // Query to check if username and hashed password match
+            var query = @"
+        SELECT szerep 
+        FROM felhasznalok 
+        WHERE felhasznalonev = @name AND jelszo_hash = SHA2(@password, 256);
+    ";
 
-            // Query to check if username exists (check for username first)
-            var (result, columns) = databaseHandler.Select(@"SELECT jelszo_hash FROM felhasznalok WHERE felhasznalonev=@name;", parameter1);
+            // Execute the query
+            var (result, columns) = databaseHandler.Select(query, parameters);
 
-            // Check if result contains rows (i.e., username exists)
-            if (result != null && result.Count > 0 && Convert.ToString(result[0][0]) != "")
+            // Validate the result
+            if (result != null && result.Count > 0)
             {
-                // Compare password if the username exists
-                if (password == Convert.ToString(result[0][0]))
-                {
-                    // Query to fetch role after successful password check
-                    var (result2, columns2) = databaseHandler.Select(@"SELECT szerep FROM felhasznalok WHERE felhasznalonev=@name;", parameter1);
+                // Successful login
+                Username = username;
+                Role = Convert.ToString(result[0][0]);
 
-                    // Check if result2 contains valid data (role exists)
-                    if (result2 != null && result2.Count > 0)
-                    {
-                        Username = username;
-                        Role = Convert.ToString(result2[0][0]);
-
-                        // Clear text fields and close the form
-                        txtUsername.Text = "";
-                        txtPassword.Text = "";
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hiba történt a szerep lekérdezésekor!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Clear text fields and close the form
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
+                // Failed login
                 MessageBox.Show("Rossz felhasználónév vagy jelszó. Kérem próbálja újra!", "Bejelentkezés sikertelen", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
