@@ -8,55 +8,135 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoMuhely
 {
     public partial class újÚtmutató : Form
     {
-        public újÚtmutató()
+        public bool IsEditMode { get; set; }
+        public string OriginalCim { get; set; }
+        public string OriginalTartalom { get; set; }
+        public int OriginalJarmuTipusID { get; set; }
+
+        public újÚtmutató(string cim = null, string tartalom = null, int? jarmuTipusID = null)
         {
             InitializeComponent();
+
+            // Determine mode
+            if (!string.IsNullOrEmpty(cim))
+            {
+                IsEditMode = true;
+                OriginalCim = cim;
+                OriginalTartalom = tartalom;
+                OriginalJarmuTipusID = jarmuTipusID ?? 0;
+
+                // Populate fields
+                txtUtmutatoNev.Text = cim;
+                txtUtmutatoLeiras.Text = tartalom;
+
+                btnAdd.Text = "Módosítás"; // Update button text
+            }
+            else
+            {
+                IsEditMode = false;
+                btnAdd.Text = "Hozzáadás"; // Default button text
+            }
+            LoadJarmuTipusok();
+
+            // If in edit mode, select the current jármű típus
+            if (IsEditMode)
+            {
+                comboBox1.SelectedValue = OriginalJarmuTipusID;
+            }
+
         }
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
 
         public event EventHandler ÚtmutatóHozzáadva;
 
-
-        private void újÚtmutató_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void LoadJarmuTipusok()
         {
             try
             {
-                using (var connection = new MySqlConnection(databaseHandler.ConnectionCommand))
+                string query = "SELECT tipus_id, tipus FROM tipus";
+                var (rows, _) = databaseHandler.Select(query);
+
+                if (rows != null)
                 {
-                    connection.Open();
-                    string commandText = "INSERT INTO szerelesi_utmutatok (cim, tartalom, jarmu_tipus) VALUES(@cim, @tartalom, @jarmu_tipus)";
+                    var jarmuTipusok = new List<KeyValuePair<int, string>>();
 
-                    using (var command = new MySqlCommand(commandText, connection))
+                    foreach (var row in rows)
                     {
-                        command.Parameters.AddWithValue("@cim", textBox1.Text);
-                        command.Parameters.AddWithValue("@tartalom", textBox2.Text);
-                        command.Parameters.AddWithValue("@jarmu_tipus", textBox3.Text);
-
-                        var result = command.ExecuteNonQuery();
-                        if (result > 0)
-                        {
-                            ÚtmutatóHozzáadva?.Invoke(this, EventArgs.Empty);
-                            MessageBox.Show("Sikeres útmutató hozzáadás!", "Siker!", MessageBoxButtons.OK);
-                            this.Close();
-                        }
+                        int id = Convert.ToInt32(row[0]);
+                        string nev = row[1].ToString();
+                        jarmuTipusok.Add(new KeyValuePair<int, string>(id, nev));
                     }
+
+                    comboBox1.DataSource = jarmuTipusok;
+                    comboBox1.DisplayMember = "Value"; // Display the name
+                    comboBox1.ValueMember = "Key";    // Use the ID as the value
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButtons.OK);
+                MessageBox.Show($"Hiba történt a járműtípusok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void újÚtmutató_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (IsEditMode)
+                {
+                    // Edit Mode: Update the record
+                    string updateQuery = "UPDATE szerelesi_utmutatok SET cim = @cim, tartalom = @tartalom, jarmu_tipus = @jarmu_tipus WHERE cim = @originalCim";
+                    var parameters = new Dictionary<string, object>
+                    {
+                        { "@cim", txtUtmutatoNev.Text },
+                        { "@tartalom", txtUtmutatoLeiras.Text },
+                        { "@jarmu_tipus", comboBox1.SelectedValue },
+                        { "@originalCim", OriginalCim }
+                    };
+
+                    databaseHandler.Update(updateQuery, parameters);
+
+                    MessageBox.Show("Útmutató sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    // Add Mode: Insert a new record
+                    string insertQuery = "INSERT INTO szerelesi_utmutatok (cim, tartalom, jarmu_tipus) VALUES(@cim, @tartalom, @jarmu_tipus)";
+                    var parameters = new Dictionary<string, object>
+                    {
+                        { "@cim", txtUtmutatoNev.Text },
+                        { "@tartalom", txtUtmutatoLeiras.Text },
+                        { "@jarmu_tipus", comboBox1.SelectedValue }
+                    };
+
+                    databaseHandler.Insert(insertQuery, parameters);
+
+                    MessageBox.Show("Útmutató sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
+                }
+
+                ÚtmutatóHozzáadva?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(újHibakód));
             this.label1 = new System.Windows.Forms.Label();
             this.editLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.alkatrészNév_Lb = new System.Windows.Forms.Label();
             this.txtHibakod = new System.Windows.Forms.TextBox();
             this.alkatrészLeírás_Lb = new System.Windows.Forms.Label();
             this.txtHibakodLeiras = new System.Windows.Forms.TextBox();
             this.btnAdd = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,17 +64,6 @@
             this.editLabel.Size = new System.Drawing.Size(259, 44);
             this.editLabel.TabIndex = 23;
             this.editLabel.Text = "MÓDOSÍTÁSA";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.logoX;
-            this.pictureBox1.Location = new System.Drawing.Point(125, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
             // 
             // alkatrészNév_Lb
             // 
@@ -142,6 +132,17 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.logoX;
+            this.pictureBox1.Location = new System.Drawing.Point(125, -2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // újHibakód
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
@@ -158,10 +159,11 @@
             this.Controls.Add(this.alkatrészLeírás_Lb);
             this.Controls.Add(this.txtHibakodLeiras);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(370, 680);
-            this.MinimumSize = new System.Drawing.Size(370, 500);
+            this.MaximumSize = new System.Drawing.Size(370, 616);
+            this.MinimumSize = new System.Drawing.Size(370, 616);
             this.Name = "újHibakód";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hibakód";

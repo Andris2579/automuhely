@@ -41,6 +41,7 @@ namespace AutoMuhely
         }
 
         DatabaseHandler DatabaseHandler = new DatabaseHandler();
+        public event EventHandler HibakódHozzáadva;
         private void újHibakód_Load(object sender, EventArgs e)
         {
 
@@ -51,45 +52,37 @@ namespace AutoMuhely
         {
             try
             {
-                using (var connection = new MySqlConnection(DatabaseHandler.ConnectionCommand))
-                {
-                    connection.Open();
 
                     if (IsEditMode)  // If we're in Edit mode, update the existing record
                     {
-                        string commandText = "UPDATE hibakodok SET leiras = @leiras WHERE kod = @kod";
+                        string updateQuery = "UPDATE hibakodok SET leiras = @leiras WHERE kod = @kod";
+                        var parameters = new Dictionary<string, object>
+                    {
+                        { "@kod", txtHibakod.Text },
+                        { "@leiras", txtHibakodLeiras.Text },
+                    };
 
-                        using (var command = new MySqlCommand(commandText, connection))
-                        {
-                            command.Parameters.AddWithValue("@kod", txtHibakod.Text);
-                            command.Parameters.AddWithValue("@leiras", txtHibakodLeiras.Text);
-
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Hibakód módosítva!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
+                        DatabaseHandler.Update(updateQuery, parameters);
+                        MessageBox.Show("Útmutató sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
+                        
                     }
                     else  // If we're in Add mode, insert a new record
                     {
-                        string commandText = "INSERT INTO hibakodok (kod, leiras) VALUES(@kod, @leiras)";
+                        string insertQuery = "INSERT INTO hibakodok (kod, leiras) VALUES(@kod, @leiras)";
+                        var parameters = new Dictionary<string, object>
+                    {
+                        { "@kod", txtHibakod.Text },
+                        { "@leiras", txtHibakodLeiras.Text },
+                    };
 
-                        using (var command = new MySqlCommand(commandText, connection))
-                        {
-                            command.Parameters.AddWithValue("@kod", txtHibakod.Text);
-                            command.Parameters.AddWithValue("@leiras", txtHibakodLeiras.Text);
+                        DatabaseHandler.Insert(insertQuery, parameters);
 
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Sikeres hibakód hozzáadás!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
+                        MessageBox.Show("Útmutató sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
+
                     }
-                }
+                    HibakódHozzáadva?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                
             }
             catch (Exception ex)
             {

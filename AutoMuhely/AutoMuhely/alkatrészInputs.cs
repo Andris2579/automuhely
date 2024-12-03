@@ -40,19 +40,10 @@ namespace AutoMuhely
 
         private void alkatrészInputs_Load(object sender, EventArgs e)
         {
-            /*if (IsEditMode)
-            {
-                lblIsEdit.Text = "MÓDOSÍTÁS";
-                lblIsEdit.Location = new Point();
-            }
-            else
-            {
-                lblIsEdit.Text = "HOZZÁADÁSA";
-                lblIsEdit.Location = new Point(55, 177);
-            }*/
         }
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
+        public event EventHandler AlkatreszHozzaadva;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -63,49 +54,39 @@ namespace AutoMuhely
         {
             try
             {
-                using (var connection = new MySqlConnection(databaseHandler.ConnectionCommand))
-                {
-                    connection.Open();
-
+               
                     if (IsEditMode)  // If we're in Edit mode, update the record
                     {
-                        string commandText = "UPDATE alkatreszek SET leiras = @leiras, keszlet_mennyiseg = @keszlet_mennyiseg, utanrendelesi_szint = @utanrendelesi_szint WHERE nev = @nev";
+                    string updateQuery = "UPDATE alkatreszek SET leiras = @leiras, keszlet_mennyiseg = @keszlet_mennyiseg, utanrendelesi_szint = @utanrendelesi_szint WHERE nev = @nev";
+                    var parameters = new Dictionary<string, object>
+                    {
+                        { "@nev", alkatrészNév_Tb.Text },
+                        { "@leiras", alkatrészLeírás_Tb.Text },
+                        { "@keszlet_mennyiseg", alkatrészKezdetiKészletMennyiség_NUD.Value},
+                        { "@utanrendelesi_szint", numAlkatreszUtanrendelesMenny.Value }
+                    };
+                    databaseHandler.Update(updateQuery, parameters);
 
-                        using (var command = new MySqlCommand(commandText, connection))
-                        {
-                            command.Parameters.AddWithValue("@nev", alkatrészNév_Tb.Text);
-                            command.Parameters.AddWithValue("@leiras", alkatrészLeírás_Tb.Text);
-                            command.Parameters.AddWithValue("@keszlet_mennyiseg", alkatrészKezdetiKészletMennyiség_NUD.Value);
-                            command.Parameters.AddWithValue("@utanrendelesi_szint", numAlkatreszUtanrendelesMenny.Value);
+                    MessageBox.Show("Alkatrész sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
 
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Alkatrész módosítva!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
                     }
                     else  // If we're in Add mode, insert a new record
                     {
-                        string commandText = "INSERT INTO alkatreszek (nev, leiras, keszlet_mennyiseg, utanrendelesi_szint) VALUES(@nev, @leiras, @keszlet_mennyiseg, @utanrendelesi_szint)";
-
-                        using (var command = new MySqlCommand(commandText, connection))
+                    // Add Mode: Insert a new record
+                    string insertQuery = "INSERT INTO alkatreszek (nev, leiras, keszlet_mennyiseg, utanrendelesi_szint) VALUES(@nev, @leiras, @keszlet_mennyiseg, @utanrendelesi_szint)";
+                    var parameters = new Dictionary<string, object>
                         {
-                            command.Parameters.AddWithValue("@nev", alkatrészNév_Tb.Text);
-                            command.Parameters.AddWithValue("@leiras", alkatrészLeírás_Tb.Text);
-                            command.Parameters.AddWithValue("@keszlet_mennyiseg", alkatrészKezdetiKészletMennyiség_NUD.Value);
-                            command.Parameters.AddWithValue("@utanrendelesi_szint", numAlkatreszUtanrendelesMenny.Value);
+                            { "@nev", alkatrészNév_Tb.Text },
+                            { "@leiras", alkatrészLeírás_Tb.Text },
+                            { "@keszlet_mennyiseg", alkatrészKezdetiKészletMennyiség_NUD.Value},
+                            { "@utanrendelesi_szint", numAlkatreszUtanrendelesMenny.Value}
+                        };
+                    databaseHandler.Insert(insertQuery, parameters);
 
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Sikeres alkatrész hozzáadás!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
+                    MessageBox.Show("Alkatrész sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
                     }
-                }
+                AlkatreszHozzaadva?.Invoke(this, EventArgs.Empty);
+                this.Close();
             }
             catch (Exception ex)
             {

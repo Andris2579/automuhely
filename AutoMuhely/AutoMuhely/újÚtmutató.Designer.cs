@@ -28,110 +28,203 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(újÚtmutató));
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.LoginLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.alkatrészNév_Lb = new System.Windows.Forms.Label();
+            this.txtUtmutatoNev = new System.Windows.Forms.TextBox();
+            this.alkatrészLeírás_Lb = new System.Windows.Forms.Label();
+            this.txtUtmutatoLeiras = new System.Windows.Forms.TextBox();
+            this.alkatrészKezdetiKészlet_Lb = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnAdd = new AutoMuhely.CustomButton();
+            this.btnCancel = new AutoMuhely.CustomButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Útmutató neve";
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label4.Location = new System.Drawing.Point(52, 216);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(259, 44);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "HOZZÁADÁSA";
             // 
-            // textBox1
+            // label5
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 42);
-            this.textBox1.MaxLength = 100;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 27);
-            this.textBox1.TabIndex = 1;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label5.Location = new System.Drawing.Point(68, 172);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(217, 44);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "ÚTMUTATÓ";
             // 
-            // label2
+            // LoginLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Útmutató leírása";
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LoginLabel.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LoginLabel.Location = new System.Drawing.Point(81, 128);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(186, 44);
+            this.LoginLabel.TabIndex = 35;
+            this.LoginLabel.Text = "SZERELÉSI";
             // 
-            // textBox2
+            // pictureBox1
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 132);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 200);
-            this.textBox2.TabIndex = 3;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::AutoMuhely.Properties.Resources.logoX;
+            this.pictureBox1.Location = new System.Drawing.Point(119, -6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // alkatrészNév_Lb
             // 
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(18, 471);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 50);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Hozzáadás";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.alkatrészNév_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alkatrészNév_Lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.alkatrészNév_Lb.Location = new System.Drawing.Point(54, 271);
+            this.alkatrészNév_Lb.Name = "alkatrészNév_Lb";
+            this.alkatrészNév_Lb.Size = new System.Drawing.Size(250, 25);
+            this.alkatrészNév_Lb.TabIndex = 26;
+            this.alkatrészNév_Lb.Text = "Útmutató neve";
             // 
-            // label3
+            // txtUtmutatoNev
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 364);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Jármű típusa";
+            this.txtUtmutatoNev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUtmutatoNev.Location = new System.Drawing.Point(54, 299);
+            this.txtUtmutatoNev.MaxLength = 100;
+            this.txtUtmutatoNev.Name = "txtUtmutatoNev";
+            this.txtUtmutatoNev.Size = new System.Drawing.Size(250, 26);
+            this.txtUtmutatoNev.TabIndex = 27;
             // 
-            // textBox3
+            // alkatrészLeírás_Lb
             // 
-            this.textBox3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(12, 399);
-            this.textBox3.MaxLength = 50;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 27);
-            this.textBox3.TabIndex = 6;
+            this.alkatrészLeírás_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alkatrészLeírás_Lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.alkatrészLeírás_Lb.Location = new System.Drawing.Point(54, 340);
+            this.alkatrészLeírás_Lb.Name = "alkatrészLeírás_Lb";
+            this.alkatrészLeírás_Lb.Size = new System.Drawing.Size(250, 25);
+            this.alkatrészLeírás_Lb.TabIndex = 28;
+            this.alkatrészLeírás_Lb.Text = "Útmutató leírása";
+            // 
+            // txtUtmutatoLeiras
+            // 
+            this.txtUtmutatoLeiras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUtmutatoLeiras.Location = new System.Drawing.Point(54, 368);
+            this.txtUtmutatoLeiras.Multiline = true;
+            this.txtUtmutatoLeiras.Name = "txtUtmutatoLeiras";
+            this.txtUtmutatoLeiras.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtUtmutatoLeiras.Size = new System.Drawing.Size(250, 100);
+            this.txtUtmutatoLeiras.TabIndex = 29;
+            // 
+            // alkatrészKezdetiKészlet_Lb
+            // 
+            this.alkatrészKezdetiKészlet_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alkatrészKezdetiKészlet_Lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.alkatrészKezdetiKészlet_Lb.Location = new System.Drawing.Point(54, 480);
+            this.alkatrészKezdetiKészlet_Lb.Name = "alkatrészKezdetiKészlet_Lb";
+            this.alkatrészKezdetiKészlet_Lb.Size = new System.Drawing.Size(250, 33);
+            this.alkatrészKezdetiKészlet_Lb.TabIndex = 30;
+            this.alkatrészKezdetiKészlet_Lb.Text = "Jármű típusa";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(54, 516);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(250, 28);
+            this.comboBox1.TabIndex = 38;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnAdd.BorderRadius = 23;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(76, 565);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(210, 49);
+            this.btnAdd.TabIndex = 32;
+            this.btnAdd.Text = "Tovább";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnCancel.BorderRadius = 23;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(110, 620);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(140, 40);
+            this.btnCancel.TabIndex = 33;
+            this.btnCancel.Text = "Mégse";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // újÚtmutató
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 553);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ClientSize = new System.Drawing.Size(354, 686);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LoginLabel);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.alkatrészNév_Lb);
+            this.Controls.Add(this.txtUtmutatoNev);
+            this.Controls.Add(this.alkatrészLeírás_Lb);
+            this.Controls.Add(this.txtUtmutatoLeiras);
+            this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(370, 725);
+            this.MinimumSize = new System.Drawing.Size(370, 725);
             this.Name = "újÚtmutató";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Új Útmutató";
             this.Load += new System.EventHandler(this.újÚtmutató_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LoginLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private CustomButton btnAdd;
+        private CustomButton btnCancel;
+        private System.Windows.Forms.Label alkatrészNév_Lb;
+        private System.Windows.Forms.TextBox txtUtmutatoNev;
+        private System.Windows.Forms.Label alkatrészLeírás_Lb;
+        private System.Windows.Forms.TextBox txtUtmutatoLeiras;
+        private System.Windows.Forms.Label alkatrészKezdetiKészlet_Lb;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

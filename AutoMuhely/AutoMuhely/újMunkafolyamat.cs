@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoMuhely
 {
@@ -40,57 +41,44 @@ namespace AutoMuhely
                 btnAdd.Text = "Hozzáadás"; // Default button text
             }
         }
-
-        public event EventHandler újMunkafolyamatHozzáadva;
+        public event EventHandler MunkafolyamatHozzaadva;
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (var connection = new MySqlConnection(databaseHandler.ConnectionCommand))
+
+                if (IsEditMode)
                 {
-                    connection.Open();
-
-                    if (IsEditMode)
+                    // Edit Mode: Update the record
+                    string updateQuery = "UPDATE munkafolyamat_sablonok SET nev = @nev, lepesek = @lepesek, becsult_ido = @becsult_ido WHERE nev = @originalNev";
+                    var parameters = new Dictionary<string, object>
                     {
-                        // Modify existing record
-                        string commandText = "UPDATE munkafolyamat_sablonok SET nev = @nev, lepesek = @lepesek, becsult_ido = @becsult_ido WHERE nev = @originalNev";
+                        { "@nev", txtSablonNev.Text },
+                        { "@lepesek", txtSablonleiras.Text },
+                        { "@becsult_ido", numSablonIdo.Value + " nap" },
+                        { "@originalNev", OriginalNev }
+                    };
+                    databaseHandler.Update(updateQuery, parameters);
 
-                        using (var command = new MySqlCommand(commandText, connection))
-                        {
-                            command.Parameters.AddWithValue("@nev", txtSablonNev.Text);
-                            command.Parameters.AddWithValue("@lepesek", txtSablonleiras.Text);
-                            command.Parameters.AddWithValue("@becsult_ido", numSablonIdo.Value + " nap");
-                            command.Parameters.AddWithValue("@originalNev", OriginalNev);
-
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Munkafolyamat sablon módosítva!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // Add new record
-                        string commandText = "INSERT INTO munkafolyamat_sablonok (nev, lepesek, becsult_ido) VALUES(@nev, @lepesek, @becsult_ido)";
-
-                        using (var command = new MySqlCommand(commandText, connection))
-                        {
-                            command.Parameters.AddWithValue("@nev", txtSablonNev.Text);
-                            command.Parameters.AddWithValue("@lepesek", txtSablonleiras.Text);
-                            command.Parameters.AddWithValue("@becsult_ido", numSablonIdo.Value + " nap");
-
-                            var result = command.ExecuteNonQuery();
-                            if (result > 0)
-                            {
-                                MessageBox.Show("Munkafolyamat sablon hozzáadva!", "Siker!", MessageBoxButtons.OK);
-                                this.Close();
-                            }
-                        }
-                    }
+                    MessageBox.Show("Munkafolyamat sablon sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
                 }
+                else
+                {
+                    // Add Mode: Insert a new record
+                    string insertQuery = "INSERT INTO munkafolyamat_sablonok (nev, lepesek, becsult_ido) VALUES(@nev, @lepesek, @becsult_ido)";
+                    var parameters = new Dictionary<string, object>
+                        {
+                            { "@nev", txtSablonNev.Text },
+                            { "@lepesek", txtSablonleiras.Text },
+                            { "@becsult_ido", numSablonIdo.Value + " nap"}
+                        };
+                    databaseHandler.Insert(insertQuery, parameters);
+
+                    MessageBox.Show("Munkafolyamat sablon hozzáadva!", "Siker!", MessageBoxButtons.OK);
+                }
+                MunkafolyamatHozzaadva?.Invoke(this, EventArgs.Empty);
+                this.Close();
             }
             catch (Exception ex)
             {

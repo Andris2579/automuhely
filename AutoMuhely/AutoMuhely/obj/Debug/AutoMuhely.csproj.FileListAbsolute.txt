@@ -71,3 +71,4 @@ D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CopyComplete
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.exe
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.pdb
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.NewVehicle.resources

@@ -173,26 +173,26 @@ namespace AutoMuhely
                     }
                 }
         }
-        public string HashPassword(string password)
+        public int LookupID(string query, Dictionary<string, object> parameters)
         {
-            using (SHA256 sha256 = SHA256.Create())
+            try
             {
-                // Convert the password string into a byte array
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-
-                // Compute the hash
-                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
-
-                // Convert the hash byte array back into a string
-                StringBuilder hashBuilder = new StringBuilder();
-                foreach (byte b in hashBytes)
+                var result = Select(query, parameters);
+                if (result.Item1.Count > 0)
                 {
-                    hashBuilder.Append(b.ToString("x2")); // Convert each byte to a hexadecimal string
+                    // Assuming the ID is in the first row and first column
+                    return Convert.ToInt32(result.Item1[0][0]);
                 }
-
-                return hashBuilder.ToString();
+                else
+                {
+                    return -1; // Return -1 if no match is found
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt az ID lekérdezése során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
             }
         }
-        
     }
 }

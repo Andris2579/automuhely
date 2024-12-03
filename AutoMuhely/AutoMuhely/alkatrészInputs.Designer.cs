@@ -183,13 +183,13 @@ namespace AutoMuhely
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label2.Location = new System.Drawing.Point(53, 501);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(267, 25);
+            this.label2.Size = new System.Drawing.Size(267, 34);
             this.label2.TabIndex = 14;
             this.label2.Text = "Utánrendelt mennyiség";
             // 
             // numAlkatreszUtanrendelesMenny
             // 
-            this.numAlkatreszUtanrendelesMenny.Location = new System.Drawing.Point(53, 529);
+            this.numAlkatreszUtanrendelesMenny.Location = new System.Drawing.Point(53, 538);
             this.numAlkatreszUtanrendelesMenny.Name = "numAlkatreszUtanrendelesMenny";
             this.numAlkatreszUtanrendelesMenny.Size = new System.Drawing.Size(250, 26);
             this.numAlkatreszUtanrendelesMenny.TabIndex = 15;

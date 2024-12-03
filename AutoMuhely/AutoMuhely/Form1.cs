@@ -138,7 +138,7 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Alkatrészek")
             {
-                if (table_DGV.SelectedRows.Count == 0)
+                if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
                 {
                     MessageBox.Show("Kérlek válassz egy alkatrészt a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -282,13 +282,38 @@ namespace AutoMuhely
         }
         private void SzerelesekUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Új hozzáadása clicked!");
+            újÚtmutató Add = new újÚtmutató();
+            Add.ShowDialog();
+            InitializeTable(utmutatoSql);
         }
 
         // Placeholder for the "Módosítás" button click
         private void SzerelesekModositas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Módosítás clicked!");
+            if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Kérlek válassz egy hibakódot a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                // Get the data from the selected row
+                string cim = selectedRow.Cells["Útmutató címe"].Value?.ToString();
+                string utmutato = selectedRow.Cells["Útmutató"].Value?.ToString();
+                string tipus = selectedRow.Cells["Autó típusa"].Value?.ToString();
+                string sqlQuery = "SELECT tipus_id FROM tipus WHERE tipus = @nev";
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@nev", tipus }
+                };
+                int tipusID=databaseHandler.LookupID(sqlQuery, parameters);
+
+                // Pass data to újHibakód for editing
+                újÚtmutató Edit = new újÚtmutató(cim,utmutato,tipusID);
+                Edit.ShowDialog();
+                InitializeTable(utmutatoSql);
+            }
         }
         private void SzerelesiUtmutatok_Click(object sender, EventArgs e)
         {
@@ -306,11 +331,10 @@ namespace AutoMuhely
             InitializeTable(hibakodSql);
         }
 
-        // Placeholder for the "Módosítás" button click
         private void HibakodokModositas_Click(object sender, EventArgs e)
         {
 
-                if (table_DGV.SelectedRows.Count == 0)
+                if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count>1)
                 {
                     MessageBox.Show("Kérlek válassz egy hibakódot a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -350,7 +374,7 @@ namespace AutoMuhely
         // Placeholder for the "Módosítás" button click
         private void MunkafolyamatSablonokModositas_Click(object sender, EventArgs e)
         {
-            if (table_DGV.SelectedRows.Count == 0)
+            if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
             {
                 MessageBox.Show("Kérlek válassz egy sablont a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
