@@ -1,4 +1,6 @@
-﻿namespace AutoMuhely
+﻿using System.Windows.Forms;
+
+namespace AutoMuhely
 {
     partial class Main_Form
     {
@@ -30,18 +32,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.panelTable = new System.Windows.Forms.Panel();
-            this.panelButtons = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.searchBar = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.LabelUser = new System.Windows.Forms.Label();
-            this.PicBoxRole = new System.Windows.Forms.PictureBox();
-            this.LabelTable = new System.Windows.Forms.Label();
             this.settingsPanel = new AutoMuhely.HoverPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -60,15 +50,21 @@
             this.customersPanel = new AutoMuhely.HoverPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
+            this.LabelTable = new System.Windows.Forms.Label();
+            this.panelButtons = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.searchBar = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LabelUser = new System.Windows.Forms.Label();
+            this.PicBoxRole = new System.Windows.Forms.PictureBox();
             this.hoverPanel6 = new AutoMuhely.HoverPanel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.MenuPanel.SuspendLayout();
-            this.panelMain.SuspendLayout();
-            this.panelTable.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.carsPanel.SuspendLayout();
@@ -81,6 +77,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.customersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelMain.SuspendLayout();
+            this.panelTable.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.hoverPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -101,138 +103,6 @@
             this.MenuPanel.Size = new System.Drawing.Size(246, 512);
             this.MenuPanel.TabIndex = 0;
             // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(158, 32);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Beállítások";
-            // 
-            // panelMain
-            // 
-            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.panelMain.Controls.Add(this.panelTable);
-            this.panelMain.Controls.Add(this.panelButtons);
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(255, 121);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(726, 512);
-            this.panelMain.TabIndex = 1;
-            // 
-            // panelTable
-            // 
-            this.panelTable.BackColor = System.Drawing.Color.Transparent;
-            this.panelTable.Controls.Add(this.LabelTable);
-            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTable.Location = new System.Drawing.Point(0, 0);
-            this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(726, 449);
-            this.panelTable.TabIndex = 3;
-            // 
-            // panelButtons
-            // 
-            this.panelButtons.BackColor = System.Drawing.Color.Transparent;
-            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtons.Location = new System.Drawing.Point(0, 449);
-            this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(726, 63);
-            this.panelButtons.TabIndex = 2;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.MenuPanel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panelMain, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 636);
-            this.tableLayoutPanel1.TabIndex = 10;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.searchBar);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(255, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 112);
-            this.panel2.TabIndex = 2;
-            // 
-            // searchBar
-            // 
-            this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.searchBar.Location = new System.Drawing.Point(20, 41);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(697, 36);
-            this.searchBar.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Location = new System.Drawing.Point(61, -99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(598, 36);
-            this.textBox1.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.panel1.Controls.Add(this.LabelUser);
-            this.panel1.Controls.Add(this.PicBoxRole);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(246, 112);
-            this.panel1.TabIndex = 11;
-            // 
-            // LabelUser
-            // 
-            this.LabelUser.AutoSize = true;
-            this.LabelUser.Font = new System.Drawing.Font("Open Sans Extrabold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LabelUser.Location = new System.Drawing.Point(81, 35);
-            this.LabelUser.Name = "LabelUser";
-            this.LabelUser.Size = new System.Drawing.Size(99, 51);
-            this.LabelUser.TabIndex = 3;
-            this.LabelUser.Text = "test";
-            // 
-            // PicBoxRole
-            // 
-            this.PicBoxRole.Location = new System.Drawing.Point(18, 35);
-            this.PicBoxRole.Name = "PicBoxRole";
-            this.PicBoxRole.Size = new System.Drawing.Size(47, 48);
-            this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicBoxRole.TabIndex = 9;
-            this.PicBoxRole.TabStop = false;
-            // 
-            // LabelTable
-            // 
-            this.LabelTable.AutoSize = true;
-            this.LabelTable.Font = new System.Drawing.Font("Open Sans", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LabelTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LabelTable.Location = new System.Drawing.Point(20, 5);
-            this.LabelTable.Name = "LabelTable";
-            this.LabelTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LabelTable.Size = new System.Drawing.Size(88, 47);
-            this.LabelTable.TabIndex = 10;
-            this.LabelTable.Text = "test";
-            // 
             // settingsPanel
             // 
             this.settingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
@@ -249,11 +119,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label7.Location = new System.Drawing.Point(11, 15);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(175, 37);
+            this.label7.Size = new System.Drawing.Size(175, 39);
             this.label7.TabIndex = 2;
             this.label7.Text = "Regisztráció";
             // 
@@ -293,11 +163,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label5.Location = new System.Drawing.Point(11, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 37);
+            this.label5.Size = new System.Drawing.Size(141, 39);
             this.label5.TabIndex = 2;
             this.label5.Text = "Járművek";
             // 
@@ -317,11 +187,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label4.Location = new System.Drawing.Point(11, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 37);
+            this.label4.Size = new System.Drawing.Size(157, 39);
             this.label4.TabIndex = 2;
             this.label4.Text = "Szerelések";
             // 
@@ -351,11 +221,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label3.Location = new System.Drawing.Point(11, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 37);
+            this.label3.Size = new System.Drawing.Size(191, 39);
             this.label3.TabIndex = 2;
             this.label3.Text = "Kijelentkezés";
             // 
@@ -385,11 +255,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label2.Location = new System.Drawing.Point(11, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 37);
+            this.label2.Size = new System.Drawing.Size(170, 39);
             this.label2.TabIndex = 2;
             this.label2.Text = "Alkatrészek";
             // 
@@ -419,11 +289,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 37);
+            this.label1.Size = new System.Drawing.Size(131, 39);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ügyfelek";
             // 
@@ -436,6 +306,139 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(158, 32);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Beállítások";
+            // 
+            // panelMain
+            // 
+            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panelMain.Controls.Add(this.panelTable);
+            this.panelMain.Controls.Add(this.panelButtons);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(255, 121);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(726, 512);
+            this.panelMain.TabIndex = 1;
+            // 
+            // panelTable
+            // 
+            this.panelTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.panelTable.Controls.Add(this.LabelTable);
+            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTable.Location = new System.Drawing.Point(0, 0);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(726, 449);
+            this.panelTable.TabIndex = 3;
+            // 
+            // LabelTable
+            // 
+            this.LabelTable.AutoSize = true;
+            this.LabelTable.Font = new System.Drawing.Font("Open Sans", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LabelTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LabelTable.Location = new System.Drawing.Point(20, 5);
+            this.LabelTable.Name = "LabelTable";
+            this.LabelTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LabelTable.Size = new System.Drawing.Size(90, 50);
+            this.LabelTable.TabIndex = 10;
+            this.LabelTable.Text = "test";
+            // 
+            // panelButtons
+            // 
+            this.panelButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelButtons.Location = new System.Drawing.Point(0, 449);
+            this.panelButtons.Name = "panelButtons";
+            this.panelButtons.Size = new System.Drawing.Size(726, 63);
+            this.panelButtons.TabIndex = 2;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.MenuPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panelMain, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 636);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.panel2.Controls.Add(this.searchBar);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(255, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(726, 112);
+            this.panel2.TabIndex = 2;
+            // 
+            // searchBar
+            // 
+            this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.searchBar.Location = new System.Drawing.Point(20, 41);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(697, 36);
+            this.searchBar.TabIndex = 1;
+            this.searchBar.TextChanged += new System.EventHandler(this.SearchBar_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.Location = new System.Drawing.Point(61, -99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(598, 36);
+            this.textBox1.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.LabelUser);
+            this.panel1.Controls.Add(this.PicBoxRole);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(246, 112);
+            this.panel1.TabIndex = 11;
+            // 
+            // LabelUser
+            // 
+            this.LabelUser.AutoSize = true;
+            this.LabelUser.Font = new System.Drawing.Font("Open Sans ExtraBold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.LabelUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.LabelUser.Location = new System.Drawing.Point(81, 35);
+            this.LabelUser.Name = "LabelUser";
+            this.LabelUser.Size = new System.Drawing.Size(99, 54);
+            this.LabelUser.TabIndex = 3;
+            this.LabelUser.Text = "test";
+            // 
+            // PicBoxRole
+            // 
+            this.PicBoxRole.Location = new System.Drawing.Point(18, 35);
+            this.PicBoxRole.Name = "PicBoxRole";
+            this.PicBoxRole.Size = new System.Drawing.Size(47, 48);
+            this.PicBoxRole.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicBoxRole.TabIndex = 9;
+            this.PicBoxRole.TabStop = false;
             // 
             // hoverPanel6
             // 
@@ -461,12 +464,12 @@
             // 
             // Main_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(984, 636);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Open Sans Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Open Sans SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MinimumSize = new System.Drawing.Size(1000, 675);
@@ -476,15 +479,6 @@
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
-            this.panelMain.ResumeLayout(false);
-            this.panelTable.ResumeLayout(false);
-            this.panelTable.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -503,6 +497,15 @@
             this.customersPanel.ResumeLayout(false);
             this.customersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelMain.ResumeLayout(false);
+            this.panelTable.ResumeLayout(false);
+            this.panelTable.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
             this.hoverPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);

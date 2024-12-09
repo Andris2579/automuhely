@@ -41,11 +41,17 @@
             this.txtAlvazAdat = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtElozoJav = new System.Windows.Forms.TextBox();
+            this.nUpDDate = new System.Windows.Forms.NumericUpDown();
+            this.comBoxTipus = new System.Windows.Forms.ComboBox();
+            this.comBoxHibakod = new System.Windows.Forms.ComboBox();
+            this.comBoxSablon = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnAdd = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUpDDate)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -120,6 +126,65 @@
             resources.ApplyResources(this.txtElozoJav, "txtElozoJav");
             this.txtElozoJav.Name = "txtElozoJav";
             // 
+            // nUpDDate
+            // 
+            resources.ApplyResources(this.nUpDDate, "nUpDDate");
+            this.nUpDDate.Maximum = new decimal(new int[] {
+            2100,
+            0,
+            0,
+            0});
+            this.nUpDDate.Minimum = new decimal(new int[] {
+            1886,
+            0,
+            0,
+            0});
+            this.nUpDDate.Name = "nUpDDate";
+            this.nUpDDate.Value = new decimal(new int[] {
+            1886,
+            0,
+            0,
+            0});
+            // 
+            // comBoxTipus
+            // 
+            this.comBoxTipus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxTipus.FormattingEnabled = true;
+            resources.ApplyResources(this.comBoxTipus, "comBoxTipus");
+            this.comBoxTipus.Name = "comBoxTipus";
+            // 
+            // comBoxHibakod
+            // 
+            this.comBoxHibakod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxHibakod.FormattingEnabled = true;
+            resources.ApplyResources(this.comBoxHibakod, "comBoxHibakod");
+            this.comBoxHibakod.Name = "comBoxHibakod";
+            // 
+            // comBoxSablon
+            // 
+            this.comBoxSablon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxSablon.FormattingEnabled = true;
+            resources.ApplyResources(this.comBoxSablon, "comBoxSablon");
+            this.comBoxSablon.Name = "comBoxSablon";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label5.Name = "label5";
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
@@ -140,32 +205,18 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // numericUpDown1
-            // 
-            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            2100,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1886,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1886,
-            0,
-            0,
-            0});
-            // 
             // NewVehicle
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comBoxSablon);
+            this.Controls.Add(this.comBoxHibakod);
+            this.Controls.Add(this.comBoxTipus);
+            this.Controls.Add(this.nUpDDate);
             this.Controls.Add(this.txtElozoJav);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAlvazAdat);
@@ -180,9 +231,11 @@
             this.Controls.Add(this.alkatrészLeírás_Lb);
             this.Controls.Add(this.txtMotorAdat);
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "NewVehicle";
+            this.Load += new System.EventHandler(this.NewVehicle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUpDDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,6 +257,12 @@
         private System.Windows.Forms.TextBox txtAlvazAdat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtElozoJav;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nUpDDate;
+        private System.Windows.Forms.ComboBox comBoxTipus;
+        private System.Windows.Forms.ComboBox comBoxHibakod;
+        private System.Windows.Forms.ComboBox comBoxSablon;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

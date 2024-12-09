@@ -19,15 +19,20 @@ namespace AutoMuhely
         //Sql lekérdezések
         static string ugyfelekSql= "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail' ,cim AS Cím FROM ugyfelek; ";
         static string alkatreszekSql= "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek";
-        static string jarmuvekSql= "SELECT rendszam AS Rendszám, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek;";
+        static string jarmuvekSql= "SELECT rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod_id AS Hibakód, mf.nev AS Sablon, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j JOIN tipus t ON j.tipus_id= t.tipus_id JOIN hibakodok h ON h.kod_id = j.kod_id JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id JOIN marka m ON t.marka_id= m.marka_id;";
         static string hibakodSql = "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok";
         static string munkafolySql = "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok";
         static string utmutatoSql = "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus=t.tipus_id JOIN marka m ON m.marka_id= t.marka_id";
-
+        //old jarmuvek SELECT rendszam AS Rendszám, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek;
+        //SELECT rendszam AS Rendszám, t.tipus, m.marka_neve, h.kod_id, mf.nev, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j LEFT JOIN tipus t ON j.tipus_id= t.tipus_id LEFT JOIN hibakodok h ON h.kod_id = j.kod_id LEFT JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id LEFT JOIN marka m ON t.marka_id= m.marka_id; 
         public Main_Form()
         {
             InitializeComponent();
-
+            //no paddig
+            foreach (Control control in this.tableLayoutPanel1.Controls)
+            {
+                control.Margin = new Padding(0);
+            }
             customersPanel.PanelClicked += (sender, e) => LoadData("Ügyfelek",ugyfelekSql);
             partsPanel.PanelClicked += (sender, e) => LoadData("Alkatrészek", alkatreszekSql);
             repairsPanel.PanelClicked += (sender, e) => LoadSzerelesek();
@@ -110,6 +115,7 @@ namespace AutoMuhely
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
                 GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
+                GenerateHoverPanel("Ügyfélhez csatolás", new Point(340, 0), new Size(240, 63), Ugyfel_Jarmuvek);
             }
             
 
@@ -127,6 +133,9 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Járművek")
             {
+                NewVehicle newVehicle = new NewVehicle();
+                newVehicle.ShowDialog();
+                LoadData("Járművek", jarmuvekSql);
             }
         }
 
@@ -162,7 +171,10 @@ namespace AutoMuhely
             {
             }
         }
+        private void Ugyfel_Jarmuvek(object sender, EventArgs e)
+        {
 
+        }
         private void InitializeTable(string query, Dictionary<string, object> parameters = null)
         {
             CustomizeTable(table_DGV);
@@ -455,13 +467,14 @@ namespace AutoMuhely
             table.ReadOnly = true;
             table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            table.RowTemplate.Height = 35;
 
             foreach (DataGridViewColumn column in table.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
 
-            table.Size = new Size(panelMain.Width - 30, panelMain.Height - 130);
+            table.Size = new Size(panelMain.Width - 30, panelMain.Height - 150);
             table.Location = new Point(20, 70);
         }
         private void ClearPanelContentsExceptOne(Panel panel, Control controlToKeep)
@@ -478,10 +491,39 @@ namespace AutoMuhely
         }
         private Dictionary<string, string> searchQueries = new Dictionary<string, string>
         {
-            { "Ügyfelek", "SELECT * FROM ugyfelek WHERE nev LIKE '%{0}%' OR elerhetoseg LIKE '%{0}%' OR cim LIKE '%{0}%'" },
-            { "Alkatrészek", "SELECT * FROM alkatreszek WHERE nev LIKE '%{0}%' OR leiras LIKE '%{0}%' OR keszlet_mennyiseg LIKE '%{0}%' OR utanrendelesi_szint LIKE '%{0}%'" },
-            { "Járművek", "SELECT jarmuvek.jarmu_id, jarmuvek.rendszam, jarmuvek.tipus_id, jarmuvek.kod_id, jarmuvek.sablon_id, jarmuvek.gyartas_eve, jarmuvek.motor_adatok, jarmuvek.alvaz_adatok, jarmuvek.elozo_javitasok, tipus.tipus, hibakodok.kod, munkafolyamat_sablonok.nev FROM jarmuvek AS j INNER JOIN tipus AS t ON j.tipus_id = t.tipus_id INNER JOIN hibakodok AS k ON j.kod_id = k.kod_id INNER JOIN munkafolyamat_sablonok AS s ON j.sablon_id = s.sablon_id WHERE j.rendszam LIKE '%{0}%' OR t.tipus LIKE '%{0}%'" }
-        };
+    { "Ügyfelek",
+        "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail', cim AS Cím " +
+        "FROM ugyfelek WHERE nev LIKE '%{0}%' OR telefonszam LIKE '%{0}%' OR email LIKE '%{0}%' OR cim LIKE '%{0}%';" },
+
+    { "Alkatrészek",
+        "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' " +
+        "FROM alkatreszek WHERE nev LIKE '%{0}%' OR leiras LIKE '%{0}%' OR keszlet_mennyiseg LIKE '%{0}%' OR utanrendelesi_szint LIKE '%{0}%';" },
+
+    { "Járművek",
+        "SELECT j.rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, " +
+        "j.gyartas_eve AS 'Gyártás éve', j.motor_adatok AS 'Motor adatok', j.alvaz_adatok AS 'Alváz adatok', j.elozo_javitasok AS 'Előző javítások' " +
+        "FROM jarmuvek j " +
+        "JOIN tipus t ON j.tipus_id = t.tipus_id " +
+        "JOIN hibakodok h ON h.kod_id = j.kod_id " +
+        "JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id " +
+        "JOIN marka m ON t.marka_id = m.marka_id " +
+        "WHERE j.rendszam LIKE '%{0}%' OR t.tipus LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR h.kod LIKE '%{0}%';" },
+
+    { "Hibakódok",
+        "SELECT kod AS Hibakód, leiras AS Leírás " +
+        "FROM hibakodok WHERE kod LIKE '%{0}%' OR leiras LIKE '%{0}%';" },
+
+    { "Munkafolyamatok",
+        "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' " +
+        "FROM munkafolyamat_sablonok WHERE nev LIKE '%{0}%' OR lepesek LIKE '%{0}%';" },
+
+    { "Útmutatók",
+        "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' " +
+        "FROM szerelesi_utmutatok s " +
+        "JOIN tipus t ON s.jarmu_tipus = t.tipus_id " +
+        "JOIN marka m ON t.marka_id = m.marka_id " +
+        "WHERE s.cim LIKE '%{0}%' OR s.tartalom LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR t.tipus LIKE '%{0}%';" }
+};
         private void SearchBar_TextChanged(object sender, EventArgs e)
         {
             string keresettKifejezes = searchBar.Text.Trim();
@@ -494,7 +536,8 @@ namespace AutoMuhely
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
-            table_DGV.Size = new Size(panelMain.Width - 30, panelMain.Height - 130);
+            table_DGV.Size = new Size(panelMain.Width - 30, panelMain.Height - 10);
         }
+
     }
 }
