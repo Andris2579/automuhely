@@ -1,6 +1,6 @@
 ﻿namespace AutoMuhely
 {
-    partial class újMunkafolyamat
+    partial class InputWorkFlow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(újMunkafolyamat));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputWorkFlow));
             this.label1 = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();

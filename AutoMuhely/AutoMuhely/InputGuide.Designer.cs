@@ -1,6 +1,6 @@
 ﻿namespace AutoMuhely
 {
-    partial class újÚtmutató
+    partial class InputGuide
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(újÚtmutató));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputGuide));
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();
@@ -199,14 +199,13 @@
             this.Controls.Add(this.txtUtmutatoLeiras);
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 725);
             this.MinimumSize = new System.Drawing.Size(370, 725);
             this.Name = "újÚtmutató";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Új Útmutató";
-            this.Load += new System.EventHandler(this.újÚtmutató_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

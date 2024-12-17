@@ -6,7 +6,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoMuhely
 {
-    public partial class újMunkafolyamat : Form
+    public partial class InputWorkFlow : Form
     {
         DatabaseHandler databaseHandler = new DatabaseHandler();
 
@@ -16,7 +16,7 @@ namespace AutoMuhely
         public string OriginalLepesek { get; set; }
         public string OriginalBecsultIdo { get; set; }
 
-        public újMunkafolyamat(string nev = null, string lepesek = null, string becsultIdo = null)
+        public InputWorkFlow(string nev = null, string lepesek = null, string becsultIdo = null)
         {
             InitializeComponent();
 
@@ -47,6 +47,13 @@ namespace AutoMuhely
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtSablonNev.Text) ||
+            string.IsNullOrWhiteSpace(txtSablonleiras.Text) ||
+            numSablonIdo.Value <= 0)
+                {
+                    MessageBox.Show("Kérjük, töltse ki az összes mezőt és adjon meg pozitív értékeket!", "Hiányzó vagy érvénytelen adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 if (IsEditMode)
                 {

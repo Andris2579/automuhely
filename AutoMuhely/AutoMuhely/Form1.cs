@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace AutoMuhely
 {
@@ -19,12 +20,11 @@ namespace AutoMuhely
         //Sql lekérdezések
         static string ugyfelekSql= "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail' ,cim AS Cím FROM ugyfelek; ";
         static string alkatreszekSql= "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek";
-        static string jarmuvekSql= "SELECT rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod_id AS Hibakód, mf.nev AS Sablon, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j JOIN tipus t ON j.tipus_id= t.tipus_id JOIN hibakodok h ON h.kod_id = j.kod_id JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id JOIN marka m ON t.marka_id= m.marka_id;";
+        static string jarmuvekSql= "SELECT rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j JOIN tipus t ON j.tipus_id= t.tipus_id JOIN hibakodok h ON h.kod_id = j.kod_id JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id JOIN marka m ON t.marka_id= m.marka_id;";
         static string hibakodSql = "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok";
         static string munkafolySql = "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok";
         static string utmutatoSql = "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus=t.tipus_id JOIN marka m ON m.marka_id= t.marka_id";
-        //old jarmuvek SELECT rendszam AS Rendszám, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek;
-        //SELECT rendszam AS Rendszám, t.tipus, m.marka_neve, h.kod_id, mf.nev, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j LEFT JOIN tipus t ON j.tipus_id= t.tipus_id LEFT JOIN hibakodok h ON h.kod_id = j.kod_id LEFT JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id LEFT JOIN marka m ON t.marka_id= m.marka_id; 
+        
         public Main_Form()
         {
             InitializeComponent();
@@ -127,13 +127,13 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Alkatrészek")
             {
-                alkatrészInputs aInput = new alkatrészInputs();
+                InputParts aInput = new InputParts();
                 aInput.ShowDialog();
                 LoadData("Alkatrészek", alkatreszekSql);
             }
             else if (aktivMenu == "Járművek")
             {
-                NewVehicle newVehicle = new NewVehicle();
+                InputVehicle newVehicle = new InputVehicle();
                 newVehicle.ShowDialog();
                 LoadData("Járművek", jarmuvekSql);
             }
@@ -162,13 +162,64 @@ namespace AutoMuhely
                     decimal utanrendeles = Convert.ToDecimal(selectedRow.Cells["Utánrendelési szint"].Value);
 
                     // Pass data to alkatrészInputs for editing
-                    alkatrészInputs aInput = new alkatrészInputs(alkatrész, leiras, keszlet, utanrendeles);
+                    InputParts aInput = new InputParts(alkatrész, leiras, keszlet, utanrendeles);
                     aInput.ShowDialog();
                 }
                 InitializeTable(alkatreszekSql);
             }
             else if (aktivMenu == "Járművek")
             {
+                if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+                {
+                    MessageBox.Show("Kérlek válassz egy járművet a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                    // Extract data from the selected row
+                    string rendszam = selectedRow.Cells["Rendszám"].Value?.ToString();
+                    string tipus = selectedRow.Cells["Típus"].Value?.ToString();
+                    string kod = selectedRow.Cells["Hibakód"].Value?.ToString();
+                    string sablon = selectedRow.Cells["Sablon"].Value?.ToString();
+                    int gyartasEve = Convert.ToInt32(selectedRow.Cells["Gyártás éve"].Value);
+                    string motorAdatok = selectedRow.Cells["Motor adatok"].Value?.ToString();
+                    string alvazAdatok = selectedRow.Cells["Alváz adatok"].Value?.ToString();
+                    string elozoJavitasok = selectedRow.Cells["Előző javítások"].Value?.ToString();
+                    string sqlQuery = "SELECT tipus_id FROM tipus WHERE tipus = @tipus";
+                    var parameters = new Dictionary<string, object>
+                {
+                    { "@tipus", tipus }
+                };
+                    int tipusID = databaseHandler.LookupID(sqlQuery, parameters);
+                     sqlQuery = "SELECT kod_id FROM hibakodok WHERE kod=@kod";
+                     parameters = new Dictionary<string, object>
+                {
+                    { "@kod", kod }
+                };
+                    int kodID = databaseHandler.LookupID(sqlQuery, parameters);
+                    sqlQuery = "SELECT sablon_id FROM munkafolyamat_sablonok WHERE nev=@nev";
+                    parameters = new Dictionary<string, object>
+                {
+                    { "@nev", sablon }
+                };
+                    int sablonID = databaseHandler.LookupID(sqlQuery, parameters);
+
+                    // Open the NewVehicle form in edit mode
+                    InputVehicle vehicleForm = new InputVehicle(
+                        rendszam,
+                        tipusID,
+                        kodID,
+                        sablonID,
+                        gyartasEve,
+                        motorAdatok,
+                        alvazAdatok,
+                        elozoJavitasok
+                    );
+
+                    vehicleForm.ShowDialog();
+                }
+                InitializeTable(jarmuvekSql); // Refresh the table after editing
             }
         }
         private void Ugyfel_Jarmuvek(object sender, EventArgs e)
@@ -267,7 +318,7 @@ namespace AutoMuhely
                 {
                     Image = icon,
                     Size = new Size(50, 50),
-                    Location = new Point(186, 6), // Right-aligned padding
+                    Location = new Point(186, 6),
                     SizeMode = PictureBoxSizeMode.StretchImage
                 };
                 hoverPanel.Controls.Add(pictureBox);
@@ -294,7 +345,7 @@ namespace AutoMuhely
         }
         private void SzerelesekUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            újÚtmutató Add = new újÚtmutató();
+            InputGuide Add = new InputGuide();
             Add.ShowDialog();
             InitializeTable(utmutatoSql);
         }
@@ -322,7 +373,7 @@ namespace AutoMuhely
                 int tipusID=databaseHandler.LookupID(sqlQuery, parameters);
 
                 // Pass data to újHibakód for editing
-                újÚtmutató Edit = new újÚtmutató(cim,utmutato,tipusID);
+                InputGuide Edit = new InputGuide(cim,utmutato,tipusID);
                 Edit.ShowDialog();
                 InitializeTable(utmutatoSql);
             }
@@ -338,7 +389,7 @@ namespace AutoMuhely
         }
         private void HibakodokUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            újHibakód ujHibaKod = new újHibakód();
+            InputCode ujHibaKod = new InputCode();
             ujHibaKod.ShowDialog();
             InitializeTable(hibakodSql);
         }
@@ -359,7 +410,7 @@ namespace AutoMuhely
                     string leiras = selectedRow.Cells["Leírás"].Value?.ToString();
 
                     // Pass data to újHibakód for editing
-                    újHibakód hibakodForm = new újHibakód(hibakod, leiras);
+                    InputCode hibakodForm = new InputCode(hibakod, leiras);
                     hibakodForm.ShowDialog();
                 InitializeTable(hibakodSql);
                 }
@@ -378,7 +429,7 @@ namespace AutoMuhely
         }
         private void MunkafolyamatSablonokUjHozzaadasa_Click(object sender, EventArgs e)
         {
-            újMunkafolyamat ujMunkaF = new újMunkafolyamat();
+            InputWorkFlow ujMunkaF = new InputWorkFlow();
             ujMunkaF.ShowDialog();
             InitializeTable(munkafolySql);
         }
@@ -400,7 +451,7 @@ namespace AutoMuhely
                 string becsultIdo = selectedRow.Cells["Becsült Idő"].Value?.ToString();
 
                 // Pass data to újMunkafolyamat for editing
-                újMunkafolyamat sablonForm = new újMunkafolyamat(nev, lepesek, becsultIdo);
+                InputWorkFlow sablonForm = new InputWorkFlow(nev, lepesek, becsultIdo);
                 sablonForm.ShowDialog();
 
                 // Refresh the table after editing

@@ -30,7 +30,6 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.pdb
 C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.dll
 C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.xml
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészInputs.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
@@ -46,10 +45,6 @@ C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosít
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészTörlés.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.RegistrationForm.resources
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe.config
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe
@@ -71,4 +66,8 @@ D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CopyComplete
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.exe
 D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.pdb
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.NewVehicle.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputParts.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputVehicle.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCode.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputWorkFlow.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputGuide.resources

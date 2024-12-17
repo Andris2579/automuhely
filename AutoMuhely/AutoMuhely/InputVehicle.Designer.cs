@@ -1,6 +1,6 @@
 ﻿namespace AutoMuhely
 {
-    partial class NewVehicle
+    partial class InputVehicle
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewVehicle));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputVehicle));
             this.label2 = new System.Windows.Forms.Label();
             this.lblIsEdit = new System.Windows.Forms.Label();
             this.LoginLabel = new System.Windows.Forms.Label();

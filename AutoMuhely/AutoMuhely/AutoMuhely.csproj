@@ -49,17 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="alkatrészInputs.cs">
+    <Compile Include="InputParts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="alkatrészInputs.Designer.cs">
-      <DependentUpon>alkatrészInputs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="alkatrészTörlés.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="alkatrészTörlés.Designer.cs">
-      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
+    <Compile Include="InputParts.Designer.cs">
+      <DependentUpon>InputParts.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
@@ -78,11 +72,11 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewVehicle.cs">
+    <Compile Include="InputVehicle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewVehicle.Designer.cs">
-      <DependentUpon>NewVehicle.cs</DependentUpon>
+    <Compile Include="InputVehicle.Designer.cs">
+      <DependentUpon>InputVehicle.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,29 +86,26 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="újHibakód.cs">
+    <Compile Include="InputCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="újHibakód.Designer.cs">
-      <DependentUpon>újHibakód.cs</DependentUpon>
+    <Compile Include="InputCode.Designer.cs">
+      <DependentUpon>InputCode.cs</DependentUpon>
     </Compile>
-    <Compile Include="újMunkafolyamat.cs">
+    <Compile Include="InputWorkFlow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="újMunkafolyamat.Designer.cs">
-      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
+    <Compile Include="InputWorkFlow.Designer.cs">
+      <DependentUpon>InputWorkFlow.cs</DependentUpon>
     </Compile>
-    <Compile Include="újÚtmutató.cs">
+    <Compile Include="InputGuide.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="újÚtmutató.Designer.cs">
-      <DependentUpon>újÚtmutató.cs</DependentUpon>
+    <Compile Include="InputGuide.Designer.cs">
+      <DependentUpon>InputGuide.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="alkatrészInputs.resx">
-      <DependentUpon>alkatrészInputs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="alkatrészTörlés.resx">
-      <DependentUpon>alkatrészTörlés.cs</DependentUpon>
+    <EmbeddedResource Include="InputParts.resx">
+      <DependentUpon>InputParts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -122,8 +113,8 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewVehicle.resx">
-      <DependentUpon>NewVehicle.cs</DependentUpon>
+    <EmbeddedResource Include="InputVehicle.resx">
+      <DependentUpon>InputVehicle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,14 +129,14 @@
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="újHibakód.resx">
-      <DependentUpon>újHibakód.cs</DependentUpon>
+    <EmbeddedResource Include="InputCode.resx">
+      <DependentUpon>InputCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="újMunkafolyamat.resx">
-      <DependentUpon>újMunkafolyamat.cs</DependentUpon>
+    <EmbeddedResource Include="InputWorkFlow.resx">
+      <DependentUpon>InputWorkFlow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="újÚtmutató.resx">
-      <DependentUpon>újÚtmutató.cs</DependentUpon>
+    <EmbeddedResource Include="InputGuide.resx">
+      <DependentUpon>InputGuide.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

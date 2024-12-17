@@ -12,14 +12,14 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoMuhely
 {
-    public partial class újÚtmutató : Form
+    public partial class InputGuide : Form
     {
         public bool IsEditMode { get; set; }
         public string OriginalCim { get; set; }
         public string OriginalTartalom { get; set; }
         public int OriginalJarmuTipusID { get; set; }
 
-        public újÚtmutató(string cim = null, string tartalom = null, int? jarmuTipusID = null)
+        public InputGuide(string cim = null, string tartalom = null, int? jarmuTipusID = null)
         {
             InitializeComponent();
 
@@ -84,15 +84,18 @@ namespace AutoMuhely
                 MessageBox.Show($"Hiba történt a járműtípusok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void újÚtmutató_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtUtmutatoNev.Text) ||
+            string.IsNullOrWhiteSpace(txtUtmutatoLeiras.Text) ||
+            comboBox1.SelectedValue == null)
+                {
+                    MessageBox.Show("Kérjük, töltse ki az összes mezőt!", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (IsEditMode)
                 {
                     // Edit Mode: Update the record
