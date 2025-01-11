@@ -32,4 +32,8 @@ class UserController{
     public static function updateUser($data){
         return User::update($data);
     }
+
+    public static function userLoggedIn(){
+        return isset($_SESSION['user']);
+    }
 }

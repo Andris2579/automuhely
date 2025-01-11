@@ -19,6 +19,17 @@ $(document).ready(function () {
         dataType: "json",
         success: function (response) {
             $('header').html(response);
+            if(window.location.href == ('http://localhost' + BASE_URL + "public/pages/login.html") ||
+            window.location.href == ('http://localhost' + BASE_URL + "public/pages/register.html")){
+                $.ajax({
+                    type: "GET",
+                    url: BASE_URL + "routes/api.php/userLoggedIn",
+                    dataType: "json",
+                    success: function (response) {
+                        window.location = BASE_URL + "public/index.html";
+                    }
+                });
+            }
         }
     });
     $.ajax({
@@ -29,4 +40,22 @@ $(document).ready(function () {
             $('footer').html(response);
         }
     });
+    $(document).on("click","#logoHamburger", function(event){
+        const nav = $('nav');
+        if (nav.css('display') === 'none') {
+            nav.css('display', 'inline');
+        } else {
+            nav.css('display', 'none');
+        }
+
+        event.stopPropagation();
+    });
+    $(document).on("click", function(event) {
+        const nav = $('nav');
+    
+        if (!$(event.target).closest("#logoHamburger, nav").length) {
+            nav.css('display', 'none');
+        }
+    });
 });
+

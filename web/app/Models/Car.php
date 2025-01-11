@@ -17,7 +17,7 @@ class Car{
 
     public static function find($username){
         $db = Database::connect();
-        $query = "SELECT j.rendszam, j.gyartas_eve, j.motor_adatok, j.alvaz_adatok, j.elozo_javitasok, t.tipus, i.allapot FROM jarmuvek AS j INNER JOIN ugyfel_jarmuvek AS u_j ON j.jarmu_id = u_j.jarmu_id INNER JOIN ugyfelek AS u ON u.ugyfel_id = u_j.ugyfel_id INNER JOIN felhasznalok_ugyfelek AS f_u ON f_u.ugyfel_id = u.ugyfel_id INNER JOIN felhasznalok AS f ON f.felhasznalo_id = f_u.felhasznalo_id INNER JOIN tipus AS t ON t.tipus_id = j.tipus_id INNER JOIN idopontfoglalasok AS i ON j.jarmu_id = i.jarmu_id WHERE f.felhasznalonev = '$username';";
+        $query = "SELECT j.jarmu_id, j.rendszam, j.gyartas_eve, j.motor_adatok, j.alvaz_adatok, j.elozo_javitasok, t.tipus, i.allapot FROM jarmuvek AS j INNER JOIN ugyfel_jarmuvek AS u_j ON j.jarmu_id = u_j.jarmu_id INNER JOIN ugyfelek AS u ON u.ugyfel_id = u_j.ugyfel_id INNER JOIN felhasznalok_ugyfelek AS f_u ON f_u.ugyfel_id = u.ugyfel_id INNER JOIN felhasznalok AS f ON f.felhasznalo_id = f_u.felhasznalo_id INNER JOIN tipus AS t ON t.tipus_id = j.tipus_id LEFT JOIN idopontfoglalasok AS i ON i.jarmu_id = j.jarmu_id WHERE f.felhasznalonev = '$username';";
         $result = $db->query($query);
         $car = $result->fetch_all(MYSQLI_ASSOC);
         return $car;

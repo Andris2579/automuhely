@@ -11,4 +11,8 @@ class ServiceController{
     public static function singleService($id){
         return Service::find($id);
     }
+
+    public static function bookService($data){
+        return Service::book($data);
+    }
 }

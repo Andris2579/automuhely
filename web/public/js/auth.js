@@ -17,14 +17,14 @@ export function registerAuth(event){
         success: function (response) {
             if(response.success){
                 alert("Sikeres regisztráció!");
-                window.location.href = BASE_URL + "/public/index.html";
+                window.location.href = BASE_URL + "public/index.html";
             }
         },
         error: function (xhr) {
             if (xhr.status === 400) {
                 const errorResponse = JSON.parse(xhr.responseText);
                 alert(errorResponse.message);
-                window.location.href = BASE_URL + "/public/index.html";
+                window.location.href = BASE_URL + "public/index.html";
             } else {
                 alert("Hiba történt! :(");
             }
@@ -44,12 +44,12 @@ export function loginAuth(event){
         success: function (response) {
             if(response.success){
                 alert(response.message);
-                window.location.href = BASE_URL + "/public/index.html";
+                window.location.href = BASE_URL + "public/index.html";
             }
         },
         error: function (xhr) {
-            alert(xhr.message);
-                window.location.href = BASE_URL + "/public/index.html";
+            alert(xhr.responseJSON.message);
+            window.location.href = BASE_URL + "public/index.html";
         }
     });
 }
@@ -62,7 +62,7 @@ export function logoutAuth(event){
         dataType: "json",
         success: function (response) {
             alert("Sikeres kijelentkezés!");
-                window.location.href = BASE_URL + "/public/index.html";
+                window.location.href = BASE_URL + "public/index.html";
         }
     });
 }

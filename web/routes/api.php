@@ -42,6 +42,7 @@ $routes = [
         },
         'userSettingsSave' => [UserController::class, 'updateUser'],
         'car' => [CarController::class, 'createCar', 'Az autó sikeresen létrehozva!', 'Az autó létrehozása nem sikerült.'],
+        'service' => [ServiceController::class, 'bookService', 'Sikeres foglalás!', 'Sikertelen foglalás!']
     ],
     'GET' => [
         'header' => function(){
@@ -54,6 +55,7 @@ $routes = [
         'carBrand' => [CarBrandController::class, 'allBrand'],
         'carType' => [CarTypeController::class, 'specificType'],
         'services' => [ServiceController::class, 'allService'],
+        'userLoggedIn' => [UserController::class, 'userLoggedIn', "Igen", "Nem"]
     ],
     'PUT' => [
         'cars' => [CarController::class, 'updateCar', 'Az autó sikeresen frissítve!', 'Az autó frissítése nem sikerült.']
