@@ -26,7 +26,7 @@ function fetchCars(){
         type: "GET",
         url: BASE_URL + "routes/api.php/userLoggedIn",
         dataType: "json",
-        success: function (response) {
+        success: function () {
             var text = '';
             $.ajax({
                 type: "GET",
