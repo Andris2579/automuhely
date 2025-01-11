@@ -1,0 +1,97 @@
+/*
+#2e3349 gray_ - background
+#181e36 darkblue_
+#0387f6 blue_
+#F67203 pumpkin
+#FFFFFF white_
+*/
+:root{
+    --background-color: #2e3349;
+    --primary-color: #0387f6;
+    --secondary-color: #F67203;
+    --text-color: #FFFFFF;
+    --sub-color: #181e36;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    margin: 5px 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+nav button{
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 320px) {
+    nav{
+        display: none;
+        position: absolute;
+        top: 50px; /* A gomb alá kerül */
+        right: 20px;
+        background-color: #2E3349;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    img{
+        display: block;
+        width: 10vw;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    
+}
+
+@media only screen and (min-width: 1025px){
+
+}
+
+.hidden {
+    display: none;
+}
+
+#extraButtons {
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#extraButtons button {
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#extraButtons button:hover {
+    background-color: #0056b3;
+}
+
+div{
+    display: inline-block;
+}
