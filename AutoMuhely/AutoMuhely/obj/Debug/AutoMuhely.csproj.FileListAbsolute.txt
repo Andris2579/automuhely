@@ -71,3 +71,4 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputVehicle.resou
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCode.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputWorkFlow.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputGuide.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCustomers.resources

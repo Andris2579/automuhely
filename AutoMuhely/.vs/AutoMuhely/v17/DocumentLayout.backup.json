@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Work\\automuhely\\AutoMuhely\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\work\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\work\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\inputcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\inputcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\inputcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\inputcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\inputcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\inputcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",
               "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeToolTip": "AutoMuhely\\Form1.cs",
-              "ViewState": "AgIAAPQAAAAAAAAAAAAUwB0BAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAGQAAAAAAAAAAAApwIUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T10:08:54.218Z",
               "IsPinned": true,
@@ -36,7 +48,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "InputCustomers.cs [Design]",
+              "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCustomers.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\InputCustomers.cs",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCustomers.cs [Design]",
+              "RelativeToolTip": "AutoMuhely\\InputCustomers.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T11:59:41.316Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputCustomers.cs",
+              "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCustomers.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\InputCustomers.cs",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCustomers.cs",
+              "RelativeToolTip": "AutoMuhely\\InputCustomers.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAASwBoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-13T11:30:52.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InputCode.cs [Design]",
+              "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCode.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\InputCode.cs",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputCode.cs [Design]",
+              "RelativeToolTip": "AutoMuhely\\InputCode.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-13T11:11:58.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",

@@ -124,6 +124,9 @@ namespace AutoMuhely
         {
             if (aktivMenu == "Ügyfelek")
             {
+                InputCustomers inputCustomers = new InputCustomers();
+                inputCustomers.ShowDialog();
+                LoadData("Ügyfelek", ugyfelekSql);
             }
             else if (aktivMenu == "Alkatrészek")
             {

@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InputCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputCustomers.Designer.cs">
+      <DependentUpon>InputCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputParts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="InputGuide.Designer.cs">
       <DependentUpon>InputGuide.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="InputCustomers.resx">
+      <DependentUpon>InputCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputParts.resx">
       <DependentUpon>InputParts.cs</DependentUpon>
     </EmbeddedResource>
