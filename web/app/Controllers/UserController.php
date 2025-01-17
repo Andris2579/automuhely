@@ -22,10 +22,10 @@ class UserController{
         if($result){
             $username = $data['username'];
             $_SESSION['user'] = ['username' => $username, 'logged_in' => true];
-            return true;
+            return ["success" => true, "message" => "Sikeres bejelentkezés!"];
         }
         else{
-            return false;
+            return ["success" => false, "message" => "Sikertelen bejelentkezés!"];
         }
     }
 

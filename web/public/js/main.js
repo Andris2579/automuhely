@@ -2,8 +2,8 @@ import { registerAuth, loginAuth, logoutAuth, userSettingsSave } from './auth.js
 import { openProfileSmallMenu } from './ui.js';
 import { userSettingsPageLoad} from './pages.js';
 
-export const BASE_URL = '/Projects/School/automuhely_web/';
-export const APP_URL = 'C:/Minden/Iskola/automuhely/web/';
+export const BASE_URL = '/automuhely_web/';
+export const APP_URL = 'C:/xampp/htdocs/automuhely/web/';
 
 window.userSettingsPageLoad = userSettingsPageLoad;
 window.register = registerAuth;

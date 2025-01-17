@@ -7,15 +7,15 @@ export function fetchServices(){
         url: BASE_URL + "routes/api.php/services",
         dataType: "json",
         success: function (response) {
-            response.forEach(service => {
+            response.data.forEach(service => {
                 text += '<div class="service">'+
                             '<p>'+service['nev']+'</p>'+
                             '<p>'+service['leiras']+'</p>'+
                             '<p>'+service['ar']+' Ft</p>'+
-                            '<button class="book"><a href="#selected_service">Foglalás</a></button>'+
+                            '<button class="book"><a href="public/pages/services.html#selected_service">Foglalás</a></button>'+
                         '</div>';
             });
-            $('main #services').html(text);
+            $('#services').html(text);
             allServices = $('#services').html();
         }
     });
@@ -47,8 +47,6 @@ $(document).on('click', '.book', function(){
         dataType: "json",
         success: function (response) {
             if(response){
-                var d = new Date();
-                var date_input = '<label for="date">Időpont: </label><input type="date" id="date" name="date" value="'+d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()+'"><br>';
                 var cars = '<label for="cars">Autók: </label><select id="cars" name="cars"><option value="valasszon">Válasszon egy autót!</option>';
                 response.forEach(car => {
                     if(car['allapot'] == null){
@@ -57,7 +55,7 @@ $(document).on('click', '.book', function(){
                 })
                 cars += "</select><br>";
                 var final_book = '<button id="final_book" onclick="finalize()">Véglegesítés</button>';
-                selected_service.html(selected_service.html() + date_input + cars + final_book);
+                selected_service.html(selected_service.html() + cars + final_book);
             }
             else{
                 selected_service.html(selected_service.html() + '<br><h1><a href="'+BASE_URL+'public/pages/login.html">Jelentkezzen be</a>, vagy <a href="'+BASE_URL+'public/pages/register.html">regisztráljon</a> a foglalás véglegesítéséhez!</h1>');
@@ -67,26 +65,18 @@ $(document).on('click', '.book', function(){
 });
 
 function finalize(){
-    var d = new Date();
     var car_id = $('#cars').val();
-    var date = $('#date').val();
-    const data = {service_id: selected_div_id, car_id: car_id, date: date}
-    if(date > (d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate())){
-        $.ajax({
-            type: "POST",
-            url: BASE_URL + "routes/api.php/service",
-            data: data,
-            dataType: "json",
-            success: function (response) {
-                alert(response.message);
-                window.location = BASE_URL + "public/pages/services.html";
-            }
-        });
-    }
-    else{
-        alert("A mai napnál későbbi dátumot válasszon!");
-        window.location = BASE_URL + "public/pages/services.html";
-    }
+    const data = {service_id: selected_div_id, car_id: car_id}
+    $.ajax({
+        type: "POST",
+        url: BASE_URL + "routes/api.php/service",
+        data: data,
+        dataType: "json",
+        success: function (response) {
+            alert(response.message);
+            window.location = BASE_URL + "public/pages/services.html";
+        }
+    });
 }
 
 let allServices = null

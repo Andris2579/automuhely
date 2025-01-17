@@ -6,16 +6,16 @@ use App\Models\Car;
 class CarController{
     public static function allCar(){
         $cars = Car::all();
-        echo json_encode($cars);
+        return $cars;
     }
 
     public static function userCars(){
         if(isset($_SESSION['user']['logged_in'])){
             $cars = Car::find($_SESSION['user']['username']);
-            echo json_encode($cars);
+            return $cars;
         }
         else{
-            echo json_encode(null);
+            return null;
         }
     }
 

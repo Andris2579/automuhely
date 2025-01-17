@@ -6,6 +6,6 @@ use App\Models\CarBrand;
 class CarBrandController{
     public static function allBrand(){
         $brands = CarBrand::all();
-        echo json_encode($brands);
+        return $brands;
     }
 }

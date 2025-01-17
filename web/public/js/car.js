@@ -35,15 +35,15 @@ function fetchCars(){
                 success: function (response) {
                     if(response.length > 0){
                         response.forEach(car => {
-                            text += '<div class="car">'+
-                                        '<p>Rendszám: '+(car['rendszam'] == null ? '-' : car['rendszam'])+'</p><br>'+
-                                        '<p>Típus: '+(car['tipus'] == null ? '-' : car['tipus'])+'</p><br>'+
-                                        '<p>Gyártás éve: '+(car['gyartas_eve'] == null ? '-' : car['gyartas_eve'])+'</p><br>'+
-                                        '<p>Alváz adatok: '+(car['alvaz_adatok'] == null ? '-' : car['alvaz_adatok'])+'</p><br>'+
-                                        '<p>Motor adatok: '+(car['motor_adatok'] == null ? '-' : car['motor_adatok'])+'</p><br>'+
-                                        '<p>Előző javítások: '+(car['elozo_javitasok'] == null ? '-' : car['elozo_javitasok'])+'</p><br>'+
-                                        '<p>Állapot: '+(car['allapot'] == null ? '-' : car['allapot'])+'</p><br>'+
-                                    '</div>';
+                            text += '<div class="myCar"><table>'+
+                                        '<tr><td>Rendszám: </td><td>'+(car['rendszam'] == null ? '-' : car['rendszam'])+'</td></tr>'+
+                                        '<tr><td>Típus: </td><td>'+(car['tipus'] == null ? '-' : car['tipus'])+'</td></tr>'+
+                                        '<tr><td>Gyártás éve: </td><td>'+(car['gyartas_eve'] == null ? '-' : car['gyartas_eve'])+'</td></tr>'+
+                                        '<tr><td>Alváz adatok: </td><td>'+(car['alvaz_adatok'] == null ? '-' : car['alvaz_adatok'])+'</td></tr>'+
+                                        '<tr><td>Motor adatok: </td><td>'+(car['motor_adatok'] == null ? '-' : car['motor_adatok'])+'</td></tr>'+
+                                        '<tr><td>Előző javítások: </td><td>'+(car['elozo_javitasok'] == null ? '-' : car['elozo_javitasok'])+'</td></tr>'+
+                                        '<tr><td>Állapot: </td><td>'+(car['allapot'] == null ? '-' : car['allapot'])+'</td></tr>'+
+                                    '</table></div>';
                         });
                     }
                     else{
@@ -58,7 +58,7 @@ function fetchCars(){
         },
         error: function(xhr){
             $('main h1').remove();
-            $('main #searchBar').remove();
+            $('#myCarsSearchBar').remove();
             $('#myCars').html('<h1>Autói megtekintéséhez <a href="'+BASE_URL+'public/pages/register.html">regisztráljon</a>, vagy <a href="'+BASE_URL+'public/pages/login.html">jelentkezzen be</a>!</h1>');
             $('#newCar').html("");
         }
@@ -118,15 +118,15 @@ function addCar(event){
 
 let allCars = null;
 
-$('#searchBar').on('input', function(){
+$('#myCarsSearchBar').on('input', function(){
     let foundCars = '';
-    const searchTerm = $('#searchBar').val().toLowerCase();
+    const searchTerm = $('#myCarsSearchBar').val().toLowerCase();
 
-    const carContainer = $('<div>').html(allCars);
+    const carContainer = $('#myCars').html(allCars);
 
-    carContainer.find('.car').each(function() {
+    carContainer.find('.myCar').each(function() {
         const car = $(this);
-        const matches = car.find('p').filter(function() {
+        const matches = car.find('td').filter(function() {
             return $(this).text().toLowerCase().includes(searchTerm);
         });
 
@@ -137,12 +137,12 @@ $('#searchBar').on('input', function(){
     $('#myCars').html(foundCars);
 });
 
-$('#sort').on('change', function () {
+$('#myCarsSort').on('change', function () {
     let foundCars = '';
-    const sortOption = $('#sort').val();
-    const searchTerm = $('#searchBar').val().toLowerCase();
+    const sortOption = $('#myCarsSort').val();
+    const searchTerm = $('#myCarsSearchBar').val().toLowerCase();
 
-    const carContainer = $('<div>').html(allCars);
+    const carContainer = $('#myCars').html(allCars);
 
     let carsArray = [];
     carContainer.find('.car').each(function () {

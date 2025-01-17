@@ -5,63 +5,112 @@
 #F67203 pumpkin
 #FFFFFF white_
 */
+
 :root{
-    --background-color: #2e3349;
+    --background-color: #181e36;
     --primary-color: #0387f6;
     --secondary-color: #F67203;
     --text-color: #FFFFFF;
-    --sub-color: #181e36;
+    --sub-color: #2e3349;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+#logo, #logoHamburger{
+    min-width: 1vw;
 }
 
 body{
     background-color: var(--background-color);
     color: var(--text-color);
-}
-
-nav a{
-    display: block;
-    text-decoration: none;
-    color: white;
-    margin: 5px 0;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-
-nav button{
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    cursor: pointer;
+    margin: 10px;
 }
 
 @media only screen and (min-width: 320px) {
+    nav button{
+        background-color: var(--secondary-color);
+        border: 3px solid var(--primary-color);
+        border-radius: 15px;
+        padding: 5px 10px;
+        cursor: pointer;
+        color: var(--text-color);
+    }
+
+    header{
+        background-color: var(--sub-color);
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+    }
+
     nav{
         display: none;
         position: absolute;
-        top: 50px; /* A gomb alá kerül */
-        right: 20px;
+        top: 100px;
+        right: 0px;
         background-color: #2E3349;
         padding: 10px;
-        border-radius: 4px;
+        border: var(--primary-color) solid 5px;
+        border-radius: 20px;
     }
 
-    img{
+    nav a{
         display: block;
+        text-decoration: none;
+        color: white;
+        margin: 5px 0;
+    }
+
+    #logoHamburger{
+        margin: 0 0 0 auto;
+        display: block;
+        padding: 5px;
+    }
+
+    #logo, #logoHamburger{
+        width: 15vw;
+    }
+}
+
+@media only screen and (min-width:544px){
+    #logoHamburger, #logo{
         width: 10vw;
     }
 }
 
-@media only screen and (min-width: 769px) {
-    
+@media only screen and (min-width: 768px) {
+    #logoHamburger, #logo{
+        width: 7vw;
+    }
 }
 
-@media only screen and (min-width: 1025px){
+@media only screen and (min-width: 1024px){
+    #logoHamburger{
+        display: none;
+    }
 
+    #logo{
+        margin-right: auto;
+        width: 5.5vw;
+    }
+
+    nav{
+        display: flex !important;
+        justify-content: right;
+        position: static;
+        border: none;
+        background-color: transparent;
+    }
+
+    nav a{
+        margin-right: 30px;
+    }
+
+    #home{
+        display: none;
+    }
 }
 
 .hidden {
@@ -70,10 +119,11 @@ nav button{
 
 #extraButtons {
     margin-top: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    background-color: var(--sub-color);
+    border: 3px solid var(--primary-color);
     padding: 10px;
     border-radius: 5px;
+    left: 0;
 }
 
 #extraButtons button {
@@ -81,8 +131,8 @@ nav button{
     margin: 5px 0;
     width: 100%;
     padding: 8px;
-    background-color: #007bff;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;

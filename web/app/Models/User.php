@@ -36,17 +36,17 @@ class User{
         $db = Database::connect();
         $username = $data['username'];
         $password = $data['password'];
+        $password_again = $data['password_again'];
         $role = "Ügyfél";
         $name = $data['name'];
         $phone_number = $data['phone_number'];
         $email = $data['email'];
-        if (self::validateUsername($username)) {
-            $query1 = "INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) VALUES ('$username', PASSWORD('$password'), '$role')";
+        if (!self::validateUsername($username)) {
+            $query1 = "INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) VALUES ('$username', SHA2('$password', 256)), '$role')";
             $db->execute_query($query1);
 
             $felhasznalo_id = $db->insert_id;
-    
-            // Insert into `ugyfelek`
+
             $query2 = "INSERT INTO ugyfelek (nev, telefonszam, email) VALUES ('$name', '$phone_number', '$email')";
             $db->execute_query($query2);
 
@@ -56,10 +56,10 @@ class User{
             $db->execute_query($query3);
 
             $_SESSION['user'] = ['username' => $username, 'logged_in' => true];
-            return true;
+            return "Sikeres registráció!";
         }
         else{
-            return false;
+            return "Ilyen felhasználónév már létezik!";
         }
     }
 
@@ -67,12 +67,7 @@ class User{
         $db = Database::connect();
         $query = "SELECT felhasznalonev FROM felhasznalok WHERE felhasznalonev = '$username';";
         $result = $db->query($query);
-        if($result->num_rows > 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return $result->num_rows > 0;
     }
 
     public static function checkUser($data){

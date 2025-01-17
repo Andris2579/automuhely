@@ -5,7 +5,7 @@ use App\Models\Service;
 
 class ServiceController{
     public static function allService(){
-        echo json_encode(Service::all());
+        return Service::all();
     }
 
     public static function singleService($id){

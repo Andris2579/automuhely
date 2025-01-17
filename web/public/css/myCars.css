@@ -1,0 +1,137 @@
+:root{
+    --background-color: #181e36;
+    --primary-color: #0387f6;
+    --secondary-color: #F67203;
+    --text-color: #FFFFFF;
+    --sub-color: #2e3349;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.myCar table{
+    width: 100%;
+}
+
+@media only screen and (min-width: 320px) {
+    #myCarsFilters{
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+    
+    #myCarsSearchBar, #myCarsSort{
+        width: 100%;
+        box-sizing: border-box;
+        border: var(--primary-color) solid 3px;
+        border-radius: 10px;
+        background-color: var(--sub-color);
+        padding: 5px;
+        color: var(--text-color);
+        margin: 0 auto;
+        height: 8vh;
+    }
+
+    #myCars{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 15px;
+        justify-items: center;
+    }
+
+    #myCars td{
+        text-align: justify;
+    }
+
+    .myCar{
+        border: var(--primary-color) solid 3px;
+        border-radius: 10px;
+        padding: 10px;
+        min-width: 50vw;
+    }
+
+    #newCar{
+        margin-left: 5vw;
+    }
+
+    #newCarForm{
+        display: grid;
+        grid-template-columns: 0.75fr 1fr;
+        grid-gap: 10px;
+        width: 50vw;
+        margin-left: 7.5vw;
+    }
+
+    #newCarForm button {
+        grid-column: span 2;
+        justify-self: center;
+        background-color: var(--secondary-color);
+        width: 35%;
+        padding: 7px;
+        border: 0px solid;
+        border-radius: 7px;
+        color: var(--text-color);
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    #newCarForm input, #newCarForm select{
+        width: 100%;
+        box-sizing: border-box;
+        border: var(--primary-color) solid 3px;
+        border-radius: 10px;
+        background-color: var(--sub-color);
+        padding: 5px;
+        color: var(--text-color);
+        font-size: 0.75em;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    #myCars{
+        grid-template-columns: 1fr 1fr 1fr;
+        
+    }
+
+    .myCar{
+        min-width: 25vw;
+    }
+
+    #myCarsSearchBar, #myCarsSort{
+        width: 75%;
+    }
+
+    #newCarForm input, select{
+        width: 75%;
+        margin-right: 0;
+        margin-left: auto;
+        font-size: 1em;
+    }
+
+    #newCarForm button{
+        width: 25%;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    #myCars{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+    }
+
+    .myCar{
+        min-width: 20vw;
+    }
+
+    #myCarsSearchBar, #myCarsSort{
+        width: 75%;
+    }
+
+    #newCarForm button{
+        width: 20%;
+    }
+
+    #newCarForm input, select{
+        width: 60%;
+    }
+}
