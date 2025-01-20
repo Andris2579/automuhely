@@ -6,7 +6,7 @@ require_once './../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable('C:/Minden/Iskola/automuhely/web/');
+$dotenv = Dotenv::createImmutable('C:/xampp/htdocs/automuhely_web/');
 $dotenv->load();
 
 class App{
