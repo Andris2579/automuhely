@@ -122,7 +122,10 @@
             // 
             // txtSablonNev
             // 
+            this.txtSablonNev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtSablonNev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSablonNev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSablonNev.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtSablonNev.Location = new System.Drawing.Point(51, 300);
             this.txtSablonNev.MaxLength = 100;
             this.txtSablonNev.Name = "txtSablonNev";
@@ -141,7 +144,10 @@
             // 
             // txtSablonleiras
             // 
+            this.txtSablonleiras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtSablonleiras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSablonleiras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSablonleiras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtSablonleiras.Location = new System.Drawing.Point(51, 369);
             this.txtSablonleiras.Multiline = true;
             this.txtSablonleiras.Name = "txtSablonleiras";
@@ -161,7 +167,10 @@
             // 
             // numSablonIdo
             // 
+            this.numSablonIdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.numSablonIdo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numSablonIdo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSablonIdo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.numSablonIdo.Location = new System.Drawing.Point(51, 509);
             this.numSablonIdo.Name = "numSablonIdo";
             this.numSablonIdo.Size = new System.Drawing.Size(250, 26);
@@ -179,12 +188,12 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "HOZZÁADÁSA";
             // 
-            // újMunkafolyamat
+            // InputWorkFlow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(354, 686);
+            this.ClientSize = new System.Drawing.Size(358, 681);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginLabel);
@@ -197,9 +206,12 @@
             this.Controls.Add(this.txtSablonleiras);
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
             this.Controls.Add(this.numSablonIdo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "újMunkafolyamat";
+            this.MaximumSize = new System.Drawing.Size(374, 736);
+            this.MinimumSize = new System.Drawing.Size(374, 675);
+            this.Name = "InputWorkFlow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "újMunkafolyamat";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

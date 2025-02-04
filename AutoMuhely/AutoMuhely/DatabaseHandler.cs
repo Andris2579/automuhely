@@ -13,7 +13,7 @@ namespace AutoMuhely
 {
     internal class DatabaseHandler
     {
-        static string firstConnectionCommand = "server=localhost;user=root;password='';";
+        static string firstConnectionCommand = "server=localhost;user=root;password='';Allow Zero Datetime=True;Convert Zero Datetime=True;";
         static string databaseName = "automuhely";
 
         static string connectionCommand = "server=localhost;database=automuhely;user=root;password=''";
@@ -67,7 +67,6 @@ namespace AutoMuhely
                 MessageBox.Show($"Hiba történt: {ex.Message}");
             }
         }
-
         public (List<List<object>>, List<string>) Select(string selectQuery, Dictionary<string, object> parameters = null)
         {
             try
@@ -75,10 +74,8 @@ namespace AutoMuhely
                 using (var connection = new MySqlConnection(connectionCommand))
                 {
                     connection.Open();
-
                     using (var command = new MySqlCommand(selectQuery, connection))
                     {
-                        // Add parameters if provided
                         if (parameters != null)
                         {
                             foreach (var param in parameters)
@@ -102,7 +99,24 @@ namespace AutoMuhely
                                 var row = new List<object>();
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    row.Add(reader.GetValue(i));
+                                    try
+                                    {
+                                        if (reader.GetFieldType(i) == typeof(DateTime))
+                                        {
+                                            var value = reader.IsDBNull(i) ? (DateTime?)null : reader.GetDateTime(i);
+                                            row.Add(value?.ToString("yyyy-MM-dd HH:mm:ss") ?? "NULL");
+                                        }
+                                        else
+                                        {
+                                            row.Add(reader.IsDBNull(i) ? null : reader.GetValue(i));
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // Log the error and skip the field
+                                        Console.WriteLine($"Error processing field {reader.GetName(i)}: {ex.Message}");
+                                        row.Add($"Error: {ex.Message}");
+                                    }
                                 }
                                 rows.Add(row);
                             }
@@ -114,10 +128,13 @@ namespace AutoMuhely
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hiba történt: {ex.Message}");
+                Console.WriteLine($"Critical Error: {ex.Message}");
                 return (null, null);
             }
+
         }
+
+
 
         public void Update(string updateQuery, Dictionary<string, object> parameters)
         {

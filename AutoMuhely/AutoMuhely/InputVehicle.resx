@@ -343,7 +343,7 @@
     <value>250, 65</value>
   </data>
   <data name="txtMotorAdat.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;txtMotorAdat.Name" xml:space="preserve">
     <value>txtMotorAdat</value>
@@ -394,7 +394,7 @@
     <value>250, 23</value>
   </data>
   <data name="txtAlvazAdat.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtAlvazAdat.Name" xml:space="preserve">
     <value>txtAlvazAdat</value>
@@ -454,7 +454,7 @@
     <value>250, 59</value>
   </data>
   <data name="txtElozoJav.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;txtElozoJav.Name" xml:space="preserve">
     <value>txtElozoJav</value>
@@ -475,7 +475,7 @@
     <value>250, 23</value>
   </data>
   <data name="nUpDDate.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;nUpDDate.Name" xml:space="preserve">
     <value>nUpDDate</value>
@@ -488,69 +488,6 @@
   </data>
   <data name="&gt;&gt;nUpDDate.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="comBoxTipus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 303</value>
-  </data>
-  <data name="comBoxTipus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
-  </data>
-  <data name="comBoxTipus.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;comBoxTipus.Name" xml:space="preserve">
-    <value>comBoxTipus</value>
-  </data>
-  <data name="&gt;&gt;comBoxTipus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comBoxTipus.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comBoxTipus.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="comBoxHibakod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 363</value>
-  </data>
-  <data name="comBoxHibakod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
-  </data>
-  <data name="comBoxHibakod.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;comBoxHibakod.Name" xml:space="preserve">
-    <value>comBoxHibakod</value>
-  </data>
-  <data name="&gt;&gt;comBoxHibakod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comBoxHibakod.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comBoxHibakod.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="comBoxSablon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 427</value>
-  </data>
-  <data name="comBoxSablon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
-  </data>
-  <data name="comBoxSablon.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;comBoxSablon.Name" xml:space="preserve">
-    <value>comBoxSablon</value>
-  </data>
-  <data name="&gt;&gt;comBoxSablon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comBoxSablon.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;comBoxSablon.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 15.75pt, style=Bold</value>
@@ -580,7 +517,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 15.75pt, style=Bold</value>
@@ -610,7 +547,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Open Sans, 15.75pt, style=Bold</value>
@@ -640,7 +577,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnAdd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -658,7 +595,7 @@
     <value>210, 49</value>
   </data>
   <data name="btnAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Tovább</value>
@@ -691,7 +628,7 @@
     <value>140, 40</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Mégse</value>
@@ -708,6 +645,87 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="comBoxTipus.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="comBoxTipus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 303</value>
+  </data>
+  <data name="comBoxTipus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comBoxTipus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 24</value>
+  </data>
+  <data name="comBoxTipus.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comBoxTipus.Name" xml:space="preserve">
+    <value>comBoxTipus</value>
+  </data>
+  <data name="&gt;&gt;comBoxTipus.Type" xml:space="preserve">
+    <value>AutoMuhely.CustomComboBox, AutoMuhely, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comBoxTipus.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comBoxTipus.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comBoxHibakod.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="comBoxHibakod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 363</value>
+  </data>
+  <data name="comBoxHibakod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comBoxHibakod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 24</value>
+  </data>
+  <data name="comBoxHibakod.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comBoxHibakod.Name" xml:space="preserve">
+    <value>comBoxHibakod</value>
+  </data>
+  <data name="&gt;&gt;comBoxHibakod.Type" xml:space="preserve">
+    <value>AutoMuhely.CustomComboBox, AutoMuhely, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comBoxHibakod.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comBoxHibakod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comBoxSablon.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="comBoxSablon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 427</value>
+  </data>
+  <data name="comBoxSablon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="comBoxSablon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 24</value>
+  </data>
+  <data name="comBoxSablon.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comBoxSablon.Name" xml:space="preserve">
+    <value>comBoxSablon</value>
+  </data>
+  <data name="&gt;&gt;comBoxSablon.Type" xml:space="preserve">
+    <value>AutoMuhely.CustomComboBox, AutoMuhely, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comBoxSablon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comBoxSablon.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -715,7 +733,7 @@
     <value>9, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>354, 951</value>
+    <value>352, 958</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Rounded MT Bold, 10.2pt</value>
@@ -1808,10 +1826,10 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>370, 1500</value>
+    <value>368, 997</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>370, 39</value>
+    <value>368, 997</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -1820,7 +1838,7 @@
     <value>Jármű hozzáadása</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>NewVehicle</value>
+    <value>InputVehicle</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

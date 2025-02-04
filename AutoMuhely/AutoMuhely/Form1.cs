@@ -28,7 +28,7 @@ namespace AutoMuhely
         public Main_Form()
         {
             InitializeComponent();
-            //no paddig
+            //no paddig on tablelayoutpan
             foreach (Control control in this.tableLayoutPanel1.Controls)
             {
                 control.Margin = new Padding(0);
@@ -147,6 +147,25 @@ namespace AutoMuhely
         {
             if (aktivMenu == "Ügyfelek")
             {
+                if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+                {
+                    MessageBox.Show("Kérlek válassz egy ügyfelet a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                    // Get the data from the selected row
+                    string nev = selectedRow.Cells["Név"].Value?.ToString();
+                    string telefon = selectedRow.Cells["Telefonszám"].Value?.ToString();
+                    string email = selectedRow.Cells["E-mail"].Value?.ToString();
+                    string cim = selectedRow.Cells["Cím"].Value?.ToString();
+
+                    // Pass data to alkatrészInputs for editing
+                    InputCustomers inputCustomers = new InputCustomers(nev,telefon,cim,email);
+                    inputCustomers.ShowDialog();
+                }
+                InitializeTable(ugyfelekSql);
             }
             else if (aktivMenu == "Alkatrészek")
             {
@@ -338,10 +357,127 @@ namespace AutoMuhely
             LabelTable.Text = "Szerelések";
             panelButtons.Controls.Clear();
             ClearPanelContentsExceptOne(panelTable, LabelTable);
+            InitSzerelesek();
             GenerateHoverPanel("Szerelési Útmutatók", new Point(0, 0), new Size(246, 63), SzerelesiUtmutatok_Click);
             GenerateHoverPanel("Hibakódok", new Point(246, 0), new Size(160, 63), Hibakodok_Click);
             GenerateHoverPanel("Munkafolyamat Sablonok", new Point(160+246, 0), new Size(300, 63), MunkafolyamatSablonok_Click);
         }
+        private void InitSzerelesek()
+        {
+            // Fetch appointment data
+            string query = "SELECT u.nev, j.rendszam, t.tipus, m.marka_neve, sz.nev, idopont, allapot FROM idopontfoglalasok i LEFT JOIN jarmuvek j ON j.jarmu_id=i.jarmu_id LEFT JOIN tipus t ON t.tipus_id = j.jarmu_id LEFT JOIN marka m ON m.marka_id = t.marka_id LEFT JOIN ugyfel_jarmuvek uj ON j.jarmu_id= uj.jarmu_id LEFT JOIN ugyfelek u ON u.ugyfel_id = uj.ugyfel_id LEFT JOIN szervizcsomagok sz ON sz.csomag_id = i.csomag_id LIMIT 4";
+            var (results, columnNames) = databaseHandler.Select(query);
+
+            if (results != null && results.Count > 0)
+            {
+                DisplayAppointmentCards(results);
+            }
+            ResizeAppointmentCards();
+        }
+        private void DisplayAppointmentCards(List<List<object>> results)
+        {
+            panelTable.Controls.Clear(); // Clear existing content
+
+            int panelWidth = panelTable.Width;
+            int panelHeight = panelTable.Height;
+            int cardWidth = panelWidth / 2 - 40;
+            int cardHeight = panelHeight / 2 - 40;
+            int spacingX = 20;
+            int spacingY = 20;
+
+            for (int i = 0; i < results.Count; i++)
+            {
+                int row = i / 2;
+                int col = i % 2;
+
+                Panel card = new Panel
+                {
+                    Size = new Size(cardWidth, cardHeight),
+                    Location = new Point(spacingX + col * (cardWidth + spacingX), spacingY + row * (cardHeight + spacingY)),
+                    BackColor = Color.FromArgb(24, 30, 54),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    ForeColor = Color.FromArgb(245, 245, 241)
+                };
+
+                // Create a TextBox for the card content
+                TextBox txtCardContent = new TextBox
+                {
+                    Multiline = true,
+                    ReadOnly = true,
+                    BackColor = card.BackColor,
+                    ForeColor = Color.White,
+                    BorderStyle = BorderStyle.None,
+                    Location = new Point(10, 10),
+                    Size = new Size(cardWidth - 20, cardHeight - 20), // Adjust size for text area
+                    Font = new Font("Segoe UI", 15, FontStyle.Regular),
+                    Text = GetCardText(results[i]), // Populate the content
+                    HideSelection = true, // Prevent selection highlight and cursor display
+                    Cursor = Cursors.Default // Remove typing cursor
+                };
+
+                // Add the TextBox to the card
+                card.Controls.Add(txtCardContent);
+
+                // Add card to the panel
+                panelTable.Controls.Add(card);
+            }
+        }
+
+
+        private string GetCardText(List<object> result)
+        {
+            // Combine all the text for the card in one string
+            DateTime appointmentTime;
+            var dateString = result[5]?.ToString();
+            string appointmentText = string.IsNullOrEmpty(dateString) || dateString == "0000-00-00 00:00:00" ? "Érvénytelen dátum" :
+                DateTime.TryParseExact(dateString, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out appointmentTime) ?
+                appointmentTime.ToString("yyyy. MM. dd. HH:mm") : "Érvénytelen dátum";
+
+            return $"Ügyfél: {result[0]}\r\n" +
+                   $"Rendszám: {result[1]}\r\n" +
+                   $"Típus: {result[2]}\r\n" +
+                   $"Márka: {result[3]}\r\n" +
+                   $"Szervizcsomag: {result[4]}\r\n" +
+                   $"Időpont: {appointmentText}\r\n" +
+                   $"Állapot: {result[6]}";
+        }
+
+        private void ResizeAppointmentCards()
+        {
+            int panelWidth = panelTable.Width;
+            int panelHeight = panelTable.Height;
+            int cardWidth = panelWidth / 2 - 40;
+            int cardHeight = panelHeight / 2 - 40;
+            int spacingX = 20;
+            int spacingY = 20;
+
+            // Adjust the font size based on the panel width
+            Font newFont = new Font("Segoe UI", Math.Max(13, panelWidth / 80), FontStyle.Regular);
+
+            for (int i = 0; i < panelTable.Controls.Count; i++)
+            {
+                if (panelTable.Controls[i] is Panel card)
+                {
+                    int row = i / 2;
+                    int col = i % 2;
+
+                    // Resize card dimensions and position
+                    card.Size = new Size(cardWidth, cardHeight);
+                    card.Location = new Point(spacingX + col * (cardWidth + spacingX), spacingY + row * (cardHeight + spacingY));
+
+                    foreach (Control control in card.Controls)
+                    {
+                        if (control is TextBox txtCardContent)
+                        {
+                            txtCardContent.Font = newFont; // Resize the font in the TextBox
+                            txtCardContent.Size = new Size(cardWidth - 20, cardHeight - 20); // Resize the TextBox size as per card size
+                        }
+                    }
+                }
+            }
+        }
+
+
         private void Szerelesek_Click(object sender, EventArgs e)
         {
             LoadSzerelesek();
@@ -383,6 +519,7 @@ namespace AutoMuhely
         }
         private void SzerelesiUtmutatok_Click(object sender, EventArgs e)
         {
+            panelTable.Controls.Clear();
             LabelTable.Text ="Szerelési Útmutatók";
             InitializeTable(utmutatoSql);
             panelButtons.Controls.Clear();
@@ -422,7 +559,7 @@ namespace AutoMuhely
         }
         private void Hibakodok_Click(object sender, EventArgs e) 
         {
-
+            panelTable.Controls.Clear();
             InitializeTable(hibakodSql);
             LabelTable.Text = "Hibakódok";
             panelButtons.Controls.Clear();
@@ -464,6 +601,7 @@ namespace AutoMuhely
     
         private void MunkafolyamatSablonok_Click(object sender, EventArgs e) 
         {
+            panelTable.Controls.Clear();
             InitializeTable(munkafolySql);
             LabelTable.Text = "Munkafolyamat Sablonok";
             panelButtons.Controls.Clear();
@@ -501,21 +639,42 @@ namespace AutoMuhely
 
         private void CustomizeTable(DataGridView table)
         {
-            table.BackgroundColor = Color.WhiteSmoke;
+            // Table background and border settings
+            table.BackgroundColor = Color.FromArgb(46, 51, 73); // Matches the overall dark theme
             table.BorderStyle = BorderStyle.None;
             table.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            table.GridColor = Color.LightGray;
+            table.GridColor = Color.FromArgb(58, 63, 85); // Subtle contrast for grid lines
 
-            table.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            table.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 120, 215);
+            // Alternating row styling
+            table.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(50, 55, 78);
+            table.DefaultCellStyle.BackColor = Color.FromArgb(58, 63, 85);
+            table.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+
+            // Selection styling
+            table.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 153, 204);
             table.DefaultCellStyle.SelectionForeColor = Color.White;
 
+            // Column headers
             table.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            table.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
-            table.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            table.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(46, 51, 73);
+            table.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 220);
             table.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             table.EnableHeadersVisualStyles = false;
 
+            // Row header (left empty column for selection)
+            table.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(46, 51, 73); // Match background
+            table.RowHeadersDefaultCellStyle.ForeColor = Color.WhiteSmoke;
+            table.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 153, 204); // Match selection style
+            table.RowHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            table.RowHeadersWidth = 40; // Adjust width if needed
+            table.RowHeadersVisible = true; // Set to false if the empty column is unnecessary
+
+            // Scrollbar styling
+            table.ScrollBars = ScrollBars.Both; // Ensure scrollbars are enabled
+            table.DefaultCellStyle.BackColor = Color.FromArgb(58, 63, 85); // Match table's main background
+                                                                           // Scrollbars cannot be directly styled in WinForms without custom rendering, but third-party libraries like Bunifu or custom controls can help.
+
+            // Table behavior
             table.AllowUserToAddRows = false;
             table.AllowUserToDeleteRows = false;
             table.ReadOnly = true;
@@ -523,11 +682,13 @@ namespace AutoMuhely
             table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             table.RowTemplate.Height = 35;
 
+            // Column settings
             foreach (DataGridViewColumn column in table.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
 
+            // Positioning
             table.Size = new Size(panelMain.Width - 30, panelMain.Height - 150);
             table.Location = new Point(20, 70);
         }
@@ -556,8 +717,7 @@ namespace AutoMuhely
     { "Járművek",
         "SELECT j.rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, " +
         "j.gyartas_eve AS 'Gyártás éve', j.motor_adatok AS 'Motor adatok', j.alvaz_adatok AS 'Alváz adatok', j.elozo_javitasok AS 'Előző javítások' " +
-        "FROM jarmuvek j " +
-        "JOIN tipus t ON j.tipus_id = t.tipus_id " +
+        "FROM jarmuvek j JOIN tipus t ON j.tipus_id = t.tipus_id " +
         "JOIN hibakodok h ON h.kod_id = j.kod_id " +
         "JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id " +
         "JOIN marka m ON t.marka_id = m.marka_id " +
@@ -581,17 +741,25 @@ namespace AutoMuhely
         private void SearchBar_TextChanged(object sender, EventArgs e)
         {
             string keresettKifejezes = searchBar.Text.Trim();
-            if (searchQueries.ContainsKey(aktivMenu))
+            if (aktivMenu!=null)
             {
-                string query = string.Format(searchQueries[aktivMenu], keresettKifejezes);
-                InitializeTable(query);
+                if (searchQueries.ContainsKey(aktivMenu))
+                {   
+                    string query = string.Format(searchQueries[aktivMenu], keresettKifejezes);
+                    InitializeTable(query);
+                }
             }
+            
         }
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
             table_DGV.Size = new Size(panelMain.Width - 30, panelMain.Height - 10);
+            ResizeAppointmentCards();
         }
-
+        private void panelTable_Click(object sender, EventArgs e)
+        {
+            searchBar.Focus();
+        }
     }
 }

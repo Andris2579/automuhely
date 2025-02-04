@@ -77,6 +77,9 @@
             // 
             // txtHibakod
             // 
+            this.txtHibakod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtHibakod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHibakod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtHibakod.Location = new System.Drawing.Point(49, 243);
             this.txtHibakod.MaxLength = 100;
             this.txtHibakod.Name = "txtHibakod";
@@ -95,6 +98,9 @@
             // 
             // txtHibakodLeiras
             // 
+            this.txtHibakodLeiras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtHibakodLeiras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHibakodLeiras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtHibakodLeiras.Location = new System.Drawing.Point(49, 312);
             this.txtHibakodLeiras.Multiline = true;
             this.txtHibakodLeiras.Name = "txtHibakodLeiras";
@@ -143,7 +149,7 @@
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             // 
-            // újHibakód
+            // InputCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,12 +165,13 @@
             this.Controls.Add(this.alkatrészLeírás_Lb);
             this.Controls.Add(this.txtHibakodLeiras);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 616);
             this.MinimumSize = new System.Drawing.Size(370, 616);
-            this.Name = "újHibakód";
+            this.Name = "InputCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hibakód";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.újHibakód_FormClosed);

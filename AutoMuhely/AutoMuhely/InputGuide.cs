@@ -22,7 +22,7 @@ namespace AutoMuhely
         public InputGuide(string cim = null, string tartalom = null, int? jarmuTipusID = null)
         {
             InitializeComponent();
-
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Enable custom drawing
             // Determine mode
             if (!string.IsNullOrEmpty(cim))
             {
@@ -141,5 +141,6 @@ namespace AutoMuhely
         {
             this.Close();
         }
+      
     }
 }
