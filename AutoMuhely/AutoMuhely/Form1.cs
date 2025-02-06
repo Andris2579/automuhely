@@ -362,18 +362,95 @@ namespace AutoMuhely
             GenerateHoverPanel("Hibakódok", new Point(246, 0), new Size(160, 63), Hibakodok_Click);
             GenerateHoverPanel("Munkafolyamat Sablonok", new Point(160+246, 0), new Size(300, 63), MunkafolyamatSablonok_Click);
         }
+
+        private int currentPage = 1;
+        private int totalPages = 1;
+        private const int pageSize = 4;
         private void InitSzerelesek()
         {
-            // Fetch appointment data
-            string query = "SELECT u.nev, j.rendszam, t.tipus, m.marka_neve, sz.nev, idopont, allapot FROM idopontfoglalasok i LEFT JOIN jarmuvek j ON j.jarmu_id=i.jarmu_id LEFT JOIN tipus t ON t.tipus_id = j.jarmu_id LEFT JOIN marka m ON m.marka_id = t.marka_id LEFT JOIN ugyfel_jarmuvek uj ON j.jarmu_id= uj.jarmu_id LEFT JOIN ugyfelek u ON u.ugyfel_id = uj.ugyfel_id LEFT JOIN szervizcsomagok sz ON sz.csomag_id = i.csomag_id LIMIT 4";
-            var (results, columnNames) = databaseHandler.Select(query);
-
-            if (results != null && results.Count > 0)
-            {
-                DisplayAppointmentCards(results);
-            }
+            string query = $"SELECT COUNT(*) FROM idopontfoglalasok";
+            int totalRecords = databaseHandler.GetScalarValue(query);
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            LoadAppointments();
+            AddPagingButtons();
             ResizeAppointmentCards();
         }
+        private void LoadAppointments()
+        {
+            int offset = (currentPage - 1) * pageSize;
+            string query = $"SELECT u.nev, j.rendszam, t.tipus, m.marka_neve, sz.nev, idopont, allapot " +
+                           "FROM idopontfoglalasok i " +
+                           "LEFT JOIN jarmuvek j ON j.jarmu_id=i.jarmu_id " +
+                           "LEFT JOIN tipus t ON t.tipus_id = j.tipus_id " +
+                           "LEFT JOIN marka m ON m.marka_id = t.marka_id " +
+                           "LEFT JOIN ugyfel_jarmuvek uj ON j.jarmu_id= uj.jarmu_id " +
+                           "LEFT JOIN ugyfelek u ON u.ugyfel_id = uj.ugyfel_id " +
+                           "LEFT JOIN szervizcsomagok sz ON sz.csomag_id = i.csomag_id " +
+                           $"LIMIT {pageSize} OFFSET {offset}";
+
+            var (results, _) = databaseHandler.Select(query);
+            DisplayAppointmentCards(results);
+            AddPagingButtons();
+        }
+
+        private void AddPagingButtons()
+        {
+            // Remove only pagination buttons and label
+            foreach (Control control in panelTable.Controls.OfType<Button>().ToList())
+            {
+                panelTable.Controls.Remove(control);
+            }
+            foreach (Control control in panelTable.Controls.OfType<Label>().ToList())
+            {
+                panelTable.Controls.Remove(control);
+            }
+
+            Button btnPrev = new Button
+            {
+                Text = "◀",
+                Location = new Point(panelTable.Width - 140, panelTable.Height - 35),
+                Size = new Size(30, 30),
+                TextAlign = ContentAlignment.MiddleCenter,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                ForeColor = Color.FromArgb(245, 245, 241),
+                BackColor = Color.FromArgb(24, 30, 54),
+                Enabled = currentPage > 1
+            }; 
+            btnPrev.FlatAppearance.BorderColor = Color.FromArgb(91, 92, 95);
+
+            Label lblPageNumber = new Label
+            {
+                Text = currentPage.ToString(),
+                Location = new Point(panelTable.Width - 105, panelTable.Height - 35),
+                Size = new Size(30, 30),
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.White,
+                BackColor = Color.Transparent
+            };
+
+            Button btnNext = new Button
+            {
+                Text = "▶",
+                Location = new Point(panelTable.Width - 70, panelTable.Height - 35),
+                Size = new Size(30, 30),
+                TextAlign = ContentAlignment.MiddleCenter,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 12, FontStyle.Regular),
+                BackColor = Color.FromArgb(24, 30, 54),
+                ForeColor = Color.FromArgb(245, 245, 241),
+                Enabled = currentPage < totalPages
+            }; 
+            btnNext.FlatAppearance.BorderColor = Color.FromArgb(91, 92, 95);
+
+            btnPrev.Click += (s, e) => { currentPage--; LoadAppointments(); };
+            btnNext.Click += (s, e) => { currentPage++; LoadAppointments(); };
+
+            panelTable.Controls.Add(btnPrev);
+            panelTable.Controls.Add(lblPageNumber);
+            panelTable.Controls.Add(btnNext);
+        }
+
         private void DisplayAppointmentCards(List<List<object>> results)
         {
             panelTable.Controls.Clear(); // Clear existing content
@@ -409,7 +486,7 @@ namespace AutoMuhely
                     BorderStyle = BorderStyle.None,
                     Location = new Point(10, 10),
                     Size = new Size(cardWidth - 20, cardHeight - 20), // Adjust size for text area
-                    Font = new Font("Segoe UI", 15, FontStyle.Regular),
+                    Font = new Font("Segoe UI", Math.Max(13, panelWidth / 60), FontStyle.Regular),
                     Text = GetCardText(results[i]), // Populate the content
                     HideSelection = true, // Prevent selection highlight and cursor display
                     Cursor = Cursors.Default // Remove typing cursor
@@ -454,29 +531,41 @@ namespace AutoMuhely
             // Adjust the font size based on the panel width
             Font newFont = new Font("Segoe UI", Math.Max(13, panelWidth / 80), FontStyle.Regular);
 
-            for (int i = 0; i < panelTable.Controls.Count; i++)
+            foreach (Control control in panelTable.Controls)
             {
-                if (panelTable.Controls[i] is Panel card)
+                if (control is Button btnPrev && btnPrev.Text == "◀")
                 {
-                    int row = i / 2;
-                    int col = i % 2;
+                    btnPrev.Location = new Point(panelWidth - 140, panelHeight - 35); // Correct location for Previous button
+                }
+                else if (control is Label lblPageNumber)
+                {
+                    lblPageNumber.Location = new Point(panelWidth - 105, panelHeight - 35); // Correct location for Page Number
+                }
+                else if (control is Button btnNext && btnNext.Text == "▶")
+                {
+                    btnNext.Location = new Point(panelWidth - 70, panelHeight - 35); // Correct location for Next button
+                }
+                else if (control is Panel card)
+                {
+                    int index = panelTable.Controls.GetChildIndex(card);
+                    int row = index / 2;
+                    int col = index % 2;
 
-                    // Resize card dimensions and position
+                    // Resize and reposition the cards
                     card.Size = new Size(cardWidth, cardHeight);
                     card.Location = new Point(spacingX + col * (cardWidth + spacingX), spacingY + row * (cardHeight + spacingY));
 
-                    foreach (Control control in card.Controls)
+                    foreach (Control child in card.Controls)
                     {
-                        if (control is TextBox txtCardContent)
+                        if (child is TextBox txtCardContent)
                         {
-                            txtCardContent.Font = newFont; // Resize the font in the TextBox
-                            txtCardContent.Size = new Size(cardWidth - 20, cardHeight - 20); // Resize the TextBox size as per card size
+                            txtCardContent.Font = newFont;
+                            txtCardContent.Size = new Size(cardWidth - 20, cardHeight - 20);
                         }
                     }
                 }
             }
         }
-
 
         private void Szerelesek_Click(object sender, EventArgs e)
         {

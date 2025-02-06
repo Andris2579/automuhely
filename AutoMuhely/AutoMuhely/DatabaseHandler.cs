@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace AutoMuhely
 {
@@ -211,5 +212,25 @@ namespace AutoMuhely
                 return -1;
             }
         }
+        public int GetScalarValue(string query, Dictionary<string, object> parameters = null)
+        {
+            using (var connection = new MySqlConnection(connectionCommand))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    if (parameters != null)
+                    {
+                        foreach (var param in parameters)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+                    }
+                    object result = command.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+
     }
 }
