@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace AutoMuhely
 {
-    internal class DatabaseHandler
+    public class DatabaseHandler
     {
         static string firstConnectionCommand = "server=localhost;user=root;password='';Allow Zero Datetime=True;Convert Zero Datetime=True;";
         static string databaseName = "automuhely";

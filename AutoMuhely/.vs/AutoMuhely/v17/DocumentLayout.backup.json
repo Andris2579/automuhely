@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Work\\automuhely\\AutoMuhely\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\work\\automuhely\\automuhely\\automuhely\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\databasehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\work\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|C:\\Work\\automuhely\\AutoMuhely\\automuhely\\inputvehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\inputvehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|c:\\work\\automuhely\\automuhely\\automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{365031D7-A2AC-402A-A317-BD4476521A4A}|AutoMuhely\\AutoMuhely.csproj|solutionrelative:automuhely\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,44 +31,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DatabaseHandler.cs",
+              "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
+              "RelativeDocumentMoniker": "AutoMuhely\\DatabaseHandler.cs",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
+              "RelativeToolTip": "AutoMuhely\\DatabaseHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T10:10:18.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",
-              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
-              "RelativeToolTip": "AutoMuhely\\Form1.cs",
-              "ViewState": "AgIAALwBAAAAAAAAAAAvwOgBAABLAAAAAAAAAA==",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs*",
+              "RelativeToolTip": "AutoMuhely\\Form1.cs*",
+              "ViewState": "AgIAANkCAAAAAAAAAAAgwOwCAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T11:01:37.517Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DatabaseHandler.cs",
-              "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
-              "RelativeDocumentMoniker": "AutoMuhely\\DatabaseHandler.cs",
-              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\DatabaseHandler.cs",
-              "RelativeToolTip": "AutoMuhely\\DatabaseHandler.cs",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAYwOgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-06T08:31:00.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\Form1.cs",
-              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs [Design]",
-              "RelativeToolTip": "AutoMuhely\\Form1.cs [Design]",
+              "ToolTip": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\Form1.cs [Design]*",
+              "RelativeToolTip": "AutoMuhely\\Form1.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T09:48:23.414Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "InputVehicle.cs",
               "DocumentMoniker": "C:\\Work\\automuhely\\AutoMuhely\\AutoMuhely\\InputVehicle.cs",
               "RelativeDocumentMoniker": "AutoMuhely\\InputVehicle.cs",
@@ -76,7 +76,8 @@
               "RelativeToolTip": "AutoMuhely\\InputVehicle.cs",
               "ViewState": "AgIAAJUAAAAAAAAAAAAYwLcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T08:13:41.456Z"
+              "WhenOpened": "2025-02-04T08:13:41.456Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -39,7 +39,6 @@ namespace AutoMuhely
             carsPanel.PanelClicked += (sender, e) => LoadData("Járművek", jarmuvekSql);
             logOutPan.PanelClicked += LogOutPan_Clicked;
             settingsPanel.PanelClicked += SettingsPanel_Clicked;
-            LabelTable.Text = "";
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
@@ -97,8 +96,7 @@ namespace AutoMuhely
         private void LoadData(string menu, string query)
         {
             aktivMenu = menu;
-            LabelTable.Text = aktivMenu;
-            ClearPanelContentsExceptOne(panelTable, LabelTable);
+            panelTable.Controls.Clear();
             InitializeTable(query);
             panelButtons.Controls.Clear();
             if (aktivMenu== "Ügyfelek")
@@ -354,9 +352,8 @@ namespace AutoMuhely
         private void LoadSzerelesek()
         {
             aktivMenu = "Szerelések";
-            LabelTable.Text = "Szerelések";
             panelButtons.Controls.Clear();
-            ClearPanelContentsExceptOne(panelTable, LabelTable);
+            panelTable.Controls.Clear();
             InitSzerelesek();
             GenerateHoverPanel("Szerelési Útmutatók", new Point(0, 0), new Size(246, 63), SzerelesiUtmutatok_Click);
             GenerateHoverPanel("Hibakódok", new Point(246, 0), new Size(160, 63), Hibakodok_Click);
@@ -402,9 +399,9 @@ namespace AutoMuhely
             }
             foreach (Control control in panelTable.Controls.OfType<Label>().ToList())
             {
-                panelTable.Controls.Remove(control);
+               panelTable.Controls.Remove(control);
+                
             }
-
             Button btnPrev = new Button
             {
                 Text = "◀",
@@ -453,7 +450,7 @@ namespace AutoMuhely
 
         private void DisplayAppointmentCards(List<List<object>> results)
         {
-            panelTable.Controls.Clear(); // Clear existing content
+            panelTable.Controls.Clear();
 
             int panelWidth = panelTable.Width;
             int panelHeight = panelTable.Height;
@@ -609,7 +606,7 @@ namespace AutoMuhely
         private void SzerelesiUtmutatok_Click(object sender, EventArgs e)
         {
             panelTable.Controls.Clear();
-            LabelTable.Text ="Szerelési Útmutatók";
+            aktivMenu = "Útmutatók";
             InitializeTable(utmutatoSql);
             panelButtons.Controls.Clear();
             GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzerelesekUjHozzaadasa_Click);
@@ -646,11 +643,12 @@ namespace AutoMuhely
                 
             
         }
+        
         private void Hibakodok_Click(object sender, EventArgs e) 
         {
             panelTable.Controls.Clear();
             InitializeTable(hibakodSql);
-            LabelTable.Text = "Hibakódok";
+            aktivMenu= "Hibakódok";
             panelButtons.Controls.Clear();
             GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), HibakodokUjHozzaadasa_Click);
             GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), HibakodokModositas_Click);
@@ -692,7 +690,7 @@ namespace AutoMuhely
         {
             panelTable.Controls.Clear();
             InitializeTable(munkafolySql);
-            LabelTable.Text = "Munkafolyamat Sablonok";
+            aktivMenu = "Munkafolyamatok";
             panelButtons.Controls.Clear();
             GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), MunkafolyamatSablonokUjHozzaadasa_Click);
             GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), MunkafolyamatSablonokModositas_Click);
@@ -757,12 +755,11 @@ namespace AutoMuhely
             table.RowHeadersDefaultCellStyle.SelectionForeColor = Color.White;
             table.RowHeadersWidth = 40; // Adjust width if needed
             table.RowHeadersVisible = true; // Set to false if the empty column is unnecessary
+            table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             // Scrollbar styling
             table.ScrollBars = ScrollBars.Both; // Ensure scrollbars are enabled
-            table.DefaultCellStyle.BackColor = Color.FromArgb(58, 63, 85); // Match table's main background
-                                                                           // Scrollbars cannot be directly styled in WinForms without custom rendering, but third-party libraries like Bunifu or custom controls can help.
-
+            table.DefaultCellStyle.BackColor = Color.FromArgb(58, 63, 85); 
             // Table behavior
             table.AllowUserToAddRows = false;
             table.AllowUserToDeleteRows = false;
@@ -778,8 +775,8 @@ namespace AutoMuhely
             }
 
             // Positioning
-            table.Size = new Size(panelMain.Width - 30, panelMain.Height - 150);
-            table.Location = new Point(20, 70);
+            table.Size = new Size(panelMain.Width - 30, panelTable.Height - 46);
+            table.Location = new Point(20, 20);
         }
         private void ClearPanelContentsExceptOne(Panel panel, Control controlToKeep)
         {
@@ -843,7 +840,7 @@ namespace AutoMuhely
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
-            table_DGV.Size = new Size(panelMain.Width - 30, panelMain.Height - 10);
+            table_DGV.Size = new Size(panelMain.Width - 30, panelTable.Height-46);
             ResizeAppointmentCards();
         }
         private void panelTable_Click(object sender, EventArgs e)
