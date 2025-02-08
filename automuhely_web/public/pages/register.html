@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <base href="/automuhely_web/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztráció</title>
+    <link rel="shortcut icon" href="public/assets/imgs/logoX.png" type="image/x-icon">
+    <script src="public/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/register.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <h1>Regisztráció</h1>
+        <form method="POST">
+            <fieldset id="namesFs">
+                <div>
+                    <label for="sure_name">Vezetéknév *</label>
+                    <input type="text" name="sure_name" id="sure_name" required>
+                </div>
+                <div>
+                    <label for="first_name">Keresztnév *</label>
+                    <input type="text" name="first_name" id="first_name" required>
+                </div>
+            </fieldset>
+            <fieldset id="usernameFs">
+                <label for="username">Felhasználó név *</label>
+                <input type="text" name="username" id="username" required>
+            </fieldset>
+            <fieldset id="emailFs">
+                <label for="email">Email cím *</label>
+                <input type="email" name="email" id="email" required>
+            </fieldset>
+            <fieldset id="passwordsFs">
+                <div>
+                    <label for="password">Jelszó *</label>
+                    <input type="password" name="password" id="password" required>
+                    <img id="password_show" src="public/assets/imgs/eye_closed.png" alt="">
+                </div>
+                <div>
+                    <label for="password_again">Jelszó megerősítése *</label>
+                    <input type="password" name="password" id="password_again" required>
+                    <img id="password_again_show" src="public/assets/imgs/eye_closed.png" alt="">
+                </div>
+            </fieldset>
+            <fieldset id="phone_numberFs">
+                <label for="phone_number">Telefonszám (opcionális)</label>
+                <input type="tel" name="phone_number" id="phone_number">
+            </fieldset>
+            <p id="error_message" hidden></p>
+            <button type="submit" id="registerButton" onclick=register(event)>Regisztráció</button>
+            <p>Már van fiókja? Jelentkezzen be <a href="public/pages/login.html">itt</a>!</p>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+</html>

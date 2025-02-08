@@ -1,0 +1,110 @@
+:root{
+    --background-color: rgb(32, 36, 51);
+    --primary-color: rgb(3, 135, 246);
+    --secondary-color: rgb(246, 114, 3);
+    --text-color: rgb(255, 255, 255);
+    --sub-color: rgb(63, 71, 102);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+@media only screen and (min-width: 320px){
+    #carMechanicImg{
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    #main_message{
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+
+    #main_message p{
+        margin: 5px 0;
+    }
+
+    #register_and_loginLink, #servicesLink{
+        text-align: center;
+    }
+
+    #description, #main_message{
+        border: var(--primary-color) solid 3px;
+        border-radius: 15px;
+        background-color: var(--sub-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #description{
+        text-align: justify;
+        font-size: 1.125rem;
+        margin: 0;
+        padding: 10px;
+    }
+
+    #action{
+        text-align: center;
+    }
+
+    a{
+        text-decoration: none;
+        color: var(--secondary-color);
+    }
+
+    section{
+        display: grid;
+        grid-template-rows: auto repeat(2,1fr);
+        row-gap: 20px;
+    }
+}
+
+@media only  screen and (min-width:544px){
+    section{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    #description{
+        grid-column: span 2;
+        font-size: 1.25rem;
+        width: auto;
+        padding: 10px 15px;
+    }
+
+    #carMechanicImg{
+        margin: auto 0;
+    }
+
+    #main_message{
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width:1024px){
+    section{
+        align-items: center;
+        justify-content: center;
+        row-gap: 0;
+        grid-template-rows: repeat(2,auto);
+        row-gap: 20px;
+    }
+
+    #carMechanicImg{
+        grid-row: span 2;
+    }
+
+    #description, #main_message{
+        margin: auto 0;
+    }
+
+    #description{
+        grid-column: span 1;
+        height: auto;
+    }
+}

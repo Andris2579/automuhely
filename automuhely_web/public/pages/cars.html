@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <base href="/automuhely_web/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autóim</title>
+    <link rel="shortcut icon" href="public/assets/imgs/logoX.png" type="image/x-icon">
+    <script src="public/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="public/js/car.js"></script>
+    <script type="module" src="public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/myCars.css">
+</head>
+<body onload="fetchCars()">
+    <header></header>
+    <main>
+        <h1>Autóim</h1>
+        <section id="myCarsFilters">
+            <img src="public/assets/imgs/search.png" alt="" id="searchIcon">
+            <input type="text" id="myCarsSearchBar">
+            <select type="text" name="sort" id="myCarsSort">
+                <option value="abc_asc">ABC Növekvő</option>
+                <option value="abc_desc">ABC Csökkenő</option>
+            </select>
+        </section>
+        <section id="myCars"></section>
+        <form id="newCar" method="POST">
+            <h1>Új autó</h1>
+            <label for="rendszam">Rendszám</label><input type="text" name="rendszam" id="rendszam">
+            <label for="marka">Márka</label><select name="marka" id="marka"></select>
+            <label for="tipus">Típus</label><select name="tipus" id="tipus"><option value="valasszon">Válasszon egy típust!</option></select>
+            <label for="elozo_javitasok">Előző javítások</label><input type="text" name="elozo_javitasok" id="elozo_javitasok">
+            <p id="error_message" hidden></p>
+            <button id="newCarBtn" onclick="addCar(event)">Új Autó</button>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+</html>
