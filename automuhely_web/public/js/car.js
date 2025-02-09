@@ -2,13 +2,13 @@ import {BASE_URL, APP_URL, getUserCredentials} from './main.js';
 
 var myCarOriginal;
 var myCarOriginalCarLicense;
-var myCarId;
 var myCarNewLicense;
 
 $(document).ready(function(){
     $(document).on("click", ".modifyLicenseNumber", function(){
         var myCar = $(this).closest('.myCar');
-        if(myCar.html() == "Véglegesítés" && myCarNewLicense != ""){
+        myCarNewLicense = myCar.find('.licenseNumberInput').val();
+        if($(this).html() == "Véglegesítés" && myCarNewLicense != ""){
             $.ajax({
                 type: "GET",
                 url: BASE_URL + "/routes/api.php/users/"+getUserCredentials().userId+"/cars/" + myCarOriginalCarLicense,
@@ -21,7 +21,8 @@ $(document).ready(function(){
                         dataType: "json",
                         contentType: "application/json",
                         success: function (response) {
-                            alert(response);
+                            alert(response["message"]);
+                            fetchCars();
                         },
                         error: function(xhr){
                             const errorResponse = xhr.responseText;
@@ -31,10 +32,9 @@ $(document).ready(function(){
                 }
             });
         }
-        else{
+        else if($(this).html() == "Rendszám módosítása"){
             myCarOriginal = $(this).closest('.myCar').html();
             myCarOriginalCarLicense = $(this).closest('.myCar').find('.licenseNumber').html();
-            var myCar = $(this).closest('.myCar');
             var licenseNumber = '<input class="licenseNumberInput" type="text" value='+myCarOriginalCarLicense+' required></input>';
             myCar.find('.licenseNumber').replaceWith(licenseNumber);
             myCar.find('.modifyLicenseNumber').html("Véglegesítés");
@@ -43,8 +43,22 @@ $(document).ready(function(){
             myCar.find('.cancelService').prop("disabled", true);
         }
     })
+
     $(document).on("click", ".cancelModifyLicenseNumber", function(){
         $(this).closest('.myCar').html(myCarOriginal);
+    })
+
+    $(document).on("click", ".cancelService", function(){
+        var myCar = $(this).closest(".myCar");
+        var licenseNumber = myCar.find(".licenseNumber").html();
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + "/routes/api.php/users/"+getUserCredentials().userId+"/cars/"+licenseNumber,
+            dataType: "json",
+            success: function (response) {
+                if(response["rendszam"])
+            }
+        });
     })
 })
 
@@ -85,7 +99,7 @@ function fetchCars(){
                                 '<p>Alváz adatok: </p><p>'+(car['alvaz_adatok'] == null ? '-' : car['alvaz_adatok'])+'</p>'+
                                 '<p>Motor adatok: </p><p>'+(car['motor_adatok'] == null ? '-' : car['motor_adatok'])+'</p>'+
                                 '<p>Előző javítások: </p><p>'+(car['elozo_javitasok'] == null ? '-' : car['elozo_javitasok'])+'</p>'+
-                                '<p>Állapot: </p><p>'+(car['allapot'] == null ? '-' : car['allapot'])+'</p>'+
+                                '<p>Állapot: </p><p class="serviceStatus">'+(car['allapot'] == null ? '-' : car['allapot'])+'</p>'+
                                 '<div class="myCarButtons">';
                     if(car['allapot'] != null){
                         text += '<button class="cancelService">Lemondás</button>';
