@@ -4,16 +4,16 @@ use Config\Database;
 use Exception;
 
 class User{
+    //Lekéri egy felhasználó összes adatát
     public static function find($data){
         $db = Database::connect();
         $username = $data;
         $userId = $data;
         $query = "SELECT f.felhasznalo_id, f.felhasznalonev, f.jelszo_hash, u.nev, u.telefonszam, u.cim, u.email FROM felhasznalok AS f INNER JOIN felhasznalok_ugyfelek AS f_u ON f.felhasznalo_id = f_u.felhasznalo_id INNER JOIN ugyfelek AS u ON f_u.ugyfel_id = u.ugyfel_id WHERE (f.felhasznalonev = '$username' OR f.felhasznalo_id = '$userId');";
-        $result = $db->query($query);
-        $user = $result->fetch_assoc();
-        return $user;
+        return $db->query($query)->fetch_assoc();
     }
 
+    //Frissíti a felhasználó összes adatát
     public static function update($data){
         try{
             $db = Database::connect();
@@ -33,6 +33,7 @@ class User{
         }
     }
 
+    //Létrehozza a felhasználót, regisztrálja
     public static function create($data){
         try{
             $username = $data['username'];
@@ -41,8 +42,10 @@ class User{
             $name = $data['name'];
             $phone_number = $data['phone_number'];
             $email = $data['email'];
+
             $db = Database::connect();
-            if (!self::validateUsername($username)) {
+
+            if (!self::validateUsername($username)) { //Ellenőrzi, hogy nem e foglalt az adott felhasználónév
                 try{
                     $query1 = "INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) VALUES ('$username', SHA2('$password', 256), '$role');";
                     $db->execute_query($query1);
@@ -72,6 +75,7 @@ class User{
         }
     }
 
+    //Ellenőrzi, hogy nem e foglalt az adott felhasználónév
     public static function validateUsername($username){
         $db = Database::connect();
         $query = "SELECT felhasznalonev FROM felhasznalok WHERE felhasznalonev = '$username';";
@@ -79,17 +83,12 @@ class User{
         return $result->num_rows > 0;
     }
 
+    //Ellenőrzi, hogy a felhasználó helyes bejelentkezési adatokat adott e meg
     public static function checkUser($data){
         $db = Database::connect();
         $username = $data['username'];
         $password = $data['password'];
         $query = "SELECT * FROM felhasznalok WHERE felhasznalonev = '$username' AND jelszo_hash = SHA2('$password',256);";
-        $result = $db->query($query);
-        if($result->num_rows > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return $db->query($query)->num_rows > 0;
     }
 }

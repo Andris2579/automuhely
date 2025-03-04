@@ -1,5 +1,6 @@
-import { BASE_URL, getUserCredentials } from "./main.js";
+import { BASE_URL, getUserCredentials, openCustomModal } from "./main.js";
 
+//Betölti és megjeleníti a szolgáltatásokat
 export function fetchServices(){
     var text = "";
     $.ajax({
@@ -7,12 +8,15 @@ export function fetchServices(){
         url: BASE_URL + "routes/api.php/services",
         dataType: "json",
         success: function (response) {
+            //Felépíti a szolgáltatások kártyát
             response.forEach(service => {
-                text += '<div class="service">'+
-                            '<p>'+service['nev']+'</p>'+
-                            '<p>'+service['leiras']+'</p>'+
-                            '<p>'+service['ar']+' Ft</p>'+
-                            '<button class="book"><a href="public/pages/services.html#selected_service">Foglalás</a></button>'+
+                text += '<div class="customCard service">'+
+                            '<div class="service_container">'+
+                                '<h2>'+service['nev']+'</h2>'+
+                                '<p>'+service['leiras']+'</p>'+
+                                '<p>'+service['ar']+' Ft</p>'+
+                                '<button class="customButton book"><a href="public/pages/services.html#selected_service">Foglalás</a></button>'+
+                            '</div>'+
                         '</div>';
             });
             $('#services').html(text);
@@ -27,7 +31,11 @@ window.finalize = finalize;
 let selected_div = null;
 var selected_div_id = null;
 
+//Kiválasztja a kiválasztott szolgáltatást, és ezt megjeleníti az űrlapban, ahol a véglegesítés végezhető el
 $(document).on('click', '.book', function(){
+    $('#services').html($('#services').html() + '<form id="selected_service" class="customCard" method="POST" hidden></form>');
+
+    //Megkeresi a kiválasztott szolgáltatást
     let service_divs = $('#services .service');
     selected_div = $(this).closest('.service');
 
@@ -41,22 +49,24 @@ $(document).on('click', '.book', function(){
     selected_service.removeAttr('hidden');
     selected_service.html('<h2>Kiválasztott szolgáltatás</h2>' + selected_div.html());
     selected_service.find('.book').remove();
+
+    //Betölti a kiválasztott szolgáltatás adatait és a felhasználó autóit
     $.ajax({
         type: "GET",
         url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars",
         dataType: "json",
         success: function (response) {
             if(response){
-                var cars = '<label for="cars">Autók: </label><select id="cars" name="cars"><option value="valasszon">Válasszon egy autót!</option>';
-                response.forEach(car => {
-                    if(car['allapot'] == null){
-                        cars += '<option value='+car['jarmu_id']+'>'+car['rendszam']+'</option>';
-                    }
+                var cars = '<label for="cars">Autók: </label><select class="customSelect" id="cars" name="cars"><option value="valasszon">Válasszon egy autót!</option>';
+                Object.values(response['cars']).forEach(car => {
+                    cars += '<option value='+car['jarmu_id']+'>'+car['rendszam']+'</option>';
                 })
                 cars += "</select>";
-                var final_book = '<button id="final_book" onclick="finalize(event)">Véglegesítés</button>';
+                var final_book = '<button class="customButton final_book" onclick="finalize(event)">Véglegesítés</button>'+
+                                    '<p id="error_message" hidden></p>';
                 selected_service.html(selected_service.html() + cars + final_book);
             }
+            //Ha nincs bejelentkezve a felhasználó, akkor kap egy erre utaló üzenetet
             else{
                 selected_service.html(selected_service.html() + '<p><a href="'+BASE_URL+'public/pages/login.html">Jelentkezzen be</a>, vagy <a href="'+BASE_URL+'public/pages/register.html">regisztráljon</a> a foglalás véglegesítéséhez!</p>');
             }
@@ -64,15 +74,17 @@ $(document).on('click', '.book', function(){
     });
 });
 
-
+//Véglegesíti a foglalást
 function finalize(event){
     event.preventDefault();
 
     var car_id = $('#cars').val();
     const data = {service_id: selected_div_id, car_id: car_id}
 
+    //Ellenőrzi, hogy van e kiválasztott autó a szolgáltatáshoz
     if(car_id == "valasszon"){
-        alert("Válasszon egy autót!");
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Válasszon egy autót!");
     }
     else{
         $.ajax({
@@ -81,18 +93,17 @@ function finalize(event){
             data: data,
             dataType: "json",
             success: function (response) {
-                if(response.success){
-                    alert(response.message);
-                    window.location = BASE_URL + "public/pages/services.html";
-                }
+                console.log(response);
+                fetchServices();
+                openCustomModal("Sikeres foglalás", '<p>'+response['message']+'</p>');
             },
             error: function (xhr){
                 if(xhr.status === 400){
                     const errorResponse = JSON.parse(xhr.responseText);
-                    alert(errorResponse.message);
+                    openCustomModal("Hiba", errorResponse.message);
                 }
                 else{
-                    alert("Hiba történt! :(");
+                    openCustomModal("Hiba", "Hiba történt a foglalás során!");
                 }
             }
         });
@@ -101,12 +112,14 @@ function finalize(event){
 
 let allServices = null
 
+//Keres a szolgáltatások között, szóközzel elválasztva több elemre
 $('#servicesSearchBar').on('input', function() {
     let foundServices = "";
     const searchTerms = $('#servicesSearchBar').val().toLowerCase().split(" ").filter(term => term);
     
     const serviceContainer = $('<div>').html(allServices);
     
+    //Végig iterál az összes szolgáltatások kártyán
     serviceContainer.find('.service').each(function() {
         const service = $(this);
         const serviceText = service.find('p').text().toLowerCase();
@@ -120,12 +133,12 @@ $('#servicesSearchBar').on('input', function() {
     
     $('#services').html(foundServices);
 
-    if($('#services').html() == ""){
+    if($('#servicesSearchBar').val() == ""){
         $('#services').html(allServices);  
     }
 });
 
-
+//Megadott szempont alapján rendezi a szolgáltatásokat
 $('#sort').on('change', function () {
     let foundServices = '';
     const sortOption = $('#sort').val();

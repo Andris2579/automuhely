@@ -11,7 +11,6 @@ use App\Controllers\UserController;
 use App\Controllers\CarBrandController;
 use App\Controllers\CarTypeController;
 use App\Controllers\ServiceController;
-use App\Models\User;
 
 $method = $_SERVER['REQUEST_METHOD'];
 $requestUri = explode('?', $_SERVER['REQUEST_URI'])[0];
@@ -19,6 +18,7 @@ $uriSegments = explode('/', trim($requestUri, '/'));
 
 $params = [];
 
+//Eldönti, hogy a $method változónak megfelelően hogyan dolgozza fel és tárolja a fogadott adatokat
 if($method =="GET"){
     $params = $_GET;
 }
@@ -36,15 +36,16 @@ else if ($method == "PUT") {
     $params = $_POST;
 }
 
+//Kinyeri az url szükséges részét
 $baseIndex = array_search('api.php',$uriSegments);
 $exactUri = array_slice($uriSegments, $baseIndex + 1);
-
 foreach ($exactUri as $segment) {
     if (is_numeric($segment)) {
         $params[] = (int) $segment;
     }
 }
 
+//A $method változó megfelelő értéke alapján kiválasztja a $routes asszociatív tömbből a megfelelő meghívandó függvényt
 function parseRoute($method, $exactUri, $routes){
     global $params;
     $requestPath = '/'.implode('/', $exactUri);
@@ -64,12 +65,14 @@ function parseRoute($method, $exactUri, $routes){
     return null;
 }
 
+//Visszaküldi az Ajax kérésnek a választ
 function sendResponse($data) {
     http_response_code($data['code'] ?? 200);
     echo json_encode($data);
     exit;
 }
 
+//Itt található a $method változó értékének megfelelően rendezett összes API végpont, amit a szerver kezelni tud.
 $routes = [
     'GET' => [
         '/users/{userId}' => function($params){
@@ -81,6 +84,9 @@ $routes = [
         '/users/{userId}/cars/{licenseNumber}' => function($params){
             sendResponse(CarController::userCar($params));
         },
+        '/users/{userId}/cars/{licenseNumber}/services' => function($params){
+            sendResponse(CarController::getCarServices($params));
+        },
         '/header' => function() {
             include App::$APP_PATH.'app/Views/header.php';
         },
@@ -88,7 +94,7 @@ $routes = [
             include App::$APP_PATH.'app/Views/footer.php';
         },
         '/cars/brands' => function() {
-            sendResponse(CarBrandController::allBrand());
+            sendResponse(CarBrandController::getAllBrands());
         },
         '/cars/{brandId}/types' => function($params) {
             sendResponse(CarTypeController::specificType($params[0]));
@@ -121,11 +127,19 @@ $routes = [
         },
         '/users/{userId}/cars/{carId}' => function($params){
             sendResponse(CarController::updateCar($params));
+        },
+        '/users/{userId}/cars/{licenseNumber}/services' => function($params){
+            sendResponse(ServiceController::cancelService($params));
         }
     ],
-    'DELETE' => [],
+    'DELETE' => [
+        '/users/{userId}/cars/{carId}' => function($params){
+            sendResponse(CarController::deleteCar($params));
+        }
+    ]
 ];
 
+//Ha megfelelő API végpont érkezik, akkor a $routes tömbből meghívja a megfelelő függvényt. Ellenkező esetben 404-es hibakóddal tér vissza
 $routeInfo = parseRoute($method, $exactUri, $routes);
 if($routeInfo){
     $handler = $routeInfo['handler'];

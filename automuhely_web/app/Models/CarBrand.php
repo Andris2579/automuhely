@@ -4,11 +4,10 @@ namespace App\Models;
 use Config\Database;
 
 class CarBrand{
+    //Lekéri az összes márkát
     public static function all(){
         $db = Database::connect();
         $query = "SELECT * FROM marka;";
-        $result = $db->query($query);
-        $brands = $result->fetch_aLL(MYSQLI_ASSOC);
-        return $brands;
+        return $db->query($query)->fetch_aLL(MYSQLI_ASSOC);
     }
 }

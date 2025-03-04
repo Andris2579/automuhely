@@ -4,11 +4,7 @@ namespace App\Controllers;
 use App\Models\CarType;
 
 class CarTypeController{
-    public static function allType(){
-        $types = CarType::all();
-        return $types;
-    }
-
+    //Visszaadja egy márka alá tartózó összes autótípust
     public static function specificType($data){
         return CarType::specific($data);
     }

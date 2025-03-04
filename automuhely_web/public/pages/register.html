@@ -16,43 +16,45 @@
     <header></header>
     <main>
         <h1>Regisztráció</h1>
-        <form method="POST">
-            <fieldset id="namesFs">
+        <form method="POST" class="customCard">
+            <fieldset id="namesFs" class="mainFs">
                 <div>
                     <label for="sure_name">Vezetéknév *</label>
-                    <input type="text" name="sure_name" id="sure_name" required>
+                    <input type="text" name="sure_name" id="sure_name" required class="customInput">
                 </div>
                 <div>
                     <label for="first_name">Keresztnév *</label>
-                    <input type="text" name="first_name" id="first_name" required>
+                    <input type="text" name="first_name" id="first_name" required class="customInput">
                 </div>
             </fieldset>
-            <fieldset id="usernameFs">
-                <label for="username">Felhasználó név *</label>
-                <input type="text" name="username" id="username" required>
+            <fieldset id="username_email_Fs" class="mainFs">
+                <fieldset id="usernameFs">
+                    <label for="username">Felhasználó név *</label>
+                    <input type="text" name="username" id="username" required class="customInput">
+                </fieldset>
+                <fieldset id="emailFs">
+                    <label for="email">Email cím *</label>
+                    <input type="email" name="email" id="email" required class="customInput">
+                </fieldset>
             </fieldset>
-            <fieldset id="emailFs">
-                <label for="email">Email cím *</label>
-                <input type="email" name="email" id="email" required>
-            </fieldset>
-            <fieldset id="passwordsFs">
+            <fieldset id="passwordsFs" class="mainFs">
                 <div>
                     <label for="password">Jelszó *</label>
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" name="password" id="password" required class="customInput">
                     <img id="password_show" src="public/assets/imgs/eye_closed.png" alt="">
                 </div>
                 <div>
                     <label for="password_again">Jelszó megerősítése *</label>
-                    <input type="password" name="password" id="password_again" required>
+                    <input type="password" name="password" id="password_again" required class="customInput">
                     <img id="password_again_show" src="public/assets/imgs/eye_closed.png" alt="">
                 </div>
             </fieldset>
-            <fieldset id="phone_numberFs">
+            <fieldset id="phone_numberFs" class="mainFs">
                 <label for="phone_number">Telefonszám (opcionális)</label>
-                <input type="tel" name="phone_number" id="phone_number">
+                <input type="tel" name="phone_number" id="phone_number" class="customInput">
             </fieldset>
             <p id="error_message" hidden></p>
-            <button type="submit" id="registerButton" onclick=register(event)>Regisztráció</button>
+            <button type="submit" id="registerButton" onclick="register(event)" class="customButton">Regisztráció</button>
             <p>Már van fiókja? Jelentkezzen be <a href="public/pages/login.html">itt</a>!</p>
         </form>
     </main>

@@ -1,6 +1,7 @@
-import {BASE_URL, APP_URL, getToken, setToken, clearToken, getUserCredentials} from './main.js';
+import {BASE_URL, APP_URL, getToken, setToken, clearToken, getUserCredentials, openCustomModal} from './main.js';
 
 $(document).ready(function() {
+    //Itt változtatjuk a jelszó megjelenítésénél használt ikon állapotát
     $('#password_show').on('click', function() {
         if ($('#password').attr('type') === 'password') {
             $('#password').attr('type', 'text');
@@ -20,6 +21,8 @@ $(document).ready(function() {
             $('#password_again_show').attr('src', BASE_URL + 'public/assets/imgs/eye_closed.png');
         }
     });
+
+    //Betölti a felhasználó adatait a Profil beállítások oldalon
     if(window.location.href == ("http://localhost" + BASE_URL + 'public/pages/userSettings.html')){
         $.ajax({
             type: "GET",
@@ -29,9 +32,12 @@ $(document).ready(function() {
                 var nev = response["nev"].split(" ");
                 $('#sure_name').val(nev[0]);
                 $('#first_name').val(nev.slice(1).join(" "));
+
                 $('#username').val(response["felhasznalonev"]);
                 $('#email').val(response["email"]);
+
                 $('#phone_number').val(response["telefonszam"]);
+
                 var cim = response["cim"].split(",");
                 $('#zip_code').val(cim[0]);
                 $('#city').val(cim[1]);
@@ -42,18 +48,21 @@ $(document).ready(function() {
     }
 });
 
+//Ellenőrzi, hogy az első karakter szám-e
 function isFirstCharacterDigit(text) {
     const firstChar = text.charAt(0);
     return !isNaN(firstChar) && firstChar !== "";
 }
 
+//Regisztrálja a felhasználót
 export function register(event){
     event.preventDefault();
 
     var form = $('form')[0];
 
     if (!form.checkValidity()) {
-        alert("Kérlek, tölts ki minden *-gal jelölt mezőt!");
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Kérem, töltsön ki minden mezőt!");
     }
     else{
         const data = {
@@ -64,16 +73,20 @@ export function register(event){
             password_again: $('#password_again').val(),
             phone_number: $('#phone_number').val()
         };
+
+        //A jelszó biztonságosságának méréséhez ezt a változót használjuk
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{10,}$/;
     
+        //Ellenőrizzük, hogy egyezik e a két jelszó, és hogy elég biztonságosak
         if(data.password != data.password_again){
             $('#error_message').removeAttr('hidden');
-            $('#error_message').html('A jelszó nem egyezik!');
+            $('#error_message').html('A jelszó két nem egyezik!');
         }
         else if (!passwordPattern.test(data.password)) {
             $('#error_message').removeAttr('hidden');
             $('#error_message').html('A jelszónak legalább 10 karakter hosszúnak kell lennie, tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert!');
         }
+        //Ügyelünk a felhasználónév és a név megfelelő formátumára
         else if(isFirstCharacterDigit($('#username').val())){
             $('#error_message').removeAttr('hidden');
             $('#error_message').html('A felhasználónév nem kezdődhet számmal!');
@@ -94,7 +107,7 @@ export function register(event){
                 dataType: "json",
                 success: function (response) {
                     if(response.success == true){
-                        login(event);
+                        login(event); //Regisztráció után automatikusan bejelentkeztetjük a felhasználót
                     }
                 },
                 error: function (xhr) {
@@ -107,6 +120,7 @@ export function register(event){
     }
 }
 
+//Bejelentkezteti a felhasználót
 export function login(event){
     event.preventDefault();
 
@@ -124,8 +138,8 @@ export function login(event){
             dataType: "json",
             success: function (response) {
                 if(response.success){
-                    setToken(response.token);
-                    window.location.href = BASE_URL + "public/index.html";
+                    setToken(response.token); //A JSON Web Token megkapja a megfelelően titkosított értékeket
+                    window.location.href = BASE_URL + "public/index.html"; //Bejelentkezés után a főoldalra kerül a felhasználó
                 }
             },
             error: function (xhr) {
@@ -137,6 +151,7 @@ export function login(event){
     }
 }
 
+//Kijelentkezteti a felhasználót
 export function logoutAuth(event){
     event.preventDefault();
     $.ajax({
@@ -144,14 +159,14 @@ export function logoutAuth(event){
         url: BASE_URL + "routes/api.php/auth/logout",
         dataType: "json",
         success: function (response) {
-            alert(response.message);
-            clearToken();
+            openCustomModal("Kijelentkezés", response.message);
+            clearToken(); //Törli a JSON Web Token értékeit
             window.location.href = BASE_URL + "public/index.html";
         }
     });
 }
 
-async function sha256Hash(password) {
+/*async function sha256Hash(password) {
     const encoder = new TextEncoder();
     const data = encoder.encode(password);
     const hashBuffer = await crypto.subtle.digest("SHA-256", data);
@@ -159,10 +174,12 @@ async function sha256Hash(password) {
     return Array.from(new Uint8Array(hashBuffer))
         .map(b => b.toString(16).padStart(2, '0'))
         .join('');
-}
+}*/
 
+//Rügzíti és frissíti a felhasználó adatait
 export function userSettingsSave(event){
     event.preventDefault();
+    
     const data = {
         "name": $('#sure_name').val() + " " + $('#first_name').val(),
         "username": $('#username').val(),
@@ -176,39 +193,33 @@ export function userSettingsSave(event){
         $('#error_message').removeAttr('hidden');
         $('#error_message').html("Kérjük töltsön ki minden *-gal jelölt mezőt!");
     }
+    //Ellenőrzi, hogy a kát jelszó egyezik e. Ha mindkét mező üres marad, a jelszó nem változik
     else if($('#password').val() == $('#password_again').val()){
         $.ajax({
             type: "GET",
             url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
             dataType: "json",
             success: function (response) {
-                sha256Hash($('#password').val()).then(hashedPassword =>{
-                    if(response["jelszo_hash"] == hashedPassword){
-                        $.ajax({
-                            type: "PUT",
-                            url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
-                            data: JSON.stringify(data),
-                            dataType: "json",
-                            success: function (response) {
-                                alert(response.message);
-                            },
-                            error: function (xhr) {
-                                console.error("Raw Server Response: ", xhr.responseText);
-                                try {
-                                    const errorResponse = JSON.parse(xhr.responseText);
-                                    alert(errorResponse.message);
-                                } catch (e) {
-                                    console.error("Failed to parse JSON: ", e);
-                                    alert("Unexpected server response.");
-                                }
-                            }
-                        });
+                $.ajax({
+                    type: "PUT",
+                    url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    success: function (response) {
+                        openCustomModal("Sikeres mentés", response.message);
+                        window.location.href = BASE_URL + "public/pages/userSettings.html";
+                    },
+                    error: function (xhr) {
+                        console.error("Raw Server Response: ", xhr.responseText);
+                        try {
+                            const errorResponse = JSON.parse(xhr.responseText);
+                            openCustomModal("Hiba", errorResponse.message);
+                        } catch (e) {
+                            console.error("Failed to parse JSON: ", e);
+                            openCustomModal("Hiba", "Sikertelen mentés!");
+                        }
                     }
-                    else{
-                        $('#error_message').removeAttr("hidden");
-                        $('#error_message').html("Hibás jelszó!");
-                    }
-                })
+                });
             }
         });
     }

@@ -6,6 +6,7 @@ require_once './../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
+//Betölti a környezeti változókat a megadott elérési útvonalról
 $dotenv = Dotenv::createImmutable('C:/xampp/htdocs/automuhely_web/');
 $dotenv->load();
 
@@ -15,6 +16,7 @@ class App{
 
     public static string $JWT_SECRET;
 
+    //Beállítja a környezeti változók megfelelő értékeit
     public static function init(): void {
         self::$BASE_URL = $_ENV['BASE_URL'];
         self::$APP_PATH = $_ENV['APP_PATH'];

@@ -1,34 +1,17 @@
-:root{
-    --background-color: rgb(32, 36, 51);
-    --primary-color: rgb(3, 135, 246);
-    --secondary-color: rgb(246, 114, 3);
-    --text-color: #FFFFFF;
-    --sub-color: rgb(63, 71, 102);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-}
-
 @media only screen and (min-width: 320px) {
     #servicesFilters{
         margin-bottom: 15px;
         display: grid;
         grid-template-columns: auto 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-row-gap: 10px;
-        grid-column-gap: 15px;
+        grid-template-rows: repeat(2,1fr);
+        gap: 15px;
         align-items: center;
     }
-    
+
     #servicesSort, #servicesSearchBar{
         width: 100%;
-        box-sizing: border-box;
-        border: var(--primary-color) solid 3px;
-        border-radius: 10px;
-        background-color: var(--sub-color);
-        padding: 5px;
+        background-color: var(--primary-color);
         color: var(--text-color);
-        margin: 0 auto;
-        font-size: 1.1rem;
     }
 
     #servicesSort{
@@ -38,58 +21,18 @@
     #searchIcon{
         width: 7.5vw;
     }
-    
-    #services{
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-row-gap: 20px;
-        justify-items: center;
-    }
-
-    .service{
-        width: auto;
-        box-sizing: border-box;
-        border: var(--primary-color) solid 3px;
-        border-radius: 10px;
-        background-color: var(--sub-color);
-        padding: 0 10px 10px 10px;
-        color: var(--text-color);
-        box-shadow: 5px 5px 5px var(--background-color);
-    }
 
     .service p{
-        margin: 2.5vh 0;
+        margin: 10px 0;
     }
 
-    .book, #final_book{
-        background-color: var(--secondary-color);
-        padding: 10px;
-        border: 0px solid;
-        border-radius: 7px;
-        font-weight: bold;
-        margin: 0 auto;
-        display: block;
+    .customButton a{
         color: var(--text-color);
-        width: auto;
-    }
-
-    #final_book{
-        font-size: 1.2em;
-    }
-
-    .book a{
-        color: var(--text-color);
-        font-size: 1.2em;
         text-decoration: none;
     }
 
     #selected_service{
-        background-color: var(--sub-color);
-        border: 3px solid var(--primary-color);
-        border-radius: 15px;
-        margin: 20px auto 0 auto;
-        padding: 10px;
-        width: auto;
+        display: block;
     }
 
     #selected_service h2{
@@ -101,17 +44,13 @@
         margin: 10px 0;
     }
 
-    #selected_service select{
-        border: var(--primary-color) solid 3px;
-        border-radius: 10px;
-        background-color: var(--background-color);
-        padding: 10px;
-        color: var(--text-color);
-        margin-bottom: 10px;
-    }
-
     #selected_service p a{
         color: var(--secondary-color);
+    }
+
+    #cars{
+        width: 100%;
+        margin: 10px 0;
     }
 }
 
@@ -128,37 +67,15 @@
     #servicesSort{
         grid-column: auto;
     }
-
-    #services{
-        grid-template-columns: repeat(2,1fr);
-        column-gap: 20px;
-    }
-
-    #selected_service{
-        width: 50vw;
-    }
 }
 
 @media only screen and (min-width: 768px){
-    #services{
-        grid-template-columns: repeat(3,1fr);
+    /*#services{
         background-image: url('/automuhely_web/public/assets/imgs/serviceTools.jpg');
         background-size: cover;
-        padding: 15px;
-        border-radius: 15px;
-    }
+    }*/
 
     #searchIcon{
         width: 3vw;
-    }
-
-    #selected_service{
-        width: 40vw;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    #services{
-        grid-template-columns: repeat(4,1fr);
     }
 }

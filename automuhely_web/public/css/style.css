@@ -1,19 +1,20 @@
-/*
-rgb(63, 71, 102) gray_ - background
-rgb(32, 36, 51) darkblue_
-rgb(3, 135, 246) blue_
-rgb(246, 114, 3) pumpkin
-rgb(255, 255, 255) white_
-*/
-
 :root{
-    --background-color: rgb(32, 36, 51);
-    --primary-color: rgb(3, 135, 246);
-    --secondary-color: rgb(246, 114, 3);
-    --text-color: rgb(255, 255, 255);
-    --sub-color: rgb(63, 71, 102);
+    --background-color: rgb(240, 255, 241);
+    --background-color-transparent: rgba(240, 255, 241, 0.75);
+    --primary-color: rgb(72, 172, 240);
+    --secondary-color: rgb(91, 140, 90);
+    --secondary-color-transparent: rgb(91, 140, 90,1);
+    --beige-transparent: rgba(245, 216, 143, 0.7);
+    --text-color: rgb(240, 255, 241);/*rgb(52, 46, 55);*/
+    --sub-color: rgb(162, 112, 53);
+    --sub-color-transparent: rgba(162, 112, 53, 0.9);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+}
+
+#error_message{
+    color: red;
+    font-weight: 600;
 }
 
 #logo, #logoHamburger{
@@ -29,11 +30,12 @@ body{
 h1{
     display: inline-block;
     font-size: 2.5rem;
-    margin: 20px auto 20px 0;
-    background-color: var(--sub-color);
+    margin: 20px 0;
+    color: var(--secondary-color);
     border-radius: 15px;
     padding: 10px;
     width: auto;
+    text-decoration: underline;
 }
 
 #extraButtons{
@@ -44,19 +46,106 @@ main{
     padding: 0 10px;
 }
 
+.customCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: var(--primary-color) solid 4px;
+    border-radius: 15px;
+    padding: 15px;
+    color: var(--text-color);
+    box-shadow: 5px 5px 5px black;
+    background: linear-gradient(135deg, var(--sub-color-transparent), var(--beige-transparent));
+}
+
+.customCard:hover{
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.customInput, .customSelect, .customButton{
+    width: auto;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    padding: 7px;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.customButton{
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 1.15rem;
+}
+
+.customButton:hover{
+    background-color: var(--secondary-color);
+}
+
+.customSelect option{
+    font-size: 0.95rem;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--sub-color); 
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.custom-modal h2{
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.modal-content {
+    position: relative;
+    padding-top: 20px;
+}
+
+.close-button {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+}
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 @media only screen and (min-width: 320px) {
-    #profile{
-        background-color: var(--secondary-color);
-        border: none;
-        border-radius: 15px;
-        padding: 7px 10px;
-        cursor: pointer;
-        color: var(--text-color);
+    .customGrid{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-row-gap: 20px;
+        justify-items: center;
+    }
+
+    p{
+        font-size: 1.1rem;
     }
 
     header{
         position: relative;
-        background-color: var(--primary-color);
+        background-color: var(--secondary-color);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -68,11 +157,12 @@ main{
         position: absolute;
         right: 0;
         top: calc(12.5vw + 20px);
-        background-color: var(--sub-color);
-        padding: 10px;
-        border: var(--primary-color) solid 3px;
+        padding: 7px;
+        border: var(--secondary-color) solid 4px;
         border-radius: 15px;
         text-align: center;
+        background: linear-gradient(135deg, var(--sub-color-transparent), var(--beige-transparent));
+        z-index: 100;
     }
 
     nav a{
@@ -80,6 +170,7 @@ main{
         text-decoration: none;
         color: white;
         margin: 5px 0;
+        font-weight: bold;
     }
 
     #logoHamburger{
@@ -93,22 +184,15 @@ main{
     }
 
     #extraButtons {
-        margin-top: 10px;
+        flex-direction: column;
+        margin-top: 5px;
         border-radius: 5px;
         left: 0;
+        gap: 5px;
     }
     
     #extraButtons button {
-        display: block;
-        margin: 5px 0;
-        width: 100%;
-        padding: 7px;
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        border: none;
+        font-size: 0.975rem;
     }
 }
 
@@ -133,8 +217,17 @@ main{
 }
 
 @media only screen and (min-width: 768px) {
+    .customGrid{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
+        justify-items: center;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
     header, #profileMenu button{
-        font-size: 1.35rem;
+        font-size: 1.45rem;
     }
 
     #logo{
@@ -151,12 +244,20 @@ main{
         position: static;
         border: none;
         flex-direction: row;
-        background-color: transparent;
+        background: transparent;
         padding: 10px;
-        gap: 5vw;
-        margin-right: 0;
+        gap: 10px;
+        width: 100%;
         align-items: center;
-        background-color: var(--secondary-color);
+        justify-content: center;
+    }
+
+    #navLinks{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 10vw;
     }
 
     nav a{
@@ -168,14 +269,18 @@ main{
     }
 
     #profile{
-        padding: 0;
+        font-weight: bold;
+    }
+
+    #profileMenu{
+        margin: 0 0 0 auto;
     }
 
     #extraButtons{
         position: absolute;
         top: calc(7.5vw + 20px);
         right: 0;
-        background-color: var(--sub-color);
+        background: linear-gradient(135deg, var(--sub-color-transparent), var(--beige-transparent));
         padding: 10px;
         border: var(--primary-color) solid 3px;
         border-radius: 20px;
@@ -220,4 +325,19 @@ main{
 
 footer{
     text-align: center;
+    background-color: var(--primary-color);
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p{
+    margin: 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+#extraButtons button:hover{
+    background-color: var(--primary-color);
 }
