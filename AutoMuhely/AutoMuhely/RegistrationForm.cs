@@ -46,7 +46,7 @@ namespace AutoMuhely
                 return;
             }
 
-            bool success = false; // Flag to track success
+            bool success = false;
 
             try
             {
@@ -61,7 +61,7 @@ namespace AutoMuhely
                 var parameters = new Dictionary<string, object>
         {
             { "@Username", username },
-            { "@Password", password1 }, // Raw password is passed; MySQL will hash it
+            { "@Password", password1 },
             { "@Role", role }
         };
 

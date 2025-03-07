@@ -72,3 +72,6 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCode.resource
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputWorkFlow.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputGuide.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCustomers.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.UpdateAppointment.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputPackages.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.NewOrder.resources

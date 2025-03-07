@@ -47,7 +47,10 @@ namespace AutoMuhely
 
                 // Populate fields
                 txtRendszam.Text = licensePlate;
-                nUpDDate.Value = OriginalYear;
+                if (OriginalYear != 0)
+                {
+                    nUpDDate.Value = OriginalYear;
+                }               
                 txtMotorAdat.Text = engineData;
                 txtAlvazAdat.Text = chassisData;
                 txtElozoJav.Text = previousRepairs;
@@ -81,10 +84,7 @@ namespace AutoMuhely
                     comBoxTipus.SelectedValue == null || (int)comBoxTipus.SelectedValue <= 0 ||
                     comBoxHibakod.SelectedValue == null || (int)comBoxHibakod.SelectedValue <= 0 ||
                     comBoxSablon.SelectedValue == null || (int)comBoxSablon.SelectedValue <= 0 ||
-                    string.IsNullOrWhiteSpace(txtMotorAdat.Text) ||
-                    string.IsNullOrWhiteSpace(txtAlvazAdat.Text) ||
-                    string.IsNullOrWhiteSpace(txtElozoJav.Text) ||
-                    nUpDDate.Value > DateTime.Now.Year || nUpDDate.Value < 1886) // Validate year range
+                    string.IsNullOrWhiteSpace(txtMotorAdat.Text) || string.IsNullOrWhiteSpace(txtAlvazAdat.Text) || nUpDDate.Value > DateTime.Now.Year || nUpDDate.Value < 1886) // Validate year range
                 {
                     MessageBox.Show("Minden mezőt helyesen kell kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return; // Stop execution if validation fails

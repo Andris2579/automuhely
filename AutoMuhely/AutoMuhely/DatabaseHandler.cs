@@ -135,8 +135,6 @@ namespace AutoMuhely
 
         }
 
-
-
         public void Update(string updateQuery, Dictionary<string, object> parameters)
         {
             using (var connection = new MySqlConnection(connectionCommand))
@@ -210,6 +208,27 @@ namespace AutoMuhely
             {
                 MessageBox.Show($"Hiba történt az ID lekérdezése során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
+            }
+        }
+        public string LookUpOne(string query, Dictionary<string, object> parameters=null)
+        {
+            try
+            {
+                var result = Select(query, parameters);
+                if (result.Item1.Count > 0)
+                {
+                    // Assuming the ID is in the first row and first column
+                    return Convert.ToString(result.Item1[0][0]);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt az ID lekérdezése során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
             }
         }
         public int GetScalarValue(string query, Dictionary<string, object> parameters = null)
