@@ -52,6 +52,7 @@ namespace AutoMuhely
             else
             {
                 IsEditMode = false;
+                editLabel.Text = "HOZZÁADÁSA";
                 btnAdd.Text = "Hozzáadás"; // Change button text to Hozzáadás
             }
         }

@@ -35,12 +35,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.alkatrészNév_Lb = new System.Windows.Forms.Label();
             this.txtUtmutatoNev = new System.Windows.Forms.TextBox();
-            this.alkatrészLeírás_Lb = new System.Windows.Forms.Label();
-            this.txtUtmutatoLeiras = new System.Windows.Forms.TextBox();
             this.alkatrészKezdetiKészlet_Lb = new System.Windows.Forms.Label();
             this.btnAdd = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
             this.comboBox1 = new AutoMuhely.CustomComboBox();
+            this.txtUtmutatoLeiras = new System.Windows.Forms.TextBox();
+            this.alkatrészLeírás_Lb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,29 +113,6 @@
             this.txtUtmutatoNev.Size = new System.Drawing.Size(250, 26);
             this.txtUtmutatoNev.TabIndex = 27;
             // 
-            // alkatrészLeírás_Lb
-            // 
-            this.alkatrészLeírás_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alkatrészLeírás_Lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.alkatrészLeírás_Lb.Location = new System.Drawing.Point(54, 340);
-            this.alkatrészLeírás_Lb.Name = "alkatrészLeírás_Lb";
-            this.alkatrészLeírás_Lb.Size = new System.Drawing.Size(250, 25);
-            this.alkatrészLeírás_Lb.TabIndex = 28;
-            this.alkatrészLeírás_Lb.Text = "Útmutató leírása";
-            // 
-            // txtUtmutatoLeiras
-            // 
-            this.txtUtmutatoLeiras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-            this.txtUtmutatoLeiras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUtmutatoLeiras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUtmutatoLeiras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
-            this.txtUtmutatoLeiras.Location = new System.Drawing.Point(54, 368);
-            this.txtUtmutatoLeiras.Multiline = true;
-            this.txtUtmutatoLeiras.Name = "txtUtmutatoLeiras";
-            this.txtUtmutatoLeiras.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtUtmutatoLeiras.Size = new System.Drawing.Size(250, 100);
-            this.txtUtmutatoLeiras.TabIndex = 29;
-            // 
             // alkatrészKezdetiKészlet_Lb
             // 
             this.alkatrészKezdetiKészlet_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,15 +156,44 @@
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comboBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(92)))));
+            this.comboBox1.BorderThickness = 2;
+            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(54, 516);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(250, 28);
+            this.comboBox1.OriginalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comboBox1.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.comboBox1.Size = new System.Drawing.Size(250, 27);
             this.comboBox1.TabIndex = 38;
+            // 
+            // txtUtmutatoLeiras
+            // 
+            this.txtUtmutatoLeiras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtUtmutatoLeiras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUtmutatoLeiras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUtmutatoLeiras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.txtUtmutatoLeiras.Location = new System.Drawing.Point(54, 368);
+            this.txtUtmutatoLeiras.Multiline = true;
+            this.txtUtmutatoLeiras.Name = "txtUtmutatoLeiras";
+            this.txtUtmutatoLeiras.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtUtmutatoLeiras.Size = new System.Drawing.Size(250, 100);
+            this.txtUtmutatoLeiras.TabIndex = 29;
+            // 
+            // alkatrészLeírás_Lb
+            // 
+            this.alkatrészLeírás_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alkatrészLeírás_Lb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.alkatrészLeírás_Lb.Location = new System.Drawing.Point(54, 340);
+            this.alkatrészLeírás_Lb.Name = "alkatrészLeírás_Lb";
+            this.alkatrészLeírás_Lb.Size = new System.Drawing.Size(250, 25);
+            this.alkatrészLeírás_Lb.TabIndex = 28;
+            this.alkatrészLeírás_Lb.Text = "Útmutató leírása";
             // 
             // InputGuide
             // 
@@ -215,7 +221,7 @@
             this.MinimumSize = new System.Drawing.Size(370, 725);
             this.Name = "InputGuide";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Új Útmutató";
+            this.Text = "Útmutatók";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -231,9 +237,9 @@
         private CustomButton btnCancel;
         private System.Windows.Forms.Label alkatrészNév_Lb;
         private System.Windows.Forms.TextBox txtUtmutatoNev;
-        private System.Windows.Forms.Label alkatrészLeírás_Lb;
-        private System.Windows.Forms.TextBox txtUtmutatoLeiras;
         private System.Windows.Forms.Label alkatrészKezdetiKészlet_Lb;
         private CustomComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtUtmutatoLeiras;
+        private System.Windows.Forms.Label alkatrészLeírás_Lb;
     }
 }

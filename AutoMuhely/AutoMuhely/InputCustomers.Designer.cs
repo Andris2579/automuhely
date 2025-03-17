@@ -344,7 +344,7 @@
             this.MinimumSize = new System.Drawing.Size(374, 873);
             this.Name = "InputCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InputCustomers";
+            this.Text = "Ügyfelek";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIranyitoSz)).EndInit();
             this.ResumeLayout(false);

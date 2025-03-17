@@ -213,7 +213,7 @@
             this.MinimumSize = new System.Drawing.Size(374, 675);
             this.Name = "InputWorkFlow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "újMunkafolyamat";
+            this.Text = "Munkafolyamatok";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSablonIdo)).EndInit();
             this.ResumeLayout(false);

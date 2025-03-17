@@ -231,7 +231,7 @@ namespace AutoMuhely
             this.MinimumSize = new System.Drawing.Size(370, 680);
             this.Name = "InputParts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alkatrész Hozzáadás";
+            this.Text = "Alkatrészek";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.alkatrészInputs_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.alkatrészKezdetiKészletMennyiség_NUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

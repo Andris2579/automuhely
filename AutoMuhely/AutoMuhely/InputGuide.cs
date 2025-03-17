@@ -36,11 +36,13 @@ namespace AutoMuhely
                 txtUtmutatoLeiras.Text = tartalom;
 
                 btnAdd.Text = "Módosítás"; // Update button text
+                label4.Text = "MÓDOSÍTÁSA";
             }
             else
             {
                 IsEditMode = false;
                 btnAdd.Text = "Hozzáadás"; // Default button text
+                label4.Text = "HOZZÁADÁSA";
             }
             LoadJarmuTipusok();
 

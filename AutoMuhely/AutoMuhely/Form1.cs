@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -24,15 +25,15 @@ namespace AutoMuhely
         public string Role { get; set; }
         static DatabaseHandler databaseHandler = new DatabaseHandler();
         //Default sql queries
-        static string ugyfelekSql= "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail' ,cim AS Cím FROM ugyfelek; ";
-        static string alkatreszekSql= "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek";
-        static string jarmuvekSql= "SELECT rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j LEFT JOIN tipus t ON j.tipus_id= t.tipus_id LEFT JOIN hibakodok h ON h.kod_id = j.kod_id LEFT JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id LEFT JOIN marka m ON t.marka_id= m.marka_id;";
+        static string ugyfelekSql = "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail' ,cim AS Cím FROM ugyfelek; ";
+        static string alkatreszekSql = "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek";
+        static string jarmuvekSql = "SELECT rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, gyartas_eve AS 'Gyártás éve', motor_adatok AS 'Motor adatok', alvaz_adatok AS 'Alváz adatok', elozo_javitasok AS 'Előző javítások' FROM jarmuvek j LEFT JOIN tipus t ON j.tipus_id= t.tipus_id LEFT JOIN hibakodok h ON h.kod_id = j.kod_id LEFT JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id LEFT JOIN marka m ON t.marka_id= m.marka_id;";
         static string hibakodSql = "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok";
         static string munkafolySql = "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok";
         static string utmutatoSql = "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus=t.tipus_id JOIN marka m ON m.marka_id= t.marka_id";
         static string szervizSql = "SELECT s.nev AS Csomag, s.leiras AS Leírás, CONCAT(s.ar,' Ft') AS Ár FROM szervizcsomagok s;";
         static string rendelesekSql = "SELECT a.nev AS Alkatrész, r.mennyiseg AS Mennyiség, f.felhasznalonev AS Igénylő, r.statusz AS Státusz FROM rendelesek r JOIN felhasznalok f ON f.felhasznalo_id=r.felhasznalo_id JOIN alkatreszek a ON a.alkatresz_id=r.alkatresz_id WHERE r.statusz='Kérvényezve';";
-        static string markakTipusSql = "SELECT t.tipus AS Típus, m.marka_neve AS Márka FROM tipus t JOIN marka m ON m.marka_id=t.marka_id;";
+        static string markakTipusSql = "SELECT t.tipus AS Modell, m.marka_neve AS Márka FROM tipus t RIGHT JOIN marka m ON m.marka_id=t.marka_id ORDER BY Márka;";
 
 
         public Main_Form()
@@ -43,7 +44,7 @@ namespace AutoMuhely
             {
                 control.Margin = new Padding(0);
             }
-            customersPanel.PanelClicked += (sender, e) => LoadData("Ügyfelek",ugyfelekSql);
+            customersPanel.PanelClicked += (sender, e) => LoadData("Ügyfelek", ugyfelekSql);
             partsPanel.PanelClicked += (sender, e) => LoadData("Alkatrészek", alkatreszekSql);
             repairsPanel.PanelClicked += (sender, e) => LoadSzerelesek();
             carsPanel.PanelClicked += (sender, e) => LoadData("Járművek", jarmuvekSql);
@@ -96,19 +97,19 @@ namespace AutoMuhely
             }
             else if (text.Length <= 10)
             {
-                LabelUser.Font = new Font("Open Sans Extrabold", 22F, FontStyle.Bold);  
+                LabelUser.Font = new Font("Open Sans Extrabold", 22F, FontStyle.Bold);
             }
             else if (text.Length <= 15)
             {
-                LabelUser.Font = new Font("Open Sans Extrabold", 18F, FontStyle.Bold);  
+                LabelUser.Font = new Font("Open Sans Extrabold", 18F, FontStyle.Bold);
             }
             else if (text.Length <= 20)
             {
-                LabelUser.Font = new Font("Open Sans Extrabold", 11F, FontStyle.Bold);  
+                LabelUser.Font = new Font("Open Sans Extrabold", 11F, FontStyle.Bold);
             }
             else
             {
-                LabelUser.Font = new Font("Open Sans Extrabold", 10F, FontStyle.Bold);  
+                LabelUser.Font = new Font("Open Sans Extrabold", 10F, FontStyle.Bold);
             }
         }
         private void LoadData(string menu, string query)
@@ -117,7 +118,8 @@ namespace AutoMuhely
             panelTable.Controls.Clear();
             InitializeTable(query);
             panelButtons.Controls.Clear();
-            if (aktivMenu== "Ügyfelek")
+            searchBar.Text = "";
+            if (aktivMenu == "Ügyfelek")
             {
                 if (Role == "Adminisztrátor")
                 {
@@ -132,24 +134,23 @@ namespace AutoMuhely
                 }
 
             }
-            else if(aktivMenu == "Alkatrészek")
+            else if (aktivMenu == "Alkatrészek")
             {
                 if (Role == "Adminisztrátor")
                 {
                     GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
                     GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
                     GenerateHoverPanel("Rendelések", new Point(340, 0), new Size(150, 63), Rendelesek_Click);
-                    GenerateHoverPanel("Rendelés kérvényezése", new Point(490, 0), new Size(280,63), RendelesKervenyezes_Click);
+                    GenerateHoverPanel("Rendelés kérvényezése", new Point(490, 0), new Size(280, 63), RendelesKervenyezes_Click);
                 }
                 else
                 {
-                    GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
-                    GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
-                    GenerateHoverPanel("Rendelés kérvényezése", new Point(340, 0), new Size(280, 63), RendelesKervenyezes_Click);
+                    GenerateHoverPanel("Rendeléseim", new Point(0, 0), new Size(180, 63), Rendelesek_Click);
+                    GenerateHoverPanel("Rendelés kérvényezése", new Point(180, 0), new Size(280, 63), RendelesKervenyezes_Click);
                 }
 
             }
-            else if(aktivMenu == "Járművek")
+            else if (aktivMenu == "Járművek")
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
                 GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
@@ -157,11 +158,13 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Márkák")
             {
-                GenerateHoverPanel("Új márka", new Point(0, 0), new Size(120, 63), UjHozzaadasa_Click);
-                GenerateHoverPanel("Márka módosítása", new Point(120, 0), new Size(220, 63), Modositas_Click);
-                GenerateHoverPanel("Új típus", new Point(340,0),new Size(110, 63), UjHozzaadasa_Click);
-                GenerateHoverPanel("Típus módosítása", new Point(450,0),new Size(210, 63), UjHozzaadasa_Click);
-
+                if (Role == "Adminisztrátor")
+                {
+                    GenerateHoverPanel("Új márka", new Point(0, 0), new Size(120, 63), UjHozzaadasa_Click);
+                    GenerateHoverPanel("Márka módosítása", new Point(120, 0), new Size(220, 63), Modositas_Click);
+                    GenerateHoverPanel("Új típus", new Point(340, 0), new Size(110, 63), Ujtipus_Click);
+                    GenerateHoverPanel("Típus módosítása", new Point(450, 0), new Size(210, 63), TipusModositas_Click);
+                }
             }
         }
 
@@ -188,11 +191,11 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Márkák")
             {
-
+                InputBrands newBrands = new InputBrands();
+                newBrands.ShowDialog();
+                LoadData("Márkák", markakTipusSql);
             }
         }
-
-        // Placeholder for the "Módosítás" button click
         private void Modositas_Click(object sender, EventArgs e)
         {
             if (aktivMenu == "Ügyfelek")
@@ -212,7 +215,7 @@ namespace AutoMuhely
                     string cim = selectedRow.Cells["Cím"].Value?.ToString();
 
                     // Pass data to alkatrészInputs for editing
-                    InputCustomers inputCustomers = new InputCustomers(nev,telefon,cim,email);
+                    InputCustomers inputCustomers = new InputCustomers(nev, telefon, cim, email);
                     inputCustomers.ShowDialog();
                 }
                 InitializeTable(ugyfelekSql);
@@ -264,8 +267,8 @@ namespace AutoMuhely
                     { "@tipus", tipus }
                 };
                     int tipusID = databaseHandler.LookupID(sqlQuery, parameters);
-                     sqlQuery = "SELECT kod_id FROM hibakodok WHERE kod=@kod";
-                     parameters = new Dictionary<string, object>
+                    sqlQuery = "SELECT kod_id FROM hibakodok WHERE kod=@kod";
+                    parameters = new Dictionary<string, object>
                 {
                     { "@kod", kod }
                 };
@@ -293,6 +296,56 @@ namespace AutoMuhely
                 }
                 InitializeTable(jarmuvekSql);
             }
+            else if (aktivMenu == "Márkák")
+            {
+                if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+                {
+                    MessageBox.Show("Kérlek válassz egy márkát a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                    // Get the data from the selected row
+                    string marka = selectedRow.Cells["Márka"].Value?.ToString();
+
+                    // Pass data to alkatrészInputs for editing
+                    InputBrands updateBrands = new InputBrands(true, marka);
+                    updateBrands.ShowDialog();
+                }
+                InitializeTable(markakTipusSql);
+            }
+        }
+        private void Ujtipus_Click(object sender, EventArgs e)
+        {
+            InputCarType newType = new InputCarType();
+            newType.ShowDialog();
+            LoadData("Márkák", markakTipusSql);
+        }
+        private void TipusModositas_Click(object sender, EventArgs e)
+        {
+            if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Kérlek válassz egy Modellt a módosításhoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
+
+                // Get the data from the selected row
+                string modell = selectedRow.Cells["Modell"].Value?.ToString();
+                string marka = selectedRow.Cells["Márka"].Value?.ToString();
+                var parameters = new Dictionary<string, object>
+                {
+                    {"@marka", marka }
+                };
+                string sqlQuery = @"SELECT marka_id FROM marka WHERE marka_neve=@marka;";
+                int Id=databaseHandler.GetScalarValue(sqlQuery, parameters);
+                // Pass data to alkatrészInputs for editing
+                InputCarType updateType = new InputCarType(true,Id,modell);
+                updateType.ShowDialog();
+            }
+            InitializeTable(markakTipusSql);
         }
         private void Alkatreszek_Click(object sender, EventArgs e)
         {
@@ -302,7 +355,17 @@ namespace AutoMuhely
         {
             panelTable.Controls.Clear();
             aktivMenu = "Rendelesek";
-            InitializeTable(rendelesekSql);
+            if (Role=="Szerelő") 
+            {
+                string sqlQuery = @"SELECT a.nev AS Alkatrész, r.mennyiseg AS Mennyiség, f.felhasznalonev AS Igénylő, r.statusz AS Státusz FROM rendelesek r JOIN felhasznalok f ON f.felhasznalo_id=r.felhasznalo_id JOIN alkatreszek a ON a.alkatresz_id=r.alkatresz_id WHERE f.felhasznalonev=@nev;";
+                var parameters = new Dictionary<string, object>
+                {
+                    {"@nev", Username }
+                };
+                InitializeTable(sqlQuery,parameters); 
+            }
+            else { InitializeTable(rendelesekSql); }
+            
             panelButtons.Controls.Clear();
             if (Role == "Adminisztrátor")
             {
@@ -339,6 +402,7 @@ namespace AutoMuhely
                 };
                 string sqlQuery = @"SELECT alkatresz_id FROM alkatreszek a WHERE nev=@nev AND leiras= @leiras AND keszlet_mennyiseg = @keszlet AND utanrendelesi_szint = @utanrend;";
                 int Id = databaseHandler.GetScalarValue(sqlQuery, parameters);
+                
                 var param= new Dictionary<string, object>
                 {
                     { "@nev", Username }
@@ -352,7 +416,35 @@ namespace AutoMuhely
         }
         private void RendelesKezeles_Click(object sender, EventArgs e)
         {
+            if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Kérlek válassz egy alkatrészt a rendelés leadásához!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
 
+                // Get the data from the selected row
+                string alkatresz = selectedRow.Cells["Alkatrész"].Value?.ToString();
+                int menny = Convert.ToInt32(selectedRow.Cells["Mennyiség"].Value?.ToString());
+                string igenylo = selectedRow.Cells["Igénylő"].Value?.ToString();
+                string statusz = selectedRow.Cells["Státusz"].Value?.ToString();
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@nev", alkatresz },
+                    { "@menny",  menny},
+                    { "@igeny", igenylo},
+                    { "@stat", statusz}
+                };
+                string sqlQuery = @"SELECT rendeles_id FROM rendelesek r WHERE alkatresz_id=(SELECT a.alkatresz_id FROM alkatreszek a WHERE a.nev=@nev) AND r.mennyiseg=@menny AND felhasznalo_id=(SELECT f.felhasznalo_id FROM felhasznalok f WHERE f.felhasznalonev=@igeny) AND statusz=@stat;";
+                
+                int Id = databaseHandler.GetScalarValue(sqlQuery, parameters);
+                string sqlQuery2 = @"SELECT r.alkatresz_id FROM rendelesek r WHERE alkatresz_id=(SELECT a.alkatresz_id FROM alkatreszek a WHERE a.nev=@nev) AND r.mennyiseg=@menny AND felhasznalo_id=(SELECT f.felhasznalo_id FROM felhasznalok f WHERE f.felhasznalonev=@igeny) AND statusz=@stat;";
+                int Id2=databaseHandler.GetScalarValue(sqlQuery2, parameters);
+                OrderHandler handleOrder = new OrderHandler(Id2,Id, menny,alkatresz);
+                handleOrder.ShowDialog();
+                InitializeTable(rendelesekSql);
+            }
         }
 
         private void Ugyfel_Jarmuvek(object sender, EventArgs e)
@@ -463,6 +555,7 @@ namespace AutoMuhely
             aktivMenu = "Szerelések";
             panelButtons.Controls.Clear();
             panelTable.Controls.Clear();
+            searchBar.Text = "";
             InitSzerelesek();
             GenerateHoverPanel("Szerelési Útmutatók", new Point(0, 0), new Size(246, 63), SzerelesiUtmutatok_Click);
             GenerateHoverPanel("Hibakódok", new Point(246, 0), new Size(140, 63), Hibakodok_Click);
@@ -840,6 +933,7 @@ namespace AutoMuhely
             aktivMenu = "Útmutatók";
             InitializeTable(utmutatoSql);
             panelButtons.Controls.Clear();
+            searchBar.Text = "";
             if (Role=="Adminisztrátor")
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzerelesekUjHozzaadasa_Click);
@@ -889,6 +983,7 @@ namespace AutoMuhely
             InitializeTable(hibakodSql);
             aktivMenu= "Hibakódok";
             panelButtons.Controls.Clear();
+            searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), HibakodokUjHozzaadasa_Click);
@@ -938,6 +1033,7 @@ namespace AutoMuhely
             InitializeTable(munkafolySql);
             aktivMenu = "Munkafolyamatok";
             panelButtons.Controls.Clear();
+            searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), MunkafolyamatSablonokUjHozzaadasa_Click);
@@ -955,6 +1051,7 @@ namespace AutoMuhely
             InitializeTable(szervizSql);
             aktivMenu = "Szervizcsomagok";
             panelButtons.Controls.Clear();
+            searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
                 GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzervizCsomagokUjHozzaadasa_Click);
@@ -1179,45 +1276,65 @@ namespace AutoMuhely
         private Dictionary<string, string> searchQueries = new Dictionary<string, string>
         {
     { "Ügyfelek",
-        "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail', cim AS Cím FROM ugyfelek WHERE nev LIKE '%{0}%' OR telefonszam LIKE '%{0}%' OR email LIKE '%{0}%' OR cim LIKE '%{0}%';" },
+        "SELECT nev AS Név, telefonszam AS Telefonszám, email AS 'E-mail', cim AS Cím FROM ugyfelek WHERE nev LIKE '%{0}%' OR telefonszam LIKE '%{0}%' OR email LIKE '%{0}%' OR cim LIKE '%{0}%'" },
 
     { "Alkatrészek",
-        "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek WHERE nev LIKE '%{0}%' OR leiras LIKE '%{0}%' OR keszlet_mennyiseg LIKE '%{0}%' OR utanrendelesi_szint LIKE '%{0}%';" },
+        "SELECT nev AS Alkatrész, leiras AS Leírás, keszlet_mennyiseg AS Készlet, utanrendelesi_szint AS 'Utánrendelési szint' FROM alkatreszek WHERE nev LIKE '%{0}%' OR leiras LIKE '%{0}%' OR keszlet_mennyiseg LIKE '%{0}%' OR utanrendelesi_szint LIKE '%{0}%'" },
 
     { "Járművek",
-        "SELECT j.rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, j.gyartas_eve AS 'Gyártás éve', j.motor_adatok AS 'Motor adatok', j.alvaz_adatok AS 'Alváz adatok', j.elozo_javitasok AS 'Előző javítások' FROM jarmuvek j JOIN tipus t ON j.tipus_id = t.tipus_id JOIN hibakodok h ON h.kod_id = j.kod_id JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id JOIN marka m ON t.marka_id = m.marka_id WHERE j.rendszam LIKE '%{0}%' OR t.tipus LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR h.kod LIKE '%{0}%';" },
+        "SELECT j.rendszam AS Rendszám, t.tipus AS Típus, m.marka_neve AS Márka, h.kod AS Hibakód, mf.nev AS Sablon, j.gyartas_eve AS 'Gyártás éve', j.motor_adatok AS 'Motor adatok', j.alvaz_adatok AS 'Alváz adatok', j.elozo_javitasok AS 'Előző javítások' FROM jarmuvek j JOIN tipus t ON j.tipus_id = t.tipus_id JOIN hibakodok h ON h.kod_id = j.kod_id JOIN munkafolyamat_sablonok mf ON mf.sablon_id = j.sablon_id JOIN marka m ON t.marka_id = m.marka_id WHERE j.rendszam LIKE '%{0}%' OR t.tipus LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR h.kod LIKE '%{0}%'" },
 
     { "Hibakódok",
-        "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok WHERE kod LIKE '%{0}%' OR leiras LIKE '%{0}%';" },
+        "SELECT kod AS Hibakód, leiras AS Leírás FROM hibakodok WHERE kod LIKE '%{0}%' OR leiras LIKE '%{0}%'" },
 
     { "Munkafolyamatok",
-        "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok WHERE nev LIKE '%{0}%' OR lepesek LIKE '%{0}%';" },
+        "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok WHERE nev LIKE '%{0}%' OR lepesek LIKE '%{0}%'" },
 
     { "Útmutatók",
-        "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus = t.tipus_id JOIN marka m ON t.marka_id = m.marka_id WHERE s.cim LIKE '%{0}%' OR s.tartalom LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR t.tipus LIKE '%{0}%';" }
+        "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus = t.tipus_id JOIN marka m ON t.marka_id = m.marka_id WHERE s.cim LIKE '%{0}%' OR s.tartalom LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR t.tipus LIKE '%{0}%'" }
 };
+
+
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string keresettKifejezes = searchBar.Text.Trim();
+
+            if (!string.IsNullOrEmpty(keresettKifejezes) && aktivMenu != null)
+            {
+                if (searchQueries.ContainsKey(aktivMenu))
+                {
+                    string[] keywords = keresettKifejezes.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string baseQuery = searchQueries[aktivMenu];
+
+                    // Extract the WHERE clause and modify it for multiple search terms
+                    string whereClause = "";
+                    foreach (string keyword in keywords)
+                    {
+                        if (whereClause != "")
+                            whereClause += " OR ";
+
+                        whereClause += "(" + baseQuery.Substring(baseQuery.IndexOf("WHERE") + 6)
+                                            .Replace("{0}", $"{keyword}") + ")";
+                    }
+
+                    // Reconstruct the full query
+                    string finalQuery = baseQuery.Substring(0, baseQuery.IndexOf("WHERE") + 6) + " " + whereClause;
+
+                    // Execute the query
+                    InitializeTable(finalQuery);
+                }
+            }
+        }
 
         private void Main_Form_Resize(object sender, EventArgs e)
         {
-            table_DGV.Size = new Size(panelMain.Width - 30, panelTable.Height-46);
+            table_DGV.Size = new Size(panelMain.Width - 30, panelTable.Height - 46);
             ResizeAppointmentCards();
         }
         private void panelTable_Click(object sender, EventArgs e)
         {
             searchBar.Focus();
-        }
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            string keresettKifejezes = searchBar.Text.Trim();
-            if (aktivMenu != null)
-            {
-                if (searchQueries.ContainsKey(aktivMenu))
-                {
-                    string query = string.Format(searchQueries[aktivMenu], keresettKifejezes);
-                    InitializeTable(query);
-                }
-            }
         }
     }
 }

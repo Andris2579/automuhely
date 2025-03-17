@@ -54,6 +54,7 @@ namespace AutoMuhely
                 txtMotorAdat.Text = engineData;
                 txtAlvazAdat.Text = chassisData;
                 txtElozoJav.Text = previousRepairs;
+                lblIsEdit.Text = "MÓDOSÍTÁS";
                 btnAdd.Text = "Módosítás"; // Update button text
             }
             else

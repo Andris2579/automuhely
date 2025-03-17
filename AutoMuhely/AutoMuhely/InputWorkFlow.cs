@@ -31,7 +31,7 @@ namespace AutoMuhely
                 txtSablonNev.Text = nev;
                 txtSablonleiras.Text = lepesek;
                 numSablonIdo.Value = Convert.ToDecimal(becsultIdo.Substring(0, becsultIdo.Length - 4));
-
+                label2.Text = "MÓDOSÍTÁSA";
                 btnAdd.Text = "Módosítás"; // Update button text
             }
             else
