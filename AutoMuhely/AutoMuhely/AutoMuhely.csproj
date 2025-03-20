@@ -53,6 +53,12 @@
   <ItemGroup>
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDateTimePicker.cs" />
+    <Compile Include="CustomerCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerCars.Designer.cs">
+      <DependentUpon>CustomerCars.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputBrands.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <Compile Include="UpdateAppointment.Designer.cs">
       <DependentUpon>UpdateAppointment.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomerCars.resx">
+      <DependentUpon>CustomerCars.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputBrands.resx">
       <DependentUpon>InputBrands.cs</DependentUpon>
     </EmbeddedResource>

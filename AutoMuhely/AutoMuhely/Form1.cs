@@ -5,10 +5,13 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.Remoting.Channels;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
@@ -123,14 +126,16 @@ namespace AutoMuhely
             {
                 if (Role == "Adminisztrátor")
                 {
-                    GenerateHoverPanel("Ügyfél autói", new Point(0, 0), new Size(200, 63), Ugyfel_Autok);
-                    GenerateHoverPanel("Új hozzáadása", new Point(200, 0), new Size(200, 63), UjHozzaadasa_Click);
-                    GenerateHoverPanel("Módosítás", new Point(400, 0), new Size(140, 63), Modositas_Click);
+                    GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), UjHozzaadasa_Click);
+                    GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), Modositas_Click);
+                    GenerateHoverPanel("Ügyfél autói", new Point(180+140, 0), new Size(160, 63), Ugyfel_Autok);
+                    GenerateHoverPanel("Jármű hozzáadása", new Point(180 + 140+160, 0), new Size(240, 63), Ugyfel_Jarmuvek);
                 }
                 else
                 {
-                    GenerateHoverPanel("Ügyfél autói", new Point(0, 0), new Size(200, 63), Ugyfel_Autok);
-                    GenerateHoverPanel("Új hozzáadása", new Point(200, 0), new Size(200, 63), UjHozzaadasa_Click);
+                    GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), UjHozzaadasa_Click);
+                    GenerateHoverPanel("Ügyfél autói", new Point(180, 0), new Size(160, 63), Ugyfel_Autok);
+                    GenerateHoverPanel("Ügyfélhez csatolás", new Point(340, 0), new Size(240, 63), Ugyfel_Jarmuvek);
                 }
 
             }
@@ -138,10 +143,10 @@ namespace AutoMuhely
             {
                 if (Role == "Adminisztrátor")
                 {
-                    GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
-                    GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
-                    GenerateHoverPanel("Rendelések", new Point(340, 0), new Size(150, 63), Rendelesek_Click);
-                    GenerateHoverPanel("Rendelés kérvényezése", new Point(490, 0), new Size(280, 63), RendelesKervenyezes_Click);
+                    GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), UjHozzaadasa_Click);
+                    GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), Modositas_Click);
+                    GenerateHoverPanel("Rendelések", new Point(320, 0), new Size(150, 63), Rendelesek_Click);
+                    GenerateHoverPanel("Rendelés kérvényezése", new Point(470, 0), new Size(280, 63), RendelesKervenyezes_Click);
                 }
                 else
                 {
@@ -152,9 +157,9 @@ namespace AutoMuhely
             }
             else if (aktivMenu == "Járművek")
             {
-                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), UjHozzaadasa_Click);
-                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), Modositas_Click);
-                GenerateHoverPanel("Ügyfélhez csatolás", new Point(340, 0), new Size(240, 63), Ugyfel_Jarmuvek);
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), UjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), Modositas_Click);
+                
             }
             else if (aktivMenu == "Márkák")
             {
@@ -449,7 +454,55 @@ namespace AutoMuhely
 
         private void Ugyfel_Jarmuvek(object sender, EventArgs e)
         {
+            if (table_DGV.SelectedRows.Count == 0 || table_DGV.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Kérlek válassz egy ügyfelet az autó hozzácsatolásohoz!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DataGridViewRow selectedRow = table_DGV.SelectedRows[0];
 
+                // Get the data from the selected row
+                string Name = selectedRow.Cells["Név"].Value?.ToString();
+                string Address = selectedRow.Cells["Cím"].Value?.ToString();
+                CustomerCars customerCars = new CustomerCars(Name, Address);
+
+                // Show the dialog and capture the result
+                DialogResult result = customerCars.ShowDialog();
+
+                // Check the DialogResult
+                if (result == DialogResult.No)
+                {
+                    InitializeTable(ugyfelekSql); // Reset to the original customers table
+                }
+                else // Proceed with the original logic if not DialogResult.No
+                {
+                    aktivMenu = "Járművek";
+                    if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Address))
+                    {
+                        
+                        // Modify the SQL query to join tables
+                        string query = jarmuvekSql.Substring(0, jarmuvekSql.Length - 1) +
+                            @" JOIN ugyfel_jarmuvek uj ON j.jarmu_id = uj.jarmu_id 
+                       JOIN ugyfelek u ON uj.ugyfel_id = u.ugyfel_id 
+                       WHERE u.nev = @name AND u.cim = @address;";
+
+                        // Load the car data into the table
+                        var parameters = new Dictionary<string, object>
+                {
+                    { "@name", Name },
+                    { "@address", Address }
+                };
+                        InitializeTable(query, parameters);
+                        panelButtons.Controls.Clear();
+                        GenerateHoverPanel("Vissza", new Point(0, 0), new Size(140, 63), Ugyfelek_Click);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nem található az ügyfél!", "Hiba");
+                    }
+                }
+            }
         }
         private void InitializeTable(string query, Dictionary<string, object> parameters = null)
         {
@@ -485,7 +538,7 @@ namespace AutoMuhely
             // Extract all columns to uniquely identify the customer
             string name = selectedRow.Cells["Név"]?.Value?.ToString();
             string address = selectedRow.Cells["Cím"]?.Value?.ToString();
-
+            aktivMenu = "Járművek";
             if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address))
             {
                 // Modify the SQL query to join tables
@@ -560,7 +613,7 @@ namespace AutoMuhely
             GenerateHoverPanel("Szerelési Útmutatók", new Point(0, 0), new Size(246, 63), SzerelesiUtmutatok_Click);
             GenerateHoverPanel("Hibakódok", new Point(246, 0), new Size(140, 63), Hibakodok_Click);
             GenerateHoverPanel("Munkafolyamat Sablonok", new Point(140+246, 0), new Size(300, 63), MunkafolyamatSablonok_Click);
-            GenerateHoverPanel("Szervíz csomagok", new Point(140 + 246+300, 0), new Size(221, 63), SzervizCsomagok_Click);
+            GenerateHoverPanel("Szervizcsomagok", new Point(140 + 246+300, 0), new Size(221, 63), SzervizCsomagok_Click);
         }
 
         private int currentPage = 1;
@@ -936,9 +989,9 @@ namespace AutoMuhely
             searchBar.Text = "";
             if (Role=="Adminisztrátor")
             {
-                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzerelesekUjHozzaadasa_Click);
-                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), SzerelesekModositas_Click);
-                GenerateHoverPanel("Vissza", new Point(140 + 200, 0), new Size(140, 63), Szerelesek_Click);
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), SzerelesekUjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), SzerelesekModositas_Click);
+                GenerateHoverPanel("Vissza", new Point(140 + 180, 0), new Size(140, 63), Szerelesek_Click);
             }
             else
             {
@@ -986,9 +1039,9 @@ namespace AutoMuhely
             searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
-                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), HibakodokUjHozzaadasa_Click);
-                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), HibakodokModositas_Click);
-                GenerateHoverPanel("Vissza", new Point(140 + 200, 0), new Size(140, 63), Szerelesek_Click);
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), HibakodokUjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), HibakodokModositas_Click);
+                GenerateHoverPanel("Vissza", new Point(140 + 180, 0), new Size(140, 63), Szerelesek_Click);
             }
             else
             {
@@ -1036,9 +1089,9 @@ namespace AutoMuhely
             searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
-                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), MunkafolyamatSablonokUjHozzaadasa_Click);
-                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), MunkafolyamatSablonokModositas_Click);
-                GenerateHoverPanel("Vissza", new Point(200 + 140, 0), new Size(140, 63), Szerelesek_Click);
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), MunkafolyamatSablonokUjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), MunkafolyamatSablonokModositas_Click);
+                GenerateHoverPanel("Vissza", new Point(180 + 140, 0), new Size(140, 63), Szerelesek_Click);
             }
             else
             {
@@ -1054,9 +1107,9 @@ namespace AutoMuhely
             searchBar.Text = "";
             if (Role == "Adminisztrátor")
             {
-                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(200, 63), SzervizCsomagokUjHozzaadasa_Click);
-                GenerateHoverPanel("Módosítás", new Point(200, 0), new Size(140, 63), SzervizCsomagokModositas_Click);
-                GenerateHoverPanel("Vissza", new Point(200 + 140, 0), new Size(140, 63), Szerelesek_Click);
+                GenerateHoverPanel("Új hozzáadása", new Point(0, 0), new Size(180, 63), SzervizCsomagokUjHozzaadasa_Click);
+                GenerateHoverPanel("Módosítás", new Point(180, 0), new Size(140, 63), SzervizCsomagokModositas_Click);
+                GenerateHoverPanel("Vissza", new Point(180 + 140, 0), new Size(140, 63), Szerelesek_Click);
             }
             else
             {
@@ -1195,6 +1248,7 @@ namespace AutoMuhely
                 Form detailForm = new Form
                 {
                     Text = "Részletek",
+                    Icon = new Icon(new MemoryStream(Properties.Resources.Main_logo)),
                     Size = new Size(400, height),
                     StartPosition = FormStartPosition.CenterParent,
                     BackColor = Color.FromArgb(46, 51, 73),
@@ -1291,9 +1345,14 @@ namespace AutoMuhely
         "SELECT nev AS 'Sablon neve', lepesek AS Lépések, becsult_ido AS 'Becsült idő' FROM munkafolyamat_sablonok WHERE nev LIKE '%{0}%' OR lepesek LIKE '%{0}%'" },
 
     { "Útmutatók",
-        "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus = t.tipus_id JOIN marka m ON t.marka_id = m.marka_id WHERE s.cim LIKE '%{0}%' OR s.tartalom LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR t.tipus LIKE '%{0}%'" }
-};
+        "SELECT s.cim AS 'Útmutató címe', s.tartalom AS Útmutató, m.marka_neve AS 'Autó márka', t.tipus AS 'Autó típusa' FROM szerelesi_utmutatok s JOIN tipus t ON s.jarmu_tipus = t.tipus_id JOIN marka m ON t.marka_id = m.marka_id WHERE s.cim LIKE '%{0}%' OR s.tartalom LIKE '%{0}%' OR m.marka_neve LIKE '%{0}%' OR t.tipus LIKE '%{0}%'" },
 
+    { "Szervizcsomagok",
+        "SELECT s.nev AS Csomag, s.leiras AS Leírás, CONCAT(s.ar,' Ft') AS Ár FROM szervizcsomagok s WHERE s.leiras LIKE '%{0}%' OR s.ar='{0}'"},
+
+    { "Márkák",
+        "SELECT t.tipus AS Modell, m.marka_neve AS Márka FROM tipus t RIGHT JOIN marka m ON m.marka_id=t.marka_id WHERE t.tipus LIKE '%{0}%' OR m.marka_neve='%{0}%'"}
+};
 
 
         private void searchButton_Click(object sender, EventArgs e)

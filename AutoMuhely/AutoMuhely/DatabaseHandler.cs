@@ -30,35 +30,47 @@ namespace AutoMuhely
         {
             try
             {
+                // Step 1: Establish initial connection
                 using (var connection = new MySqlConnection(firstConnectionCommand))
                 {
                     connection.Open();
 
+                    // Step 2: Check if the database exists
                     string checkDatabaseQuery = $"SHOW DATABASES LIKE '{databaseName}';";
                     using (var command = new MySqlCommand(checkDatabaseQuery, connection))
                     {
                         var result = command.ExecuteScalar();
 
-                        if(result == null)
+                        // Step 3: Create database if it doesn't exist and execute the script
+                        if (result == null)
                         {
-                            string createDatabaseQuery = $"CREATE DATABASE IF NOT EXISTS {databaseName};";
+                            // Create the database with appropriate character set and collation
+                            string createDatabaseQuery = $"CREATE DATABASE IF NOT EXISTS {databaseName} CHARACTER SET utf8 COLLATE utf8_hungarian_ci;";
                             using (var createCommand = new MySqlCommand(createDatabaseQuery, connection))
                             {
                                 createCommand.ExecuteNonQuery();
                             }
 
+                            // Switch to the new database
                             connection.ChangeDatabase(databaseName);
 
+                            // Step 4: Read the entire SQL script and execute it as one command
                             string script = File.ReadAllText(sqlPath);
 
-                            string[] sqlCommands = script.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                            foreach (var commandText in sqlCommands)
+                            // Remove any trailing whitespace or newlines that might cause issues
+                            script = script.Trim();
+
+                            // Execute the full script
+                            using (var scriptCommand = new MySqlCommand(script, connection))
                             {
-                                using (var commandDatabaseInsert = new MySqlCommand(commandText, connection))
-                                {
-                                    commandDatabaseInsert.ExecuteNonQuery();
-                                }
+                                scriptCommand.CommandTimeout = 300; // Increase timeout for large scripts (5 minutes)
+                                int rowsAffected = scriptCommand.ExecuteNonQuery();
+                                Console.WriteLine($"Database setup completed. Rows affected: {rowsAffected}");
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Database '{databaseName}' already exists. No changes made.");
                         }
                     }
                 }

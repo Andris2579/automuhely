@@ -78,3 +78,4 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.NewOrder.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputBrands.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCarType.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.OrderHandler.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.CustomerCars.resources
