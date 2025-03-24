@@ -142,18 +142,21 @@ export let modal = document.createElement('div');
 //Az egyedi értesítési ablak felépítése
 export function openCustomModal(title, content) {
     modal.classList.add('custom-modal');
-    modal.innerHTML = `
-        <div class="modal-content">
+    modal.innerHTML = `<div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>${title}</h2>
             <div class="modal-body">${content}</div>
-        </div>
-    `;
+        </div>`;
 
     document.body.appendChild(modal);
 
     modal.querySelector('.close-button').addEventListener('click', function() {
         modal.remove();
     });
+}
+
+//Ellenőrzi, hogy az egyedi értesítési ablak nyitva van-e
+export function isModalOpen() {
+    return document.body.contains(modal);
 }
 

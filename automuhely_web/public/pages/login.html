@@ -16,18 +16,20 @@
     <header></header>
     <main>
         <h1>Bejelentkezés</h1>
-        <form action="POST">
-            <fieldset>
-                <label for="username">Felhasználó név</label>
-                <input type="text" name="username" id="username" required>
-            </fieldset>
-            <fieldset id="passwords">
-                <label for="password">Jelszó</label>
-                <input type="password" name="password" id="password" required>
-                <img id="password_show" src="public/assets/imgs/eye_closed.png" alt="">
+        <form action="POST" class="customCard" id="loginForm">
+            <fieldset class="contentFs">
+                <fieldset class="mainFs">
+                    <label for="username" class="customLabel">Felhasználó név</label>
+                    <input type="text" name="username" id="username" required class="customInput">
+                </fieldset>
+                <fieldset id="passwords" class="mainFs">
+                    <label for="password" class="customLabel">Jelszó</label>
+                    <input type="password" name="password" id="password" required class="customInput">
+                    <img id="password_show" src="public/assets/imgs/eye_closed.png" alt="">
+                </fieldset>
             </fieldset>
             <p id="error_message" hidden></p>
-            <button id="loginButton" onclick=login(event)>Bejelentkezés</button>
+            <button id="loginButton" onclick="login(event)" class="customButton">Bejelentkezés</button>
             <p>Nincs még fiókja?<br>Regisztráljon <a href="public/pages/register.html">itt</a>!</p>
         </form>
     </main>

@@ -19,29 +19,37 @@ $(document).ready(function(){
             Ha a Véglegesítés feliratra kattintunk, akkor elmentjük az új rendszámot.
             Azonban ha a Rendszám módosítása feliratra kattintunk, akkor a rendszám helyére egy bemeneti mező kerül benne a jelenlegi rendszámmal.
         */
-        if($(this).html() == "Véglegesítés" && myCarNewLicense != ""){
-            $.ajax({
-                type: "GET",
-                url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars/" + myCarOriginalCarLicense,
-                dataType: "json",
-                success: function (response) {
-                    $.ajax({
-                        type: "PUT",
-                        url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId+"/cars/" + response["jarmu_id"],
-                        data: JSON.stringify({newLicense: myCarNewLicense}),
-                        dataType: "json",
-                        contentType: "application/json",
-                        success: function (response) {
-                            openCustomModal("Sikeres módosítás", response.message);
-                            fetchCars();
-                        },
-                        error: function(xhr){
-                            const errorResponse = xhr.responseText;
-                            openCustomModal("Hiba", errorResponse);
-                        }
-                    });     
-                }
-            });
+        if($(this).html() == "Véglegesítés"){
+            if(myCarNewLicense == ""){
+                openCustomModal("Hiba", "Adjon meg egy rendszámot!");
+            }
+            else if(!/^[A-Z0-9\s-]{3,10}$/.test(myCarNewLicense)){
+                openCustomModal("Hiba", "A rendszám formátuma helytelen!");
+            }
+            else{
+                $.ajax({
+                    type: "GET",
+                    url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars/" + myCarOriginalCarLicense,
+                    dataType: "json",
+                    success: function (response) {
+                        $.ajax({
+                            type: "PUT",
+                            url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId+"/cars/" + response["jarmu_id"],
+                            data: JSON.stringify({newLicense: myCarNewLicense}),
+                            dataType: "json",
+                            contentType: "application/json",
+                            success: function (response) {
+                                openCustomModal("Sikeres módosítás", response.message);
+                                fetchCars();
+                            },
+                            error: function(xhr){
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                openCustomModal("Hiba", errorResponse.message);
+                            }
+                        });     
+                    }
+                });
+            }
         }
         else if($(this).html() == "Rendszám módosítása"){
             //Elmentjük az autó kártya állapotát, ha esetleg a módosítás közben meggondolná magát a felhasználó.
@@ -51,6 +59,7 @@ $(document).ready(function(){
             //A rendszám helyére egy bemeneti mező kerül benne a jelenlegi rendszámmal
             var licenseNumber = '<input class="licenseNumberInput customInput" type="text" value='+myCarOriginalCarLicense+' required></input>';
             myCar.find('.licenseNumber').replaceWith(licenseNumber);
+            $('.licenseNumberInput').focus();
 
             //A rendszám módosítása gomb felirata megváltozik
             myCar.find('.modifyLicenseNumber').html("Véglegesítés");
@@ -61,6 +70,9 @@ $(document).ready(function(){
             //A lemondás gombot átmenetileg letiltjuk
             myCar.find('.cancelService').addClass('disabledButton');
             myCar.find('.cancelService').prop("disabled", true);
+
+            myCar.find('.deleteCar').addClass('disabledButton');
+            myCar.find('.deleteCar').prop("disabled", true);
         }
     })
 
@@ -87,7 +99,9 @@ $(document).ready(function(){
                 var text = '<div id="cancelServiceContainer">'+
                             '<select class="customSelect" id="cancelServiceSelect"><option value="valasszon">Válasszon egy szolgáltatást!</option>';
                 response.forEach(service => {
-                    text += '<option value="'+service['szolgaltatas_id']+'">'+service['nev']+'</option>';
+                    if(service['allapot'] == 'Foglalt'){
+                        text += '<option value="'+service['idopont_id']+'">'+service['nev']+'</option>';
+                    }
                 });
                 text += '</select>'+
                         '<button class="customButton" id="cancelServiceBtn">Lemondás</button>'+
@@ -103,7 +117,7 @@ $(document).ready(function(){
             type: "PUT",
             url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars/"+selectedCarLicenseNumber+"/services",
             dataType: "json",
-            data: JSON.stringify({serviceName : $("#cancelServiceSelect option:selected").text()}),
+            data: JSON.stringify({serviceId : $("#cancelServiceSelect option:selected").val()}),
             contentType: "application/json",
             success: function (response) {
                 openCustomModal("Sikeres lemondás", response.message);
@@ -169,7 +183,6 @@ $(document).ready(function(){
                 url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId + "/cars/" + licenseNumber,
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
                     let repairsList = response["elozo_javitasok"].length ? response["elozo_javitasok"] : '<p>Nincs adat.</p>';
                     openCustomModal("Előző javítások", repairsList);
                 }
@@ -186,7 +199,9 @@ $(document).ready(function(){
                 success: function(response) {
                     if(response != null){ //Ellenőrizzük, hogy van e aktív szolgáltatás, hogy ha nincs, akkor ne legyen gond a formázással
                         response.forEach(function(service){
-                            servicesList += '<tr><td>'+service['nev']+'</td><td>'+service['allapot']+'</td></tr>';
+                            if(service['allapot'] != 'Lemondva' && service['allapot'] != 'Befejezett'){
+                                servicesList += '<tr><td>'+service['nev']+'</td><td>'+service['allapot']+'</td></tr>';
+                            }
                         });
                     }
                     else{
@@ -253,9 +268,8 @@ function fetchCars(){
                                 '</div>'+
                                 '<div class="myCarButtons">';
                     
-                    //Feltölti a szolgáltatások tömböt, hogy ezt később ne kelljen lekérni
-                    var service = response['services'][car['rendszam']];
                     //Ha van aktív szolgáltatása a felhasználónak, akkor elhelyez egy Lemondás gombot
+                    var service = response['services'][car['rendszam']];
                     if(service != null && service.length > 0){
                         carHtml += '<button class="cancelService customButton">Lemondás</button>';
                     }
@@ -327,18 +341,35 @@ function addCar(event){
 
     const data = {
         userId: getUserCredentials().userId,
-        rendszam: $('#rendszam').val(),
+        rendszam: $('#rendszam').val().toUpperCase(),
         marka: $('#marka').val(),
         tipus: $('#tipus').val(),
         elozo_javitasok: $('#elozo_javitasok').val()
     };
 
     //Ellenőrzi, hogy a szükséges mezők megfelelően ki vannak e töltve
-    if(data["marka"] != "valasszon" && data["tipus"] != "valasszon" && data["rendszam"] != ""){
+    if(data["rendszam"] == ""){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Adjon meg egy rendszámot!");
+    }
+    else if(data["marka"] == "valasszon"){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Válasszon egy márkát!");
+    }
+    else if(data["tipus"] == "valasszon"){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Válasszon egy típust!");
+    }
+    else if(!/^[A-Z0-9\s-]{3,10}$/.test(data["rendszam"])){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("A rendszám formátuma helytelen!");
+    }
+    else{
         $.ajax({
             type: "POST",
             url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars",
-            data: data,
+            data: JSON.stringify(data),
+            contentType: 'application/json',
             dataType: "json",
             success: function (response) {
                 if(response.success){
@@ -354,20 +385,6 @@ function addCar(event){
                 $('#error_message').html(errorResponse.message);
             }
         });
-    }
-    else{
-        if(data["rendszam"] == ""){
-            $('#error_message').removeAttr('hidden');
-            $('#error_message').html("Adjon meg egy rendszámot!");
-        }
-        else if(data["marka"] == "valasszon"){
-            $('#error_message').removeAttr('hidden');
-            $('#error_message').html("Válasszon egy márkát!");
-        }
-        else if(data["tipus"] == "valasszon"){
-            $('#error_message').removeAttr('hidden');
-            $('#error_message').html("Válasszon egy típust!");
-        }
     }
 };
 

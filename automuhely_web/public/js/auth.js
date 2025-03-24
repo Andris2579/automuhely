@@ -1,4 +1,7 @@
-import {BASE_URL, APP_URL, getToken, setToken, clearToken, getUserCredentials, openCustomModal} from './main.js';
+import {BASE_URL, APP_URL, getToken, setToken, clearToken, getUserCredentials, openCustomModal, isModalOpen} from './main.js';
+
+//A jelszó biztonságosságának méréséhez ezt a változót használjuk
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_+/])[A-Za-z\d@$!%*?&_]{10,}$/;
 
 $(document).ready(function() {
     //Itt változtatjuk a jelszó megjelenítésénél használt ikon állapotát
@@ -38,11 +41,15 @@ $(document).ready(function() {
 
                 $('#phone_number').val(response["telefonszam"]);
 
-                var cim = response["cim"].split(",");
-                $('#zip_code').val(cim[0]);
-                $('#city').val(cim[1]);
-                $('#street').val(cim[2]);
-                $('#house_number').val(cim[3]);
+                
+                var cim = response["cim"];
+                if(cim != null){
+                    cim = cim.split(",");
+                    $('#zip_code').val(cim[0]);
+                    $('#city').val(cim[1]);
+                    $('#street').val(cim[2]);
+                    $('#house_number').val(cim[3]);
+                }
             }
         });
     }
@@ -73,18 +80,15 @@ export function register(event){
             password_again: $('#password_again').val(),
             phone_number: $('#phone_number').val()
         };
-
-        //A jelszó biztonságosságának méréséhez ezt a változót használjuk
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{10,}$/;
     
         //Ellenőrizzük, hogy egyezik e a két jelszó, és hogy elég biztonságosak
         if(data.password != data.password_again){
             $('#error_message').removeAttr('hidden');
-            $('#error_message').html('A jelszó két nem egyezik!');
+            $('#error_message').html('A két jelszó nem egyezik!');
         }
         else if (!passwordPattern.test(data.password)) {
             $('#error_message').removeAttr('hidden');
-            $('#error_message').html('A jelszónak legalább 10 karakter hosszúnak kell lennie, tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert!');
+            $('#error_message').html('A jelszónak legalább 10 karakter hosszúnak kell lennie, tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert az alábbiak közül: @$!%*?&_+/');
         }
         //Ügyelünk a felhasználónév és a név megfelelő formátumára
         else if(isFirstCharacterDigit($('#username').val())){
@@ -99,15 +103,29 @@ export function register(event){
             $('#error_message').removeAttr('hidden');
             $('#error_message').html('A név nem tartalmazhat számot!');
         }
+        // E-mail cím ellenőrzése (általános formátum)
+        else if(!/^(?=[a-zA-Z0-9@._%+-]{6,254}$)(?!.*\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val())){
+            $('#error_message').removeAttr('hidden');
+            $('#error_message').html('Az e-mail cím formátuma érvénytelen!');
+        }
+        // Telefonszám ellenőrzése (nemzetközi formátum engedélyezése)
+        else if($('#phone_number').val() != "" && !/^\+?[1-9]\d{0,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test($('#phone_number').val())){
+            $('#error_message').removeAttr('hidden');
+            $('#error_message').html('A telefonszám érvénytelen! Csak számok, szóközök, pluszjel (+) és kötőjelek (-) engedélyezettek, minimum 7, maximum 20 karakter hosszúságban.');
+        }
         else{
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "routes/api.php/users",
-                data: data,
+                data: JSON.stringify(data),
+                contentType: "application/json",
                 dataType: "json",
                 success: function (response) {
                     if(response.success == true){
-                        login(event); //Regisztráció után automatikusan bejelentkeztetjük a felhasználót
+                        openCustomModal("Siker", response.message);
+                        if(!isModalOpen()){
+                            login(event); //Regisztráció után automatikusan bejelentkeztetjük a felhasználót
+                        }
                     }
                 },
                 error: function (xhr) {
@@ -134,8 +152,9 @@ export function login(event){
         $.ajax({
             type: "POST",
             url: BASE_URL + "routes/api.php/auth/login",
-            data: data,
-            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            dataType: 'json',
             success: function (response) {
                 if(response.success){
                     setToken(response.token); //A JSON Web Token megkapja a megfelelően titkosított értékeket
@@ -143,7 +162,7 @@ export function login(event){
                 }
             },
             error: function (xhr) {
-                const errorResponse = xhr.responseText;
+                const errorResponse = JSON.parse(xhr.responseText);
                 $('#error_message').removeAttr('hidden');
                 $('#error_message').html(errorResponse['message']);
             }
@@ -154,27 +173,11 @@ export function login(event){
 //Kijelentkezteti a felhasználót
 export function logoutAuth(event){
     event.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: BASE_URL + "routes/api.php/auth/logout",
-        dataType: "json",
-        success: function (response) {
-            openCustomModal("Kijelentkezés", response.message);
-            clearToken(); //Törli a JSON Web Token értékeit
-            window.location.href = BASE_URL + "public/index.html";
-        }
-    });
-}
 
-/*async function sha256Hash(password) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    
-    return Array.from(new Uint8Array(hashBuffer))
-        .map(b => b.toString(16).padStart(2, '0'))
-        .join('');
-}*/
+    openCustomModal("Kijelentkezés", "Sikeres kijelentkezés.");
+    clearToken(); //Törli a JSON Web Token értékeit
+    window.location.href = BASE_URL + "public/index.html";
+}
 
 //Rügzíti és frissíti a felhasználó adatait
 export function userSettingsSave(event){
@@ -185,6 +188,7 @@ export function userSettingsSave(event){
         "username": $('#username').val(),
         "email": $('#email').val(),
         "phone_number": $('#phone_number').val(),
+        "password": $('#password').val(),
         "cim": $('#zip_code').val() + "," + $('#city').val() + "," + $('#street').val() + "," + $('#house_number').val()
     }
     var form = $('form')[0];
@@ -194,37 +198,59 @@ export function userSettingsSave(event){
         $('#error_message').html("Kérjük töltsön ki minden *-gal jelölt mezőt!");
     }
     //Ellenőrzi, hogy a kát jelszó egyezik e. Ha mindkét mező üres marad, a jelszó nem változik
-    else if($('#password').val() == $('#password_again').val()){
-        $.ajax({
-            type: "GET",
-            url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
-            dataType: "json",
-            success: function (response) {
-                $.ajax({
-                    type: "PUT",
-                    url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
-                    data: JSON.stringify(data),
-                    dataType: "json",
-                    success: function (response) {
-                        openCustomModal("Sikeres mentés", response.message);
-                        window.location.href = BASE_URL + "public/pages/userSettings.html";
-                    },
-                    error: function (xhr) {
-                        console.error("Raw Server Response: ", xhr.responseText);
-                        try {
-                            const errorResponse = JSON.parse(xhr.responseText);
-                            openCustomModal("Hiba", errorResponse.message);
-                        } catch (e) {
-                            console.error("Failed to parse JSON: ", e);
-                            openCustomModal("Hiba", "Sikertelen mentés!");
-                        }
-                    }
-                });
-            }
-        });
+    else if(data.password != null && data.password.length > 0 && data.password_again.length > 0){
+        if(data.password != data.password_again){
+            $('#error_message').removeAttr('hidden');
+            $('#error_message').html('A jelszó két nem egyezik!');
+        }
+        else if (!passwordPattern.test(data.password) && !passwordPattern.test(data.password_again)) {
+            $('#error_message').removeAttr('hidden');
+            $('#error_message').html('A jelszónak legalább 10 karakter hosszúnak kell lennie, tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert az alábbiak közül: @$!%*?&_!');
+        }
+    }
+    //Ügyelünk a felhasználónév és a név megfelelő formátumára
+    else if(isFirstCharacterDigit($('#username').val())){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('A felhasználónév nem kezdődhet számmal!');
+    }
+    else if(isFirstCharacterDigit($('#first_name').val()) || isFirstCharacterDigit($('#sure_name').val())){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('A név nem kezdődhet számmal!');
+    }
+    else if(/\d/.test($('#first_name').val()) || /\d/.test($('#sure_name').val())){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('A név nem tartalmazhat számot!');
+    }
+    // E-mail cím ellenőrzése (általános formátum)
+    else if(!/^(?=[a-zA-Z0-9@._%+-]{6,254}$)(?!.*\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test($('#email').val())){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('Az e-mail cím formátuma érvénytelen!');
+    }
+    // Telefonszám ellenőrzése (nemzetközi formátum engedélyezése)
+    else if(!/^\+?[1-9]\d{0,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test($('#phone_number').val())){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('A telefonszám érvénytelen! Csak számok, szóközök, pluszjel (+) és kötőjelek (-) engedélyezettek, minimum 7, maximum 20 karakter hosszúságban.');
     }
     else{
-        $('#error_message').removeAttr("hidden");
-        $('#error_message').html("A két jelszó nem egyezik!");
+        $.ajax({
+            type: "PUT",
+            url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId,
+            data: JSON.stringify(data),
+            dataType: "json",
+            success: function (response) {
+                openCustomModal("Sikeres mentés", response.message);
+                window.location.href = BASE_URL + "public/pages/userSettings.html";
+            },
+            error: function (xhr) {
+                console.error("Raw Server Response: ", xhr.responseText);
+                try {
+                    const errorResponse = JSON.parse(xhr.responseText);
+                    openCustomModal("Hiba", errorResponse.message);
+                } catch (e) {
+                    console.error("Failed to parse JSON: ", e);
+                    openCustomModal("Hiba", "Sikertelen mentés!");
+                }
+            }
+        });
     }
 }

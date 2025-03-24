@@ -7,13 +7,6 @@ use App\Models\CarType;
 use Exception;
 
 class Car{
-    //Lekéri az összes autót
-    public static function all(){
-        $db = Database::connect();
-        $query = "SELECT rendszam, gyartas_eve, motor_adatok, alvaz_adatok, elozo_javitasok FROM jarmuvek AS j INNER JOIN ugyfel_jarmuvek AS u_j ON j.jarmu_id = u_j.jarmu_id INNER JOIN ugyfelek AS u ON u.ugyfel_id = u_j.ugyfel_id INNER JOIN felhasznalok_ugyfelek AS f_u ON f_u.ugyfel_id = u.ugyfel_id INNER JOIN felhasznalok AS f ON f.helhasznalo_id = f_u.felhasznalo_id";
-        return $db->query($query)->fetch_all(MYSQLI_ASSOC);
-    }
-
     //Lekéri egy autó összes adatát
     public static function singleCar($data){
         $db = Database::connect();
@@ -28,7 +21,7 @@ class Car{
     //Lekéri egy autóhoz tartozó összes szolgáltatást
     public static function carServices($data){
         $db = Database::connect();
-        $query = "SELECT szcs.nev, i.allapot FROM jarmuvek AS j INNER JOIN idopontfoglalasok AS i ON j.jarmu_id = i.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id WHERE j.rendszam = '".$data['licenseNumber']."';";
+        $query = "SELECT i.idopont_id, szcs.nev, i.allapot FROM jarmuvek AS j INNER JOIN idopontfoglalasok AS i ON j.jarmu_id = i.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id WHERE j.rendszam = '".$data['licenseNumber']."';";
         return $db->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -75,8 +68,10 @@ class Car{
             $newLicenseNumber = $data['newLicense'];
 
             if(self::validateCar($newLicenseNumber) == 0){ //Ellenőrzi, hogy nincs e még egy azonos rendszám az adatbázisban
-                $query = "UPDATE jarmuvek SET rendszam = '$newLicenseNumber' WHERE jarmu_id = $carId;";
-                $db->query($query);
+                $query = "UPDATE jarmuvek SET rendszam = ? WHERE jarmu_id = $carId;";
+                $stmt = $db->prepare($query);
+                $stmt->bind_param("s", $newLicenseNumber);
+                $stmt->execute();
                 return ['success' => true, 'message' => "Sikeresen módosította autója rendszámát!", 'code' => 200];
             }
             else{
@@ -99,17 +94,23 @@ class Car{
     
             if(self::validateCar($licenseNumber) == 0){ //Ellenőrzi, hogy nincs e még egy azonos rendszám az adatbázisban
                 try{
-                    $client = Client::single($userId);
-                    $client_id = $client[0]['ugyfel_id'];
-                    $car = CarType::singleType($brand, $type);
-                    $car_id = $car[0]['tipus_id'];
                     $db = Database::connect();
+                    $query = "SELECT * FROM ugyfelek AS u INNER JOIN felhasznalok_ugyfelek AS f_u ON u.ugyfel_id = f_u.ugyfel_id INNER JOIN felhasznalok AS f ON f_u.felhasznalo_id = f.felhasznalo_id WHERE f.felhasznalo_id = '$userId';";
+                    $client =  $db->query($query)->fetch_assoc();
+                    $client_id = $client['ugyfel_id'];
+
+                    $car = CarType::singleType($brand, $type);
+                    $car_id = $car['tipus_id'];
         
-                    $query = "INSERT INTO jarmuvek (rendszam, tipus_id, elozo_javitasok) VALUES ('$licenseNumber', '$car_id', '$previous_fixes');";
-                    $db->query($query);
+                    $query = "INSERT INTO jarmuvek (rendszam, tipus_id, elozo_javitasok) VALUES (?, '$car_id', ?);";
+                    $stmt = $db->prepare($query);
+                    $stmt->bind_param("ss", $licenseNumber, $previous_fixes);
+                    $stmt->execute();
         
-                    $query = "INSERT INTO ugyfel_jarmuvek (ugyfel_id, jarmu_id) VALUES ('$client_id', (SELECT jarmu_id FROM jarmuvek WHERE rendszam = '$licenseNumber'));";
-                    $db->query($query);
+                    $query = "INSERT INTO ugyfel_jarmuvek (ugyfel_id, jarmu_id) VALUES ('$client_id', (SELECT jarmu_id FROM jarmuvek WHERE rendszam = ?));";
+                    $stmt = $db->prepare($query);
+                    $stmt->bind_param("s", $licenseNumber);
+                    $stmt->execute();
     
                     return ["success" => true, "message" => "Sikeres autó hozzáadás!", 'code' => 201];
                 }
@@ -127,9 +128,9 @@ class Car{
     }
 
     //Ellenőrzi egy adott rendszámmal rendelkező autók számát
-    public static function validateCar($rendszam){
+    public static function validateCar($licenseNumber){
         $db = Database::connect();
-        $query = "SELECT j.rendszam FROM jarmuvek AS j INNER JOIN ugyfel_jarmuvek AS u_j ON j.jarmu_id = u_j.jarmu_id INNER JOIN ugyfelek AS u ON u.ugyfel_id = u_j.ugyfel_id INNER JOIN felhasznalok_ugyfelek AS f_u ON f_u.ugyfel_id = u.ugyfel_id INNER JOIN felhasznalok AS f ON f.felhasznalo_id = f_u.felhasznalo_id WHERE j.rendszam = '$rendszam'";
+        $query = "SELECT j.rendszam FROM jarmuvek AS j WHERE j.rendszam = '$licenseNumber'";
         $result = $db->query($query);
         return $result->num_rows;
     }

@@ -15,7 +15,7 @@ export function fetchServices(){
                                 '<h2>'+service['nev']+'</h2>'+
                                 '<p>'+service['leiras']+'</p>'+
                                 '<p>'+service['ar']+' Ft</p>'+
-                                '<button class="customButton book"><a href="public/pages/services.html#selected_service">Foglalás</a></button>'+
+                                '<button class="customButton book"><a href="public/pages/services.html#footer">Foglalás</a></button>'+
                             '</div>'+
                         '</div>';
             });
@@ -33,8 +33,9 @@ var selected_div_id = null;
 
 //Kiválasztja a kiválasztott szolgáltatást, és ezt megjeleníti az űrlapban, ahol a véglegesítés végezhető el
 $(document).on('click', '.book', function(){
-    $('#services').html($('#services').html() + '<form id="selected_service" class="customCard" method="POST" hidden></form>');
-
+    if($('#selected_service').length === 0){
+        $('#services').append('<form id="selected_service" class="customCard" method="POST" hidden></form>');
+    }
     //Megkeresi a kiválasztott szolgáltatást
     let service_divs = $('#services .service');
     selected_div = $(this).closest('.service');
@@ -51,27 +52,31 @@ $(document).on('click', '.book', function(){
     selected_service.find('.book').remove();
 
     //Betölti a kiválasztott szolgáltatás adatait és a felhasználó autóit
-    $.ajax({
-        type: "GET",
-        url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars",
-        dataType: "json",
-        success: function (response) {
-            if(response){
-                var cars = '<label for="cars">Autók: </label><select class="customSelect" id="cars" name="cars"><option value="valasszon">Válasszon egy autót!</option>';
-                Object.values(response['cars']).forEach(car => {
-                    cars += '<option value='+car['jarmu_id']+'>'+car['rendszam']+'</option>';
-                })
-                cars += "</select>";
-                var final_book = '<button class="customButton final_book" onclick="finalize(event)">Véglegesítés</button>'+
-                                    '<p id="error_message" hidden></p>';
-                selected_service.html(selected_service.html() + cars + final_book);
+    if(getUserCredentials() != null){
+        $.ajax({
+            type: "GET",
+            url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars",
+            dataType: "json",
+            success: function (response) {
+                if(Object.keys(response['cars']).length > 0){
+                    var cars = '<label for="cars">Autók: </label><select class="customSelect" id="cars" name="cars"><option value="valasszon">Válasszon egy autót!</option>';
+                    Object.values(response['cars']).forEach(car => {
+                        cars += '<option value='+car['jarmu_id']+'>'+car['rendszam']+'</option>';
+                    })
+                    cars += "</select>";
+                    var final_book = '<button class="customButton final_book" onclick="finalize(event)">Véglegesítés</button>'+
+                                        '<p id="error_message" hidden></p>';
+                    selected_service.html(selected_service.html() + cars + final_book);
+                }
+                else{
+                    selected_service.append('<p>Először adja hozzá első autóját az oldalhoz!</p>');
+                }
             }
-            //Ha nincs bejelentkezve a felhasználó, akkor kap egy erre utaló üzenetet
-            else{
-                selected_service.html(selected_service.html() + '<p><a href="'+BASE_URL+'public/pages/login.html">Jelentkezzen be</a>, vagy <a href="'+BASE_URL+'public/pages/register.html">regisztráljon</a> a foglalás véglegesítéséhez!</p>');
-            }
-        }
-    });
+        });
+    }
+    else{
+        selected_service.append('<p id="service_message"><a href="'+BASE_URL+'public/pages/login.html">Jelentkezzen be</a>, vagy <a href="'+BASE_URL+'public/pages/register.html">regisztráljon</a> a foglalás véglegesítéséhez!</p>');
+    }
 });
 
 //Véglegesíti a foglalást
@@ -90,7 +95,8 @@ function finalize(event){
         $.ajax({
             type: "POST",
             url: BASE_URL + "routes/api.php/users/"+getUserCredentials().userId+"/cars/"+car_id+"/services",
-            data: data,
+            data: JSON.stringify(data),
+            contentType: 'application/json',
             dataType: "json",
             success: function (response) {
                 console.log(response);

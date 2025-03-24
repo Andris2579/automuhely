@@ -19,22 +19,7 @@ $uriSegments = explode('/', trim($requestUri, '/'));
 $params = [];
 
 //Eldönti, hogy a $method változónak megfelelően hogyan dolgozza fel és tárolja a fogadott adatokat
-if($method =="GET"){
-    $params = $_GET;
-}
-else if ($method == "PUT") {
-    $input = file_get_contents("php://input");
-
-    $params = json_decode($input, true);
-
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        http_response_code(400);
-        echo json_encode(["error" => "Invalid JSON format"]);
-        exit;
-    }
-} else if ($method == "POST") {
-    $params = $_POST;
-}
+$params = $method =="GET" ? $_GET : json_decode(file_get_contents("php://input"), true);
 
 //Kinyeri az url szükséges részét
 $baseIndex = array_search('api.php',$uriSegments);
@@ -112,9 +97,6 @@ $routes = [
         },
         '/auth/login' => function($params) {
             sendResponse(UserController::loginUser($params));
-        },
-        '/auth/logout' => function() {
-            sendResponse(["success" => true, "message" => "Sikeres kijelentkezés!"]);
         },
         '/users/{userId}/cars/{carId}/services' => function($params) {
             sendResponse(ServiceController::bookService($params));

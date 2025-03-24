@@ -44,10 +44,6 @@
         margin: 10px 0;
     }
 
-    #selected_service p a{
-        color: var(--secondary-color);
-    }
-
     #cars{
         width: 100%;
         margin: 10px 0;
@@ -70,12 +66,30 @@
 }
 
 @media only screen and (min-width: 768px){
-    /*#services{
-        background-image: url('/automuhely_web/public/assets/imgs/serviceTools.jpg');
+    #services{
+        background-image: url('/automuhely_web/public/assets/imgs/shifter.jpg');
         background-size: cover;
-    }*/
+        background-position: center;
+    }
 
     #searchIcon{
         width: 3vw;
     }
+}
+
+@media only screen and (min-width: 1024px){
+    #servicesFilters{
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+}
+
+#service_message a{
+    text-decoration: none;
+    color: var(--sub-secondary-color);
+    font-weight: 600;
+}
+
+#service_message{
+    font-size: 1.25rem;
 }

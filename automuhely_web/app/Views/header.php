@@ -4,11 +4,11 @@ use Config\App;
 
 //Felépíti a fejléc tartalmát
 $text='<a href="'.App::$BASE_URL.'public/index.html"><img id="logo" src="'.App::$BASE_URL.'public/assets/imgs/logoX.png"></a>
+        <p class="websiteTitle">Autóműhely</p>
         <img id="logoHamburger" src="'.App::$BASE_URL.'public/assets/imgs/hamburger.png">
         <nav>
         <div id="navLinks">
-        <a id="home" href="'.App::$BASE_URL.'public/index.html">Fő oldal</a>
-        <a id="services_page" href="'.App::$BASE_URL.'public/pages/services.html">Szolgáltatások</a>';
+            <a id="services_page" href="'.App::$BASE_URL.'public/pages/services.html">Szolgáltatások</a>';
 
 if(isset($_GET['userId'])){ //Ha bejelentkezett a felhasználó, akkor megjelenik az Autóim menüpont
     $text.='<a id="my_cars" href="'.App::$BASE_URL.'public/pages/cars.html">Autóim</a>';

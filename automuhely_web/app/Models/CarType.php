@@ -16,6 +16,6 @@ class CarType{
     public static function singleType($brand, $type){
         $db = Database::connect();
         $query = "SELECT * FROM tipus WHERE marka_id = $brand AND tipus_id = $type";
-        return $db->query($query)->fetch_all(MYSQLI_ASSOC);
+        return $db->query($query)->fetch_assoc();
     }
 }

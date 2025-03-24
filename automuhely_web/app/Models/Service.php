@@ -40,10 +40,10 @@ class Service{
     public static function cancel($data){
         try{
             $licenseNumber = $data["licenseNumber"];
-            $serviceName = $data["serviceName"];
+            $serviceId = $data["serviceId"];
 
             $db = Database::connect();
-            $query = "UPDATE idopontfoglalasok AS i INNER JOIN jarmuvek AS j ON i.jarmu_id = j.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id SET i.allapot = 'Lemondva' WHERE (j.rendszam = '$licenseNumber' AND szcs.nev = '$serviceName' AND i.allapot = 'Foglalt');";
+            $query = "UPDATE idopontfoglalasok AS i INNER JOIN jarmuvek AS j ON i.jarmu_id = j.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id SET i.allapot = 'Lemondva' WHERE (j.rendszam = '$licenseNumber' AND i.idopont_id = $serviceId AND i.allapot = 'Foglalt');";
             $db->execute_query($query);
             if($db->affected_rows > 0){
                 return ['success' => true, 'message' => "Sikeresen lemondta a foglalást!", 'code' => 201];

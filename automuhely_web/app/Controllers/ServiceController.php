@@ -16,6 +16,6 @@ class ServiceController{
 
     //Lemond egy adott szolgáltatást a felhasználó egy adott autójához
     public static function cancelService($data){
-        return Service::cancel($data);
+        return Service::cancel($data);  
     }
 }
