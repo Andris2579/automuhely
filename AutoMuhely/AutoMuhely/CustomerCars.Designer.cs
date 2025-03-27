@@ -200,7 +200,7 @@
             this.MinimumSize = new System.Drawing.Size(544, 872);
             this.Name = "CustomerCars";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ügyfél-Autók";
+            this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

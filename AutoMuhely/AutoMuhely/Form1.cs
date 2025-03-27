@@ -1258,6 +1258,7 @@ namespace AutoMuhely
 
                 int yOffset = 20; 
                 int indentX = 40;
+                int PrevX = 113;
 
                 // Loop through the row cells and create labels
                 foreach (DataGridViewCell cell in row.Cells)
@@ -1267,7 +1268,7 @@ namespace AutoMuhely
 
                     if (columnName == "Előző javítások" && !string.IsNullOrWhiteSpace(cellValue))
                     {
-                        string[] repairs = cellValue.Split(new[] { "\\n" }, StringSplitOptions.None);
+                        string[] repairs = cellValue.Split(new[] { "\n" }, StringSplitOptions.None);
 
                         // First entry is on the same line as the column title
                         Label lblTitle = new Label
@@ -1279,7 +1280,8 @@ namespace AutoMuhely
                             Location = new Point(20, yOffset)
                         };
                         detailForm.Controls.Add(lblTitle);
-                        yOffset += 30; // Move down for next entries
+                        yOffset += 20; // Move down for next entries
+                        
 
                         // Labels for the remaining repairs (indented)
                         for (int i = 1; i < repairs.Length; i++)
@@ -1290,10 +1292,10 @@ namespace AutoMuhely
                                 AutoSize = true,
                                 ForeColor = Color.WhiteSmoke,
                                 Font = new Font("Segoe UI", 14),
-                                Location = new Point(indentX, yOffset) // Subsequent entries are offset
+                                Location = new Point(PrevX+indentX, yOffset) // Subsequent entries are offset
                             };
                             detailForm.Controls.Add(lblRepair);
-                            yOffset += 30;
+                            yOffset += 20;
                         }
                     }
                     else

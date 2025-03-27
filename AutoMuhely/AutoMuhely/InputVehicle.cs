@@ -81,23 +81,21 @@ namespace AutoMuhely
             try
             {
                 // Validation with a single if statement
-                if (string.IsNullOrWhiteSpace(txtRendszam.Text) ||
-                    comBoxTipus.SelectedValue == null || (int)comBoxTipus.SelectedValue <= 0 ||
-                    comBoxHibakod.SelectedValue == null || (int)comBoxHibakod.SelectedValue <= 0 ||
-                    comBoxSablon.SelectedValue == null || (int)comBoxSablon.SelectedValue <= 0 ||
-                    string.IsNullOrWhiteSpace(txtMotorAdat.Text) || string.IsNullOrWhiteSpace(txtAlvazAdat.Text) || nUpDDate.Value > DateTime.Now.Year || nUpDDate.Value < 1886) // Validate year range
+                if (string.IsNullOrWhiteSpace(txtRendszam.Text) || comBoxTipus.SelectedValue == null || (int)comBoxTipus.SelectedValue <= 0 ||  string.IsNullOrWhiteSpace(txtMotorAdat.Text) || string.IsNullOrWhiteSpace(txtAlvazAdat.Text) || nUpDDate.Value > DateTime.Now.Year || nUpDDate.Value < 1886) // Validate year range
                 {
-                    MessageBox.Show("Minden mezőt helyesen kell kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("A mezőket helyesen kell kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return; // Stop execution if validation fails
                 }
                 if (IsEditMode)
                 {
-                    // Edit Mode: Update the record
-                    string updateQuery = "UPDATE jarmuvek SET tipus_id = @tipus_id, kod_id = @kod_id, sablon_id = @sablon_id, " +
-                                         "gyartas_eve = @gyartas_eve, motor_adatok = @motor_adatok, alvaz_adatok = @alvaz_adatok, " +
-                                         "elozo_javitasok = @elozo_javitasok WHERE rendszam = @originalRendszam";
+                    if (comBoxHibakod.SelectedValue != null && (int)comBoxHibakod.SelectedValue != 0 && comBoxSablon.SelectedValue != null && (int)comBoxSablon.SelectedValue != 0)
+                    {
+                        // Edit Mode: Update the record
+                        string updateQuery = "UPDATE jarmuvek SET tipus_id = @tipus_id, kod_id = @kod_id, sablon_id = @sablon_id, " +
+                                             "gyartas_eve = @gyartas_eve, motor_adatok = @motor_adatok, alvaz_adatok = @alvaz_adatok, " +
+                                             "elozo_javitasok = @elozo_javitasok WHERE rendszam = @originalRendszam";
 
-                    var parameters = new Dictionary<string, object>
+                        var parameters = new Dictionary<string, object>
                     {
                         { "@tipus_id", comBoxTipus.SelectedValue },
                         { "@kod_id", comBoxHibakod.SelectedValue },
@@ -109,11 +107,19 @@ namespace AutoMuhely
                         { "@originalRendszam", OriginalLicensePlate }
                     };
 
-                    databaseHandler.Update(updateQuery, parameters);
-                    MessageBox.Show("Jármű sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
+                        databaseHandler.Update(updateQuery, parameters);
+                        MessageBox.Show("Jármű sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        MessageBox.Show("A mezőket helyesen kell kitölteni!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
                 else
                 {
+                    int? sablon = (comBoxSablon.SelectedValue == null || (int)comBoxSablon.SelectedValue <= 0) ? (int?)null : (int)comBoxSablon.SelectedValue;
+                    int? hibakod = (comBoxHibakod.SelectedValue == null || (int)comBoxHibakod.SelectedValue == 0) ? (int?)null : (int)comBoxHibakod.SelectedValue;
                     // Add Mode: Insert a new record
                     string insertQuery = "INSERT INTO jarmuvek (rendszam, tipus_id, kod_id, sablon_id, gyartas_eve, motor_adatok, alvaz_adatok, elozo_javitasok) " +
                                          "VALUES(@rendszam, @tipus_id, @kod_id, @sablon_id, @gyartas_eve, @motor_adatok, @alvaz_adatok, @elozo_javitasok)";
@@ -122,8 +128,8 @@ namespace AutoMuhely
                     {
                         { "@rendszam", txtRendszam.Text },
                         { "@tipus_id", comBoxTipus.SelectedValue },
-                        { "@kod_id", comBoxHibakod.SelectedValue },
-                        { "@sablon_id", comBoxSablon.SelectedValue },
+                        { "@kod_id", hibakod },
+                        { "@sablon_id", sablon },
                         { "@gyartas_eve", nUpDDate.Value },
                         { "@motor_adatok", txtMotorAdat.Text },
                         { "@alvaz_adatok", txtAlvazAdat.Text },
@@ -155,7 +161,7 @@ namespace AutoMuhely
             nUpDDate.Maximum = currentYear;
         }
 
-        private void LoadComboBox(System.Windows.Forms.ComboBox comboBox, string query, int? selectedID=null)
+        private void LoadComboBox(System.Windows.Forms.ComboBox comboBox, string query, int? selectedID = null)
         {
             try
             {
@@ -165,20 +171,29 @@ namespace AutoMuhely
                 {
                     var comboBoxList = new List<KeyValuePair<int, string>>();
 
+                    // Add a blank item at the top of the list
+                    comboBoxList.Add(new KeyValuePair<int, string>(0, string.Empty));
+
+                    // Populate the ComboBox with the query results
                     foreach (var row in rows)
                     {
                         int id = Convert.ToInt32(row[0]);
                         string name = row[1].ToString();
                         comboBoxList.Add(new KeyValuePair<int, string>(id, name));
                     }
+
                     comboBox.DataSource = comboBoxList;
                     comboBox.DisplayMember = "Value"; // Display the name
                     comboBox.ValueMember = "Key";    // Use the ID as the value
 
-                    // Select the current ID if in edit mode
+                    // Select the current ID if in edit mode, or default to the first item (blank)
                     if (IsEditMode && selectedID > 0)
                     {
                         comboBox.SelectedValue = selectedID;
+                    }
+                    else
+                    {
+                        comboBox.SelectedIndex = 0; // Select the blank entry
                     }
                 }
             }
@@ -187,5 +202,6 @@ namespace AutoMuhely
                 MessageBox.Show($"Hiba történt a legördülő menü betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

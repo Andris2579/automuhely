@@ -51,7 +51,7 @@ namespace AutoMuhely
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hiba történt a járműtípusok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Hiba történt a rendszámok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnAdd_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace AutoMuhely
 
                     databaseHandler.Insert(insertQuery, parameters);
 
-                    MessageBox.Show("Útmutató sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
+                    MessageBox.Show("Jármű sikeresen hozzáadva az ügyfél autóihoz!", "Siker!", MessageBoxButtons.OK);
 
                 this.DialogResult = DialogResult.OK; 
                 this.Close();
