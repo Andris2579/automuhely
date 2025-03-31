@@ -74,6 +74,10 @@ namespace AutoMuhely
                 }
                 else
                     {
+                        if (FormatDateTime() != "invalid") { 
+                        
+
+                        
                         string updateQuery = "UPDATE idopontfoglalasok SET idopont = @datum, allapot='Folyamatban' WHERE idopont_id = @idop_id;";
 
                         var parameters = new Dictionary<string, object>
@@ -85,6 +89,12 @@ namespace AutoMuhely
                         databaseHandler.Update(updateQuery, parameters);
                         MessageBox.Show("Időpont sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
                     }
+                        else
+                        {
+                            return;
+                        }
+                }
+                    
                 }
                 else
                 {
@@ -138,7 +148,7 @@ namespace AutoMuhely
                     };
 
                     databaseHandler.Update(updateQuery, parameters);
-                    MessageBox.Show("Időpont sikeresen hozzáadva!", "Siker!", MessageBoxButtons.OK);
+                    MessageBox.Show("Állapot sikeresen módosítva!", "Siker!", MessageBoxButtons.OK);
                 }
                 
 
@@ -165,7 +175,7 @@ namespace AutoMuhely
             }
             else
             {
-                MessageBox.Show("Invalid time format! Please enter HH:mm (e.g., 14:30).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hibás idő formátum", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "invalid";
             }
         }
