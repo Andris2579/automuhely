@@ -191,7 +191,7 @@ $(document).ready(function(){
         
         //Megjeleníti az autóhoz tartozó aktív szolgáltatásokat
         if (buttonText === "Aktív szolgáltatásaim") {
-            let servicesList = '<table class="activeServices"><tr><th>Szolgáltatás</th><th>Állapot</th></tr>';
+            let servicesList = '<table class="activeServices"><tr><th>Szolgáltatás</th><th>Állapot</th><th>Időpont</th></tr>';
             $.ajax({
                 type: "GET",
                 url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId + "/cars/" + licenseNumber + "/services",
@@ -200,7 +200,8 @@ $(document).ready(function(){
                     if(response != null){ //Ellenőrizzük, hogy van e aktív szolgáltatás, hogy ha nincs, akkor ne legyen gond a formázással
                         response.forEach(function(service){
                             if(service['allapot'] != 'Lemondva' && service['allapot'] != 'Befejezett'){
-                                servicesList += '<tr><td>'+service['nev']+'</td><td>'+service['allapot']+'</td></tr>';
+                                var time = service['idopont'] == null ? 'Visszajelzésre vár' : service['idopont'];
+                                servicesList += '<tr><td>'+service['nev']+'</td><td>'+service['allapot']+'</td><td>'+time+'</td></tr>';
                             }
                         });
                     }
