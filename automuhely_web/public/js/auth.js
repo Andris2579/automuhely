@@ -122,10 +122,7 @@ export function register(event){
                 dataType: "json",
                 success: function (response) {
                     if(response.success == true){
-                        openCustomModal("Siker", response.message);
-                        if(!isModalOpen()){
-                            login(event); //Regisztráció után automatikusan bejelentkeztetjük a felhasználót
-                        }
+                        login(event); //Regisztráció után automatikusan bejelentkeztetjük a felhasználót
                     }
                 },
                 error: function (xhr) {

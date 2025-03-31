@@ -199,6 +199,10 @@
 }
 
 @media only screen and (min-width: 768px){
+    .carDetailsButtons{
+        grid-template-columns: 1fr;
+    }
+
     #searchIcon{
         width: 3vw;
     }
@@ -219,10 +223,25 @@
 
     .myCar, #newCar{
         font-size: 1.1rem;
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 896px){
+    .myCar, #newCar{
+        width: 90%;
     }
 }
 
 @media only screen and (min-width: 1024px){
+    .carDetailsButtons{
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    .myCar, #newCar{
+        width: 80%;
+    }
+
     #searchIcon{
         width: 2vw;
     }
@@ -238,6 +257,10 @@
 }
 
 @media only screen and (min-width: 1366px){
+    .myCar, #newCar{
+        width: 60%;
+    }
+
     #searchIcon{
         width: 1.5vw;
     }

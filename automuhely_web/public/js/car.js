@@ -347,8 +347,14 @@ function addCar(event){
         elozo_javitasok: $('#elozo_javitasok').val()
     };
 
+    var form = $('form')[0];
+
+    if(!form.checkValidity() && data["marka"] == "valasszon" && data["tipus"] == "valasszon"){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html("Kérem, töltsön ki minden mezőt!");
+    }
     //Ellenőrzi, hogy a szükséges mezők megfelelően ki vannak e töltve
-    if(data["rendszam"] == ""){
+    else if(data["rendszam"] == ""){
         $('#error_message').removeAttr('hidden');
         $('#error_message').html("Adjon meg egy rendszámot!");
     }
