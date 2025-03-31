@@ -82,7 +82,7 @@ namespace AutoMuhely
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
             this.txtPassword.Location = new System.Drawing.Point(66, 245);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(262, 25);
             this.txtPassword.TabIndex = 2;
             // 
@@ -163,13 +163,14 @@ namespace AutoMuhely
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 500);
             this.MinimumSize = new System.Drawing.Size(370, 500);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Bejelentkezés";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PicLock)).EndInit();

@@ -1,9 +1,0 @@
-// Példa törlő lekérdezés
-string deleteQuery = "DELETE FROM table_name WHERE id = @id;";
-
-var parameters = new Dictionary<string, object>
-{
-    { "@id", 1 } // A törlendő sor azonosítója
-};
-
-Delete(deleteQuery, parameters);

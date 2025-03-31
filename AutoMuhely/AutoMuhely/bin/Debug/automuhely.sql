@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Sze 17. 10:55
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Mar 07, 2025 at 09:02 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `automuhely`
+-- Database: `automuhely`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `alkatreszek`
+-- Table structure for table `alkatreszek`
 --
 
-CREATE TABLE IF NOT EXISTS `alkatreszek` (
+CREATE TABLE `alkatreszek` (
   `alkatresz_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `leiras` text DEFAULT NULL,
@@ -35,54 +35,70 @@ CREATE TABLE IF NOT EXISTS `alkatreszek` (
   `utanrendelesi_szint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `alkatreszek`
+--
+
+INSERT INTO `alkatreszek` (`alkatresz_id`, `nev`, `leiras`, `keszlet_mennyiseg`, `utanrendelesi_szint`) VALUES
+(1, 'Üzemanyagcső 4mm', '4mm belső átmérőjű üzemanyagcső/ méter', 8, 2),
+(2, 'Kerékcsavar', 'M12x1.5 45mm', 4, 1),
+(3, 'Olajszűrő', 'Toyota modellekhez kompatibilis', 15, 5),
+(4, 'Fékbetét', 'BMW 3 Serieshez', 10, 3),
+(5, 'Légszűrő', 'Audi A4-hez alkalmas', 12, 4),
+(6, 'Gyújtógyertya', 'NGK, Honda Civic kompatibilis', 20, 5),
+(7, 'Akkumulátor', '12V 60Ah', 5, 2),
+(8, 'Féktárcsa', 'Mercedes E-Classhez', 8, 3),
+(9, 'Vezérműszíj', 'Ford Focus kompatibilis', 6, 2),
+(10, 'Üzemanyagszűrő', 'Dízel motorokhoz', 10, 4),
+(11, 'Kuplung tárcsa', 'VW Golfhoz', 4, 1),
+(12, 'Hűtőfolyadék', 'G12, 5 liter', 15, 5),
+(13, 'Lengéscsillapító', 'Tesla Model 3-hoz', 6, 2),
+(14, 'Kerékcsapágy', 'Subaru Outbackhez', 5, 2),
+(15, 'Fékfolyadék', 'DOT 4, 1 liter', 20, 5),
+(16, 'Kipufogódob', 'Mazda CX-5-höz', 3, 1),
+(17, 'Olajszivattyú', 'Porsche Cayenne-hez', 2, 1),
+(18, 'Generátor', 'Hyundai Tucson-hoz', 4, 2),
+(19, 'Szélvédő', 'Toyota RAV4-hez', 3, 1),
+(20, 'Fényszóró izzó', 'H7, univerzális', 25, 10),
+(21, 'Ablaktörlő lapát', 'Bosch, 60cm', 15, 5),
+(22, 'Kormánymű tömítés', 'BMW X5-höz', 5, 2),
+(23, 'Klíma kompresszor', 'Volvo XC60-hoz', 3, 1),
+(24, 'Üzemanyagpumpa', 'Chevrolet Camaro-hoz', 4, 2),
+(25, 'Hűtőradiátor', 'Nissan Leafhez', 6, 2),
+(26, 'Fojtószelep', 'Audi Q5-höz', 3, 1),
+(27, 'EGR szelep', 'VW Tiguan-hoz', 5, 2),
+(28, 'Oxigénérzékelő', 'Honda CR-V-hez', 8, 3),
+(29, 'Motorolaj', '5W-30, 4 liter', 30, 10),
+(30, 'Sebességváltó olaj', 'ATF, 5 liter', 12, 4);
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `alkatresz_rendelesek`
+-- Table structure for table `felhasznalok`
 --
 
-CREATE TABLE IF NOT EXISTS `alkatresz_rendelesek` (
-  `rendelés_id` int(11) NOT NULL,
-  `alkatresz_id` int(11) DEFAULT NULL,
-  `beszallito_id` int(11) DEFAULT NULL,
-  `rendeles_datum` datetime DEFAULT NULL,
-  `rendelt_mennyiseg` int(11) DEFAULT NULL,
-  `allapot` enum('Rendelés alatt','Szállítva','Teljesítve') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `beszallitok`
---
-
-CREATE TABLE IF NOT EXISTS `beszallitok` (
-  `beszallito_id` int(11) NOT NULL,
-  `nev` varchar(100) DEFAULT NULL,
-  `elerhetoseg` varchar(150) DEFAULT NULL,
-  `cim` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `felhasznalok`
---
-
-CREATE TABLE IF NOT EXISTS `felhasznalok` (
+CREATE TABLE `felhasznalok` (
   `felhasznalo_id` int(11) NOT NULL,
   `felhasznalonev` varchar(50) DEFAULT NULL,
   `jelszo_hash` varchar(255) DEFAULT NULL,
   `szerep` enum('Adminisztrátor','Szerelő','Ügyfél') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `felhasznalok`
+--
+
+INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
+(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
+(22, 'janicsak@veca.com', 'dd8a3af07bf0ed457e80ebfa07a8d2a7d834bb30aaee2cbf97d3b6120e6238b8', 'Szerelő');
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `felhasznalok_ugyfelek`
+-- Table structure for table `felhasznalok_ugyfelek`
 --
 
-CREATE TABLE IF NOT EXISTS `felhasznalok_ugyfelek` (
+CREATE TABLE `felhasznalok_ugyfelek` (
   `felhasznalo_id` int(11) NOT NULL,
   `ugyfel_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -90,22 +106,58 @@ CREATE TABLE IF NOT EXISTS `felhasznalok_ugyfelek` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `hibakodok`
+-- Table structure for table `hibakodok`
 --
 
-CREATE TABLE IF NOT EXISTS `hibakodok` (
+CREATE TABLE `hibakodok` (
   `kod_id` int(11) NOT NULL,
   `kod` varchar(10) DEFAULT NULL,
   `leiras` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `hibakodok`
+--
+
+INSERT INTO `hibakodok` (`kod_id`, `kod`, `leiras`) VALUES
+(1, 'P0300', 'Véletlenszerű hengerkihagyás észlelve'),
+(2, 'P0420', 'Katalizátor hatékonysága az elvárt szint alatt'),
+(3, 'P0171', 'Túl szegény üzemanyag-levegő keverék'),
+(4, 'P0130', 'Oxigénérzékelő meghibásodása'),
+(5, 'P0500', 'Járműsebesség-érzékelő hiba'),
+(6, 'P0700', 'Sebességváltó vezérlőegység hiba'),
+(7, 'P0301', '1. henger kihagyás észlelve'),
+(8, 'P0302', '2. henger kihagyás észlelve'),
+(9, 'P0440', 'Üzemanyag-tartály szellőztető rendszer hiba'),
+(10, 'P0455', ' Nagy szivárgás az üzemanyag-gőz rendszerben'),
+(11, 'P0100', 'Tömegáram-érzékelő hiba'),
+(12, 'P0110', 'Szívó levegő hőmérséklet-érzékelő hiba'),
+(13, 'P0120', 'Fojtószelep helyzetérzékelő hiba'),
+(14, 'P0200', 'Befecskendező szelep áramkör hiba'),
+(15, 'P0325', 'Kopogásérzékelő hiba'),
+(16, 'P0335', 'Főtengely helyzetérzékelő hiba'),
+(17, 'P0340', 'Vezérműtengely helyzetérzékelő hiba'),
+(18, 'P0400', 'EGR rendszer áramlási hiba'),
+(19, 'P0430', 'Katalizátor hatékonyság alacsony, 2. bank'),
+(20, 'P0505', 'Üresjárati szabályzó hiba'),
+(21, 'P0600', 'Kommunikációs hiba a vezérlőegységgel'),
+(22, 'P0705', 'Sebességváltó helyzetérzékelő hiba'),
+(23, 'P1120', 'Fojtószelep motor hiba'),
+(24, 'P1130', 'Oxigénérzékelő áramkör hiba'),
+(25, 'P1340', 'Gyújtáskimaradás több hengeren'),
+(26, 'P1400', 'DPFE érzékelő hiba (EGR rendszer)'),
+(27, 'P1500', 'Generátor szabályzó hiba'),
+(28, 'P1600', 'ECU belső hiba'),
+(29, 'P1700', 'Sebességváltó vezérlés hiba'),
+(30, 'P2000', 'NOx csapda hatékonyság alacsony');
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `idopontfoglalasok`
+-- Table structure for table `idopontfoglalasok`
 --
 
-CREATE TABLE IF NOT EXISTS `idopontfoglalasok` (
+CREATE TABLE `idopontfoglalasok` (
   `idopont_id` int(11) NOT NULL,
   `jarmu_id` int(11) DEFAULT NULL,
   `csomag_id` int(11) DEFAULT NULL,
@@ -113,13 +165,29 @@ CREATE TABLE IF NOT EXISTS `idopontfoglalasok` (
   `allapot` enum('Foglalt','Folyamatban','Befejezett','Lemondva') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `idopontfoglalasok`
+--
+
+INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
+(9, 10, 4, '2029-12-31 10:20:11', 'Folyamatban'),
+(10, 41, 4, '2025-02-28 12:30:00', 'Befejezett'),
+(11, 38, 4, '2025-02-22 12:30:00', 'Folyamatban'),
+(12, 37, 3, '2025-02-28 16:00:00', 'Befejezett'),
+(13, 34, 4, '0000-00-00 00:00:00', 'Foglalt'),
+(14, 39, 4, '0000-00-00 00:00:00', 'Foglalt'),
+(15, 40, 4, '2025-06-04 19:00:00', 'Folyamatban'),
+(17, 43, 1, '2025-03-02 15:11:00', 'Folyamatban'),
+(18, 42, 1, '2025-02-21 14:00:00', 'Befejezett'),
+(19, 47, 5, '2025-03-15 13:00:00', 'Folyamatban');
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `jarmuvek`
+-- Table structure for table `jarmuvek`
 --
 
-CREATE TABLE IF NOT EXISTS `jarmuvek` (
+CREATE TABLE `jarmuvek` (
   `jarmu_id` int(11) NOT NULL,
   `rendszam` varchar(10) DEFAULT NULL,
   `tipus_id` int(11) DEFAULT NULL,
@@ -131,127 +199,446 @@ CREATE TABLE IF NOT EXISTS `jarmuvek` (
   `elozo_javitasok` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `jarmuvek`
+--
+
+INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
+(10, 'abc-123', 2, 14, 1, '1990', 'asdfaewfdag', 'wvaav', 'Teljes szervíz'),
+(34, 'abc-124', 23, NULL, NULL, NULL, NULL, NULL, 'sokat'),
+(35, 'abc-125', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
+(37, 'abc-126', 25, NULL, NULL, NULL, NULL, NULL, 'nincs; \nKlíma tisztítás'),
+(38, 'abc-127', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
+(39, '128', 6, 14, 1, '1999', 'majd lesz', 'nemtom', 'nincs'),
+(40, '129', 21, NULL, NULL, NULL, NULL, NULL, 'nincs'),
+(41, '130', 21, NULL, NULL, NULL, NULL, NULL, 'nincs\nTeljes szerviz'),
+(42, 'inl-066', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt; \nOlajcsere'),
+(43, 'INL-067', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt'),
+(44, 'sadsad', 6, NULL, NULL, NULL, NULL, NULL, 'asdasfasf'),
+(45, 'afjsafjasf', 21, NULL, NULL, NULL, NULL, NULL, 'afdjfsdkfh'),
+(46, 'nfdsnfsd', 6, NULL, NULL, NULL, NULL, NULL, 'fkdslnflksd'),
+(47, 'abc-1250', 8, NULL, NULL, NULL, NULL, NULL, 'adasdasd'),
+(48, 'abd-1250', 11, NULL, NULL, NULL, NULL, NULL, 'adasdasd s'),
+(49, 'ajsfsjfsak', 8, NULL, NULL, NULL, NULL, NULL, 'asjkdsj jasdasjkd.'),
+(50, 'éaádésdásd', 9, NULL, NULL, NULL, NULL, NULL, 'asdlsékd ésdskaldas. lsadkasdkaséd.'),
+(51, 'ABC123', 24, 14, 1, '2014', 'most nincs', 'azsincs', 'még nem volt'),
+(52, 'ABC222', 9, 1, 1, '1917', 'asawrerdg', 'lolololololololololol', '');
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `munkafolyamat_sablonok`
+-- Table structure for table `marka`
 --
 
-CREATE TABLE IF NOT EXISTS `munkafolyamat_sablonok` (
+CREATE TABLE `marka` (
+  `marka_id` int(11) NOT NULL,
+  `marka_neve` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marka`
+--
+
+INSERT INTO `marka` (`marka_id`, `marka_neve`) VALUES
+(1, 'Nissan'),
+(2, 'Toyota'),
+(3, 'BMW'),
+(4, 'Audi'),
+(5, 'Tesla'),
+(6, 'Mercedes-Benz'),
+(7, 'Volkswagen'),
+(8, 'Ford'),
+(9, 'Honda'),
+(10, 'Hyundai'),
+(11, 'Porsche'),
+(12, 'Chevrolet'),
+(13, 'Subaru'),
+(14, 'Mazda'),
+(15, 'Volvo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `munkafolyamat_sablonok`
+--
+
+CREATE TABLE `munkafolyamat_sablonok` (
   `sablon_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `lepesek` text DEFAULT NULL,
-  `becsult_ido` time DEFAULT NULL
+  `becsult_ido` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- Dumping data for table `munkafolyamat_sablonok`
+--
+
+INSERT INTO `munkafolyamat_sablonok` (`sablon_id`, `nev`, `lepesek`, `becsult_ido`) VALUES
+(1, 'Olajcsere', 'Emelés, leeresztés, szűrőcsere, feltöltés', '45min'),
+(2, 'Fék', 'Kerék levétele, Féknyereg levétele, Féktárcsa levétele, Takarítás, Összeszerelés', '90min'),
+(3, 'Kerékcsere', 'Emelés, csavarok lazítása, kerék levétele, új kerék felszerelése', '30min'),
+(4, 'Diagnosztika', 'OBD csatlakoztatása, hibakód kiolvasása, elemzés', '20min'),
+(5, 'Futóműbeállítás', 'Emelés, mérőeszköz felhelyezése, beállítás, ellenőrzés', '60min'),
+(6, 'Akkumulátor csere', 'Kapcsoló kikapcsolása, kábelek levétele, új akku beszerelése', '30min'),
+(7, 'Kipufogó javítás', 'Emelés, csövek ellenőrzése, sérült rész cseréje', '60min'),
+(8, 'Légszűrő csere', 'Motorháztető felnyitása, szűrő eltávolítása, új szűrő behelyezése', '15min'),
+(9, 'Gyújtógyertya csere', 'Kábelek levétele, régi gyertyák ki, újak be', '45min'),
+(10, 'Hűtőfolyadék csere', 'Rendszer leeresztése, átmosás, új folyadékkal töltés', '40min'),
+(11, 'Szélvédő csere', 'Régi üveg eltávolítása, új üveg ragasztása, száradás', '120min'),
+(12, 'Generátor felújítás', 'Levétel, szétszerelés, alkatrész csere, összeszerelés', '90min'),
+(13, 'Fényszóró beállítás', 'Fényszórók ellenőrzése, csavarokkal igazítás', '20min'),
+(14, 'Kuplung csere', 'Váltó levétele, kuplung csere, visszahelyezés', '180min'),
+(15, 'Vezérműszíj csere', 'Fedél levétele, régi szíj ki, új szíj be, feszítés', '120min'),
+(16, 'Üzemanyagszűrő csere', 'Szűrő helyének megtalálása, csere, ellenőrzés', '30min'),
+(17, 'Kerék centrírozás', 'Kerék levétele, centrírozó gépen beállítás', '25min'),
+(18, 'Fűtés javítás', 'Fűtőradiátor ellenőrzése, csere vagy tisztítás', '90min'),
+(19, 'Ablaktörlő csere', 'Régi lapátok levétele, újak felszerelése', '10min'),
+(20, 'Hűtőrendszer javítás', 'Szivárgás keresése, tömítés vagy cső csere', '60min'),
+(21, 'Kormánymű felújítás', 'Kormánymű levétele, javítás, visszahelyezés', '120min'),
+(22, 'Lengéscsillapító csere', 'Kerék levétele, régi csillapító ki, új be', '60min'),
+(23, 'Kerékcsapágy csere', 'Kerék levétele, csapágy kiütése, új behelyezése', '90min'),
+(24, 'Klíma feltöltés', 'Rendszer ellenőrzése, hűtőközeg feltöltése', '45min'),
+(25, 'Motor tisztítás', 'Motorblokk leszedése, tisztítás, visszahelyezés', '60min'),
+(26, 'Sebességváltó olajcsere', 'Leeresztés, új olaj betöltése, ellenőrzés', '60min'),
+(27, 'Fékfolyadék csere', 'Rendszer leeresztése, új folyadékkal töltés', '45min'),
+(28, 'Üzemanyagpumpa csere', 'Tank elérése, pumpa csere, összeszerelés', '90min'),
+(29, 'Olajszivattyú csere', 'Motor megbontása, szivattyú csere, összeszerelés', '150min'),
+(30, 'Kipufogódob csere', 'Régi dob levétele, új felszerelése, rögzítés', '60min');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `szerelesi_utmutatok`
+-- Table structure for table `rendelesek`
 --
 
-CREATE TABLE IF NOT EXISTS `szerelesi_utmutatok` (
+CREATE TABLE `rendelesek` (
+  `rendeles_id` int(11) NOT NULL,
+  `felhasznalo_id` int(11) NOT NULL,
+  `alkatresz_id` int(11) NOT NULL,
+  `mennyiseg` int(11) NOT NULL,
+  `statusz` enum('Leadva','Kérvényezve','Elutasítva') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rendelesek`
+--
+
+INSERT INTO `rendelesek` (`rendeles_id`, `felhasznalo_id`, `alkatresz_id`, `mennyiseg`, `statusz`) VALUES
+(1, 1, 8, 6, 'Kérvényezve'),
+(2, 1, 1, 11, 'Kérvényezve'),
+(3, 22, 1, 9, 'Kérvényezve');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `szerelesi_utmutatok`
+--
+
+CREATE TABLE `szerelesi_utmutatok` (
   `utmutato_id` int(11) NOT NULL,
   `cim` varchar(100) DEFAULT NULL,
   `tartalom` text DEFAULT NULL,
-  `jarmu_tipus` varchar(50) DEFAULT NULL
+  `jarmu_tipus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- Dumping data for table `szerelesi_utmutatok`
+--
+
+INSERT INTO `szerelesi_utmutatok` (`utmutato_id`, `cim`, `tartalom`, `jarmu_tipus`) VALUES
+(1, 'Olajcsere Toyota Corolla', '1. Emelje fel az autót. 2. Csavarja le az olajleeresztő csavart. 3. Cserélje ki a szűrőt. 4. Töltse fel új olajjal.', 1),
+(2, 'Fékbetét csere Toyota Camry', '1. Kerék levétele. 2. Féknyereg csavarok ki. 3. Betétek cseréje. 4. Összeszerelés.', 2),
+(3, 'Klíma tisztítás Toyota RAV4', '1. Szűrő elérése. 2. Tisztítás vagy csere. 3. Rendszer ellenőrzése.', 3),
+(4, 'Akkumulátor csere Toyota Prius', '1. Kábelek levétele. 2. Régi akku ki. 3. Új be.', 4),
+(5, 'Légszűrő csere Toyota Yaris', '1. Szűrőház nyitása. 2. Régi szűrő ki. 3. Új be.', 5),
+(6, 'Féktárcsa csere BMW 3 Series', '1. Kerék levétele. 2. Féknyereg ki. 3. Tárcsa csere.', 6),
+(7, 'Olajcsere BMW 5 Series', '1. Emelés. 2. Leeresztés. 3. Szűrő csere. 4. Feltöltés.', 7),
+(8, 'Kipufogó javítás BMW X5', '1. Emelés. 2. Csövek ellenőrzése. 3. Csere.', 8),
+(9, 'Diagnosztika BMW i3', '1. OBD csatlakoztatása. 2. Kódok kiolvasása.', 9),
+(10, 'Gyújtógyertya csere BMW M4', '1. Kábelek levétele. 2. Gyertyák cseréje.', 10),
+(11, 'Kerékcsere Audi A3', '1. Emelés. 2. Csavarok ki. 3. Új kerék fel.', 11),
+(12, 'Klíma feltöltés Audi A4', '1. Rendszer ellenőrzése. 2. Hűtőközeg betöltése.', 12),
+(13, 'Fényszóró beállítás Audi Q5', '1. Fényszórók ellenőrzése. 2. Igazítás.', 13),
+(14, 'Akkumulátor csere Audi e-tron', '1. Kábelek levétele. 2. Csere.', 14),
+(15, 'Hűtőfolyadék csere Audi TT', '1. Rendszer leeresztése. 2. Új folyadék.', 15),
+(16, 'Olajcsere Tesla Model S', '1. Emelés. 2. Leeresztés. 3. Feltöltés.', 16),
+(17, 'Diagnosztika Tesla Model 3', '1. OBD csatlakozás. 2. Kódok elemzése.', 17),
+(18, 'Lengéscsillapító csere Tesla Model X', '1. Kerék levétele. 2. Csillapító csere.', 18),
+(19, 'Kerékcsapágy csere Tesla Model Y', '1. Kerék levétele. 2. Csapágy csere.', 19),
+(20, 'Fékbetét csere Tesla Roadster', '1. Féknyereg ki. 2. Betétek csere.', 20),
+(21, 'Olajcsere Nissan Leaf', '1. Emelés. 2. Leeresztés. 3. Szűrő csere.', 21),
+(22, 'Klíma tisztítás Nissan Qashqai', '1. Szűrő elérése. 2. Tisztítás.', 22),
+(23, 'Akkumulátor csere Nissan e-NV200', '1. Kábelek levétele. 2. Csere.', 23),
+(24, 'Fényszóró izzó csere Nissan IMx', '1. Izzó elérése. 2. Csere.', 24),
+(25, 'Gyújtógyertya csere Nissan Ariya', '1. Kábelek ki. 2. Gyertyák csere.', 25),
+(26, 'Fék csere Mercedes C-Class', '1. Kerék levétele. 2. Féknyereg ki. 3. Csere.', 26),
+(27, 'Olajcsere Mercedes E-Class', '1. Emelés. 2. Leeresztés. 3. Feltöltés.', 27),
+(28, 'Kipufogó javítás Mercedes S-Class', '1. Emelés. 2. Csövek cseréje.', 28),
+(29, 'Futóműbeállítás Mercedes GLC', '1. Mérőeszköz fel. 2. Beállítás.', 29),
+(30, 'Olajcsere VW Golf', '1. Emelés. 2. Leeresztés. 3. Szűrő csere.', 30),
+(31, 'Klíma feltöltés VW Passat', '1. Rendszer ellenőrzése. 2. Feltöltés.', 31),
+(32, 'Fékbetét csere VW Tiguan', '1. Kerék levétele. 2. Betétek csere.', 32),
+(33, 'Akkumulátor csere VW Polo', '1. Kábelek ki. 2. Csere.', 33),
+(34, 'Vezérműszíj csere Ford F-150', '1. Fedél levétele. 2. Szíj csere.', 34),
+(35, 'Gyújtógyertya csere Ford Mustang', '1. Kábelek ki. 2. Gyertyák csere.', 35),
+(36, 'Olajcsere Ford Focus', '1. Emelés. 2. Leeresztés. 3. Feltöltés.', 36),
+(37, 'Fék csere Honda Civic', '1. Kerék levétele. 2. Féknyereg ki. 3. Csere.', 37),
+(38, 'Klíma tisztítás Honda Accord', '1. Szűrő elérése. 2. Tisztítás.', 38),
+(39, 'Légszűrő csere Honda CR-V', '1. Szűrőház nyitása. 2. Csere.', 39),
+(40, 'Olajcsere Hyundai Tucson', '1. Emelés. 2. Leeresztés. 3. Szűrő csere.', 40),
+(41, 'Fékbetét csere Hyundai Elantra', '1. Kerék levétele. 2. Betétek csere.', 41),
+(42, 'Kipufogó javítás Hyundai Santa Fe', '1. Emelés. 2. Csövek cseréje.', 42),
+(43, 'Olajcsere Porsche 911', '1. Emelés. 2. Leeresztés. 3. Feltöltés.', 43),
+(44, 'Fék csere Porsche Cayenne', '1. Kerék levétele. 2. Féknyereg ki. 3. Csere.', 44),
+(45, 'Gyújtógyertya csere Chevrolet Camaro', '1. Kábelek ki. 2. Gyertyák csere.', 45),
+(46, 'Kerékcsere Chevrolet Silverado', '1. Emelés. 2. Csavarok ki. 3. Új kerék fel.', 46),
+(47, 'Olajcsere Subaru Outback', '1. Emelés. 2. Leeresztés. 3. Szűrő csere.', 47),
+(48, 'Fékbetét csere Subaru Impreza', '1. Kerék levétele. 2. Betétek csere.', 48),
+(49, 'Klíma tisztítás Mazda MX-5', '1. Szűrő elérése. 2. Tisztítás.', 49),
+(50, 'Légszűrő csere Mazda CX-5', '1. Szűrőház nyitása. 2. Csere.', 50),
+(51, 'Olajcsere Volvo XC60', '1. Emelés. 2. Leeresztés. 3. Feltöltés.', 51),
+(52, 'Fék csere Volvo S90', '1. Kerék levétele. 2. Féknyereg ki. 3. Csere.', 52),
+(53, 'Diagnosztika Toyota Corolla', '1. OBD csatlakozás. 2. Kódok kiolvasása.', 1),
+(54, 'Vezérműszíj csere VW Golf', '1. Fedél levétele. 2. Szíj csere.', 30),
+(55, 'Fékfolyadék csere BMW 3 Series', '1. Rendszer leeresztése. 2. Új folyadék.', 6),
+(56, 'Üzemanyagpumpa csere Audi A4', '1. Tank elérése. 2. Pumpa csere.', 12),
+(57, 'Kuplung csere Ford Focus', '1. Váltó levétele. 2. Kuplung csere.', 36),
+(58, 'Hűtőrendszer javítás Honda Civic', '1. Szivárgás keresése. 2. Csere.', 37),
+(59, 'Kerék centrírozás Tesla Model 3', '1. Kerék levétele. 2. Centrírozás.', 17),
+(60, 'Fűtés javítás Mercedes E-Class', '1. Radiátor ellenőrzése. 2. Javítás.', 27),
+(61, 'Ablaktörlő csere Nissan Leaf', '1. Régi lapátok ki. 2. Újak fel.', 21),
+(62, 'Olajszivattyú csere Porsche Cayenne', '1. Motor megbontása. 2. Szivattyú csere.', 44),
+(63, 'Kipufogódob csere Subaru Outback', '1. Régi dob ki. 2. Új fel.', 47),
+(64, 'Fényszóró izzó csere Toyota RAV4', '1. Izzó elérése. 2. Csere.', 3),
+(65, 'Lengéscsillapító csere VW Tiguan', '1. Kerék levétele. 2. Csillapító csere.', 32),
+(66, 'Klíma feltöltés BMW 5 Series', '1. Rendszer ellenőrzése. 2. Feltöltés.', 7),
+(67, 'Üzemanyagszűrő csere Hyundai Tucson', '1. Szűrő elérése. 2. Csere.', 40),
+(68, 'Motor tisztítás Tesla Model S', '1. Motorblokk leszedése. 2. Tisztítás.', 16),
+(69, 'Sebességváltó olajcsere Audi Q5', '1. Leeresztés. 2. Új olaj betöltése.', 13),
+(70, 'Kormánymű felújítás Mercedes GLC', '1. Kormánymű levétele. 2. Javítás.', 29);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `szervizcsomagok`
+-- Table structure for table `szervizcsomagok`
 --
 
-CREATE TABLE IF NOT EXISTS `szervizcsomagok` (
+CREATE TABLE `szervizcsomagok` (
   `csomag_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
   `leiras` text DEFAULT NULL,
   `ar` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `szervizcsomagok`
+--
+
+INSERT INTO `szervizcsomagok` (`csomag_id`, `nev`, `leiras`, `ar`) VALUES
+(1, 'Olajcsere', 'Motorolaj cseréje szűrővel, ingyenes ellenőrzéssel.', 15000.00),
+(2, 'Fékellenőrzés', 'Teljes fékrendszer ellenőrzése, fékbetétek és tárcsák felmérése.', 8000.00),
+(3, 'Klíma tisztítás', 'Autó klímarendszerének tisztítása és fertőtlenítése.', 12000.00),
+(4, 'Teljes szerviz', 'Átfogó szerviz, beleértve az olajcserét, fékellenőrzést és diagnosztikát.', 50000.00),
+(5, 'Kerékcsere', 'Nyári vagy téli gumiabroncsok cseréje, centrírozással.', 10000.00),
+(6, 'Fék', 'Fékbetét, Féktárcsa cseréje 1 tengelyen', 15000.00),
+(7, 'Futóműbeállítás', 'Futómű pontos beállítása korszerű eszközzel.', 22000.00),
+(8, 'Akkumulátor csere', 'Régi akkumulátor eltávolítása és új beszerelése.', 20000.00),
+(9, 'Diagnosztika', 'Teljes körű hibakód olvasás és elemzés.', 10000.00),
+(10, 'Kipufogó javítás', 'Kipufogórendszer ellenőrzése és javítása.', 18000.00),
+(11, 'Légszűrő csere', 'Motor légszűrőjének cseréje.', 5000.00),
+(12, 'Gyújtógyertya csere', 'Gyújtógyertyák cseréje, 4 hengeres motorhoz.', 12000.00),
+(13, 'Hűtőfolyadék csere', 'Hűtőrendszer átmosása és új folyadékkal töltése.', 8000.00),
+(14, 'Szélvédő csere', 'Sérült szélvédő cseréje, ragasztással.', 35000.00),
+(15, 'Generátor felújítás', 'Generátor ellenőrzése és javítása.', 25000.00),
+(16, 'Olajszűrő csere', 'Olajszűrő cseréje olajcsere nélkül.', 3000.00),
+(17, 'Fényszóró beállítás', 'Fényszórók pontos beállítása.', 6000.00),
+(18, 'Kuplung csere', 'Kuplungtárcsa és szerkezet cseréje.', 60000.00),
+(19, 'Vezérműszíj csere', 'Vezérműszíj és feszítő cseréje.', 45000.00),
+(20, 'Üzemanyagszűrő csere', 'Üzemanyagszűrő cseréje dízel vagy benzines motorhoz.', 7000.00),
+(21, 'Kerék centrírozás', 'Négy kerék centrírozása.', 8000.00),
+(22, 'Fűtés javítás', 'Fűtőrendszer ellenőrzése és javítása.', 15000.00),
+(23, 'Ablaktörlő csere', 'Első ablaktörlő lapátok cseréje.', 4000.00),
+(24, 'Hűtőrendszer javítás', 'Hűtő ellenőrzése és szivárgás javítása.', 20000.00),
+(25, 'Kormánymű felújítás', 'Kormánymű ellenőrzése és javítása.', 30000.00),
+(26, 'Lengéscsillapító csere', 'Első tengely lengéscsillapítóinak cseréje.', 25000.00),
+(27, 'Kerékcsapágy csere', 'Egy kerék csapágyának cseréje.', 18000.00),
+(28, 'Klíma feltöltés', 'Klímarendszer hűtőközeggel való feltöltése.', 15000.00),
+(29, 'Motor tisztítás', 'Motorblokk külső tisztítása.', 10000.00),
+(30, 'Sebességváltó olajcsere', 'Manuális vagy automata váltó olajcseréje.', 20000.00);
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `tipus`
+-- Table structure for table `tipus`
 --
 
-CREATE TABLE IF NOT EXISTS `tipus` (
+CREATE TABLE `tipus` (
   `tipus_id` int(11) NOT NULL,
   `tipus` varchar(50) DEFAULT NULL,
-  `utmutato_id` int(11) DEFAULT NULL
+  `marka_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- Dumping data for table `tipus`
+--
+
+INSERT INTO `tipus` (`tipus_id`, `tipus`, `marka_id`) VALUES
+(1, 'Corolla', 2),    -- Toyota
+(2, 'Camry', 2),
+(3, 'RAV4', 2),
+(4, 'Prius', 2),
+(5, 'Yaris', 2),
+(6, '3 Series', 3),  -- BMW
+(7, '5 Series', 3),
+(8, 'X5', 3),
+(9, 'i3', 3),
+(10, 'M4', 3),
+(11, 'A3', 4),      -- Audi
+(12, 'A4', 4),
+(13, 'Q5', 4),
+(14, 'e-tron', 4),
+(15, 'TT', 4),
+(16, 'Model S', 5), -- Tesla
+(17, 'Model 3', 5),
+(18, 'Model X', 5),
+(19, 'Model Y', 5),
+(20, 'Roadster', 5),
+(21, 'Leaf', 1),    -- Nissan
+(22, 'Qashqai', 1),
+(23, 'e-NV200', 1),
+(24, 'IMx', 1),
+(25, 'Ariya', 1),
+(26, 'C-Class', 6), -- Mercedes-Benz
+(27, 'E-Class', 6),
+(28, 'S-Class', 6),
+(29, 'GLC', 6),
+(30, 'Golf', 7),    -- Volkswagen
+(31, 'Passat', 7),
+(32, 'Tiguan', 7),
+(33, 'Polo', 7),
+(34, 'F-150', 8),   -- Ford
+(35, 'Mustang', 8),
+(36, 'Focus', 8),
+(37, 'Civic', 9),   -- Honda
+(38, 'Accord', 9),
+(39, 'CR-V', 9),
+(40, 'Tucson', 10), -- Hyundai
+(41, 'Elantra', 10),
+(42, 'Santa Fe', 10),
+(43, '911', 11),    -- Porsche
+(44, 'Cayenne', 11),
+(45, 'Camaro', 12), -- Chevrolet
+(46, 'Silverado', 12),
+(47, 'Outback', 13),-- Subaru
+(48, 'Impreza', 13),
+(49, 'MX-5', 14),   -- Mazda
+(50, 'CX-5', 14),
+(51, 'XC60', 15),   -- Volvo
+(52, 'S90', 15);
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `ugyfelek`
+-- Table structure for table `ugyfelek`
 --
 
-CREATE TABLE IF NOT EXISTS `ugyfelek` (
+CREATE TABLE `ugyfelek` (
   `ugyfel_id` int(11) NOT NULL,
   `nev` varchar(100) DEFAULT NULL,
-  `elerhetoseg` varchar(150) DEFAULT NULL,
-  `cim` varchar(200) DEFAULT NULL
+  `telefonszam` varchar(150) DEFAULT NULL,
+  `cim` varchar(200) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- Dumping data for table `ugyfelek`
+--
+
+INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
+(1, 'Chrén András', '+36123123123', '4011, Valahol, Liliom utca 4', 'andrasvalami@gmail.com'),
+(3, 'b b', 'b', NULL, 'b@b.com'),
+(4, 'c c', 'c', NULL, 'c@c.com'),
+(5, 'd d', 'd', NULL, 'd@d.com'),
+(6, 'Ernő Majom', '06702886912', '2600, Vác, Márc 15 tér 0', 'e@e.com'),
+(7, 'f f', 'f', NULL, 'f@f.com'),
+(8, 'g g', 'g', NULL, 'g@g.com'),
+(9, 'h h', 'h', NULL, 'h@h.com'),
+(10, 'i i', 'i', NULL, 'i@i.com'),
+(11, 'j j', 'j', NULL, 'j@j.com'),
+(12, 'k k', 'k', NULL, 'k@k.com'),
+(13, 'l l', 'l', NULL, 'l@l.com'),
+(14, 'ly ly', 'ly', NULL, 'ly@ly.com'),
+(15, 'm m', 'm', NULL, 'm'),
+(16, '', '', NULL, ''),
+(17, 'n n', 'n', NULL, 'n@n.com'),
+(18, 'Chrén András Ferenc', '+36204772772', '2624,Szokolya,Hunyadi utca,19', 'andrewchre1@gmail.com'),
+(19, 'Albert Benyó Mária', '123456789', NULL, 'albertbenyo@gmail.com'),
+(20, 'Fenyvesi Ákos', '06702962920', '2600, Vác, Szegfű utca 34', 'donfenyvesi@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `ugyfel_jarmuvek`
+-- Table structure for table `ugyfel_jarmuvek`
 --
 
-CREATE TABLE IF NOT EXISTS `ugyfel_jarmuvek` (
+CREATE TABLE `ugyfel_jarmuvek` (
   `ugyfel_id` int(11) NOT NULL,
   `jarmu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- Indexek a kiírt táblákhoz
+-- Dumping data for table `ugyfel_jarmuvek`
+--
+
+INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
+(18, 10),
+(18, 34),
+(18, 37),
+(18, 38),
+(18, 39),
+(18, 40),
+(18, 41),
+(18, 42),
+(18, 43),
+(18, 44),
+(18, 45),
+(18, 46),
+(18, 47),
+(18, 48),
+(18, 49),
+(18, 50);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `alkatreszek`
+-- Indexes for table `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
   ADD PRIMARY KEY (`alkatresz_id`);
 
 --
--- A tábla indexei `alkatresz_rendelesek`
---
-ALTER TABLE `alkatresz_rendelesek`
-  ADD PRIMARY KEY (`rendelés_id`),
-  ADD KEY `alkatresz_id` (`alkatresz_id`),
-  ADD KEY `beszallito_id` (`beszallito_id`);
-
---
--- A tábla indexei `beszallitok`
---
-ALTER TABLE `beszallitok`
-  ADD PRIMARY KEY (`beszallito_id`);
-
---
--- A tábla indexei `felhasznalok`
+-- Indexes for table `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
   ADD PRIMARY KEY (`felhasznalo_id`),
   ADD UNIQUE KEY `felhasznalonev` (`felhasznalonev`);
 
 --
--- A tábla indexei `felhasznalok_ugyfelek`
+-- Indexes for table `felhasznalok_ugyfelek`
 --
 ALTER TABLE `felhasznalok_ugyfelek`
   ADD PRIMARY KEY (`felhasznalo_id`,`ugyfel_id`),
   ADD KEY `ugyfel_id` (`ugyfel_id`);
 
 --
--- A tábla indexei `hibakodok`
+-- Indexes for table `hibakodok`
 --
 ALTER TABLE `hibakodok`
   ADD PRIMARY KEY (`kod_id`);
 
 --
--- A tábla indexei `idopontfoglalasok`
+-- Indexes for table `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
   ADD PRIMARY KEY (`idopont_id`),
@@ -259,7 +646,7 @@ ALTER TABLE `idopontfoglalasok`
   ADD KEY `csomag_id` (`csomag_id`);
 
 --
--- A tábla indexei `jarmuvek`
+-- Indexes for table `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
   ADD PRIMARY KEY (`jarmu_id`),
@@ -269,140 +656,154 @@ ALTER TABLE `jarmuvek`
   ADD KEY `sablon_id` (`sablon_id`);
 
 --
--- A tábla indexei `munkafolyamat_sablonok`
+-- Indexes for table `marka`
+--
+ALTER TABLE `marka`
+  ADD PRIMARY KEY (`marka_id`);
+
+--
+-- Indexes for table `munkafolyamat_sablonok`
 --
 ALTER TABLE `munkafolyamat_sablonok`
   ADD PRIMARY KEY (`sablon_id`);
 
 --
--- A tábla indexei `szerelesi_utmutatok`
+-- Indexes for table `rendelesek`
 --
-ALTER TABLE `szerelesi_utmutatok`
-  ADD PRIMARY KEY (`utmutato_id`);
+ALTER TABLE `rendelesek`
+  ADD PRIMARY KEY (`rendeles_id`),
+  ADD KEY `felhasznalo_id` (`felhasznalo_id`),
+  ADD KEY `alkatresz_id` (`alkatresz_id`);
 
 --
--- A tábla indexei `szervizcsomagok`
+-- Indexes for table `szerelesi_utmutatok`
+--
+ALTER TABLE `szerelesi_utmutatok`
+  ADD PRIMARY KEY (`utmutato_id`),
+  ADD KEY `fk_jarmu_tipus` (`jarmu_tipus`);
+
+--
+-- Indexes for table `szervizcsomagok`
 --
 ALTER TABLE `szervizcsomagok`
   ADD PRIMARY KEY (`csomag_id`);
 
 --
--- A tábla indexei `tipus`
+-- Indexes for table `tipus`
 --
 ALTER TABLE `tipus`
   ADD PRIMARY KEY (`tipus_id`),
-  ADD KEY `utmutato_id` (`utmutato_id`);
+  ADD KEY `fk_marka_id` (`marka_id`);
 
 --
--- A tábla indexei `ugyfelek`
+-- Indexes for table `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
   ADD PRIMARY KEY (`ugyfel_id`);
 
 --
--- A tábla indexei `ugyfel_jarmuvek`
+-- Indexes for table `ugyfel_jarmuvek`
 --
 ALTER TABLE `ugyfel_jarmuvek`
   ADD PRIMARY KEY (`ugyfel_id`,`jarmu_id`),
   ADD KEY `jarmu_id` (`jarmu_id`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `alkatreszek`
+-- AUTO_INCREMENT for table `alkatreszek`
 --
 ALTER TABLE `alkatreszek`
-  MODIFY `alkatresz_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `alkatresz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT a táblához `alkatresz_rendelesek`
---
-ALTER TABLE `alkatresz_rendelesek`
-  MODIFY `rendelés_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT a táblához `beszallitok`
---
-ALTER TABLE `beszallitok`
-  MODIFY `beszallito_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT a táblához `felhasznalok`
+-- AUTO_INCREMENT for table `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT a táblához `hibakodok`
+-- AUTO_INCREMENT for table `hibakodok`
 --
 ALTER TABLE `hibakodok`
-  MODIFY `kod_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT a táblához `idopontfoglalasok`
+-- AUTO_INCREMENT for table `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
-  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT a táblához `jarmuvek`
+-- AUTO_INCREMENT for table `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT a táblához `munkafolyamat_sablonok`
+-- AUTO_INCREMENT for table `marka`
+--
+ALTER TABLE `marka`
+  MODIFY `marka_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `munkafolyamat_sablonok`
 --
 ALTER TABLE `munkafolyamat_sablonok`
-  MODIFY `sablon_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sablon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT a táblához `szerelesi_utmutatok`
+-- AUTO_INCREMENT for table `rendelesek`
+--
+ALTER TABLE `rendelesek`
+  MODIFY `rendeles_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `szerelesi_utmutatok`
 --
 ALTER TABLE `szerelesi_utmutatok`
-  MODIFY `utmutato_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `utmutato_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT a táblához `szervizcsomagok`
+-- AUTO_INCREMENT for table `szervizcsomagok`
 --
 ALTER TABLE `szervizcsomagok`
-  MODIFY `csomag_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `csomag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT a táblához `ugyfelek`
+-- AUTO_INCREMENT for table `tipus`
+--
+ALTER TABLE `tipus`
+  MODIFY `tipus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
-  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `alkatresz_rendelesek`
---
-ALTER TABLE `alkatresz_rendelesek`
-  ADD CONSTRAINT `alkatresz_rendelesek_ibfk_1` FOREIGN KEY (`alkatresz_id`) REFERENCES `alkatreszek` (`alkatresz_id`),
-  ADD CONSTRAINT `alkatresz_rendelesek_ibfk_2` FOREIGN KEY (`beszallito_id`) REFERENCES `beszallitok` (`beszallito_id`);
-
---
--- Megkötések a táblához `felhasznalok_ugyfelek`
+-- Constraints for table `felhasznalok_ugyfelek`
 --
 ALTER TABLE `felhasznalok_ugyfelek`
   ADD CONSTRAINT `felhasznalok_ugyfelek_ibfk_1` FOREIGN KEY (`felhasznalo_id`) REFERENCES `felhasznalok` (`felhasznalo_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `felhasznalok_ugyfelek_ibfk_2` FOREIGN KEY (`ugyfel_id`) REFERENCES `ugyfelek` (`ugyfel_id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `idopontfoglalasok`
+-- Constraints for table `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
   ADD CONSTRAINT `idopontfoglalasok_ibfk_1` FOREIGN KEY (`jarmu_id`) REFERENCES `jarmuvek` (`jarmu_id`),
   ADD CONSTRAINT `idopontfoglalasok_ibfk_2` FOREIGN KEY (`csomag_id`) REFERENCES `szervizcsomagok` (`csomag_id`);
 
 --
--- Megkötések a táblához `jarmuvek`
+-- Constraints for table `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
   ADD CONSTRAINT `jarmuvek_ibfk_1` FOREIGN KEY (`tipus_id`) REFERENCES `tipus` (`tipus_id`),
@@ -410,13 +811,26 @@ ALTER TABLE `jarmuvek`
   ADD CONSTRAINT `jarmuvek_ibfk_3` FOREIGN KEY (`sablon_id`) REFERENCES `munkafolyamat_sablonok` (`sablon_id`);
 
 --
--- Megkötések a táblához `tipus`
+-- Constraints for table `rendelesek`
 --
-ALTER TABLE `tipus`
-  ADD CONSTRAINT `tipus_ibfk_1` FOREIGN KEY (`utmutato_id`) REFERENCES `szerelesi_utmutatok` (`utmutato_id`) ON DELETE CASCADE;
+ALTER TABLE `rendelesek`
+  ADD CONSTRAINT `rendelesek_ibfk_1` FOREIGN KEY (`felhasznalo_id`) REFERENCES `felhasznalok` (`felhasznalo_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `rendelesek_ibfk_2` FOREIGN KEY (`alkatresz_id`) REFERENCES `alkatreszek` (`alkatresz_id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `ugyfel_jarmuvek`
+-- Constraints for table `szerelesi_utmutatok`
+--
+ALTER TABLE `szerelesi_utmutatok`
+  ADD CONSTRAINT `fk_jarmu_tipus` FOREIGN KEY (`jarmu_tipus`) REFERENCES `tipus` (`tipus_id`);
+
+--
+-- Constraints for table `tipus`
+--
+ALTER TABLE `tipus`
+  ADD CONSTRAINT `fk_marka_id` FOREIGN KEY (`marka_id`) REFERENCES `marka` (`marka_id`);
+
+--
+-- Constraints for table `ugyfel_jarmuvek`
 --
 ALTER TABLE `ugyfel_jarmuvek`
   ADD CONSTRAINT `ugyfel_jarmuvek_ibfk_1` FOREIGN KEY (`ugyfel_id`) REFERENCES `ugyfelek` (`ugyfel_id`) ON DELETE CASCADE,

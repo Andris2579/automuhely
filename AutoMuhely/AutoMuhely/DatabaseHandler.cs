@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace AutoMuhely
 {
-    internal class DatabaseHandler
+    public class DatabaseHandler
     {
-        static string firstConnectionCommand = "server=localhost;user=root;password='';";
+        static string firstConnectionCommand = "server=localhost;user=root;password='';Allow Zero Datetime=True;Convert Zero Datetime=True;";
         static string databaseName = "automuhely";
 
         static string connectionCommand = "server=localhost;database=automuhely;user=root;password=''";
@@ -28,35 +30,47 @@ namespace AutoMuhely
         {
             try
             {
+                // Step 1: Establish initial connection
                 using (var connection = new MySqlConnection(firstConnectionCommand))
                 {
                     connection.Open();
 
+                    // Step 2: Check if the database exists
                     string checkDatabaseQuery = $"SHOW DATABASES LIKE '{databaseName}';";
                     using (var command = new MySqlCommand(checkDatabaseQuery, connection))
                     {
                         var result = command.ExecuteScalar();
 
-                        if(result == null)
+                        // Step 3: Create database if it doesn't exist and execute the script
+                        if (result == null)
                         {
-                            string createDatabaseQuery = $"CREATE DATABASE IF NOT EXISTS {databaseName};";
+                            // Create the database with appropriate character set and collation
+                            string createDatabaseQuery = $"CREATE DATABASE IF NOT EXISTS {databaseName} CHARACTER SET utf8 COLLATE utf8_hungarian_ci;";
                             using (var createCommand = new MySqlCommand(createDatabaseQuery, connection))
                             {
                                 createCommand.ExecuteNonQuery();
                             }
 
+                            // Switch to the new database
                             connection.ChangeDatabase(databaseName);
 
+                            // Step 4: Read the entire SQL script and execute it as one command
                             string script = File.ReadAllText(sqlPath);
 
-                            string[] sqlCommands = script.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                            foreach (var commandText in sqlCommands)
+                            // Remove any trailing whitespace or newlines that might cause issues
+                            script = script.Trim();
+
+                            // Execute the full script
+                            using (var scriptCommand = new MySqlCommand(script, connection))
                             {
-                                using (var commandDatabaseInsert = new MySqlCommand(commandText, connection))
-                                {
-                                    commandDatabaseInsert.ExecuteNonQuery();
-                                }
+                                scriptCommand.CommandTimeout = 300; // Increase timeout for large scripts (5 minutes)
+                                int rowsAffected = scriptCommand.ExecuteNonQuery();
+                                Console.WriteLine($"Database setup completed. Rows affected: {rowsAffected}");
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Database '{databaseName}' already exists. No changes made.");
                         }
                     }
                 }
@@ -66,22 +80,26 @@ namespace AutoMuhely
                 MessageBox.Show($"Hiba történt: {ex.Message}");
             }
         }
-
-        public (List<List<object>>, List<string>) Select(string selectQuery)
+        public (List<List<object>>, List<string>) Select(string selectQuery, Dictionary<string, object> parameters = null)
         {
             try
             {
                 using (var connection = new MySqlConnection(connectionCommand))
                 {
                     connection.Open();
-
                     using (var command = new MySqlCommand(selectQuery, connection))
                     {
+                        if (parameters != null)
+                        {
+                            foreach (var param in parameters)
+                            {
+                                command.Parameters.AddWithValue(param.Key, param.Value);
+                            }
+                        }
+
                         using (var reader = command.ExecuteReader())
                         {
-                            // Lista a sorok tárolására
                             var rows = new List<List<object>>();
-
                             var columnNames = new List<string>();
 
                             for (int i = 0; i < reader.FieldCount; i++)
@@ -91,29 +109,42 @@ namespace AutoMuhely
 
                             while (reader.Read())
                             {
-                                // Szótár, ami az aktuális sort tárolja
                                 var row = new List<object>();
-
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
-                                    // Minden oszlop nevét és értékét hozzáadjuk a szótárhoz
-                                    row.Add(reader.GetValue(i));
+                                    try
+                                    {
+                                        if (reader.GetFieldType(i) == typeof(DateTime))
+                                        {
+                                            var value = reader.IsDBNull(i) ? (DateTime?)null : reader.GetDateTime(i);
+                                            row.Add(value?.ToString("yyyy-MM-dd HH:mm:ss") ?? "NULL");
+                                        }
+                                        else
+                                        {
+                                            row.Add(reader.IsDBNull(i) ? null : reader.GetValue(i));
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // Log the error and skip the field
+                                        Console.WriteLine($"Error processing field {reader.GetName(i)}: {ex.Message}");
+                                        row.Add($"Error: {ex.Message}");
+                                    }
                                 }
-
-                                // Sor hozzáadása a listához
                                 rows.Add(row);
                             }
-                                return (rows, columnNames);
-                            
+
+                            return (rows, columnNames);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hiba történt: {ex.Message}");
+                Console.WriteLine($"Critical Error: {ex.Message}");
                 return (null, null);
             }
+
         }
 
         public void Update(string updateQuery, Dictionary<string, object> parameters)
@@ -153,5 +184,84 @@ namespace AutoMuhely
                 }
             }
         }
+        public void Insert(string insertQuery, Dictionary<string, object> parameters)
+        {
+                using (var connection = new MySqlConnection(connectionCommand))
+                {
+                    connection.Open();
+                    using (var command = new MySqlCommand(insertQuery, connection))
+                    {
+                        // Dynamically add parameters to the query
+                        foreach (var param in parameters)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+
+                        int rowsAffected = command.ExecuteNonQuery(); // Execute the insert statement
+                    }
+                }
+        }
+        public int LookupID(string query, Dictionary<string, object> parameters)
+        {
+            try
+            {
+                var result = Select(query, parameters);
+                if (result.Item1.Count > 0)
+                {
+                    // Assuming the ID is in the first row and first column
+                    return Convert.ToInt32(result.Item1[0][0]);
+                }
+                else
+                {
+                    return -1; // Return -1 if no match is found
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt az ID lekérdezése során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        public string LookUpOne(string query, Dictionary<string, object> parameters=null)
+        {
+            try
+            {
+                var result = Select(query, parameters);
+                if (result.Item1.Count > 0)
+                {
+                    // Assuming the ID is in the first row and first column
+                    return Convert.ToString(result.Item1[0][0]);
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt az ID lekérdezése során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
+        }
+        public int GetScalarValue(string query, Dictionary<string, object> parameters = null)
+        {
+            using (var connection = new MySqlConnection(connectionCommand))
+            {
+                connection.Open();
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    if (parameters != null)
+                    {
+                        foreach (var param in parameters)
+                        {
+                            command.Parameters.AddWithValue(param.Key, param.Value);
+                        }
+                    }
+                    object result = command.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+
     }
 }

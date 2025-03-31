@@ -30,7 +30,6 @@ C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.pdb
 C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.dll
 C:\Work\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.xml
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészInputs.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
 C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
@@ -46,10 +45,51 @@ C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosít
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
 C:\Minden\Iskola\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészTörlés.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítHibakód.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítMunkafolyamat.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.módosítÚtmutató.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
-C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.RegistrationForm.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe.config
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.pdb
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.dll
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.xml
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészInputs.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.alkatrészTörlés.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.RegistrationForm.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újHibakód.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újMunkafolyamat.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.újÚtmutató.resources
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.GenerateResource.cache
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CopyComplete
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.exe
+D:\Ákos Fenyvesi 13p\automuhely-akos\automuhely-akos\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.pdb
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputParts.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputVehicle.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCode.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputWorkFlow.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputGuide.resources
+C:\Work\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCustomers.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe.config
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.exe
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\bin\Debug\AutoMuhely.pdb
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.dll
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\bin\Debug\MySql.Data.xml
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.AssemblyReference.cache
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCustomers.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputParts.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Main_Form.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.LoginForm.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputVehicle.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.Properties.Resources.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.RegistrationForm.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputCode.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputWorkFlow.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.InputGuide.resources
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.GenerateResource.cache
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.CoreCompileInputs.cache
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.csproj.Up2Date
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.exe
+C:\Users\mszen\Desktop\projekt\automuhely\AutoMuhely\AutoMuhely\obj\Debug\AutoMuhely.pdb
