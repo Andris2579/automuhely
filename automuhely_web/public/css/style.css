@@ -1,0 +1,395 @@
+:root{
+    --background-color: rgb(240, 255, 241);
+    --background-color-transparent: rgba(240, 255, 241, 0.75);
+    --primary-color: rgb(11, 84, 132);
+    --primary-color-transparent: rgb(11, 84, 132, 0.75);
+    --sub-primary-color: rgb(72, 172, 240);
+    --sub-primary-color-transparent: rgb(72, 172, 240, 0.75);
+    --secondary-color: rgb(49, 134, 29);
+    --secondary-color-transparent: rgb(49, 134, 29, 0.75);
+    --sub-secondary-color: rgb(83, 211, 54);
+    --sub-secondary-color-transparent: rgb(83, 211, 54, 0.75);
+    --sub-third-color: rgb();
+    --text-color: rgb(240, 255, 241);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.websiteTitle{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+#error_message{
+    background-color: red;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#logo, #logoHamburger{
+    min-width: 1vw;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+h1{
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 10px;
+    width: auto;
+    text-decoration: underline;
+}
+
+#extraButtons{
+    display: none;
+}
+
+main{
+    padding: 0 15px;
+}
+
+.customCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: var(--primary-color) solid 4px;
+    border-radius: 15px;
+    padding: 20px;
+    color: var(--text-color);
+    box-shadow: 5px 5px 5px black;
+    background: linear-gradient(135deg, var(--sub-primary-color), var(--primary-color));
+}
+
+.customCard:hover{
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.customInput, .customSelect, .customButton{
+    width: auto;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--sub-secondary-color);
+    padding: 7px;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.customButton{
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--sub-secondary-color);
+    color: var(--text-color);
+    font-size: 1.15rem;
+}
+
+.customButton:hover{
+    background-color: var(--secondary-color);
+}
+
+.customSelect option{
+    font-size: 0.95rem;
+}
+
+.customLabel{
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color); 
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.custom-modal h2{
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.modal-content {
+    position: relative;
+    padding-top: 20px;
+}
+
+.close-button {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+}
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+@media only screen and (min-width: 320px) {
+    #profile{
+        background-color: var(--primary-color);
+        border: var(--sub-primary-color) solid 4px;
+    }
+
+    .customGrid{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-row-gap: 20px;
+        justify-items: center;
+    }
+
+    p{
+        font-size: 1.1rem;
+    }
+
+    header{
+        position: relative;
+        background-color: var(--sub-secondary-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        gap: 10px;
+    }
+
+    nav{
+        display: none;
+        position: absolute;
+        right: 0;
+        top: calc(12.5vw + 20px);
+        padding: 7px;
+        border: var(--primary-color) solid 4px;
+        border-radius: 15px;
+        text-align: center;
+        background-color: var(--sub-secondary-color);
+        z-index: 100;
+    }
+
+    nav a{
+        display: block;
+        text-decoration: none;
+        color: white;
+        margin: 5px 0;
+        font-weight: bold;
+    }
+
+    #logoHamburger{
+        margin: 0 0 0 auto;
+        display: block;
+    }
+
+
+    #logo, #logoHamburger{
+        width: 12.5vw;
+    }
+
+    #extraButtons {
+        flex-direction: column;
+        margin-top: 5px;
+        border-radius: 5px;
+        left: 0;
+        gap: 5px;
+    }
+    
+    #extraButtons button {
+        font-size: 0.975rem;
+    }
+}
+
+@media only screen and (min-width: 480px){
+    #logoHamburger, #logo{
+        width: 11vw;
+    }
+
+    nav{
+        top: calc(11vw + 20px);
+    }
+}
+
+@media only screen and (min-width:544px){
+    #logoHamburger, #logo{
+        width: 8.5vw;
+    }
+
+    nav{
+        top: calc(8.5vw + 20px);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    header{
+        margin-left: 15px;
+        margin-right: 15px;
+        border-radius: 0px 0px 15px 15px;
+    }
+
+    .customCard{
+        width: 85%;
+    }
+
+    .customGrid{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
+        justify-items: center;
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    header, #profileMenu button{
+        font-size: 1.45rem;
+    }
+
+    #logo{
+        margin-right: auto;
+        width: 7.5vw;
+    }
+
+    #logoHamburger{
+        display: none;
+    }
+
+    nav{
+        display: flex !important;
+        position: static;
+        border: none;
+        flex-direction: row;
+        background: transparent;
+        padding: 10px;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #navLinks{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 2vw;
+    }
+
+    nav a{
+        margin: 0;
+    }
+
+    #home{
+        display: none;
+    }
+
+    #profile{
+        font-weight: bold;
+    }
+
+    #profileMenu{
+        margin: 0 0 0 auto;
+    }
+
+    #extraButtons{
+        position: absolute;
+        top: calc(7.5vw + 20px);
+        right: 0;
+        background: linear-gradient(135deg, var(--sub-primary-color), var(--primary-color));
+        padding: 10px;
+        border: var(--primary-color) solid 3px;
+        border-radius: 20px;
+        margin: 0 10px 0 auto;
+        left: auto;
+    }
+}
+
+@media only screen and (min-width:896px){
+    #logoHamburger, #logo{
+        width: 5vw;
+    }
+
+    #extraButtons{
+        top: calc(5vw + 20px);
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    #logo{
+        width: 5vw;
+    }
+
+    #extraButtons{
+        top: calc(5vw + 20px);
+    }
+
+    #navLinks{
+        gap: 5vw;
+    }
+}
+
+@media only screen and (min-width: 1366px){
+    #logo{
+        width: 3.5vw;
+    }
+
+    #extraButtons{
+        top: calc(3.5vw + 20px);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+footer{
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p{
+    margin: 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+#extraButtons button:hover{
+    background-color: var(--primary-color);
+}

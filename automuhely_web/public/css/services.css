@@ -1,0 +1,95 @@
+@media only screen and (min-width: 320px) {
+    #servicesFilters{
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2,1fr);
+        gap: 15px;
+        align-items: center;
+    }
+
+    #servicesSort, #servicesSearchBar{
+        width: 100%;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+    }
+
+    #servicesSort{
+        grid-column: span 2;
+    }
+
+    #searchIcon{
+        width: 7.5vw;
+    }
+
+    .service p{
+        margin: 10px 0;
+    }
+
+    .customButton a{
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+    #selected_service{
+        display: block;
+    }
+
+    #selected_service h2{
+        margin-top: 0;
+        text-align: center;
+    }
+
+    #selected_service p{
+        margin: 10px 0;
+    }
+
+    #cars{
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #servicesFilters{
+        grid-template-columns: auto repeat(2,1fr);
+        grid-template-rows: auto;
+    }
+
+    #searchIcon{
+        width: 5vw;
+    }
+
+    #servicesSort{
+        grid-column: auto;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    #services{
+        background-image: url('/automuhely_web/public/assets/imgs/shifter.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    #searchIcon{
+        width: 3vw;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    #servicesFilters{
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+}
+
+#service_message a{
+    text-decoration: none;
+    color: var(--sub-secondary-color);
+    font-weight: 600;
+}
+
+#service_message{
+    font-size: 1.25rem;
+}

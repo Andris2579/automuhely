@@ -1,0 +1,128 @@
+@media only screen and (min-width:320px){
+    .customCard{
+        margin: 0 auto;
+    }
+
+    main .customButton{
+        font-size: 1.375rem;
+    }
+
+    form p{
+        text-align: center;
+        margin-bottom: 0;
+        width: 90%;
+        margin: 0;
+    }
+
+    form a{
+        text-decoration: none;
+        color: var(--sub-secondary-color);
+        font-weight: bold;
+    }
+
+    .mainFs, fieldset{
+        border: none;
+        padding: 0;
+    }
+
+    .mainFs{
+        width: 100%;
+    }
+
+    label{
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .customInput {
+        width: 100%;
+    }
+
+    fieldset div, .mainFs fieldset{
+        margin-bottom: 10px;
+    }
+
+    .mainFs fieldset{
+        width: 100%;
+    }
+
+    #namesFs div{
+        width: 100%;
+    }
+
+    #passwordsFs div{
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr auto;
+        align-items: center;
+        row-gap: 0;
+        column-gap: 5px;
+    }
+
+    #passwordsFs div label:first-child{
+        grid-column: span 2;
+    }
+
+    #passwordsFs img{
+        width: 35px;
+        height: auto;
+        align-self: center;
+    }
+
+    #passwordsFs input{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width:480px){
+    .customCard{
+        width: 95%;
+    }
+
+    form button{
+        width: 50%;
+    }
+
+    #namesFs{
+        display: flex;
+        gap: 15px;
+    }
+
+    #namesFs div{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
+
+@media only screen and (min-width: 544px){
+    .customCard{
+        width: 90%;
+    }
+
+    #username_email_Fs{
+        display: flex;
+        gap: 15px;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .customCard{
+        width: 80%;
+    }
+
+    #passwordsFs{
+        display: flex;
+        gap: 20px;
+    }
+
+    #passwordsFs div{
+        flex: 1;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .customCard{
+        width: 60%;
+    }
+}

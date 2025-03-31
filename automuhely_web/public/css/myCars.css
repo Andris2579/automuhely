@@ -1,0 +1,278 @@
+#error_message{
+    grid-column: span 2;
+}
+
+.disabledButton{
+    background-color: gray !important;
+}
+
+@media only screen and (min-width: 320px) {
+    #myCarsFilters{
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2,1fr);
+        gap: 15px;
+        align-items: center;
+    }
+    
+    #myCarsSearchBar, #myCarsSort{
+        width: 100%;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+    }
+
+    #myCarsSort{
+        grid-column: span 2;
+    }
+
+    #searchIcon{
+        width: 7.5vw;
+    }
+
+    #myCars h1{
+        background-color: var(--background-color-transparent);
+        text-align: center;
+        margin: 0 auto;
+        grid-column: 1 / -1;
+    }
+
+    .customCard .customButton{
+        width: 100%;
+    }
+
+    .customCard p{
+        margin: 0;
+    }
+
+    .myCar{
+        width: 90%;
+    }
+    
+    .carDetails, .carDetailsButtons{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .carDetailsButtons{
+        width: 100%;
+    }
+
+    .carDetailsContent{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+
+    .myCarButtons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .carTitle{
+        grid-column: span 2;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    .carTitle *{
+        margin: 0 0 5px 0;
+    }
+
+    .licenseNumberInput{
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    #newCar{
+        width: 90%;
+    }
+
+    #newCar label{
+        font-size: 1.05rem;
+    }
+
+    #newCar fieldset {
+        display: flex;
+        flex-direction: column;
+        border: none;
+        margin: 0;
+        padding: 0;
+        row-gap: 7px;
+        width: 90%;
+    }
+
+    #newCar .customInput, #newCar .customSelect{
+        font-size: 1rem;
+    }
+
+    #newCarBtn{
+        width: 100%;
+    }
+
+    #newCar h2{
+        grid-column: span 2;
+        text-align: center;
+        margin: 0;
+    }
+
+    input:focus, select:focus{
+        outline: none;
+    }
+
+    #cancelServiceContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #cancelServiceContainer .customButton{
+        font-size: 1.25rem;
+    }
+
+    #cancelDeleteCarButtons{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 480px){
+    .myCar, #newCar{
+        width: 80%;
+    }
+
+    #newCarBtn, .carDetails, .myCarButtons{
+        width: 100%;
+    }
+
+    .carDetailsButtons{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .myCarButtons{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .myCarButtons button{
+        height: 100%;
+    }
+
+    #newCar fieldset{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 5px;
+        row-gap: 10px;
+        width: 100%;
+    }
+
+    .myCarButtons button:nth-child(3){
+        grid-column: span 2;
+    }
+
+    .cancelModifyLicenseNumber{
+        grid-column: span 2;
+    }
+    
+    #searchIcon{
+        width: 4.5vw;
+    }
+
+    #myCarsSearchBar, #myCarsSort{
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .carDetailsButtons{
+        grid-template-columns: 1fr;
+    }
+
+    #searchIcon{
+        width: 3vw;
+    }
+
+    #myCars{
+        background-image: url('/automuhely_web/public/assets/imgs/myCars.jpg');
+        background-size: cover;
+    }
+
+    #myCarsSort{
+        grid-column: auto;
+    }
+
+    #myCarsFilters{
+        grid-template-columns: auto repeat(2,1fr);
+        grid-template-rows: auto;
+    }
+
+    .myCar, #newCar{
+        font-size: 1.1rem;
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 896px){
+    .myCar, #newCar{
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .carDetailsButtons{
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    .myCar, #newCar{
+        width: 80%;
+    }
+
+    #searchIcon{
+        width: 2vw;
+    }
+
+    .cancelService, .modifyLicenseNumber{
+        flex: 0.45;
+    }
+
+    #myCarsFilters{
+        width: 80%;
+        margin: 0 auto 15px auto;
+    }
+}
+
+@media only screen and (min-width: 1366px){
+    .myCar, #newCar{
+        width: 60%;
+    }
+
+    #searchIcon{
+        width: 1.5vw;
+    }
+}
+
+.activeServices{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activeServices td,th{
+    text-align: center;
+    width: 50%;
+    padding: 2px 0;
+}

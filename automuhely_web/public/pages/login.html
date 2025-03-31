@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <base href="/automuhely_web/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezés</title>
+    <link rel="shortcut icon" href="public/assets/imgs/logoX.png" type="image/x-icon">
+    <script src="public/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/login.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <h1>Bejelentkezés</h1>
+        <form action="POST" class="customCard" id="loginForm">
+            <fieldset class="contentFs">
+                <fieldset class="mainFs">
+                    <label for="username" class="customLabel">Felhasználó név</label>
+                    <input type="text" name="username" id="username" required class="customInput">
+                </fieldset>
+                <fieldset id="passwords" class="mainFs">
+                    <label for="password" class="customLabel">Jelszó</label>
+                    <input type="password" name="password" id="password" required class="customInput">
+                    <img id="password_show" src="public/assets/imgs/eye_closed.png" alt="">
+                </fieldset>
+            </fieldset>
+            <p id="error_message" hidden></p>
+            <button id="loginButton" onclick="login(event)" class="customButton">Bejelentkezés</button>
+            <p>Nincs még fiókja?<br>Regisztráljon <a href="public/pages/register.html">itt</a>!</p>
+        </form>
+    </main>
+    <footer></footer>
+</body>
+</html>

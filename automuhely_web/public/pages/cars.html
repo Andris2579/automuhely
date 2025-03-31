@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <base href="/automuhely_web/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autóim</title>
+    <link rel="shortcut icon" href="public/assets/imgs/logoX.png" type="image/x-icon">
+    <script src="public/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="public/js/car.js"></script>
+    <script type="module" src="public/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/myCars.css">
+</head>
+<body onload="fetchCars()">
+    <header></header>
+    <main>
+        <h1>Autóim</h1>
+        <section id="myCarsFilters">
+            <img src="public/assets/imgs/search.png" alt="" id="searchIcon">
+            <input type="text" class="customInput" id="myCarsSearchBar">
+            <select type="text" class="customSelect" name="sort" id="myCarsSort">
+                <option value="abc_asc">ABC Növekvő</option>
+                <option value="abc_desc">ABC Csökkenő</option>
+            </select>
+        </section>
+        <section id="myCars" class="customGrid"></section>
+    </main>
+    <footer></footer>
+</body>
+</html>
