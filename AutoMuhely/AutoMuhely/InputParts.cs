@@ -34,6 +34,7 @@ namespace AutoMuhely
             else
             {
                 IsEditMode = false;
+                lblIsEdit.Text = "HOZZÁADÁSA";
                 btnAdd.Text = "Hozzáadás";  // Change button text to Hozzáadás
             }
         }
@@ -55,9 +56,7 @@ namespace AutoMuhely
             try
             {
                 if (string.IsNullOrWhiteSpace(alkatrészNév_Tb.Text) ||
-           string.IsNullOrWhiteSpace(alkatrészLeírás_Tb.Text) ||
-           alkatrészKezdetiKészletMennyiség_NUD.Value <= 0 ||
-           numAlkatreszUtanrendelesMenny.Value <= 0)
+           string.IsNullOrWhiteSpace(alkatrészLeírás_Tb.Text))
                 {
                     MessageBox.Show("Kérjük, töltse ki az összes mezőt és adjon meg pozitív értékeket!", "Hiányzó vagy érvénytelen adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

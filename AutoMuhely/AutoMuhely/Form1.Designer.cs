@@ -32,6 +32,9 @@ namespace AutoMuhely
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.brandsPanel = new AutoMuhely.HoverPanel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.settingsPanel = new AutoMuhely.HoverPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -53,10 +56,11 @@ namespace AutoMuhely
             this.label6 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelTable = new System.Windows.Forms.Panel();
-            this.LabelTable = new System.Windows.Forms.Label();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.searchButton = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.searchBar = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,6 +69,8 @@ namespace AutoMuhely
             this.hoverPanel6 = new AutoMuhely.HoverPanel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.MenuPanel.SuspendLayout();
+            this.brandsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.settingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.carsPanel.SuspendLayout();
@@ -78,9 +84,10 @@ namespace AutoMuhely
             this.customersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMain.SuspendLayout();
-            this.panelTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.searchButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).BeginInit();
             this.hoverPanel6.SuspendLayout();
@@ -91,6 +98,7 @@ namespace AutoMuhely
             // 
             this.MenuPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuPanel.Controls.Add(this.brandsPanel);
             this.MenuPanel.Controls.Add(this.settingsPanel);
             this.MenuPanel.Controls.Add(this.carsPanel);
             this.MenuPanel.Controls.Add(this.repairsPanel);
@@ -102,6 +110,40 @@ namespace AutoMuhely
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(246, 512);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // brandsPanel
+            // 
+            this.brandsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.brandsPanel.Controls.Add(this.pictureBox9);
+            this.brandsPanel.Controls.Add(this.label8);
+            this.brandsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.brandsPanel.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.brandsPanel.Location = new System.Drawing.Point(0, 252);
+            this.brandsPanel.Name = "brandsPanel";
+            this.brandsPanel.OriginalColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.brandsPanel.Size = new System.Drawing.Size(246, 63);
+            this.brandsPanel.TabIndex = 10;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(167, -10);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(85, 85);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Open Sans SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.label8.Location = new System.Drawing.Point(11, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 39);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Márkák";
             // 
             // settingsPanel
             // 
@@ -323,30 +365,18 @@ namespace AutoMuhely
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(255, 121);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(726, 512);
+            this.panelMain.Size = new System.Drawing.Size(901, 512);
             this.panelMain.TabIndex = 1;
             // 
             // panelTable
             // 
             this.panelTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.panelTable.Controls.Add(this.LabelTable);
             this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTable.Location = new System.Drawing.Point(0, 0);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(726, 449);
+            this.panelTable.Size = new System.Drawing.Size(901, 449);
             this.panelTable.TabIndex = 3;
-            // 
-            // LabelTable
-            // 
-            this.LabelTable.AutoSize = true;
-            this.LabelTable.Font = new System.Drawing.Font("Open Sans", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LabelTable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LabelTable.Location = new System.Drawing.Point(20, 5);
-            this.LabelTable.Name = "LabelTable";
-            this.LabelTable.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.LabelTable.Size = new System.Drawing.Size(90, 50);
-            this.LabelTable.TabIndex = 10;
-            this.LabelTable.Text = "test";
+            this.panelTable.Click += new System.EventHandler(this.panelTable_Click);
             // 
             // panelButtons
             // 
@@ -354,7 +384,7 @@ namespace AutoMuhely
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtons.Location = new System.Drawing.Point(0, 449);
             this.panelButtons.Name = "panelButtons";
-            this.panelButtons.Size = new System.Drawing.Size(726, 63);
+            this.panelButtons.Size = new System.Drawing.Size(901, 63);
             this.panelButtons.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -374,36 +404,61 @@ namespace AutoMuhely
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 636);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1159, 636);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.panel2.Controls.Add(this.searchButton);
             this.panel2.Controls.Add(this.searchBar);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(255, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(726, 112);
+            this.panel2.Size = new System.Drawing.Size(901, 112);
             this.panel2.TabIndex = 2;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(64)))));
+            this.searchButton.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchButton.Controls.Add(this.pictureBox8);
+            this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchButton.Location = new System.Drawing.Point(827, 41);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(60, 36);
+            this.searchButton.TabIndex = 2;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::AutoMuhely.Properties.Resources.search;
+            this.pictureBox8.Location = new System.Drawing.Point(15, 3);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 3;
+            this.pictureBox8.TabStop = false;
             // 
             // searchBar
             // 
             this.searchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.searchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.searchBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.searchBar.Location = new System.Drawing.Point(20, 41);
             this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(697, 36);
+            this.searchBar.Size = new System.Drawing.Size(807, 36);
             this.searchBar.TabIndex = 1;
-            this.searchBar.TextChanged += new System.EventHandler(this.SearchBar_TextChanged);
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Location = new System.Drawing.Point(61, -99);
+            this.textBox1.Location = new System.Drawing.Point(148, -99);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(598, 36);
             this.textBox1.TabIndex = 1;
@@ -467,18 +522,21 @@ namespace AutoMuhely
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(984, 636);
+            this.ClientSize = new System.Drawing.Size(1159, 636);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Open Sans SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.MinimumSize = new System.Drawing.Size(1000, 675);
+            this.MinimumSize = new System.Drawing.Size(1175, 675);
             this.Name = "Main_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Autóműhley Karbantartás";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.Resize += new System.EventHandler(this.Main_Form_Resize);
             this.MenuPanel.ResumeLayout(false);
+            this.brandsPanel.ResumeLayout(false);
+            this.brandsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.settingsPanel.ResumeLayout(false);
             this.settingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -498,11 +556,11 @@ namespace AutoMuhely
             this.customersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMain.ResumeLayout(false);
-            this.panelTable.ResumeLayout(false);
-            this.panelTable.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.searchButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxRole)).EndInit();
@@ -546,7 +604,11 @@ namespace AutoMuhely
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panelButtons;
         private System.Windows.Forms.Panel panelTable;
-        private System.Windows.Forms.Label LabelTable;
+        private Panel searchButton;
+        private PictureBox pictureBox8;
+        private HoverPanel brandsPanel;
+        private PictureBox pictureBox9;
+        private Label label8;
     }
 }
 

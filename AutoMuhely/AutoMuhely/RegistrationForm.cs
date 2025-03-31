@@ -17,6 +17,7 @@ namespace AutoMuhely
         public RegistrationForm()
         {
             InitializeComponent();
+            LoadComboBox(cmbRole);
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -28,7 +29,10 @@ namespace AutoMuhely
             string username = txtUsername.Text;
             string password1 = txtPassword1.Text;
             string password2 = txtPassword2.Text;
-            string role = cmbRole.SelectedItem?.ToString();
+            string role = (cmbRole.SelectedItem is KeyValuePair<int, string> selectedItem)
+    ? selectedItem.Value
+    : string.Empty; // Default to empty if nothing is selected
+
 
             // Validate input fields
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password1) || string.IsNullOrEmpty(password2) || string.IsNullOrEmpty(role))
@@ -42,7 +46,7 @@ namespace AutoMuhely
                 return;
             }
 
-            bool success = false; // Flag to track success
+            bool success = false;
 
             try
             {
@@ -57,7 +61,7 @@ namespace AutoMuhely
                 var parameters = new Dictionary<string, object>
         {
             { "@Username", username },
-            { "@Password", password1 }, // Raw password is passed; MySQL will hash it
+            { "@Password", password1 },
             { "@Role", role }
         };
 
@@ -88,6 +92,24 @@ namespace AutoMuhely
                 this.Close();
             }
         }
+        private void LoadComboBox(CustomComboBox comboBox)
+        {
+            try
+            {
+                var comboBoxList = new List<KeyValuePair<int, string>>
+        {
+            new KeyValuePair<int, string>(1, "Adminisztrátor"),
+            new KeyValuePair<int, string>(2, "Szerelő")
+        };
+
+                comboBox.LoadItems<int>(comboBoxList); // Explicitly specify <int> to resolve the CS0411 error
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a legördülő menü betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
     }
 }

@@ -22,7 +22,7 @@ namespace AutoMuhely
         public InputGuide(string cim = null, string tartalom = null, int? jarmuTipusID = null)
         {
             InitializeComponent();
-
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Enable custom drawing
             // Determine mode
             if (!string.IsNullOrEmpty(cim))
             {
@@ -36,11 +36,13 @@ namespace AutoMuhely
                 txtUtmutatoLeiras.Text = tartalom;
 
                 btnAdd.Text = "Módosítás"; // Update button text
+                label4.Text = "MÓDOSÍTÁSA";
             }
             else
             {
                 IsEditMode = false;
                 btnAdd.Text = "Hozzáadás"; // Default button text
+                label4.Text = "HOZZÁADÁSA";
             }
             LoadJarmuTipusok();
 
@@ -141,5 +143,6 @@ namespace AutoMuhely
         {
             this.Close();
         }
+      
     }
 }

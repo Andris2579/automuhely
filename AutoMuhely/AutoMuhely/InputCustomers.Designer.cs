@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputCustomers));
             this.label1 = new System.Windows.Forms.Label();
             this.editLabel = new System.Windows.Forms.Label();
-            this.btnAdd = new AutoMuhely.CustomButton();
-            this.btnCancel = new AutoMuhely.CustomButton();
             this.alkatrészNév_Lb = new System.Windows.Forms.Label();
             this.txtKeresztNev = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,6 +48,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtOptional = new System.Windows.Forms.TextBox();
             this.numIranyitoSz = new System.Windows.Forms.NumericUpDown();
+            this.btnAdd = new AutoMuhely.CustomButton();
+            this.btnCancel = new AutoMuhely.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIranyitoSz)).BeginInit();
             this.SuspendLayout();
@@ -78,35 +78,6 @@
             this.editLabel.TabIndex = 32;
             this.editLabel.Text = "MÓDOSÍTÁSA";
             // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.btnAdd.BorderRadius = 23;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(74, 719);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(210, 49);
-            this.btnAdd.TabIndex = 43;
-            this.btnAdd.Text = "Tovább";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.btnCancel.BorderRadius = 23;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(105, 774);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(140, 40);
-            this.btnCancel.TabIndex = 44;
-            this.btnCancel.Text = "Mégse";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // alkatrészNév_Lb
             // 
             this.alkatrészNév_Lb.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,7 +90,10 @@
             // 
             // txtKeresztNev
             // 
+            this.txtKeresztNev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtKeresztNev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKeresztNev.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtKeresztNev.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtKeresztNev.Location = new System.Drawing.Point(54, 240);
             this.txtKeresztNev.MaxLength = 100;
             this.txtKeresztNev.Name = "txtKeresztNev";
@@ -149,7 +123,10 @@
             // 
             // txtCsaladNev
             // 
+            this.txtCsaladNev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtCsaladNev.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCsaladNev.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtCsaladNev.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtCsaladNev.Location = new System.Drawing.Point(54, 300);
             this.txtCsaladNev.MaxLength = 100;
             this.txtCsaladNev.Name = "txtCsaladNev";
@@ -168,9 +145,12 @@
             // 
             // txtTel
             // 
+            this.txtTel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtTel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtTel.Location = new System.Drawing.Point(55, 360);
-            this.txtTel.MaxLength = 100;
+            this.txtTel.MaxLength = 12;
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(250, 23);
             this.txtTel.TabIndex = 37;
@@ -187,7 +167,10 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtEmail.Location = new System.Drawing.Point(55, 420);
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
@@ -216,7 +199,10 @@
             // 
             // txtVaros
             // 
+            this.txtVaros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtVaros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVaros.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtVaros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtVaros.Location = new System.Drawing.Point(55, 541);
             this.txtVaros.MaxLength = 100;
             this.txtVaros.Name = "txtVaros";
@@ -235,7 +221,10 @@
             // 
             // txtUtca
             // 
+            this.txtUtca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtUtca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUtca.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtUtca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtUtca.Location = new System.Drawing.Point(55, 602);
             this.txtUtca.MaxLength = 100;
             this.txtUtca.Name = "txtUtca";
@@ -254,7 +243,10 @@
             // 
             // txtOptional
             // 
+            this.txtOptional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtOptional.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOptional.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.txtOptional.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.txtOptional.Location = new System.Drawing.Point(53, 673);
             this.txtOptional.MaxLength = 100;
             this.txtOptional.Name = "txtOptional";
@@ -263,7 +255,10 @@
             // 
             // numIranyitoSz
             // 
+            this.numIranyitoSz.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.numIranyitoSz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numIranyitoSz.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F);
+            this.numIranyitoSz.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.numIranyitoSz.Location = new System.Drawing.Point(55, 490);
             this.numIranyitoSz.Maximum = new decimal(new int[] {
             9999,
@@ -284,12 +279,42 @@
             0,
             0});
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnAdd.BorderRadius = 23;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(74, 719);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(210, 49);
+            this.btnAdd.TabIndex = 43;
+            this.btnAdd.Text = "Tovább";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
+            this.btnCancel.BorderRadius = 23;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(105, 774);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(140, 40);
+            this.btnCancel.TabIndex = 44;
+            this.btnCancel.Text = "Mégse";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // InputCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(354, 834);
+            this.ClientSize = new System.Drawing.Size(358, 834);
             this.Controls.Add(this.numIranyitoSz);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtOptional);
@@ -311,14 +336,15 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.alkatrészNév_Lb);
             this.Controls.Add(this.txtKeresztNev);
-            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(203)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(374, 873);
+            this.MinimumSize = new System.Drawing.Size(374, 873);
             this.Name = "InputCustomers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InputCustomers";
-            this.Load += new System.EventHandler(this.InputCustomers_Load);
+            this.Text = "Ügyfelek";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIranyitoSz)).EndInit();
             this.ResumeLayout(false);

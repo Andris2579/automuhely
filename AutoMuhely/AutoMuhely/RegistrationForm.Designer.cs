@@ -32,7 +32,6 @@ namespace AutoMuhely
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
-            this.cmbRole = new System.Windows.Forms.ComboBox();
             this.RegisterLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PicLock = new System.Windows.Forms.PictureBox();
@@ -48,26 +47,13 @@ namespace AutoMuhely
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnRegister = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
+            this.cmbRole = new AutoMuhely.CustomComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRole.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.cmbRole.Items.AddRange(new object[] {
-            "Szerelő",
-            "Adminisztrátor"});
-            this.cmbRole.Location = new System.Drawing.Point(65, 344);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(262, 36);
-            this.cmbRole.TabIndex = 2;
             // 
             // RegisterLabel
             // 
@@ -229,11 +215,34 @@ namespace AutoMuhely
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // cmbRole
+            // 
+            this.cmbRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.cmbRole.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(92)))));
+            this.cmbRole.BorderThickness = 2;
+            this.cmbRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRole.Font = new System.Drawing.Font("Open Sans Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Items.AddRange(new object[] {
+            "Adminisztrátor",
+            "Szerelő"});
+            this.cmbRole.Location = new System.Drawing.Point(65, 345);
+            this.cmbRole.Margin = new System.Windows.Forms.Padding(0);
+            this.cmbRole.Name = "cmbRole";
+            this.cmbRole.OriginalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.cmbRole.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.cmbRole.Size = new System.Drawing.Size(262, 34);
+            this.cmbRole.TabIndex = 25;
+            // 
             // RegistrationForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(354, 534);
+            this.Controls.Add(this.cmbRole);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.panel1);
@@ -249,7 +258,7 @@ namespace AutoMuhely
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.cmbRole);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 573);
@@ -266,7 +275,6 @@ namespace AutoMuhely
             this.PerformLayout();
 
         }
-        private ComboBox cmbRole;
         #endregion
 
         private CustomButton btnRegister;
@@ -284,5 +292,6 @@ namespace AutoMuhely
         private Panel panel1;
         private TextBox txtPassword2;
         private Panel panel2;
+        private CustomComboBox cmbRole;
     }
 }

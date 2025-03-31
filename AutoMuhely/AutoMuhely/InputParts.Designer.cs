@@ -70,6 +70,9 @@ namespace AutoMuhely
             // 
             // alkatrészNév_Tb
             // 
+            this.alkatrészNév_Tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.alkatrészNév_Tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.alkatrészNév_Tb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.alkatrészNév_Tb.Location = new System.Drawing.Point(53, 249);
             this.alkatrészNév_Tb.MaxLength = 100;
             this.alkatrészNév_Tb.Name = "alkatrészNév_Tb";
@@ -88,6 +91,9 @@ namespace AutoMuhely
             // 
             // alkatrészLeírás_Tb
             // 
+            this.alkatrészLeírás_Tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.alkatrészLeírás_Tb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.alkatrészLeírás_Tb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.alkatrészLeírás_Tb.Location = new System.Drawing.Point(53, 318);
             this.alkatrészLeírás_Tb.Multiline = true;
             this.alkatrészLeírás_Tb.Name = "alkatrészLeírás_Tb";
@@ -107,6 +113,9 @@ namespace AutoMuhely
             // 
             // alkatrészKezdetiKészletMennyiség_NUD
             // 
+            this.alkatrészKezdetiKészletMennyiség_NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.alkatrészKezdetiKészletMennyiség_NUD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.alkatrészKezdetiKészletMennyiség_NUD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.alkatrészKezdetiKészletMennyiség_NUD.Location = new System.Drawing.Point(53, 458);
             this.alkatrészKezdetiKészletMennyiség_NUD.Name = "alkatrészKezdetiKészletMennyiség_NUD";
             this.alkatrészKezdetiKészletMennyiség_NUD.Size = new System.Drawing.Size(250, 26);
@@ -189,12 +198,15 @@ namespace AutoMuhely
             // 
             // numAlkatreszUtanrendelesMenny
             // 
+            this.numAlkatreszUtanrendelesMenny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.numAlkatreszUtanrendelesMenny.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numAlkatreszUtanrendelesMenny.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             this.numAlkatreszUtanrendelesMenny.Location = new System.Drawing.Point(53, 538);
             this.numAlkatreszUtanrendelesMenny.Name = "numAlkatreszUtanrendelesMenny";
             this.numAlkatreszUtanrendelesMenny.Size = new System.Drawing.Size(250, 26);
             this.numAlkatreszUtanrendelesMenny.TabIndex = 15;
             // 
-            // alkatrészInputs
+            // InputParts
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(354, 681);
@@ -212,13 +224,14 @@ namespace AutoMuhely
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
             this.Controls.Add(this.alkatrészKezdetiKészletMennyiség_NUD);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(370, 720);
             this.MinimumSize = new System.Drawing.Size(370, 680);
-            this.Name = "alkatrészInputs";
+            this.Name = "InputParts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alkatrész Hozzáadás";
+            this.Text = "Alkatrészek";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.alkatrészInputs_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.alkatrészKezdetiKészletMennyiség_NUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

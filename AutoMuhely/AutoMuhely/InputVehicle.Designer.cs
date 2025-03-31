@@ -42,14 +42,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtElozoJav = new System.Windows.Forms.TextBox();
             this.nUpDDate = new System.Windows.Forms.NumericUpDown();
-            this.comBoxTipus = new System.Windows.Forms.ComboBox();
-            this.comBoxHibakod = new System.Windows.Forms.ComboBox();
-            this.comBoxSablon = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdd = new AutoMuhely.CustomButton();
             this.btnCancel = new AutoMuhely.CustomButton();
+            this.comBoxTipus = new AutoMuhely.CustomComboBox();
+            this.comBoxHibakod = new AutoMuhely.CustomComboBox();
+            this.comBoxSablon = new AutoMuhely.CustomComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUpDDate)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,9 @@
             // 
             // txtRendszam
             // 
+            this.txtRendszam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtRendszam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRendszam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             resources.ApplyResources(this.txtRendszam, "txtRendszam");
             this.txtRendszam.Name = "txtRendszam";
             // 
@@ -101,6 +104,9 @@
             // 
             // txtMotorAdat
             // 
+            this.txtMotorAdat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtMotorAdat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMotorAdat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             resources.ApplyResources(this.txtMotorAdat, "txtMotorAdat");
             this.txtMotorAdat.Name = "txtMotorAdat";
             // 
@@ -112,6 +118,9 @@
             // 
             // txtAlvazAdat
             // 
+            this.txtAlvazAdat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtAlvazAdat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAlvazAdat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             resources.ApplyResources(this.txtAlvazAdat, "txtAlvazAdat");
             this.txtAlvazAdat.Name = "txtAlvazAdat";
             // 
@@ -123,11 +132,17 @@
             // 
             // txtElozoJav
             // 
+            this.txtElozoJav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.txtElozoJav.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtElozoJav.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             resources.ApplyResources(this.txtElozoJav, "txtElozoJav");
             this.txtElozoJav.Name = "txtElozoJav";
             // 
             // nUpDDate
             // 
+            this.nUpDDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.nUpDDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nUpDDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
             resources.ApplyResources(this.nUpDDate, "nUpDDate");
             this.nUpDDate.Maximum = new decimal(new int[] {
             2100,
@@ -141,31 +156,10 @@
             0});
             this.nUpDDate.Name = "nUpDDate";
             this.nUpDDate.Value = new decimal(new int[] {
-            1886,
+            1990,
             0,
             0,
             0});
-            // 
-            // comBoxTipus
-            // 
-            this.comBoxTipus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comBoxTipus.FormattingEnabled = true;
-            resources.ApplyResources(this.comBoxTipus, "comBoxTipus");
-            this.comBoxTipus.Name = "comBoxTipus";
-            // 
-            // comBoxHibakod
-            // 
-            this.comBoxHibakod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comBoxHibakod.FormattingEnabled = true;
-            resources.ApplyResources(this.comBoxHibakod, "comBoxHibakod");
-            this.comBoxHibakod.Name = "comBoxHibakod";
-            // 
-            // comBoxSablon
-            // 
-            this.comBoxSablon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comBoxSablon.FormattingEnabled = true;
-            resources.ApplyResources(this.comBoxSablon, "comBoxSablon");
-            this.comBoxSablon.Name = "comBoxSablon";
             // 
             // label3
             // 
@@ -205,17 +199,59 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // NewVehicle
+            // comBoxTipus
+            // 
+            this.comBoxTipus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxTipus.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(92)))));
+            this.comBoxTipus.BorderThickness = 2;
+            this.comBoxTipus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comBoxTipus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comBoxTipus, "comBoxTipus");
+            this.comBoxTipus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.comBoxTipus.FormattingEnabled = true;
+            this.comBoxTipus.Name = "comBoxTipus";
+            this.comBoxTipus.OriginalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxTipus.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            // 
+            // comBoxHibakod
+            // 
+            this.comBoxHibakod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxHibakod.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(92)))));
+            this.comBoxHibakod.BorderThickness = 2;
+            this.comBoxHibakod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comBoxHibakod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comBoxHibakod, "comBoxHibakod");
+            this.comBoxHibakod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.comBoxHibakod.FormattingEnabled = true;
+            this.comBoxHibakod.Name = "comBoxHibakod";
+            this.comBoxHibakod.OriginalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxHibakod.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            // 
+            // comBoxSablon
+            // 
+            this.comBoxSablon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxSablon.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(88)))), ((int)(((byte)(92)))));
+            this.comBoxSablon.BorderThickness = 2;
+            this.comBoxSablon.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comBoxSablon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comBoxSablon, "comBoxSablon");
+            this.comBoxSablon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            this.comBoxSablon.FormattingEnabled = true;
+            this.comBoxSablon.Name = "comBoxSablon";
+            this.comBoxSablon.OriginalBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+            this.comBoxSablon.OriginalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
+            // 
+            // InputVehicle
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.comBoxSablon);
             this.Controls.Add(this.comBoxHibakod);
             this.Controls.Add(this.comBoxTipus);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.nUpDDate);
             this.Controls.Add(this.txtElozoJav);
             this.Controls.Add(this.label1);
@@ -231,8 +267,9 @@
             this.Controls.Add(this.alkatrészLeírás_Lb);
             this.Controls.Add(this.txtMotorAdat);
             this.Controls.Add(this.alkatrészKezdetiKészlet_Lb);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "NewVehicle";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.Name = "InputVehicle";
             this.Load += new System.EventHandler(this.NewVehicle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUpDDate)).EndInit();
@@ -258,11 +295,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtElozoJav;
         private System.Windows.Forms.NumericUpDown nUpDDate;
-        private System.Windows.Forms.ComboBox comBoxTipus;
-        private System.Windows.Forms.ComboBox comBoxHibakod;
-        private System.Windows.Forms.ComboBox comBoxSablon;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private CustomComboBox comBoxTipus;
+        private CustomComboBox comBoxHibakod;
+        private CustomComboBox comBoxSablon;
     }
 }
