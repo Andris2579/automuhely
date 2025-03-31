@@ -21,7 +21,7 @@ class Car{
     //Lekéri egy autóhoz tartozó összes szolgáltatást
     public static function carServices($data){
         $db = Database::connect();
-        $query = "SELECT i.idopont_id, szcs.nev, i.allapot FROM jarmuvek AS j INNER JOIN idopontfoglalasok AS i ON j.jarmu_id = i.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id WHERE j.rendszam = '".$data['licenseNumber']."';";
+        $query = "SELECT i.idopont_id, szcs.nev, i.allapot, i.idopont FROM jarmuvek AS j INNER JOIN idopontfoglalasok AS i ON j.jarmu_id = i.jarmu_id INNER JOIN szervizcsomagok AS szcs ON i.csomag_id = szcs.csomag_id WHERE j.rendszam = '".$data['licenseNumber']."';";
         return $db->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 
