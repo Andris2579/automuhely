@@ -9,7 +9,8 @@
     --secondary-color-transparent: rgb(49, 134, 29, 0.75);
     --sub-secondary-color: rgb(83, 211, 54);
     --sub-secondary-color-transparent: rgb(83, 211, 54, 0.75);
-    --sub-third-color: rgb();
+    --third-color: rgb(255, 166, 48);
+    --sub-third-color: rgb(255, 184, 92);
     --text-color: rgb(240, 255, 241);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -164,6 +165,19 @@ main{
 }
 
 @media only screen and (min-width: 320px) {
+    #filters{
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .custom-modal{
+        width: 85vw;
+        font-size: 0.85em;
+    }
+
     #profile{
         background-color: var(--primary-color);
         border: var(--sub-primary-color) solid 4px;
@@ -235,6 +249,11 @@ main{
 }
 
 @media only screen and (min-width: 480px){
+    .custom-modal{
+        width: 65vw;
+        font-size: 0.95em;
+    }
+
     #logoHamburger, #logo{
         width: 11vw;
     }
@@ -245,6 +264,16 @@ main{
 }
 
 @media only screen and (min-width:544px){
+    #filters{
+        width: 75%;
+        margin-left:  auto;
+        margin-right:  auto;
+    }
+
+    .custom-modal{
+        width: 60vw;
+    }
+
     #logoHamburger, #logo{
         width: 8.5vw;
     }
@@ -255,6 +284,10 @@ main{
 }
 
 @media only screen and (min-width: 768px) {
+    .custom-modal{
+        width: 45vw;
+    }
+
     header{
         margin-left: 15px;
         margin-right: 15px;
@@ -275,7 +308,7 @@ main{
     }
 
     header, #profileMenu button{
-        font-size: 1.45rem;
+        font-size: 1.35rem;
     }
 
     #logo{
@@ -335,6 +368,10 @@ main{
         margin: 0 10px 0 auto;
         left: auto;
     }
+
+    #filters{
+        width: 50%;
+    }
 }
 
 @media only screen and (min-width:896px){
@@ -348,6 +385,14 @@ main{
 }
 
 @media only screen and (min-width: 1024px){
+    #filters{
+        width: 35%;
+    }
+    
+    .custom-modal{
+        width: 30vw;
+    }
+
     #logo{
         width: 5vw;
     }
@@ -362,6 +407,10 @@ main{
 }
 
 @media only screen and (min-width: 1366px){
+    .custom-modal{
+        width: 20vw;
+    }
+
     #logo{
         width: 3.5vw;
     }

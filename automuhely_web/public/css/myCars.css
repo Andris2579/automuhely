@@ -6,17 +6,13 @@
     background-color: gray !important;
 }
 
-@media only screen and (min-width: 320px) {
-    #myCarsFilters{
-        margin-bottom: 15px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: repeat(2,1fr);
-        gap: 15px;
-        align-items: center;
-    }
-    
-    #myCarsSearchBar, #myCarsSort{
+.activeServices{
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+@media only screen and (min-width: 320px) { 
+    #myCarsSearchBar{
         width: 100%;
         background-color: var(--primary-color);
         color: var(--text-color);
@@ -216,11 +212,6 @@
         grid-column: auto;
     }
 
-    #myCarsFilters{
-        grid-template-columns: auto repeat(2,1fr);
-        grid-template-rows: auto;
-    }
-
     .myCar, #newCar{
         font-size: 1.1rem;
         width: auto;
@@ -249,11 +240,6 @@
     .cancelService, .modifyLicenseNumber{
         flex: 0.45;
     }
-
-    #myCarsFilters{
-        width: 80%;
-        margin: 0 auto 15px auto;
-    }
 }
 
 @media only screen and (min-width: 1366px){
@@ -273,6 +259,4 @@
 
 .activeServices td,th{
     text-align: center;
-    width: 50%;
-    padding: 2px 0;
 }

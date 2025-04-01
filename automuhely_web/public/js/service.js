@@ -8,14 +8,15 @@ export function fetchServices(){
         url: BASE_URL + "routes/api.php/services",
         dataType: "json",
         success: function (response) {
+            console.log(response);
             //Felépíti a szolgáltatások kártyát
             response.forEach(service => {
                 text += '<div class="customCard service">'+
                             '<div class="service_container">'+
                                 '<h2>'+service['nev']+'</h2>'+
                                 '<p>'+service['leiras']+'</p>'+
-                                '<p>'+service['ar']+' Ft</p>'+
-                                '<button class="customButton book"><a href="public/pages/services.html#footer">Foglalás</a></button>'+
+                                '<p>Ár: '+service['ar']+' Ft</p>'+
+                                '<button class="customButton book">Foglalás</button>'+
                             '</div>'+
                         '</div>';
             });
@@ -45,6 +46,8 @@ $(document).on('click', '.book', function(){
             selected_div_id = index+1;
         }
     })
+
+    window.location.href = "public/pages/services.html#selected_service";
 
     let selected_service = $('#selected_service');
     selected_service.removeAttr('hidden');
@@ -128,7 +131,7 @@ $('#servicesSearchBar').on('input', function() {
     //Végig iterál az összes szolgáltatások kártyán
     serviceContainer.find('.service').each(function() {
         const service = $(this);
-        const serviceText = service.find('p').text().toLowerCase();
+        const serviceText = service.find('p, h2').text().toLowerCase();
         
         const isMatch = searchTerms.some(term => serviceText.includes(term));
         
@@ -142,49 +145,4 @@ $('#servicesSearchBar').on('input', function() {
     if($('#servicesSearchBar').val() == ""){
         $('#services').html(allServices);  
     }
-});
-
-//Megadott szempont alapján rendezi a szolgáltatásokat
-$('#sort').on('change', function () {
-    let foundServices = '';
-    const sortOption = $('#sort').val();
-    const searchTerm = $('#servicesSearchBar').val().toLowerCase();
-
-    const serviceContainer = $('<div>').html(allServices);
-
-    let servicesArray = [];
-    serviceContainer.find('.service').each(function () {
-        const service = $(this);
-        servicesArray.push(service);
-    });
-
-    switch (sortOption) {
-        case "abc_asc":
-            servicesArray.sort(function (a, b) {
-                const nameA = a.find('p').first().text().toLowerCase();
-                const nameB = b.find('p').first().text().toLowerCase();
-                return nameA.localeCompare(nameB);
-            });
-            break;
-        case "abc_desc":
-            servicesArray.sort(function (a, b) {
-                const nameA = a.find('p').first().text().toLowerCase();
-                const nameB = b.find('p').first().text().toLowerCase();
-                return nameB.localeCompare(nameA);
-            });
-            break;
-        case "popularity":
-            break;
-    }
-
-    servicesArray.forEach(function (service) {
-        const matches = service.find('p').filter(function () {
-            return $(this).text().toLowerCase().includes(searchTerm);
-        });
-
-        if (matches.length > 0) {
-            foundServices += service.prop('outerHTML');
-        }
-    });
-    $('#services').html(foundServices);
 });

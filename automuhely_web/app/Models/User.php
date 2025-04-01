@@ -49,7 +49,7 @@ class User{
 
             $db = Database::connect();
 
-            if (!self::validateUsername($username)) { //Ellenőrzi, hogy nem e foglalt az adott felhasználónév
+            if (!self::validateUsername($username) && !self::validateEmail($email)) { //Ellenőrzi, hogy nem e foglalt az adott felhasználónév
                 try{
                     $query1 = "INSERT INTO felhasznalok (felhasznalonev, jelszo_hash, szerep) VALUES (?, SHA2(?, 256), '$role');";
                     $stmt = $db->prepare($query1);
@@ -76,8 +76,11 @@ class User{
                     return ['success' => null, 'message' => $e->getMessage(), 'code' => 500];
                 }
             }
-            else{
+            else if(self::validateUsername($username)){
                 return ['success' => false, 'message' => "Ez a felhasználónév már foglalt!", 'code' => 400];
+            }
+            else if(self::validateEmail($email)){
+                return ['success' => false, 'message' => "Ez az email cím már használatban van!", 'code' => 400];
             }
         }
         catch(Exception $e){
@@ -92,6 +95,18 @@ class User{
 
         $stmt = $db->prepare($query);
         $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
+        return $stmt->num_rows > 0;
+    }
+
+    //Ellenőrzi, hogy nem e foglalt az adott felhasználónév
+    public static function validateEmail($email){
+        $db = Database::connect();
+        $query = "SELECT email FROM ugyfelek WHERE email = ?;";
+
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
         return $stmt->num_rows > 0;
