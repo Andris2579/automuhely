@@ -41,7 +41,6 @@ $(document).ready(function() {
 
                 $('#phone_number').val(response["telefonszam"]);
 
-                
                 var cim = response["cim"];
                 if(cim != null){
                     cim = cim.split(",");
@@ -179,14 +178,19 @@ export function logoutAuth(event){
 //Rügzíti és frissíti a felhasználó adatait
 export function userSettingsSave(event){
     event.preventDefault();
-    
+
+    var cim = "";
+    if($('#zip_code').val() != null && $('#city').val() != null && $('#street').val() != null && $('#house_number').val() != null){
+        cim = $('#zip_code').val() + "," + $('#city').val() + "," + $('#street').val() + "," + $('#house_number').val();
+    }
+
     const data = {
         "name": $('#sure_name').val() + " " + $('#first_name').val(),
         "username": $('#username').val(),
         "email": $('#email').val(),
         "phone_number": $('#phone_number').val(),
         "password": $('#password').val(),
-        "cim": $('#zip_code').val() + "," + $('#city').val() + "," + $('#street').val() + "," + $('#house_number').val()
+        "cim": cim
     }
     var form = $('form')[0];
 

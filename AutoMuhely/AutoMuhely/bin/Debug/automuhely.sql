@@ -89,8 +89,7 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
-(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
-(22, 'janicsak@veca.com', 'dd8a3af07bf0ed457e80ebfa07a8d2a7d834bb30aaee2cbf97d3b6120e6238b8', 'Szerelő');
+(1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor');
 
 -- --------------------------------------------------------
 
@@ -165,22 +164,6 @@ CREATE TABLE `idopontfoglalasok` (
   `allapot` enum('Foglalt','Folyamatban','Befejezett','Lemondva') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- Dumping data for table `idopontfoglalasok`
---
-
-INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
-(9, 10, 4, '2029-12-31 10:20:11', 'Folyamatban'),
-(10, 41, 4, '2025-02-28 12:30:00', 'Befejezett'),
-(11, 38, 4, '2025-02-22 12:30:00', 'Folyamatban'),
-(12, 37, 3, '2025-02-28 16:00:00', 'Befejezett'),
-(13, 34, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(14, 39, 4, '0000-00-00 00:00:00', 'Foglalt'),
-(15, 40, 4, '2025-06-04 19:00:00', 'Folyamatban'),
-(17, 43, 1, '2025-03-02 15:11:00', 'Folyamatban'),
-(18, 42, 1, '2025-02-21 14:00:00', 'Befejezett'),
-(19, 47, 5, '2025-03-15 13:00:00', 'Folyamatban');
-
 -- --------------------------------------------------------
 
 --
@@ -198,31 +181,6 @@ CREATE TABLE `jarmuvek` (
   `alvaz_adatok` varchar(100) DEFAULT NULL,
   `elozo_javitasok` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- Dumping data for table `jarmuvek`
---
-
-INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
-(10, 'abc-123', 2, 14, 1, '1990', 'asdfaewfdag', 'wvaav', 'Teljes szervíz'),
-(34, 'abc-124', 23, NULL, NULL, NULL, NULL, NULL, 'sokat'),
-(35, 'abc-125', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(37, 'abc-126', 25, NULL, NULL, NULL, NULL, NULL, 'nincs; \nKlíma tisztítás'),
-(38, 'abc-127', 25, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(39, '128', 6, 14, 1, '1999', 'majd lesz', 'nemtom', 'nincs'),
-(40, '129', 21, NULL, NULL, NULL, NULL, NULL, 'nincs'),
-(41, '130', 21, NULL, NULL, NULL, NULL, NULL, 'nincs\nTeljes szerviz'),
-(42, 'inl-066', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt; \nOlajcsere'),
-(43, 'INL-067', 21, NULL, NULL, NULL, NULL, NULL, 'sosemvolt'),
-(44, 'sadsad', 6, NULL, NULL, NULL, NULL, NULL, 'asdasfasf'),
-(45, 'afjsafjasf', 21, NULL, NULL, NULL, NULL, NULL, 'afdjfsdkfh'),
-(46, 'nfdsnfsd', 6, NULL, NULL, NULL, NULL, NULL, 'fkdslnflksd'),
-(47, 'abc-1250', 8, NULL, NULL, NULL, NULL, NULL, 'adasdasd'),
-(48, 'abd-1250', 11, NULL, NULL, NULL, NULL, NULL, 'adasdasd s'),
-(49, 'ajsfsjfsak', 8, NULL, NULL, NULL, NULL, NULL, 'asjkdsj jasdasjkd.'),
-(50, 'éaádésdásd', 9, NULL, NULL, NULL, NULL, NULL, 'asdlsékd ésdskaldas. lsadkasdkaséd.'),
-(51, 'ABC123', 24, 14, 1, '2014', 'most nincs', 'azsincs', 'még nem volt'),
-(52, 'ABC222', 9, 1, 1, '1917', 'asawrerdg', 'lolololololololololol', '');
 
 -- --------------------------------------------------------
 
@@ -318,15 +276,6 @@ CREATE TABLE `rendelesek` (
   `mennyiseg` int(11) NOT NULL,
   `statusz` enum('Leadva','Kérvényezve','Elutasítva') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `rendelesek`
---
-
-INSERT INTO `rendelesek` (`rendeles_id`, `felhasznalo_id`, `alkatresz_id`, `mennyiseg`, `statusz`) VALUES
-(1, 1, 8, 6, 'Kérvényezve'),
-(2, 1, 1, 11, 'Kérvényezve'),
-(3, 22, 1, 9, 'Kérvényezve');
 
 -- --------------------------------------------------------
 
@@ -549,31 +498,6 @@ CREATE TABLE `ugyfelek` (
   `email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
---
--- Dumping data for table `ugyfelek`
---
-
-INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
-(1, 'Chrén András', '+36123123123', '4011, Valahol, Liliom utca 4', 'andrasvalami@gmail.com'),
-(3, 'b b', 'b', NULL, 'b@b.com'),
-(4, 'c c', 'c', NULL, 'c@c.com'),
-(5, 'd d', 'd', NULL, 'd@d.com'),
-(6, 'Ernő Majom', '06702886912', '2600, Vác, Márc 15 tér 0', 'e@e.com'),
-(7, 'f f', 'f', NULL, 'f@f.com'),
-(8, 'g g', 'g', NULL, 'g@g.com'),
-(9, 'h h', 'h', NULL, 'h@h.com'),
-(10, 'i i', 'i', NULL, 'i@i.com'),
-(11, 'j j', 'j', NULL, 'j@j.com'),
-(12, 'k k', 'k', NULL, 'k@k.com'),
-(13, 'l l', 'l', NULL, 'l@l.com'),
-(14, 'ly ly', 'ly', NULL, 'ly@ly.com'),
-(15, 'm m', 'm', NULL, 'm'),
-(16, '', '', NULL, ''),
-(17, 'n n', 'n', NULL, 'n@n.com'),
-(18, 'Chrén András Ferenc', '+36204772772', '2624,Szokolya,Hunyadi utca,19', 'andrewchre1@gmail.com'),
-(19, 'Albert Benyó Mária', '123456789', NULL, 'albertbenyo@gmail.com'),
-(20, 'Fenyvesi Ákos', '06702962920', '2600, Vác, Szegfű utca 34', 'donfenyvesi@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -584,32 +508,6 @@ CREATE TABLE `ugyfel_jarmuvek` (
   `ugyfel_id` int(11) NOT NULL,
   `jarmu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- Dumping data for table `ugyfel_jarmuvek`
---
-
-INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
-(18, 10),
-(18, 34),
-(18, 37),
-(18, 38),
-(18, 39),
-(18, 40),
-(18, 41),
-(18, 42),
-(18, 43),
-(18, 44),
-(18, 45),
-(18, 46),
-(18, 47),
-(18, 48),
-(18, 49),
-(18, 50);
-
---
--- Indexes for dumped tables
---
 
 --
 -- Indexes for table `alkatreszek`

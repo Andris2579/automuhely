@@ -22,20 +22,27 @@ class UserController{
         try{
             if(User::checkUser($data)){ //Ellenőrzi, hogy a felhasználó bejelentkezési adatai helyesek e
                 try{
-                    $userId = User::find($data['username'])['felhasznalo_id'];
+                    $user = User::find($data['username']);
 
-                    //Összeállítja a JSON Web Token elküldendő adatait
-                    $payload = [
-                        'userId' => $userId,
-                        'username' => $data['username'],
-                        'iat' => time(),
-                        'exp' => time() + (60 * 60)
-                    ];
-                    
-                    //Legenerálja a JSON Web Token-t
-                    $jwt = JWT::encode($payload, App::$JWT_SECRET, 'HS256');
-            
-                    return ['success' => true, 'message' => "Sikeres bejelentkezés!", 'code' => 200, 'token' => $jwt];
+                    if($user != null){
+                        $userId = $user['felhasznalo_id'];
+
+                        //Összeállítja a JSON Web Token elküldendő adatait
+                        $payload = [
+                            'userId' => $userId,
+                            'username' => $data['username'],
+                            'iat' => time(),
+                            'exp' => time() + (60 * 60)
+                        ];
+                        
+                        //Legenerálja a JSON Web Token-t
+                        $jwt = JWT::encode($payload, App::$JWT_SECRET, 'HS256');
+                
+                        return ['success' => true, 'message' => "Sikeres bejelentkezés!", 'code' => 200, 'token' => $jwt];
+                    }
+                    else{
+                        return ['success' => false, 'message' => "Hibás felhasználónév vagy jelszó!", 'code' => 404];
+                    }
                 }
                 catch(Exception $e){
                     return ['success' => null, 'message' => $e->getMessage(), 'code' => 500];
