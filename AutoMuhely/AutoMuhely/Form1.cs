@@ -537,21 +537,21 @@ namespace AutoMuhely
 
             // Extract all columns to uniquely identify the customer
             string name = selectedRow.Cells["Név"]?.Value?.ToString();
-            string address = selectedRow.Cells["Cím"]?.Value?.ToString();
+            string email = selectedRow.Cells["E-mail"]?.Value?.ToString();
             aktivMenu = "Járművek";
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address))
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email))
             {
                 // Modify the SQL query to join tables
                 string query = jarmuvekSql.Substring(0, jarmuvekSql.Length - 1) +
                     @" JOIN ugyfel_jarmuvek uj ON j.jarmu_id = uj.jarmu_id 
                JOIN ugyfelek u ON uj.ugyfel_id = u.ugyfel_id 
-               WHERE u.nev = @name AND u.cim = @address;";
+               WHERE u.nev = @name AND u.email = @email;";
 
                 // Load the car data into the table
                 var parameters = new Dictionary<string, object>
         {
             { "@name", name },
-            { "@address", address }
+            { "@email", email }
         };
                 InitializeTable(query, parameters);
                 panelButtons.Controls.Clear();
