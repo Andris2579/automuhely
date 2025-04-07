@@ -90,7 +90,11 @@ CREATE TABLE `felhasznalok` (
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
 (1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
-(23, 'Lajosbela01', '0367572f297dad65b81f96973254f4d340f1fc4de2f20364ed380d889a9f6cb9', 'Ügyfél');
+(22, 'Lajosbela01', '0367572f297dad65b81f96973254f4d340f1fc4de2f20364ed380d889a9f6cb9', 'Ügyfél'),
+(23, 'Ati123', 'f.jelszo_hash', 'Ügyfél'),
+(24, 'Kis Sándor', '7f91e8a4b648b0125b15dc5a3b6466f9f4906d92c72bea9bd6be92c853bebda2', 'Szerelő'),
+(25, 'Klari25', 'd09313aaedc4c134f8e329afe86cf57354e1a1ab65b7ba82de126b659aa8e543', 'Ügyfél');
+
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,9 @@ CREATE TABLE `felhasznalok_ugyfelek` (
 --
 
 INSERT INTO `felhasznalok_ugyfelek` (`felhasznalo_id`, `ugyfel_id`) VALUES
-(23, 21);
+(22, 20),
+(23, 21),
+(25, 22);
 
 -- --------------------------------------------------------
 
@@ -172,6 +178,18 @@ CREATE TABLE `idopontfoglalasok` (
   `allapot` enum('Foglalt','Folyamatban','Befejezett','Lemondva') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `idopontfoglalasok`
+--
+
+INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
+(20, 53, 1, '2025-04-17 12:25:00', 'Folyamatban'),
+(21, 53, 11, NULL, 'Foglalt'),
+(22, 54, 1, NULL, 'Foglalt'),
+(23, 54, 2, '2025-04-24 08:30:00', 'Befejezett'),
+(24, 53, 1, NULL, 'Lemondva'),
+(25, 53, 1, NULL, 'Lemondva');
+
 -- --------------------------------------------------------
 
 --
@@ -195,7 +213,9 @@ CREATE TABLE `jarmuvek` (
 --
 
 INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
-(53, 'LDE168', 31, NULL, 1, '2005', '1.9 TDI AVF', NULL, 'Olajcsere');
+(52, 'LDE168', 31, NULL, 1, '2005', '1.9 TDI AVF', NULL, 'Olajcsere'),
+(53, 'ABC123', 18, NULL, NULL, NULL, NULL, NULL, ''),
+(54, 'DEF587', 45, NULL, NULL, NULL, NULL, NULL, '; \nFékellenőrzés');
 
 -- --------------------------------------------------------
 
@@ -567,7 +587,9 @@ CREATE TABLE `ugyfelek` (
 --
 
 INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
-(21, 'Lajos Béla', '', NULL, '123@asd.hu');
+(20, 'Lajos Béla', '', NULL, '123@asd.hu'),
+(21, 'Nagy Attila', '06201234567', '0001,Messzifölde,Első utca,52', 'ati123@gmail.com'),
+(22, 'Kovács Klára', '', NULL, 'klari25@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -579,6 +601,14 @@ CREATE TABLE `ugyfel_jarmuvek` (
   `ugyfel_id` int(11) NOT NULL,
   `jarmu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `ugyfel_jarmuvek`
+--
+
+INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
+(21, 53),
+(22, 54);
 
 --
 -- Indexek a kiírt táblákhoz
