@@ -183,7 +183,7 @@ $(document).ready(function(){
                 url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId + "/cars/" + licenseNumber,
                 dataType: "json",
                 success: function(response) {
-                    let repairsList = response["elozo_javitasok"].length ? response["elozo_javitasok"] : '<p>Nincs adat.</p>';
+                    let repairsList = response["elozo_javitasok"].length ? response["elozo_javitasok"] : '<p>Nem történt még javítás ezen az autón.</p>';
                     openCustomModal("Előző javítások", repairsList);
                 }
             });
@@ -197,7 +197,7 @@ $(document).ready(function(){
                 url: BASE_URL + "routes/api.php/users/" + getUserCredentials().userId + "/cars/" + licenseNumber + "/services",
                 dataType: "json",
                 success: function(response) {
-                    if(response != null){ //Ellenőrizzük, hogy van e aktív szolgáltatás, hogy ha nincs, akkor ne legyen gond a formázással
+                    if(response.length > 0){ //Ellenőrizzük, hogy van e aktív szolgáltatás, hogy ha nincs, akkor ne legyen gond a formázással
                         response.forEach(function(service){
                             if(service['allapot'] != 'Lemondva' && service['allapot'] != 'Befejezett'){
                                 var time = service['idopont'] == null ? 'Visszajelzésre vár' : service['idopont'];
@@ -206,8 +206,7 @@ $(document).ready(function(){
                         });
                     }
                     else{
-                        servicesList = '<p>Nincs aktív szolgáltatás.</p>';
-
+                        servicesList = '<p>Jelenleg nincs aktív szolgáltatás ezen az autón.</p>';
                     }
                     servicesList += '</table>';
                     openCustomModal("Aktív szolgáltatások", servicesList);
@@ -367,7 +366,7 @@ function addCar(event){
         $('#error_message').removeAttr('hidden');
         $('#error_message').html("Válasszon egy típust!");
     }
-    else if(!/^[A-Z0-9\s-]{3,10}$/.test(data["rendszam"])){
+    else if(!/^[A-Z0-9\s-]{6,12}$/.test(data["rendszam"])){
         $('#error_message').removeAttr('hidden');
         $('#error_message').html("A rendszám formátuma helytelen!");
     }

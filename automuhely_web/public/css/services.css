@@ -1,21 +1,6 @@
 @media only screen and (min-width: 320px) {
-    #servicesFilters{
-        margin-bottom: 15px;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: repeat(2,1fr);
-        gap: 15px;
-        align-items: center;
-    }
-
-    #servicesSort, #servicesSearchBar{
-        width: 100%;
+    #servicesSearchBar{
         background-color: var(--primary-color);
-        color: var(--text-color);
-    }
-
-    #servicesSort{
-        grid-column: span 2;
     }
 
     #searchIcon{
@@ -44,24 +29,14 @@
         margin: 10px 0;
     }
 
-    #cars{
-        width: 100%;
-        margin: 10px 0;
+    .final_book{
+        margin-top: 10px;
     }
 }
 
 @media only screen and (min-width: 480px) {
-    #servicesFilters{
-        grid-template-columns: auto repeat(2,1fr);
-        grid-template-rows: auto;
-    }
-
     #searchIcon{
         width: 5vw;
-    }
-
-    #servicesSort{
-        grid-column: auto;
     }
 }
 
@@ -75,12 +50,9 @@
     #searchIcon{
         width: 3vw;
     }
-}
 
-@media only screen and (min-width: 1024px){
-    #servicesFilters{
-        width: 80%;
-        margin: 0 auto 15px auto;
+    .customGrid{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
