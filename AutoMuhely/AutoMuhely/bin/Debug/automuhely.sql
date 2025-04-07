@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 06. 22:01
+-- Létrehozás ideje: 2025. Ápr 07. 13:51
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -90,7 +90,9 @@ CREATE TABLE `felhasznalok` (
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
 (1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
-(23, 'Ati123', '1e4fe302c5ebe8ad151dde5bdc33e21d5a3a76b4c50a26c366d1ba2dc892a32d', 'Ügyfél');
+(23, 'Ati123', 'f.jelszo_hash', 'Ügyfél'),
+(24, 'Kis Sándor', '7f91e8a4b648b0125b15dc5a3b6466f9f4906d92c72bea9bd6be92c853bebda2', 'Szerelő'),
+(25, 'Klari25', 'd09313aaedc4c134f8e329afe86cf57354e1a1ab65b7ba82de126b659aa8e543', 'Ügyfél');
 
 -- --------------------------------------------------------
 
@@ -108,7 +110,8 @@ CREATE TABLE `felhasznalok_ugyfelek` (
 --
 
 INSERT INTO `felhasznalok_ugyfelek` (`felhasznalo_id`, `ugyfel_id`) VALUES
-(23, 21);
+(23, 21),
+(25, 22);
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,11 @@ CREATE TABLE `idopontfoglalasok` (
 
 INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
 (20, 53, 1, '2025-04-17 12:25:00', 'Folyamatban'),
-(21, 53, 11, NULL, 'Foglalt');
+(21, 53, 11, NULL, 'Foglalt'),
+(22, 54, 1, NULL, 'Foglalt'),
+(23, 54, 2, '2025-04-24 08:30:00', 'Befejezett'),
+(24, 53, 1, NULL, 'Lemondva'),
+(25, 53, 1, NULL, 'Lemondva');
 
 -- --------------------------------------------------------
 
@@ -203,7 +210,8 @@ CREATE TABLE `jarmuvek` (
 --
 
 INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
-(53, 'ABC123', 18, NULL, NULL, NULL, NULL, NULL, '');
+(53, 'ABC123', 18, NULL, NULL, NULL, NULL, NULL, ''),
+(54, 'DEF587', 45, NULL, NULL, NULL, NULL, NULL, '; \nFékellenőrzés');
 
 -- --------------------------------------------------------
 
@@ -527,7 +535,8 @@ CREATE TABLE `ugyfelek` (
 --
 
 INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
-(21, 'Nagy Attila', '', NULL, 'ati123@gmail.com');
+(21, 'Nagy Attila', '06201234567', '0001,Messzifölde,Első utca,52', 'ati123@gmail.com'),
+(22, 'Kovács Klára', '', NULL, 'klari25@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -545,7 +554,8 @@ CREATE TABLE `ugyfel_jarmuvek` (
 --
 
 INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
-(21, 53);
+(21, 53),
+(22, 54);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -662,7 +672,7 @@ ALTER TABLE `alkatreszek`
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT a táblához `hibakodok`
@@ -674,13 +684,13 @@ ALTER TABLE `hibakodok`
 -- AUTO_INCREMENT a táblához `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
-  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT a táblához `jarmuvek`
 --
 ALTER TABLE `jarmuvek`
-  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `jarmu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT a táblához `marka`
@@ -722,7 +732,7 @@ ALTER TABLE `tipus`
 -- AUTO_INCREMENT a táblához `ugyfelek`
 --
 ALTER TABLE `ugyfelek`
-  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ugyfel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Megkötések a kiírt táblákhoz
