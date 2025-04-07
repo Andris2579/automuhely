@@ -54,6 +54,8 @@ namespace AutoMuhely
             logOutPan.PanelClicked += LogOutPan_Clicked;
             settingsPanel.PanelClicked += SettingsPanel_Clicked;
             brandsPanel.PanelClicked += (sender, e) => LoadData("Márkák", markakTipusSql);
+
+
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
