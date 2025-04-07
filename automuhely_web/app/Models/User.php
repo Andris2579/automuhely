@@ -23,11 +23,11 @@ class User{
             $phone_number = $data['phone_number'];
             $cim = $data['cim'];
             $password = $data['password'];
-    
-            $query = "UPDATE felhasznalok AS f INNER JOIN felhasznalok_ugyfelek ON f.felhasznalo_id = felhasznalok_ugyfelek.felhasznalo_id INNER JOIN ugyfelek AS u ON felhasznalok_ugyfelek.ugyfel_id = u.ugyfel_id SET u.nev = ?, u.email = ?, u.telefonszam = ?, u.cim = ?, f.jelszo_hash = ? WHERE f.felhasznalonev = '$username';";
+            
+            $password = strlen($password) > 0 ? "SHA2('$password',256)" : 'f.jelszo_hash';
+            $query = "UPDATE felhasznalok AS f INNER JOIN felhasznalok_ugyfelek ON f.felhasznalo_id = felhasznalok_ugyfelek.felhasznalo_id INNER JOIN ugyfelek AS u ON felhasznalok_ugyfelek.ugyfel_id = u.ugyfel_id SET u.nev = ?, u.email = ?, u.telefonszam = ?, u.cim = ?, f.jelszo_hash = ".$password." WHERE f.felhasznalonev = '$username';";
             $stmt = $db->prepare($query);
-            $password = strlen($password) > 0 ? 'SHA2('.$password.',256)' : 'f.jelszo_hash';
-            $stmt->bind_param("sssss", $name, $email, $phone_number, $cim, $password);
+            $stmt->bind_param("ssss", $name, $email, $phone_number, $cim);
             $stmt->execute();
 
             return ['success' => true, 'message' => 'Sikeresen fissítette a felhasználói adatokat!', 'code' => 200];

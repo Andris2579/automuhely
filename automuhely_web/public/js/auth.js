@@ -190,6 +190,7 @@ export function userSettingsSave(event){
         "email": $('#email').val(),
         "phone_number": $('#phone_number').val(),
         "password": $('#password').val(),
+        "password_again": $('#password_again').val(),
         "cim": cim
     }
     var form = $('form')[0];
@@ -199,12 +200,10 @@ export function userSettingsSave(event){
         $('#error_message').html("Kérjük töltsön ki minden *-gal jelölt mezőt!");
     }
     //Ellenőrzi, hogy a kát jelszó egyezik e. Ha mindkét mező üres marad, a jelszó nem változik
-    else if(data.password != null && data.password.length > 0 && data.password_again.length > 0){
-        if(data.password != data.password_again){
-            $('#error_message').removeAttr('hidden');
-            $('#error_message').html('A jelszó két nem egyezik!');
-        }
-        else if (!passwordPattern.test(data.password) && !passwordPattern.test(data.password_again)) {
+    else if(data.password != data.password_again){
+        $('#error_message').removeAttr('hidden');
+        $('#error_message').html('A jelszó két nem egyezik!');
+        if (!passwordPattern.test(data.password) && !passwordPattern.test(data.password_again)) {
             $('#error_message').removeAttr('hidden');
             $('#error_message').html('A jelszónak legalább 10 karakter hosszúnak kell lennie, tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert az alábbiak közül: @$!%*?&_!');
         }
