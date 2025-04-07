@@ -228,7 +228,7 @@ export function userSettingsSave(event){
         $('#error_message').html('Az e-mail cím formátuma érvénytelen!');
     }
     // Telefonszám ellenőrzése (nemzetközi formátum engedélyezése)
-    else if(!/^\+?[1-9]\d{0,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test($('#phone_number').val())){
+    else if(!/^\+?[0-9]\d{0,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test($('#phone_number').val())){
         $('#error_message').removeAttr('hidden');
         $('#error_message').html('A telefonszám érvénytelen! Csak számok, szóközök, pluszjel (+) és kötőjelek (-) engedélyezettek, minimum 7, maximum 20 karakter hosszúságban.');
     }

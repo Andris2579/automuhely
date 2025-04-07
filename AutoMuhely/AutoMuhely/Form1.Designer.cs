@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace AutoMuhely
 {
@@ -434,8 +435,8 @@ namespace AutoMuhely
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::AutoMuhely.Properties.Resources.search;
-            this.pictureBox8.Location = new System.Drawing.Point(15, 3);
+            this.pictureBox8.Image = global::AutoMuhely.Properties.Resources.search1;
+            this.pictureBox8.Location = new System.Drawing.Point(14, 1);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(30, 30);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
