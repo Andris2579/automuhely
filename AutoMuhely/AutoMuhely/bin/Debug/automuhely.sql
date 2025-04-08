@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Ápr 06. 22:01
+-- Létrehozás ideje: 2025. Ápr 07. 19:15
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -90,7 +90,11 @@ CREATE TABLE `felhasznalok` (
 
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
 (1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
-(23, 'Ati123', '1e4fe302c5ebe8ad151dde5bdc33e21d5a3a76b4c50a26c366d1ba2dc892a32d', 'Ügyfél');
+(22, 'Lajosbela01', '0367572f297dad65b81f96973254f4d340f1fc4de2f20364ed380d889a9f6cb9', 'Ügyfél'),
+(23, 'Ati123', 'f.jelszo_hash', 'Ügyfél'),
+(24, 'Kis Sándor', '7f91e8a4b648b0125b15dc5a3b6466f9f4906d92c72bea9bd6be92c853bebda2', 'Szerelő'),
+(25, 'Klari25', 'd09313aaedc4c134f8e329afe86cf57354e1a1ab65b7ba82de126b659aa8e543', 'Ügyfél');
+
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,9 @@ CREATE TABLE `felhasznalok_ugyfelek` (
 --
 
 INSERT INTO `felhasznalok_ugyfelek` (`felhasznalo_id`, `ugyfel_id`) VALUES
-(23, 21);
+(22, 20),
+(23, 21),
+(25, 22);
 
 -- --------------------------------------------------------
 
@@ -178,7 +184,11 @@ CREATE TABLE `idopontfoglalasok` (
 
 INSERT INTO `idopontfoglalasok` (`idopont_id`, `jarmu_id`, `csomag_id`, `idopont`, `allapot`) VALUES
 (20, 53, 1, '2025-04-17 12:25:00', 'Folyamatban'),
-(21, 53, 11, NULL, 'Foglalt');
+(21, 53, 11, NULL, 'Foglalt'),
+(22, 54, 1, NULL, 'Foglalt'),
+(23, 54, 2, '2025-04-24 08:30:00', 'Befejezett'),
+(24, 53, 1, NULL, 'Lemondva'),
+(25, 53, 1, NULL, 'Lemondva');
 
 -- --------------------------------------------------------
 
@@ -203,7 +213,9 @@ CREATE TABLE `jarmuvek` (
 --
 
 INSERT INTO `jarmuvek` (`jarmu_id`, `rendszam`, `tipus_id`, `kod_id`, `sablon_id`, `gyartas_eve`, `motor_adatok`, `alvaz_adatok`, `elozo_javitasok`) VALUES
-(53, 'ABC123', 18, NULL, NULL, NULL, NULL, NULL, '');
+(52, 'LDE168', 31, NULL, 1, '2005', '1.9 TDI AVF', NULL, 'Olajcsere'),
+(53, 'ABC123', 18, NULL, NULL, NULL, NULL, NULL, ''),
+(54, 'DEF587', 45, NULL, NULL, NULL, NULL, NULL, '; \nFékellenőrzés');
 
 -- --------------------------------------------------------
 
@@ -235,7 +247,24 @@ INSERT INTO `marka` (`marka_id`, `marka_neve`) VALUES
 (12, 'Chevrolet'),
 (13, 'Subaru'),
 (14, 'Mazda'),
-(15, 'Volvo');
+(15, 'Volvo'),
+(16, 'Abarth'),
+(17, 'Alfa Romeo'),
+(18, 'Aston Martin'),
+(19, 'Fiat'),
+(20, 'Bentley'),
+(21, 'Buick'),
+(22, 'BYD'),
+(23, 'Cadillac'),
+(26, 'Infinity'),
+(28, 'Jaguar'),
+(29, 'Rolls-Royce'),
+(30, 'Kia'),
+(31, 'Lada'),
+(32, 'Lamborghini'),
+(33, 'Skoda'),
+(34, 'Smart'),
+(35, 'Lexus');
 
 -- --------------------------------------------------------
 
@@ -506,7 +535,38 @@ INSERT INTO `tipus` (`tipus_id`, `tipus`, `marka_id`) VALUES
 (49, 'MX-5', 14),
 (50, 'CX-5', 14),
 (51, 'XC60', 15),
-(52, 'S90', 15);
+(52, 'S90', 15),
+(53, '500', 16),
+(54, '124', 16),
+(55, '156', 17),
+(56, '159', 17),
+(57, 'Vantage', 18),
+(58, 'DB12', 18),
+(59, 'Arnage', 20),
+(60, 'Continental', 20),
+(61, 'LeSabre', 21),
+(62, 'Regal', 21),
+(63, 'Eldorado', 23),
+(64, 'DeVille', 23),
+(65, '500', 19),
+(66, 'Tipo', 19),
+(67, 'Q50', 26),
+(68, 'Q70', 26),
+(69, 'XJ20', 28),
+(70, 'XS', 28),
+(71, 'C\'eed', 30),
+(72, 'Venga', 30),
+(73, '2101', 31),
+(74, '2107', 31),
+(75, 'Aventador', 32),
+(76, 'RX450h', 35),
+(77, 'GS300', 35),
+(78, 'E-klasse', 6),
+(79, 'Phantom', 29),
+(80, 'Cullinan', 29),
+(81, 'Fabia', 33),
+(82, 'Octavia', 33),
+(83, 'Superb', 33);
 
 -- --------------------------------------------------------
 
@@ -527,7 +587,9 @@ CREATE TABLE `ugyfelek` (
 --
 
 INSERT INTO `ugyfelek` (`ugyfel_id`, `nev`, `telefonszam`, `cim`, `email`) VALUES
-(21, 'Nagy Attila', '', NULL, 'ati123@gmail.com');
+(20, 'Lajos Béla', '', NULL, '123@asd.hu'),
+(21, 'Nagy Attila', '06201234567', '0001,Messzifölde,Első utca,52', 'ati123@gmail.com'),
+(22, 'Kovács Klára', '', NULL, 'klari25@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -545,7 +607,8 @@ CREATE TABLE `ugyfel_jarmuvek` (
 --
 
 INSERT INTO `ugyfel_jarmuvek` (`ugyfel_id`, `jarmu_id`) VALUES
-(21, 53);
+(21, 53),
+(22, 54);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -674,7 +737,7 @@ ALTER TABLE `hibakodok`
 -- AUTO_INCREMENT a táblához `idopontfoglalasok`
 --
 ALTER TABLE `idopontfoglalasok`
-  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idopont_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT a táblához `jarmuvek`
@@ -686,7 +749,7 @@ ALTER TABLE `jarmuvek`
 -- AUTO_INCREMENT a táblához `marka`
 --
 ALTER TABLE `marka`
-  MODIFY `marka_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `marka_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT a táblához `munkafolyamat_sablonok`
@@ -716,7 +779,7 @@ ALTER TABLE `szervizcsomagok`
 -- AUTO_INCREMENT a táblához `tipus`
 --
 ALTER TABLE `tipus`
-  MODIFY `tipus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `tipus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT a táblához `ugyfelek`
