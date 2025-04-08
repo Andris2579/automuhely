@@ -827,7 +827,9 @@ namespace AutoMuhely
                 int Id= databaseHandler.GetScalarValue(sqlQuery, parameters);
                 UpdateAppointment setDateTime= new UpdateAppointment(Id);
                 setDateTime.ShowDialog();
-                LoadAppointments();
+                currentPage = 1;
+                LoadSzerelesek();
+                
             }
             else
             {
@@ -851,7 +853,8 @@ namespace AutoMuhely
                 int Id = databaseHandler.GetScalarValue(sqlQuery, parameters);
                 UpdateAppointment setStatus = new UpdateAppointment(Id, true);
                 setStatus.ShowDialog();
-                LoadAppointments();
+                currentPage = 1;
+                LoadSzerelesek() ;
             }
             else
             {

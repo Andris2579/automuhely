@@ -48,11 +48,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.label4.Location = new System.Drawing.Point(52, 216);
+            this.label4.Location = new System.Drawing.Point(96, 216);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(259, 44);
+            this.label4.Size = new System.Drawing.Size(177, 44);
             this.label4.TabIndex = 37;
-            this.label4.Text = "HOZZÁADÁSA";
+            this.label4.Text = "KEZELÉSE";
             // 
             // label5
             // 
@@ -60,11 +60,11 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.label5.Location = new System.Drawing.Point(100, 172);
+            this.label5.Location = new System.Drawing.Point(90, 172);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 44);
+            this.label5.Size = new System.Drawing.Size(188, 44);
             this.label5.TabIndex = 36;
-            this.label5.Text = "MODELL";
+            this.label5.Text = "RENDELÉS";
             // 
             // LoginLabel
             // 
@@ -72,11 +72,11 @@
             this.LoginLabel.BackColor = System.Drawing.Color.Transparent;
             this.LoginLabel.Font = new System.Drawing.Font("Bauhaus 93", 29.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(135)))), ((int)(((byte)(246)))));
-            this.LoginLabel.Location = new System.Drawing.Point(121, 128);
+            this.LoginLabel.Location = new System.Drawing.Point(78, 128);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(118, 44);
+            this.LoginLabel.Size = new System.Drawing.Size(210, 44);
             this.LoginLabel.TabIndex = 35;
-            this.LoginLabel.Text = "AUTÓ";
+            this.LoginLabel.Text = "ALKATRÉSZ";
             // 
             // alkatrészNév_Lb
             // 
