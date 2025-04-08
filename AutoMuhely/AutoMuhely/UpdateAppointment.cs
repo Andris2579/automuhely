@@ -128,12 +128,20 @@ namespace AutoMuhely
                             query = "SELECT s.nev FROM idopontfoglalasok i JOIN szervizcsomagok s ON s.csomag_id=i.csomag_id WHERE i.idopont_id=@idop_id";
                             var paramBef1 = new Dictionary<string, object>{ { "@idop_id", AppointmentId } };
                             string current = databaseHandler.LookUpOne(query, paramBef1);
-                            previous = previous + "; \n" + current;
+                            string prevFixes = "";
+                            if (string.IsNullOrEmpty(previous))
+                            {
+                                prevFixes = current;
+                            }
+                            else
+                            {
+                                prevFixes = previous + "; \n" + current;
+                            }
 
                             string updateBef = "UPDATE jarmuvek j SET j.elozo_javitasok = @elozo_jav WHERE j.jarmu_id=(SELECT j.jarmu_id FROM idopontfoglalasok i JOIN jarmuvek j ON j.jarmu_id= i.jarmu_id WHERE i.idopont_id=@idop_id);";
                             var parmaBef0 = new Dictionary<string, object>
                     {
-                        { "@elozo_jav",  previous},
+                        { "@elozo_jav",  prevFixes},
                         { "@idop_id", AppointmentId }
                     };
                             databaseHandler.Update(updateBef, parmaBef0);
