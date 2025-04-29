@@ -91,7 +91,7 @@ CREATE TABLE `felhasznalok` (
 INSERT INTO `felhasznalok` (`felhasznalo_id`, `felhasznalonev`, `jelszo_hash`, `szerep`) VALUES
 (1, 'admin', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Adminisztrátor'),
 (22, 'Lajosbela01', '0367572f297dad65b81f96973254f4d340f1fc4de2f20364ed380d889a9f6cb9', 'Ügyfél'),
-(23, 'Ati123', 'f.jelszo_hash', 'Ügyfél'),
+(23, 'Ati123', '1e4fe302c5ebe8ad151dde5bdc33e21d5a3a76b4c50a26c366d1ba2dc892a32d', 'Ügyfél'),
 (24, 'Kis Sándor', '7f91e8a4b648b0125b15dc5a3b6466f9f4906d92c72bea9bd6be92c853bebda2', 'Szerelő'),
 (25, 'Klari25', 'd09313aaedc4c134f8e329afe86cf57354e1a1ab65b7ba82de126b659aa8e543', 'Ügyfél');
 
